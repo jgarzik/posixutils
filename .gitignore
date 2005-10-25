@@ -3,7 +3,6 @@
 Makefile
 Makefile.in
 
-ABOUT-NLS
 COPYING
 INSTALL
 missing
