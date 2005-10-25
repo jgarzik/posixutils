@@ -21,7 +21,6 @@ posixutils-config.h*
 .dotest
 autom4te.cache
 .deps
-m4
 
 getconf-confstr.h
 getconf-path.h
