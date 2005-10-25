@@ -1,0 +1,28 @@
+
+Version 3 - February 7, 2005
+
+	* Add copyright/license info to each source file.
+	* Make sure bug report address points to SourceForge.
+
+	* New utilities: grep, pathchk, pwd, split, tty.
+	* New work-in-progress (WIP) utility: mv.
+
+	* Fix many 'compress' bugs.
+	* Security fixes.
+
+	* (internal) Move compress engine into lib.
+
+Version 2 - January 26, 2005
+
+	* Update README with project goals/manifesto,
+	  and some URLs.
+
+	* New utilities: compress, comm, date, what, wc, renice,
+	  ipcrm, kill, rm.
+
+	* Bug fixes.
+
+Version 1 - August 21, 2004
+
+	Initial release.
+

@@ -1,0 +1,734 @@
+# French translations for posixutils package.
+# Copyright (C) 2005 Jeff Garzik
+# This file is distributed under the same license as the posixutils package.
+#  <jgarzik@pobox.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: posixutils 3\n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
+"POT-Creation-Date: 2005-10-25 03:05-0400\n"
+"PO-Revision-Date: 2005-02-07 22:24-0500\n"
+"Last-Translator:  <jgarzik@pobox.com>\n"
+"Language-Team: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: asa.c:37
+msgid "asa - interpret carriage-control characters"
+msgstr ""
+
+#: asa.c:53
+#, c-format
+msgid "malformed line\n"
+msgstr ""
+
+#: basename.c:48 dirname.c:44 unlink.c:36
+#, c-format
+msgid "invalid number of arguments\n"
+msgstr "nombre inadmissible des arguments\n"
+
+#: basename.c:56 dirname.c:52
+#, c-format
+msgid "invalid pathname\n"
+msgstr "nom inadmissible\n"
+
+#: cat.c:37
+msgid "cat - concatenate files and print on the standard output"
+msgstr "cat - enchainez les dossiers et imprimez sur le rendement standard"
+
+#: cat.c:40
+msgid "(ignored)"
+msgstr ""
+
+#: chown.c:43
+msgid "chown - change file owner and group"
+msgstr ""
+
+#: chown.c:45
+msgid "owner[:group] file ..."
+msgstr ""
+
+#: chown.c:49
+msgid "Set uid/gid of symlink, if file is a symlink."
+msgstr "Placez uid/gid de symlink, si le dossier est un symlink."
+
+#: chown.c:51
+msgid "Recurse into symlinked dirs on the command line."
+msgstr "Recurse dans symlinked des dirs sur la ligne de commande."
+
+#: chown.c:53
+msgid ""
+"Recurse into symlinked dirs on the command line or found during traversal."
+msgstr ""
+"Recurse dans symlinked des dirs sur la ligne de commande ou a trouve pendant "
+"le traversal."
+
+#: chown.c:55
+msgid "Do not follow symlinks."
+msgstr "Ne suivez pas les symlinks."
+
+#: chown.c:57
+msgid "Recursively change file user and group IDs."
+msgstr ""
+
+#: chown.c:95
+#, fuzzy, c-format
+msgid "invalid group '%s'\n"
+msgstr "nom inadmissible\n"
+
+#: chown.c:121
+#, c-format
+msgid "owner[:group] not provided\n"
+msgstr ""
+
+#: chown.c:128
+#, fuzzy, c-format
+msgid "invalid owner '%s'\n"
+msgstr "nom inadmissible\n"
+
+#: cksum.c:33
+msgid "cksum - checksum and count the bytes in a file"
+msgstr "cksum - somme et comptent les bytes dans un dossier"
+
+#: comm.c:37
+msgid "comm - compare two sorted files line by line"
+msgstr "comm - comparez la ligne de deux dossiers assortis par la ligne"
+
+#: comm.c:39
+msgid "file1 file2"
+msgstr "file1 file2"
+
+#: comm.c:43
+msgid "Suppress the output column of lines unique to file1."
+msgstr "Supprimez la colonne de rendement des lignes uniques a file1."
+
+#: comm.c:45
+msgid "Suppress the output column of lines unique to file2."
+msgstr "Supprimez la colonne de rendement des lignes uniques a file2."
+
+#: comm.c:47
+msgid "Suppress the output column of lines duplicated in file1 and file2."
+msgstr ""
+"Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
+
+#: compress.c:47
+msgid "compress - compress data"
+msgstr "compress - donnees de compresse"
+
+#: compress.c:53
+msgid ""
+"Specify the maximum number of bits to use in a code.  Supported values from "
+"9 to 14, inclusive."
+msgstr ""
+
+#: compress.c:55
+msgid "Cause compress to write to the standard output"
+msgstr "Faites ecrire la compresse au rendement standard"
+
+#: compress.c:57
+msgid ""
+"Force compression of file, even if it does not actually reduce the size of "
+"the file, or if the corresponding .Z file already exists"
+msgstr ""
+
+#: compress.c:59
+msgid "Write the percentage reduction of each file to standard error."
+msgstr "Ecrivez la reduction de pourcentage de chaque dossier a l'erreur type."
+
+#: compress.c:137 libpu/alloc.c:33 libpu/alloc.c:41 libpu/alloc.c:49
+#: libpu/alloc.c:57
+msgid "out of memory"
+msgstr "hors de la memoire"
+
+#: compress.c:218
+#, c-format
+msgid ""
+"filename too long:\n"
+"%s\n"
+msgstr ""
+
+#: compress.c:316
+#, c-format
+msgid "%s: %2.2Lf %s, %<PRIuMAX> in, %<PRIuMAX> out.\n"
+msgstr ""
+
+#: date.c:36
+msgid "date - print or set the system date and time"
+msgstr "date - imprimez ou placez la date et l'heure de systeme"
+
+#: date.c:42
+msgid ""
+"Perform operations as if the TZ environment variable was set to the string "
+"\"UTC0\""
+msgstr ""
+
+#: df.c:40
+msgid "df - report filesystem disk space usage"
+msgstr ""
+
+#: df.c:46
+msgid "Use 1024-byte units, instead of the default 512-byte units"
+msgstr ""
+
+#: df.c:48
+msgid "Use POSIX-defined output format"
+msgstr ""
+
+#: df.c:50
+msgid "Include total allocated-space figures in the output."
+msgstr ""
+
+#: df.c:199
+#, c-format
+msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
+msgstr ""
+
+#: df.c:201
+#, c-format
+msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
+msgstr ""
+
+#: df.c:220
+#, c-format
+msgid ""
+"Filesystem         %4llu-blocks      Used Available Capacity Mounted on\n"
+msgstr ""
+
+#: df.c:223
+#, c-format
+msgid "Filesystem         %4llu-blocks      Used Available Use%% Mounted on\n"
+msgstr ""
+
+#: getconf.c:36
+msgid "getconf - get configuration values"
+msgstr ""
+
+#: getconf.c:38
+msgid "[system_var | path_var pathname]"
+msgstr ""
+
+#: getconf.c:42
+msgid "not implemented yet"
+msgstr ""
+
+#: getconf.c:77
+#, fuzzy, c-format
+msgid "invalid path variable %s\n"
+msgstr "nom inadmissible\n"
+
+#: getconf.c:79
+#, fuzzy, c-format
+msgid "invalid system variable %s\n"
+msgstr "argument inadmissible de sommeil\n"
+
+#: getconf.c:90
+#, c-format
+msgid "undefined"
+msgstr ""
+
+#: getconf.c:95
+msgid "pathconf(3)"
+msgstr ""
+
+#: getconf.c:97
+msgid "sysconf(3)"
+msgstr ""
+
+#: getconf.c:112
+#, c-format
+msgid "invalid confstr variable %s\n"
+msgstr ""
+
+#: getconf.c:168 nice.c:91 pwd.c:108 split.c:367
+#, c-format
+msgid "argp_parse failed: %s\n"
+msgstr ""
+
+#: grep.c:41
+msgid "grep - print lines matching a pattern"
+msgstr ""
+
+#: grep.c:43
+msgid "[pattern_list] [file...]"
+msgstr ""
+
+#: grep.c:47
+msgid "Match using extended regular expressions"
+msgstr ""
+
+#: grep.c:49
+msgid "Match using fixed strings"
+msgstr ""
+
+#: grep.c:51
+msgid "Write only a count of selected lines to standard output"
+msgstr ""
+
+#: grep.c:53
+msgid "Specify one or more patterns to be used during the search for input"
+msgstr ""
+
+#: grep.c:55
+msgid ""
+"Read one or more patterns from the file named by the pathname pattern_file"
+msgstr ""
+
+#: grep.c:57
+msgid "Perform pattern matching in searches without regard to case"
+msgstr ""
+
+#: grep.c:59
+msgid ""
+"Write only the names of files containing selected lines to standard output"
+msgstr ""
+
+#: grep.c:61
+msgid "Precede each output line by its relative line number in the file"
+msgstr ""
+
+#: grep.c:63
+msgid ""
+"Quiet. Nothing shall be written to the standard output, regardless of "
+"matching lines. Exit with zero status if an input line is selected."
+msgstr ""
+
+#: grep.c:66
+msgid ""
+"Suppress the error messages ordinarily written for nonexistent or unreadable "
+"files"
+msgstr ""
+
+#: grep.c:68
+msgid "Select lines not matching any of the specified patterns"
+msgstr ""
+
+#: grep.c:70
+msgid ""
+"Consider only input lines that use all characters in the line, excluding the "
+"terminating <newline>, to match an entire fixed string or regular expression "
+"to be matching lines"
+msgstr ""
+
+#: grep.c:186
+#, fuzzy, c-format
+msgid "invalid pattern '%s': %s\n"
+msgstr "nom inadmissible\n"
+
+#: grep.c:473
+#, c-format
+msgid "no patterns specified"
+msgstr ""
+
+#: head.c:32
+msgid "head - output the first part of files"
+msgstr ""
+
+#: head.c:36
+msgid "first number lines of each input file to copy to stdout"
+msgstr ""
+
+#: ipcrm.c:37
+msgid "ipcrm - remove a message queue, semaphore set or shared memory id"
+msgstr ""
+
+#: ipcrm.c:41
+msgid "Remove message queue identifier msgid from system"
+msgstr ""
+
+#: ipcrm.c:43
+msgid "Remove shared memory identifier shmid from system"
+msgstr ""
+
+#: ipcrm.c:45
+msgid "Remove semaphore identifier semid from system"
+msgstr ""
+
+#: ipcrm.c:47
+msgid "Remove message queue identifier, created with key msgkey, from system"
+msgstr ""
+
+#: ipcrm.c:49
+msgid "Remove shared memory identifier, created with key shmkey, from system"
+msgstr ""
+
+#: ipcrm.c:51
+msgid "Remove semaphore identifier, created with key semkey, from system"
+msgstr ""
+
+#: link.c:35 mesg.c:54 sleep.c:50
+#, c-format
+msgid "invalid arguments\n"
+msgstr "arguments inadmissibles\n"
+
+#: link.c:40
+msgid "link(2)"
+msgstr ""
+
+#: ln.c:41
+msgid "ln - make links between files"
+msgstr ""
+
+#: ln.c:43
+msgid "file... TARGET"
+msgstr ""
+
+#: ln.c:47
+msgid "Force existing dest. pathnames to be removed to allow the link"
+msgstr ""
+
+#: ln.c:49
+msgid "Create symbolic links instead of hard links"
+msgstr ""
+
+#: ln.c:165
+#, fuzzy, c-format
+msgid "ln: missing link source/target\n"
+msgstr "source/target manquant\n"
+
+#: ln.c:181
+#, c-format
+msgid "ln: too many arguments, when target is not directory\n"
+msgstr ""
+
+#: logger.c:40
+#, c-format
+msgid "no arguments\n"
+msgstr "aucuns arguments\n"
+
+#: logname.c:39
+msgid "getlogin(3)"
+msgstr ""
+
+#: mesg.c:67
+#, c-format
+msgid "no terminal device found\n"
+msgstr ""
+
+#: mesg.c:79
+#, c-format
+msgid "is y\n"
+msgstr ""
+
+#: mesg.c:82
+#, c-format
+msgid "is n\n"
+msgstr ""
+
+#: mkdir.c:38
+msgid "mkdir - make directories"
+msgstr ""
+
+#: mkdir.c:42
+msgid "Create any missing intermediate pathname components"
+msgstr ""
+
+#: mkdir.c:88
+#, c-format
+msgid "parent '%s' is not a directory\n"
+msgstr ""
+
+#: mkfifo.c:37
+msgid "mkfifo - make FIFOs (named pipes)"
+msgstr ""
+
+#: mv.c:42
+msgid "mv - move (rename) files"
+msgstr ""
+
+#: mv.c:46
+msgid "Do not prompt for confirmation if the destination path exists."
+msgstr ""
+
+#: mv.c:48
+msgid "Prompt for confirmation if the destination path exists"
+msgstr ""
+
+#: mv.c:262
+#, c-format
+msgid "rename '%s' to '%s': %s\n"
+msgstr ""
+
+#: mv.c:300
+#, c-format
+msgid "mv: too many arguments, when target is not directory\n"
+msgstr ""
+
+#: mv.c:339
+#, c-format
+msgid "missing source/target\n"
+msgstr "source/target manquant\n"
+
+#: nice.c:35
+msgid "nice - run a program with modified scheduling priority"
+msgstr ""
+
+#: nice.c:37
+msgid "command [arg...]"
+msgstr ""
+
+#: nice.c:41
+msgid "Positive or negative integer indicating desired priority adjustment"
+msgstr ""
+
+#: nice.c:96
+msgid "nice(2)"
+msgstr ""
+
+#: nice.c:112 nohup.c:103
+msgid "execvp(3)"
+msgstr ""
+
+#: nohup.c:50 nohup.c:53
+#, c-format
+msgid "nohup.out"
+msgstr ""
+
+#: nohup.c:62
+msgid "stdout redirect failed"
+msgstr ""
+
+#: nohup.c:66
+#, c-format
+msgid "nohup: appending output to '%s'\n"
+msgstr ""
+
+#: nohup.c:77
+msgid "stderr redirect failed"
+msgstr ""
+
+#: nohup.c:89
+#, fuzzy, c-format
+msgid "nohup: no arguments\n"
+msgstr "aucuns arguments\n"
+
+#: pathchk.c:38
+msgid "pathchk - check whether file names are valid or portable"
+msgstr ""
+
+#: pathchk.c:44
+msgid "Base checks on universal POSIX limits, not path-specific limits"
+msgstr ""
+
+#: pathchk.c:94
+#, c-format
+msgid "component %s: length %u exceeds limit %u\n"
+msgstr ""
+
+#: pathchk.c:104
+#, c-format
+msgid "component %s contains non-portable char\n"
+msgstr ""
+
+#: pwd.c:38
+msgid "pwd - print name of current/working directory"
+msgstr ""
+
+#: pwd.c:42
+msgid ""
+"If the PWD environment variable contains an absolute pathname of the current "
+"directory that does not contain the filenames dot or dot-dot, pwd shall "
+"write this pathname to standard output. Otherwise, the -L option shall "
+"behave as the -P option."
+msgstr ""
+
+#: pwd.c:44
+msgid ""
+"The absolute pathname written shall not contain filenames that, in the "
+"context of the pathname, refer to files of type symbolic link."
+msgstr ""
+
+#: renice.c:40
+msgid "renice - alter priority of running processes"
+msgstr ""
+
+#: renice.c:42
+msgid "ID ..."
+msgstr ""
+
+#: renice.c:46
+msgid "Interpret all operands as unsigned decimal integer process group IDs"
+msgstr ""
+
+#: renice.c:48
+msgid ""
+"Interpret all operands as unsigned decimal integer process IDs. The -p "
+"option is the default if no options are specified"
+msgstr ""
+
+#: renice.c:50
+msgid "Interpret all operands as users."
+msgstr ""
+
+#: renice.c:52
+msgid ""
+"Specify how the nice value of the specified process or processes is to be "
+"adjusted"
+msgstr ""
+
+#: rm.c:42
+msgid "rm - remove files or directories"
+msgstr ""
+
+#: rm.c:48
+msgid ""
+"Do not prompt for confirmation. Do not write diagnostic messages or modify "
+"the exit status in the case of nonexistent operands."
+msgstr ""
+
+#: rm.c:50
+msgid "Prompt for confirmation"
+msgstr ""
+
+#: rm.c:52
+msgid "Remove file hierarchies"
+msgstr ""
+
+#: rmdir.c:34
+msgid "rmdir - remove empty directories"
+msgstr ""
+
+#: rmdir.c:40
+msgid "Remove all directories in a pathname."
+msgstr ""
+
+#: sleep.c:45
+#, c-format
+msgid "cannot install SIGALARM handler\n"
+msgstr "ne peut pas installer le traiteur de SIGALARM\n"
+
+#: sleep.c:56
+#, c-format
+msgid "invalid sleep argument\n"
+msgstr "argument inadmissible de sommeil\n"
+
+#: split.c:43
+msgid "split - split a file into pieces"
+msgstr ""
+
+#: split.c:45
+msgid "[file [prefix]]"
+msgstr ""
+
+#: split.c:49
+msgid ""
+"Use N letters to form the suffix portion of the filenames of the split file"
+msgstr ""
+
+#: split.c:51
+msgid "Split a file into pieces n bytes in size"
+msgstr ""
+
+#: split.c:53
+msgid "Specify the number of lines in each resulting file piece"
+msgstr ""
+
+#: split.c:284
+msgid "setvbuf(3) failed"
+msgstr ""
+
+#: split.c:328
+msgid "(standard input)"
+msgstr ""
+
+#: split.c:373
+#, c-format
+msgid "prefix + suffix too large\n"
+msgstr ""
+
+#: tee.c:40
+msgid "tee - read from standard input and write to standard output and files"
+msgstr ""
+
+#: tee.c:44
+msgid "Append the output to the files"
+msgstr ""
+
+#: tee.c:46
+msgid "Ignore the SIGINT signal"
+msgstr ""
+
+#: touch.c:40
+msgid "touch - change file timestamps"
+msgstr ""
+
+#: touch.c:46
+msgid "Change the access time of file"
+msgstr ""
+
+#: touch.c:48
+msgid "Do not create a specified file if it does not exist"
+msgstr ""
+
+#: touch.c:50
+msgid "Change the modification time of file"
+msgstr ""
+
+#: touch.c:52
+msgid "Use the corresponding time of FILE instead of the current time"
+msgstr ""
+
+#: touch.c:54
+msgid "Use the specified time STAMP instead of the current time"
+msgstr ""
+
+#: tty.c:35
+#, c-format
+msgid "not a tty\n"
+msgstr ""
+
+#: uuencode.c:39
+msgid "uuencode - encode a binary file"
+msgstr ""
+
+#: uuencode.c:41
+msgid "[file] decode_pathname"
+msgstr ""
+
+#: uuencode.c:45
+msgid "Encode the output using the MIME Base64 algorithm"
+msgstr ""
+
+#: wc.c:37
+msgid "wc - print the number of newlines, words, and bytes in files"
+msgstr ""
+
+#: wc.c:43
+msgid "Write to the standard output the number of bytes in each input file"
+msgstr ""
+
+#: wc.c:45
+msgid ""
+"Write to the standard output the number of <newline>s in each input file"
+msgstr ""
+
+#: wc.c:47
+msgid "Write to the standard output the number of words in each input file"
+msgstr ""
+
+#: wc.c:49
+msgid ""
+"Write to the standard output the number of characters in each input file"
+msgstr ""
+
+#: wc.c:277
+msgid "total"
+msgstr "total"
+
+#: what.c:37
+msgid "what - identify SCCS files"
+msgstr ""
+
+#: what.c:43
+msgid "Quit after finding the first occurrence of the pattern in each file"
+msgstr ""
+
+#: libpu/lib.c:41
+msgid "file..."
+msgstr ""
+
+#: libpu/lib.c:140
+msgid "getcwd(3) failed"
+msgstr ""
