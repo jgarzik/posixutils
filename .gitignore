@@ -10,9 +10,10 @@ depcomp
 install-sh
 mkinstalldirs
 stamp-h1
-config.*
 aclocal.m4
 configure
+config.guess
+config.sub
 *.tar.gz
 push
 posixutils-config.h*
