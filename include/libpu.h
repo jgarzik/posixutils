@@ -20,6 +20,11 @@
 #ifndef __POSIXUTILS_LIB_H__
 #define __POSIXUTILS_LIB_H__
 
+#ifndef HAVE_CONFIG_H
+#error missing autoconf-generated config.h.
+#endif
+#include "posixutils-config.h"
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdint.h>
@@ -228,6 +233,29 @@ extern int walk(struct walker *w, int argc, char **argv);
 	pu_init();							\
 									\
 	return walk_cmdline(&walker);
+
+static inline uint32_t swab32(uint32_t val)
+{
+	return	((val & 0x000000ffUL) << 24) |
+		((val & 0x0000ff00UL) <<  8) |
+		((val & 0x00ff0000UL) >>  8) |
+		((val & 0xff000000UL) >> 24) ;
+}
+
+static inline uint16_t swab16(uint16_t val)
+{
+	return  ((val & 0x00ffU) << 8) |
+		((val & 0xff00U) >> 8) ;
+
+}
+
+#ifdef WORDS_BIGENDIAN
+#define from_le32(x) swab32(x)
+#define from_le16(x) swab16(x)
+#else
+#define from_le32(x) (x)
+#define from_le16(x) (x)
+#endif
 
 static inline const char *slist_ref(struct strlist *slist, unsigned int idx)
 {

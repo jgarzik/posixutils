@@ -1,7 +1,7 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = m4 po include platform libpu
+SUBDIRS = m4 po include platform libpu pax
 
 INCLUDES = -I$(top_srcdir)/include
 
@@ -9,8 +9,10 @@ EXTRA_DIST = config.rpath mkinstalldirs	TODO	\
 	gen-siglist.pl gen-strmap.pl		\
 	getconf-path.data getconf-system.data getconf-confstr.data
 
-BUILT_SOURCES = kill-siglist.h getconf-path.h getconf-system.h getconf-confstr.h
-CLEANFILES = kill-siglist.h getconf-path.h getconf-system.h getconf-confstr.h
+BUILT_SOURCES = kill-siglist.h getconf-path.h getconf-system.h \
+	getconf-confstr.h
+CLEANFILES = kill-siglist.h getconf-path.h getconf-system.h \
+	getconf-confstr.h
 
 LIBPU = libpu/libpu.a
 
