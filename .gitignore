@@ -14,6 +14,8 @@ aclocal.m4
 configure
 config.guess
 config.sub
+config.log
+config.status
 *.tar.gz
 push
 posixutils-config.h*
@@ -22,9 +24,11 @@ posixutils-config.h*
 autom4te.cache
 .deps
 
+kill-siglist.h
 getconf-confstr.h
 getconf-path.h
 getconf-system.h
+signal-copy.h
 
 asa
 basename

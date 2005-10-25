@@ -1,2 +1,4 @@
 *.gmo
 stamp-po
+POTFILES
+remove-potcdate.sed
