@@ -44,8 +44,7 @@ enum random_constants {
 static char buf[CKSUM_BUF_SZ];
 
 /* almost directly as presented in POSIX documentation */
-static unsigned long updcrc(unsigned long crc_in, const unsigned char *buf,
-			    size_t n)
+static unsigned long updcrc(unsigned long crc_in, const char *buf, size_t n)
 {
 	unsigned long s = crc_in;
 	unsigned int i, c;

@@ -100,7 +100,7 @@ static void flush_outbuf(void)
 	}
 }
 
-static void *push_outbuf(const unsigned char *s, size_t len)
+static void *push_outbuf(const void *s, size_t len)
 {
 	void *mem;
 	if ((outbuf_len + len) > UUE_BUF_SZ)

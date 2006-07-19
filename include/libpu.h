@@ -178,7 +178,7 @@ extern ssize_t copy_fd(const char *dest_fn, int dest_fd,
 extern int __walk_cmdline(struct cmdline_walker *cw, int idx);
 extern int walk_cmdline(struct cmdline_walker *cw);
 extern int parse_cmdline(struct cmdline_walker *cw);
-extern int write_buf(const unsigned char *s, size_t len);
+extern int write_buf(const void *, size_t);
 extern int write_fd(int fd, const void *buf, size_t count, const char *fn);
 extern void die(const char *msg);
 extern error_t noopts_parse_opt (int key, char *arg, struct argp_state *state);

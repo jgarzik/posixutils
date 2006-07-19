@@ -95,9 +95,9 @@ int write_fd(int fd, const void *buf, size_t count, const char *fn)
 	return 0;
 }
 
-int write_buf(const unsigned char *s, size_t len)
+int write_buf(const void *buf, size_t len)
 {
-	return write_fd(STDOUT_FILENO, s, len, STDOUT_NAME);
+	return write_fd(STDOUT_FILENO, buf, len, STDOUT_NAME);
 }
 
 void die(const char *msg)
