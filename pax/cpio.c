@@ -178,7 +178,9 @@ static int cpio_input(const char *buf_in, size_t *buflen_io)
 
 		case CS_NAME: {
 			char *buf = state->curfile.pathname;
-			unsigned int i = min(buflen, state->name_len - state->name_pos);
+			unsigned int i = state->name_len - state->name_pos;
+			if (buflen < i)
+				i = buflen;
 			memcpy(buf + state->name_pos, buf_in, i);
 
 			SWALLOW(i);

@@ -190,7 +190,9 @@ static void zip_sched_buf(struct zip_state *state, void *buf, size_t buflen,
 static size_t zip_sched_do(struct zip_state *state, const char *buf_in,
 			   size_t buflen_in)
 {
-	size_t dist = min(buflen_in, state->sch_buf_len - state->sch_buf_pos);
+	size_t dist = state->sch_buf_len - state->sch_buf_pos;
+	if (buflen_in < dist)
+		dist = buflen_in;
 
 	if (state->sch_buf)
 		memcpy(state->sch_buf + state->sch_buf_pos, buf_in, dist);
@@ -427,7 +429,7 @@ static int zip_stored_data(struct zip_state *state, const char **buf_io,
 	if (buflen > state->data_bytes)
 		buflen = state->data_bytes;
 
-	state->crc = crc32(state->crc, buf_in, buflen);
+	state->crc = crc32(state->crc, (const unsigned char *) buf_in, buflen);
 
 	trc = pax_ops.file_data(&state->curfile, buf_in, buflen);
 	if (trc)
@@ -465,7 +467,7 @@ static int zip_inflate_data(struct zip_state *state, const char **buf_io,
 		state->zs.avail_in = state->data_bytes;
 
 inflate_output:
-	state->zs.next_out = state->outbuf;
+	state->zs.next_out = (unsigned char *) state->outbuf;
 	state->zs.avail_out = OUTBUF_SZ;
 
 	pre_avail_in = state->zs.avail_in;
@@ -484,7 +486,8 @@ inflate_output:
 	/* handle output */
 	zlen = pre_avail_out - state->zs.avail_out;
 	if (zlen > 0) {
-		state->crc = crc32(state->crc, state->outbuf, zlen);
+		state->crc = crc32(state->crc,
+				   (const unsigned char *) state->outbuf, zlen);
 		trc = pax_ops.file_data(&state->curfile,
 				state->outbuf, zlen);
 		if (trc) {

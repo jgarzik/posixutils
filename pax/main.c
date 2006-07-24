@@ -430,7 +430,8 @@ static int pax_read_archive(void)
 	pax_ops.input_init();
 
 	while (1) {
-		ssize_t buflen, rrc;
+		ssize_t buflen;
+		size_t rrc;
 		int prc;
 
 		rrc = read(fd, buf, block_size);
