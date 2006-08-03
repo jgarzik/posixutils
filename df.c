@@ -217,10 +217,10 @@ static int df_output_fslist(void)
 	int rc = 0;
 
 	if (opt_portable)
-		printf(_("Filesystem         %4llu-blocks      Used Available Capacity Mounted on\n"),
+		printf(_("Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"),
 	       		opt_block_size);
 	else
-		printf(_("Filesystem         %4llu-blocks      Used Available Use%% Mounted on\n"),
+		printf(_("Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"),
 	       		opt_block_size);
 
 	while (tmp) {

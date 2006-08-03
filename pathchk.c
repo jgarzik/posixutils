@@ -91,7 +91,7 @@ static char *find_fshandle(const char *path)
 static int check_component(const char *basen)
 {
 	if (strlen(basen) > name_max) {
-		fprintf(stderr, _("component %s: length %u exceeds limit %u\n"),
+		fprintf(stderr, _("component %s: length %zu exceeds limit %zu\n"),
 			basen, strlen(basen), name_max);
 		return 1;
 	}
@@ -156,7 +156,7 @@ static int pathchk_fn_actor(struct walker *w, const char *fn, const struct stat 
 	}
 
 	if (strlen(fn) > path_max) {
-		fprintf(stderr, "%s: path length %u exceeds limit %u\n",
+		fprintf(stderr, "%s: path length %zu exceeds limit %zu\n",
 			fn, strlen(fn), path_max);
 		return 1;
 	}

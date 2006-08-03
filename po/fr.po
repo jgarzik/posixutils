@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2005-10-25 03:05-0400\n"
+"POT-Creation-Date: 2006-08-03 19:36-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -194,12 +194,12 @@ msgstr ""
 #: df.c:220
 #, c-format
 msgid ""
-"Filesystem         %4llu-blocks      Used Available Capacity Mounted on\n"
+"Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
 #: df.c:223
 #, c-format
-msgid "Filesystem         %4llu-blocks      Used Available Use%% Mounted on\n"
+msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
 
 #: getconf.c:36
@@ -514,7 +514,7 @@ msgstr ""
 
 #: pathchk.c:94
 #, c-format
-msgid "component %s: length %u exceeds limit %u\n"
+msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
 #: pathchk.c:104
