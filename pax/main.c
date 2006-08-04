@@ -425,6 +425,7 @@ static int pax_read_archive(void)
 		have_stdin = 0;
 	}
 
+	assert(block_size > 0);
 	buf = xmalloc(block_size);
 
 	pax_ops.input_init();
