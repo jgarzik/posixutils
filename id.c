@@ -179,7 +179,7 @@ static void pr_uid(uid_t uid, bool space, bool newline)
 		if (!pw && errno)
 			perror("warning(getpwuid)");
 		if (pw) {
-			printf("%s%s%s\n",
+			printf("%s%s%s",
 			       space ? " " : "",
 			       pw->pw_name,
 			       newline ? "\n" : "");
@@ -188,7 +188,7 @@ static void pr_uid(uid_t uid, bool space, bool newline)
 	}
 
 	uid_ull = uid;
-	printf("%s%Lu%s\n",
+	printf("%s%Lu%s",
 	       space ? " " : "",
 	       uid_ull,
 	       newline ? "\n" : "");
@@ -206,7 +206,7 @@ static void pr_gid(gid_t gid, bool space, bool newline)
 		if (!gr && errno)
 			perror("warning(getgrgid)");
 		if (gr) {
-			printf("%s%s%s\n",
+			printf("%s%s%s",
 			       space ? " " : "",
 			       gr->gr_name,
 			       newline ? "\n" : "");
@@ -215,7 +215,7 @@ static void pr_gid(gid_t gid, bool space, bool newline)
 	}
 
 	gid_ull = gid;
-	printf("%s%Lu%s\n",
+	printf("%s%Lu%s",
 	       space ? " " : "",
 	       gid_ull,
 	       newline ? "\n" : "");
@@ -239,7 +239,7 @@ static int id_grp_all(struct grpent *grp, gid_t gid, gid_t egid)
 		printf("%s%s%s",
 		       (tmp == grp) ? "" : " ",
 		       s,
-		       (tmp->next) ? "\n" : "");
+		       (!tmp->next) ? "\n" : "");
 
 		tmp = tmp->next;
 	}
