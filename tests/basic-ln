@@ -1,0 +1,64 @@
+#!/bin/sh
+
+DATA="There are more things in heaven and earth, Horatio"
+FN="basic-ln-$$"
+
+rm -f $FN
+
+echo "$DATA" > $FN
+if [ ! -f $FN ]
+then
+	echo "basic-ln: file create failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+if [ ! -s $FN ]
+then
+	echo "basic-ln 2: file create failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+
+ln $FN $FN.1
+if [ ! $FN -ef $FN.1 ]
+then
+	echo "basic-ln 3: system hardlink test failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+rm -f $FN.1
+
+ln -s $FN $FN.1
+if [ ! -h $FN.1 ]
+then
+	echo "basic-ln 4: system symlink test failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+rm -f $FN.1
+
+../ln $FN $FN.1
+if [ ! $FN -ef $FN.1 ]
+then
+	echo "basic-ln 5: hardlink test failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+rm -f $FN.1
+
+../ln -s $FN $FN.1
+if [ ! -h $FN.1 ]
+then
+	echo "basic-ln 6: symlink test failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+if ! cmp -s $FN $FN.1
+then
+	echo "basic-ln 7: symlink test 2 failed"
+	rm -f $FN $FN.1
+	exit 1
+fi
+
+rm -f $FN $FN.1
+exit 0
