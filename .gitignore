@@ -65,6 +65,7 @@ rmdir
 sleep
 split
 tee
+time
 touch
 true
 tty

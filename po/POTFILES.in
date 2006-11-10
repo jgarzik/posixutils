@@ -11,6 +11,7 @@ dirname.c
 getconf.c
 grep.c
 head.c
+id.c
 ipcrm.c
 link.c
 ln.c
@@ -30,6 +31,7 @@ rmdir.c
 sleep.c
 split.c
 tee.c
+time.c
 touch.c
 tty.c
 unlink.c

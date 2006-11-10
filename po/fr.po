@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-08-03 19:36-0400\n"
+"POT-Creation-Date: 2006-11-10 18:47-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -330,6 +330,34 @@ msgstr ""
 msgid "first number lines of each input file to copy to stdout"
 msgstr ""
 
+#: id.c:37
+msgid "id - return user identity"
+msgstr ""
+
+#: id.c:39
+msgid "[user]"
+msgstr ""
+
+#: id.c:42
+msgid "Output only the effective group ID"
+msgstr ""
+
+#: id.c:44
+msgid "Output all different group IDs"
+msgstr ""
+
+#: id.c:46
+msgid "Output the name instead of the numeric ID"
+msgstr ""
+
+#: id.c:48
+msgid "Output the real ID instead of the effective ID"
+msgstr ""
+
+#: id.c:50
+msgid "Output only the effective user ID"
+msgstr ""
+
 #: ipcrm.c:37
 msgid "ipcrm - remove a message queue, semaphore set or shared memory id"
 msgstr ""
@@ -648,6 +676,39 @@ msgstr ""
 
 #: tee.c:46
 msgid "Ignore the SIGINT signal"
+msgstr ""
+
+#: time.c:44
+msgid "exec failed"
+msgstr ""
+
+#: time.c:58
+msgid "wait4(child)"
+msgstr ""
+
+#: time.c:63
+msgid "gettimeofday 2"
+msgstr ""
+
+#: time.c:75
+#, c-format
+msgid ""
+"real %Lu.%Lu\n"
+"user %Lu.%Lu\n"
+"sys %Lu.%Lu\n"
+msgstr ""
+
+#: time.c:98
+#, fuzzy, c-format
+msgid "no args\n"
+msgstr "aucuns arguments\n"
+
+#: time.c:103
+msgid "gettimeofday"
+msgstr ""
+
+#: time.c:109
+msgid "fork"
 msgstr ""
 
 #: touch.c:40

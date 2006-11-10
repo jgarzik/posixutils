@@ -1,5 +1,6 @@
 
 EXTRA_DIST = \
+	UNIMPLEMENTED		\
 	asa.status		\
 	basename.status		\
 	cat.status		\
@@ -34,6 +35,7 @@ EXTRA_DIST = \
 	rm.status		\
 	sleep.status		\
 	tee.status		\
+	time.status		\
 	touch.status		\
 	true.status		\
 	tty.status		\

@@ -19,7 +19,7 @@ LIBPU = libpu/libpu.a
 bin_PROGRAMS = \
 	asa basename cat cksum comm date df dirname echo false getconf	\
 	grep head id ipcrm kill link logger logname ln mesg nice	\
-	nohup pwd renice rm rmdir sleep tee touch true tty unlink	\
+	nohup pwd renice rm rmdir sleep tee time touch true tty unlink	\
 	uuencode wc what
 
 # all programs listed here are works-in-progress (WIP)
@@ -95,6 +95,8 @@ sleep_LDADD = $(LIBPU)
 split_LDADD = $(LIBPU)
 
 tee_LDADD = $(LIBPU)
+
+time_LDADD = $(LIBPU)
 
 touch_LDADD = $(LIBPU)
 
