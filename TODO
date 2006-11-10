@@ -2,9 +2,6 @@
 general
 -------
 1) internationalize all utils:
-	* mark strings in all utils
-	* include boilerplate i18n setup code in all utils
-	* include autoconf gettext gunk for translations
 	* audit utils for internationalization bugs/assumptions.
 	* use nl_langinfo(YESEXPR) [or NOEXPR] for ask_question()
 	  and similar functions.
@@ -34,71 +31,4 @@ error message.
 7) add configure gunk to make quasi-utilities 'chgrp', 'egrep',
 and 'fgrep' be installed.
 
-
-
-chown utility
--------------
-1) needs testing
-
-
-compress utility
-----------------
-1) current code is verified to (a) produce incorrect output for small
-files, and (b) SIGSEGV for large files.  fix it.
-
-
-echo utility
-------------
-1) support octal escape sequences
-
-
-getconf utility
----------------
-1) support -v argument
-
-
-grep utility
-------------
-1) match BOL/EOL with [[:<:]] and‘[[:>:]], rather than ^ and $ ?
-
-
-mkdir utility
--------------
-1) should handle -m mode argument, using chmod(1) mode parser
-
-2) change to race-free algorithm:  instead of current recursion, once we
-have found a parent that exists, fchdir to it, and create each directory
-component using mkdir(basename)+fchdir(2).
-
-
-mkfifo utility
---------------
-1) should handle -m mode argument, using chmod(1) mode parser
-
-
-mv utility
-----------
-1) needs to recursively copy directories
-
-
-pathchk utility
----------------
-1) complain if any component in a directory is not searchable,
-   if -p is not present
-
-2) figure out how to check if a pathname component contains valid
-   characters for a specific path (-p not present).
-
-
-rm utility
-----------
-1) SECURITY: when recursing into a directory, pass the struct
-stat obtained from lstat(2) into the rm_directory() function.
-After open(2)ing the directory, issue an fstat(2) and verify that
-the two stat structs refer to the same file.  Decide what to do if
-they do not match (race).
-
-split utility
--------------
-1) needs testing
 

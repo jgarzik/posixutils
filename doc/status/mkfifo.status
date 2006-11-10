@@ -1,0 +1,4 @@
+util: mkfifo
+
+1) should handle -m mode argument, using chmod(1) mode parser
+

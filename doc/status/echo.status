@@ -1,0 +1,5 @@
+util: echo
+posix: unknown
+
+1) support octal escape sequences
+

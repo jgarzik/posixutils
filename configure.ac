@@ -38,7 +38,11 @@ AC_DEFINE(_XOPEN_SOURCE_EXTENDED, 1, [X/open extended source])
 AC_DEFINE(_LARGEFILE64_SOURCE, 1, [largefile support])
 
 AC_SUBST(ZLIB_LIB)
-AC_CONFIG_FILES([Makefile po/Makefile.in m4/Makefile 
+AC_CONFIG_FILES([Makefile
+		po/Makefile.in
+		doc/Makefile
+		doc/status/Makefile
+		m4/Makefile 
 		libpu/Makefile
 		include/Makefile
 		pax/Makefile

@@ -1,0 +1,6 @@
+util: compress
+posix: unknown
+
+1) current code is verified to (a) produce incorrect output for small
+files, and (b) SIGSEGV for large files.  fix it.
+

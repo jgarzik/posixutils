@@ -1,0 +1,5 @@
+util: grep
+posix: unknown
+
+1) match BOL/EOL with [[:<:]] and‘[[:>:]], rather than ^ and $ ?
+

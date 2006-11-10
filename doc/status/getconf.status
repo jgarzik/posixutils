@@ -1,0 +1,5 @@
+util: getconf
+posix: unknown
+
+1) support -v argument
+
