@@ -18,7 +18,7 @@ LIBPU = libpu/libpu.a
 
 bin_PROGRAMS = \
 	asa basename cat cksum comm date df dirname echo false getconf	\
-	grep head ipcrm	kill link logger logname ln mesg nice		\
+	grep head id ipcrm kill link logger logname ln mesg nice	\
 	nohup pwd renice rm rmdir sleep tee touch true tty unlink	\
 	uuencode wc what
 
@@ -53,6 +53,8 @@ getconf_LDADD = $(LIBPU)
 grep_LDADD = $(LIBPU)
 
 head_LDADD = $(LIBPU)
+
+id_LDADD = $(LIBPU)
 
 ipcrm_LDADD = $(LIBPU)
 
