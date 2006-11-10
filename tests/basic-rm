@@ -1,0 +1,23 @@
+#!/bin/sh
+
+PFX="basic-rm-$$"
+
+rm -f $PFX
+
+touch $PFX
+if [ ! -f $PFX ]
+then
+	echo "basic-rm-1: malfunction"
+	exit 1
+fi
+
+../rm $PFX
+
+if [ -f $PFX ]
+then
+	echo "Failed to remove file."
+	rm -f $PFX
+	exit 1
+fi
+
+exit 0

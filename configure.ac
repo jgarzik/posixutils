@@ -43,7 +43,8 @@ AC_CONFIG_FILES([Makefile po/Makefile.in m4/Makefile
 		include/Makefile
 		pax/Makefile
 		platform/Makefile
-		platform/signal/Makefile])
+		platform/signal/Makefile
+		tests/Makefile])
 AC_CONFIG_LINKS(signal-copy.h:platform/signal/$target_cpu-$target_os.h)
 AC_OUTPUT
 
