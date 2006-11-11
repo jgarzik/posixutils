@@ -11,6 +11,7 @@ EXTRA_DIST = \
 	df.status		\
 	dirname.status		\
 	echo.status		\
+	env.status		\
 	false.status		\
 	getconf.status		\
 	grep.status		\

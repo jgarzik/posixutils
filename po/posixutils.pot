@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-11-10 18:47-0500\n"
+"POT-Creation-Date: 2006-11-10 20:29-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,6 +197,23 @@ msgstr ""
 #: df.c:223
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
+msgstr ""
+
+#: env.c:31
+msgid "env - set the environment for command invocation"
+msgstr ""
+
+#: env.c:33
+msgid "[name=value]... utility [args]..."
+msgstr ""
+
+#: env.c:37
+msgid "Invoke utility with exactly the environment specified by the arguments"
+msgstr ""
+
+#: env.c:146
+#, c-format
+msgid "execv(%s)"
 msgstr ""
 
 #: getconf.c:36
@@ -684,10 +701,15 @@ msgid "wait4(child)"
 msgstr ""
 
 #: time.c:63
+#, c-format
+msgid "exec failed\n"
+msgstr ""
+
+#: time.c:68
 msgid "gettimeofday 2"
 msgstr ""
 
-#: time.c:75
+#: time.c:80
 #, c-format
 msgid ""
 "real %Lu.%Lu\n"
@@ -695,16 +717,16 @@ msgid ""
 "sys %Lu.%Lu\n"
 msgstr ""
 
-#: time.c:98
+#: time.c:103
 #, c-format
 msgid "no args\n"
 msgstr ""
 
-#: time.c:103
+#: time.c:108
 msgid "gettimeofday"
 msgstr ""
 
-#: time.c:109
+#: time.c:114
 msgid "fork"
 msgstr ""
 

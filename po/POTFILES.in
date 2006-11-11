@@ -8,6 +8,7 @@ compress.c
 date.c
 df.c
 dirname.c
+env.c
 getconf.c
 grep.c
 head.c
