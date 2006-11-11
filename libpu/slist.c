@@ -85,7 +85,7 @@ char *slist_shift(struct strlist *slist)
 
 	if (slist->len == 0)
 		return NULL;
-	
+
 	s = (char *) slist->list[0].s;
 	if (!slist->list[0].alloced)
 		s = xstrdup(s);
@@ -104,7 +104,7 @@ char *slist_pop(struct strlist *slist)
 
 	if (slist->len == 0)
 		return NULL;
-	
+
 	s = (char *) slist->list[slist->len - 1].s;
 	if (!slist->list[slist->len - 1].alloced)
 		s = xstrdup(s);

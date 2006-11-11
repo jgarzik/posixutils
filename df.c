@@ -133,7 +133,7 @@ static int read_mntlist(void)
 
 	while ((me = getmntent(f)) != NULL)
 		push_mntent(me);
-	
+
 	endmntent(f);
 
 	return 0;

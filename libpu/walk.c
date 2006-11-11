@@ -287,7 +287,7 @@ int walk(struct walker *w, int argc, char **argv)
 	}
 
 	walk_strlist(w);
-	
+
 	if (w->post_walk)
 		return w->post_walk(w);
 
