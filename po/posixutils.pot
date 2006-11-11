@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-11-11 08:03-0500\n"
+"POT-Creation-Date: 2006-11-11 17:43-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,47 +109,6 @@ msgstr ""
 
 #: comm.c:47
 msgid "Suppress the output column of lines duplicated in file1 and file2."
-msgstr ""
-
-#: compress.c:47
-msgid "compress - compress data"
-msgstr ""
-
-#: compress.c:53
-msgid ""
-"Specify the maximum number of bits to use in a code.  Supported values from "
-"9 to 14, inclusive."
-msgstr ""
-
-#: compress.c:55
-msgid "Cause compress to write to the standard output"
-msgstr ""
-
-#: compress.c:57
-msgid ""
-"Force compression of file, even if it does not actually reduce the size of "
-"the file, or if the corresponding .Z file already exists"
-msgstr ""
-
-#: compress.c:59
-msgid "Write the percentage reduction of each file to standard error."
-msgstr ""
-
-#: compress.c:137 libpu/alloc.c:33 libpu/alloc.c:41 libpu/alloc.c:49
-#: libpu/alloc.c:57
-msgid "out of memory"
-msgstr ""
-
-#: compress.c:218
-#, c-format
-msgid ""
-"filename too long:\n"
-"%s\n"
-msgstr ""
-
-#: compress.c:316
-#, c-format
-msgid "%s: %2.2Lf %s, %<PRIuMAX> in, %<PRIuMAX> out.\n"
 msgstr ""
 
 #: date.c:36
@@ -820,6 +779,10 @@ msgstr ""
 
 #: what.c:43
 msgid "Quit after finding the first occurrence of the pattern in each file"
+msgstr ""
+
+#: libpu/alloc.c:33 libpu/alloc.c:41 libpu/alloc.c:49 libpu/alloc.c:57
+msgid "out of memory"
 msgstr ""
 
 #: libpu/lib.c:41

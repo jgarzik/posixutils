@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-11-11 08:03-0500\n"
+"POT-Creation-Date: 2006-11-11 17:43-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -113,47 +113,6 @@ msgstr "Supprimez la colonne de rendement des lignes uniques a file2."
 msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 "Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
-
-#: compress.c:47
-msgid "compress - compress data"
-msgstr "compress - donnees de compresse"
-
-#: compress.c:53
-msgid ""
-"Specify the maximum number of bits to use in a code.  Supported values from "
-"9 to 14, inclusive."
-msgstr ""
-
-#: compress.c:55
-msgid "Cause compress to write to the standard output"
-msgstr "Faites ecrire la compresse au rendement standard"
-
-#: compress.c:57
-msgid ""
-"Force compression of file, even if it does not actually reduce the size of "
-"the file, or if the corresponding .Z file already exists"
-msgstr ""
-
-#: compress.c:59
-msgid "Write the percentage reduction of each file to standard error."
-msgstr "Ecrivez la reduction de pourcentage de chaque dossier a l'erreur type."
-
-#: compress.c:137 libpu/alloc.c:33 libpu/alloc.c:41 libpu/alloc.c:49
-#: libpu/alloc.c:57
-msgid "out of memory"
-msgstr "hors de la memoire"
-
-#: compress.c:218
-#, c-format
-msgid ""
-"filename too long:\n"
-"%s\n"
-msgstr ""
-
-#: compress.c:316
-#, c-format
-msgid "%s: %2.2Lf %s, %<PRIuMAX> in, %<PRIuMAX> out.\n"
-msgstr ""
 
 #: date.c:36
 msgid "date - print or set the system date and time"
@@ -825,6 +784,10 @@ msgstr ""
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 
+#: libpu/alloc.c:33 libpu/alloc.c:41 libpu/alloc.c:49 libpu/alloc.c:57
+msgid "out of memory"
+msgstr "hors de la memoire"
+
 #: libpu/lib.c:41
 msgid "file..."
 msgstr ""
@@ -832,3 +795,13 @@ msgstr ""
 #: libpu/lib.c:140
 msgid "getcwd(3) failed"
 msgstr ""
+
+#~ msgid "compress - compress data"
+#~ msgstr "compress - donnees de compresse"
+
+#~ msgid "Cause compress to write to the standard output"
+#~ msgstr "Faites ecrire la compresse au rendement standard"
+
+#~ msgid "Write the percentage reduction of each file to standard error."
+#~ msgstr ""
+#~ "Ecrivez la reduction de pourcentage de chaque dossier a l'erreur type."

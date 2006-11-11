@@ -35,7 +35,6 @@ cat
 chown
 cksum
 comm
-compress
 date
 df
 dirname

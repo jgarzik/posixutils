@@ -45,6 +45,7 @@ AC_CONFIG_FILES([Makefile
 		m4/Makefile 
 		libpu/Makefile
 		include/Makefile
+		compress/Makefile
 		pax/Makefile
 		platform/Makefile
 		platform/signal/Makefile

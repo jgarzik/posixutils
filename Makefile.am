@@ -1,7 +1,8 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = doc m4 po include platform libpu pax tests
+SUBDIRS = doc m4 po include platform \
+	libpu compress pax tests
 
 INCLUDES = -I$(top_srcdir)/include
 
