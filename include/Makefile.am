@@ -1,3 +1,3 @@
 
-EXTRA_DIST = libpu.h libcompress.h
+EXTRA_DIST = libpu.h
 

@@ -24,7 +24,7 @@ bin_PROGRAMS = \
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO for more information.
-noinst_PROGRAMS = chown compress mkdir mkfifo mv pathchk split
+noinst_PROGRAMS = chown mkdir mkfifo mv pathchk split
 
 
 asa_LDADD = $(LIBPU)
@@ -39,8 +39,6 @@ cksum_SOURCES = cksum.c cksum_crctab.h
 cksum_LDADD = $(LIBPU)
 
 comm_LDADD = $(LIBPU)
-
-compress_LDADD = $(LIBPU)
 
 date_LDADD = $(LIBPU)
 
