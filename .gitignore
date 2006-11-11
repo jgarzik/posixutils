@@ -65,6 +65,7 @@ rm
 rmdir
 sleep
 split
+strings
 tee
 time
 touch

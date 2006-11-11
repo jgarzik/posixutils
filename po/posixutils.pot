@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-11-10 20:29-0500\n"
+"POT-Creation-Date: 2006-11-11 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -678,6 +678,23 @@ msgstr ""
 #: split.c:373
 #, c-format
 msgid "prefix + suffix too large\n"
+msgstr ""
+
+#: strings.c:34
+msgid "strings - find printable strings in files"
+msgstr ""
+
+#: strings.c:40
+msgid "Scan files in their entirety"
+msgstr ""
+
+#: strings.c:42
+msgid "Specify the minimum string length"
+msgstr ""
+
+#: strings.c:44
+msgid ""
+"Write each string preceded by its byte offset from the start of the file"
 msgstr ""
 
 #: tee.c:40

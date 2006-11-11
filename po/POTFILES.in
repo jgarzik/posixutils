@@ -31,6 +31,7 @@ rm.c
 rmdir.c
 sleep.c
 split.c
+strings.c
 tee.c
 time.c
 touch.c
