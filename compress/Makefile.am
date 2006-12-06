@@ -11,3 +11,7 @@ install-exec-hook:
 	ln $(DESTDIR)$(bindir)/compress$(EXEEXT) \
 	   $(DESTDIR)$(bindir)/zcat$(EXEEXT)
 
+uninstall-hook:
+	rm $(DESTDIR)$(bindir)/zcat$(EXEEXT) \
+	   $(DESTDIR)$(bindir)/uncompress$(EXEEXT)
+
