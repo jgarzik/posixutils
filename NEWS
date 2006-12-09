@@ -1,4 +1,15 @@
 
+Version 4 - December 9, 2006
+
+	- import codebase into git repository on git.kernel.org
+	- fix compiler warnings on newer compilers
+	- add x86-64 support
+	- add WIP utility: pax
+	- add utilities: env, id, strings, time
+	- add simple "it works" tests
+	- create per-util status files
+	- drop hand-rolled 'compress', import BSD 'compress' instead
+
 Version 3 - February 7, 2005
 
 	* Add copyright/license info to each source file.

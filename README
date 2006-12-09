@@ -3,12 +3,11 @@ The posixutils package is a collection of the utilities specified in the
 Single Unix Specification v3 (SuSv3).
 
 
-posixutils home page: http://sourceforge.net/projects/nix-utils/
+posixutils home page:
+	http://sourceforge.net/projects/nix-utils/
 
-posixutils BitKeeper source code repository:
-	bk://gkernel.bkbits.net/posixutils
-		or
-	bk://kernel.bkbits.net/jgarzik/posixutils
+posixutils source code repository:
+	git://git.kernel.org/pub/scm/linux/kernel/git/jgarzik/posixutils.git
 
 
 
