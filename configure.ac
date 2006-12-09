@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(posixutils, 4, [http://sourceforge.net/projects/nix-utils  ..])
+AC_INIT(posixutils, 5git, [http://sourceforge.net/projects/nix-utils  ..])
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR([cat.c])
 AC_CANONICAL_TARGET
