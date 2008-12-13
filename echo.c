@@ -27,6 +27,50 @@
 #include <stdio.h>
 #include <string.h>
 
+int convert_octal(int num, int rem, int m)
+{
+	int q, r;
+
+	q = num / 10;
+	if (q > 0) {
+		r += num % 10 * m;
+		r += rem;
+		m *= 8;
+		convert_octal(q, r, m);
+	} else
+		return rem += num % 10 * m;
+}
+
+void get_octal(const char *s)
+{
+	int remainder = 0;
+	int multiplier = 1;
+	int oct;
+	int olen;
+	int slen;
+	int i;
+
+/* we except only 8-bit octal */
+	const int maxlen = 4;
+	const int upper_limit = 377;
+	char o[maxlen];
+	char octal_numbers[] = "01234567";
+
+	olen = strspn(s, octal_numbers);
+	slen = strlen(s);
+
+	for (i = 0; i < maxlen && i < olen; i++)
+		o[i] = s[i];
+	o[i] = '\0';
+	oct = atoi(o);
+	if (oct > upper_limit) {
+		printf("%s", s);
+		return;
+	}
+	printf("%d%s", convert_octal(oct, remainder, multiplier), s + i);
+	return;
+}
+
 static void escaped_string (const char *s)
 {
 	int ch, escape = 0;
@@ -45,6 +89,7 @@ static void escaped_string (const char *s)
 			case 't':	putchar('\t'); break;
 			case 'v':	putchar('\v'); break;
 			case '\\':	putchar('\\'); break;
+			case '0':	get_octal(s); return;
 			default:	printf("\\%c", ch); break;
 			}
 			escape = 0;
