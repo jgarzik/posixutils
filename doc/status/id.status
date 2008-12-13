@@ -1,4 +1,4 @@
 Tests: it-works
 util: id
-posix: unknown
+posix-compliance: unknown
 

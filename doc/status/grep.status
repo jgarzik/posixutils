@@ -1,5 +1,5 @@
 util: grep
-posix: unknown
+posix-compliance: unknown
 
 1) match BOL/EOL with [[:<:]] and‘[[:>:]], rather than ^ and $ ?
 

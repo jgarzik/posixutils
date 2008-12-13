@@ -1,5 +1,5 @@
 util: getconf
-posix: unknown
+posix-compliance: unknown
 
 1) support -v argument
 
