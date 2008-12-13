@@ -27,6 +27,8 @@
 #include <stdio.h>
 #include <string.h>
 
+static void escaped_string(const char *);
+
 int convert_octal(int num, int rem, int m)
 {
 	int q, r;
@@ -67,7 +69,10 @@ void get_octal(const char *s)
 		printf("%s", s);
 		return;
 	}
-	printf("%d%s", convert_octal(oct, remainder, multiplier), s + i);
+	printf("%d", convert_octal(oct, remainder, multiplier));
+	if (*(s+i) == '\0')
+		return;		/* no reason to fiddle with the null byte */
+	escaped_string(s + i);
 	return;
 }
 
