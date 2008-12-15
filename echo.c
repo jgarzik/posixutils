@@ -38,7 +38,7 @@ int convert_octal(int num, int rem, int m)
 		r += num % 10 * m;
 		r += rem;
 		m *= 8;
-		convert_octal(q, r, m);
+		return convert_octal(q, r, m);
 	} else
 		return rem += num % 10 * m;
 }
