@@ -18,7 +18,7 @@ CLEANFILES = kill-siglist.h getconf-path.h getconf-system.h \
 LIBPU = libpu/libpu.a
 
 bin_PROGRAMS = \
-	asa basename cat cksum comm date df dirname echo env false	\
+	asa basename cat cksum cmp comm date df dirname echo env false	\
 	getconf	grep head id ipcrm kill link logger logname ln mesg	\
 	nice nohup pwd renice rm rmdir sleep strings tee time touch	\
 	true tty unlink uuencode wc what
@@ -39,6 +39,7 @@ chown_LDADD = $(LIBPU)
 cksum_SOURCES = cksum.c cksum_crctab.h
 cksum_LDADD = $(LIBPU)
 
+cmp_LDADD = $(LIBPU)
 comm_LDADD = $(LIBPU)
 
 date_LDADD = $(LIBPU)

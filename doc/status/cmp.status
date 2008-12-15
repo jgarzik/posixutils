@@ -1,0 +1,3 @@
+util: cmp
+posix-compliance: feature-complete
+

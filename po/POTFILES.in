@@ -3,6 +3,7 @@ basename.c
 cat.c
 chown.c
 cksum.c
+cmp.c
 comm.c
 compress/compress.c
 date.c

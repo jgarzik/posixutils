@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-11-11 17:43-0500\n"
+"POT-Creation-Date: 2008-12-15 04:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,6 +89,35 @@ msgstr ""
 
 #: cksum.c:33
 msgid "cksum - checksum and count the bytes in a file"
+msgstr ""
+
+#: cmp.c:36
+msgid "cmp - compare two files"
+msgstr ""
+
+#: cmp.c:42
+msgid ""
+"Write the byte number (decimal) and the differing bytes (octal) for each "
+"difference."
+msgstr ""
+
+#: cmp.c:44
+msgid "Write nothing for differing files; return exit status only."
+msgstr ""
+
+#: cmp.c:79
+#, c-format
+msgid "cmp: two pathnames required for comparison\n"
+msgstr ""
+
+#: cmp.c:123
+#, c-format
+msgid "cmp: EOF on %s\n"
+msgstr ""
+
+#: cmp.c:145
+#, c-format
+msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
 
 #: comm.c:37

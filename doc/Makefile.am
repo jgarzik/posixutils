@@ -1,2 +1,2 @@
 
-SUBDIRS = status
+SUBDIRS = man status

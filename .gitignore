@@ -34,6 +34,7 @@ basename
 cat
 chown
 cksum
+cmp
 comm
 date
 df

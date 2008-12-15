@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2006-11-11 17:43-0500\n"
+"POT-Creation-Date: 2008-12-15 04:56-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -92,6 +92,36 @@ msgstr "nom inadmissible\n"
 #: cksum.c:33
 msgid "cksum - checksum and count the bytes in a file"
 msgstr "cksum - somme et comptent les bytes dans un dossier"
+
+#: cmp.c:36
+#, fuzzy
+msgid "cmp - compare two files"
+msgstr "cmp - comparer deux fichiers"
+
+#: cmp.c:42
+msgid ""
+"Write the byte number (decimal) and the differing bytes (octal) for each "
+"difference."
+msgstr ""
+
+#: cmp.c:44
+msgid "Write nothing for differing files; return exit status only."
+msgstr ""
+
+#: cmp.c:79
+#, c-format
+msgid "cmp: two pathnames required for comparison\n"
+msgstr ""
+
+#: cmp.c:123
+#, c-format
+msgid "cmp: EOF on %s\n"
+msgstr "cmp: EOF sur %s\n"
+
+#: cmp.c:145
+#, c-format
+msgid "%s %s differ: char %llu, line %llu\n"
+msgstr ""
 
 #: comm.c:37
 msgid "comm - compare two sorted files line by line"

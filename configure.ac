@@ -41,6 +41,7 @@ AC_SUBST(ZLIB_LIB)
 AC_CONFIG_FILES([Makefile
 		po/Makefile.in
 		doc/Makefile
+		doc/man/Makefile
 		doc/status/Makefile
 		m4/Makefile 
 		libpu/Makefile

@@ -1,0 +1,94 @@
+
+.Dd December 2008
+.Dt CMP 1
+
+.Sh NAME
+
+.Nm cmp
+.Nd compare two files
+
+.Sh SYNOPSIS
+
+.Nm cmp
+.Op Fl l | Fl s
+.Ar file1 file2
+
+.Sh DESCRIPTION
+The cmp utility compares two files. The cmp utility writes no output
+if the files are the same. Under default options, if they differ, it
+writes to standard output the byte and line number at which the first
+difference occurred. Bytes and lines are numbered beginning with 1.
+
+.Sh OPTIONS
+The cmp utility conforms to the Base Definitions volume of IEEE Std
+1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+.Pp
+The following options are supported:
+.Bl -tag -width flag
+.It Fl l
+(Lowercase ell.) Write the byte number (decimal) and the differing
+bytes (octal) for each difference.
+.It Fl s
+Write nothing for differing files; return exit status only.
+.El
+
+.Sh OPERANDS
+The following operands are supported:
+.Pp
+.Bl -tag -width flag
+.It file1
+A pathname of the first file to be compared. If file1 is '-', the
+standard input is used.
+.It file2
+A pathname of the second file to be compared. If file2 is '-', the
+standard input is used.
+.El
+.Pp
+If both file1 and file2 refer to standard input or refer to the same FIFO
+special, block special, or character special file, the results are undefined.
+
+.Sh STDIN
+The standard input is used only if the file1 or file2 operand refers to
+standard input. See the INPUT FILES section.
+
+.Sh INPUT FILES
+The input files can be any file type.
+
+.Sh ENVIRONMENT VARIABLES
+The following environment variables affect the execution of cmp:
+.Bl -tag -width
+.It LANG
+Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+.It LC_ALL
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+.It LC_CTYPE
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments).
+.It LC_MESSAGES
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error and informative
+messages written to standard output.
+.It NLSPATH
+[XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+.El
+
+.Sh EXIT STATUS
+The following exit values are returned:
+.Bl -tag -width
+.It 0
+The files are identical.
+.It 1
+The files are different; this includes the case where one file is
+identical to the first part of the other.
+.It >1
+An error occurred.
+.El
+
+
