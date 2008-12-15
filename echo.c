@@ -31,9 +31,9 @@ static void escaped_string(const char *);
 
 int convert_octal(int num, int rem, int m)
 {
-	int q, r;
+	int r = 0;
+	int q = num / 10;
 
-	q = num / 10;
 	if (q > 0) {
 		r += num % 10 * m;
 		r += rem;
