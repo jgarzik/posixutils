@@ -28,7 +28,10 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 
 dnl Checks for library functions.
 ZLIB_LIB=""
+CURSES_LIB=""
+
 AC_CHECK_LIB(z,inflate,ZLIB_LIB="-lz",exit 1)
+AC_CHECK_LIB(ncurses,setupterm,CURSES_LIB="-lncurses",exit 1)
 
 AC_DEFINE(_ISOC99_SOURCE, 1, [ISOC99 source])
 AC_DEFINE(_POSIX_SOURCE, 1, [POSIX source])
@@ -38,6 +41,8 @@ AC_DEFINE(_XOPEN_SOURCE_EXTENDED, 1, [X/open extended source])
 AC_DEFINE(_LARGEFILE64_SOURCE, 1, [largefile support])
 
 AC_SUBST(ZLIB_LIB)
+AC_SUBST(CURSES_LIB)
+
 AC_CONFIG_FILES([Makefile
 		po/Makefile.in
 		doc/Makefile

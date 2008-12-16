@@ -21,7 +21,7 @@ bin_PROGRAMS = \
 	asa basename cat cksum cmp comm date df dirname echo env false	\
 	getconf	grep head id ipcrm kill link logger logname ln mesg	\
 	nice nohup pwd renice rm rmdir sleep strings tee time touch	\
-	true tty unlink uuencode wc what
+	tput true tty unlink uuencode wc what
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO for more information.
@@ -101,6 +101,8 @@ strings_LDADD = $(LIBPU)
 tee_LDADD = $(LIBPU)
 
 time_LDADD = $(LIBPU)
+
+tput_LDADD = $(LIBPU) $(CURSES_LIB)
 
 touch_LDADD = $(LIBPU)
 

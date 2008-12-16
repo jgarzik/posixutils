@@ -69,6 +69,7 @@ strings
 tee
 time
 touch
+tput
 true
 tty
 unlink

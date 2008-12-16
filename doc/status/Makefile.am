@@ -5,6 +5,7 @@ EXTRA_DIST = \
 	basename.status		\
 	cat.status		\
 	cksum.status		\
+	cmp.status		\
 	comm.status		\
 	compress.status		\
 	date.status		\
@@ -39,6 +40,7 @@ EXTRA_DIST = \
 	tee.status		\
 	time.status		\
 	touch.status		\
+	tput.status		\
 	true.status		\
 	tty.status		\
 	unlink.status		\
