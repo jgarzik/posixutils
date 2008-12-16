@@ -58,15 +58,6 @@ static struct walker walker = {
 	.pre_walk		= tput_pre_walk,
 };
 
-static char *xtigetstr(char *capname)
-{
-	char *s = tigetstr(capname);
-	if (s == (char *)-1)
-		s = NULL;
-	
-	return s;
-}
-
 static void tput_clear(void)
 {
 	tputs(clear_screen, lines > 0 ? lines : 1, putchar);
