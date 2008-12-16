@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-16 00:11-0500\n"
+"POT-Creation-Date: 2008-12-16 02:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -757,6 +757,19 @@ msgstr ""
 
 #: touch.c:54
 msgid "Use the specified time STAMP instead of the current time"
+msgstr ""
+
+#: tput.c:38
+msgid "tput - change terminal characteristics"
+msgstr ""
+
+#: tput.c:44
+msgid "Indicate the type of terminal."
+msgstr ""
+
+#: tput.c:149
+#, c-format
+msgid "tput: setupterm failed\n"
 msgstr ""
 
 #: tty.c:35

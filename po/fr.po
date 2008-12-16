@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-16 00:11-0500\n"
+"POT-Creation-Date: 2008-12-16 02:11-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -763,10 +763,23 @@ msgstr ""
 msgid "Use the specified time STAMP instead of the current time"
 msgstr ""
 
+#: tput.c:38
+msgid "tput - change terminal characteristics"
+msgstr "tput - changement des caracteristiques administration"
+
+#: tput.c:44
+msgid "Indicate the type of terminal."
+msgstr "Indiquer le type de terminal."
+
+#: tput.c:149
+#, c-format
+msgid "tput: setupterm failed\n"
+msgstr "tput: setupterm pas\n"
+
 #: tty.c:35
 #, c-format
 msgid "not a tty\n"
-msgstr ""
+msgstr "pas un tty\n"
 
 #: uuencode.c:39
 msgid "uuencode - encode a binary file"

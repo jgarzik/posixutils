@@ -36,6 +36,7 @@ strings.c
 tee.c
 time.c
 touch.c
+tput.c
 tty.c
 unlink.c
 uuencode.c
