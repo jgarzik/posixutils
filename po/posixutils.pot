@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-16 02:11-0500\n"
+"POT-Creation-Date: 2008-12-16 05:32-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -685,6 +685,31 @@ msgid ""
 "Write each string preceded by its byte offset from the start of the file"
 msgstr ""
 
+#: tabs.c:68
+#, c-format
+msgid "tabs: tab stop table limit reached\n"
+msgstr ""
+
+#: tabs.c:183
+#, c-format
+msgid "tabs: tabspec beyond max-columns specified\n"
+msgstr ""
+
+#: tabs.c:231
+#, c-format
+msgid "tabs: setupterm failed\n"
+msgstr ""
+
+#: tabs.c:237
+#, c-format
+msgid "tabs: terminal unable to set tabs\n"
+msgstr ""
+
+#: tabs.c:260
+#, c-format
+msgid "tabs: buffer overflow\n"
+msgstr ""
+
 #: tee.c:40
 msgid "tee - read from standard input and write to standard output and files"
 msgstr ""
@@ -767,7 +792,7 @@ msgstr ""
 msgid "Indicate the type of terminal."
 msgstr ""
 
-#: tput.c:149
+#: tput.c:140
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr ""
