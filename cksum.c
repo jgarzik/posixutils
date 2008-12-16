@@ -44,28 +44,28 @@ enum random_constants {
 static char buf[CKSUM_BUF_SZ];
 
 /* almost directly as presented in POSIX documentation */
-static unsigned long updcrc(unsigned long crc_in, const char *buf, size_t n)
+static uint32_t updcrc(uint32_t crc_in, const char *buf, size_t n)
 {
-	unsigned long s = crc_in;
+	uint32_t s = crc_in;
 	unsigned int i, c;
 
 	for (i = n; i > 0; --i) {
 		c = (unsigned int) (*buf++);
-		s = (s << 8) ^ cksum_crctab[(s >> 24) ^ c];
+		s = (s << 8) ^ cksum_crctab[((s >> 24) ^ c) & 0xff];
 	}
 
 	return s;
 }
 
-static unsigned long fincrc(unsigned long crc_in, size_t n)
+static uint32_t fincrc(uint32_t crc_in, size_t n)
 {
-	unsigned long s = crc_in;
+	uint32_t s = crc_in;
 	unsigned int c;
 
 	while (n != 0) {
 		c = n & 0377;
 		n >>= 8;
-		s = (s << 8) ^ cksum_crctab[(s >> 24) ^ c];
+		s = (s << 8) ^ cksum_crctab[((s >> 24) ^ c) & 0xff];
 	}
 
 	return ~s;
@@ -75,7 +75,7 @@ static int cksum_fd(struct walker *w, const char *fn, int fd)
 {
 	ssize_t rc;
 	size_t bytes = 0;
-	unsigned long crc = 0;
+	uint32_t crc = 0;
 	int have_stdin;
 
 	while (1) {
@@ -94,7 +94,7 @@ static int cksum_fd(struct walker *w, const char *fn, int fd)
 	crc = fincrc(crc, bytes);
 
 	have_stdin = (fd == STDIN_FILENO);
-	printf("%lu %lu%s%s\n",
+	printf("%u %lu%s%s\n",
 	       crc,
 	       (unsigned long) bytes,
 	       have_stdin ? "" : " ",
