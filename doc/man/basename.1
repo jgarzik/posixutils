@@ -1,0 +1,135 @@
+.Dd December 2008
+.Dt BASENAME 1
+
+.Sh NAME
+
+.Nm basename
+.Nd return non-directory portion of a pathname
+
+.Sh SYNOPSIS
+
+.Nm basename
+.Ar string [suffix]
+
+.Sh DESCRIPTION
+
+The string operand is treated as a pathname, as defined in the
+Base Definitions volume of IEEE Std 1003.1-2001, Section 3.266,
+Pathname. The string string is converted to the filename
+corresponding to the last pathname component in string and then the
+suffix string suffix, if present, is removed. This is
+done by performing actions equivalent to the following steps in order:
+
+.Bl -tag -width
+.It 
+1.  If string is a null string, it is unspecified whether the resulting
+string is '.' or a null string. In either case, skip steps 2 through 6.
+.It 
+2.  If string is "//", it is implementation-defined whether steps 3 to 6
+are skipped or processed.
+.It 
+3.  If string consists entirely of slash characters, string is set
+to a single slash character. In this case, skip steps 4 to 6.
+.It 
+4.  If there are any trailing slash characters in string, they are
+removed.
+.It 
+5.  If there are any slash characters remaining in string, the prefix of
+string up to and including the last slash character in string is
+removed.
+.It 
+6.  If the suffix operand is present, is not identical to the characters
+remaining in string, and is identical to a suffix of the characters remaining
+in string, the suffix suffix is removed from string. Otherwise, string
+is not modified by this step. It is not considered an error if suffix is
+not found in string.
+.El
+
+The resulting string is written to standard output.
+
+.Sh OPTIONS
+
+None.
+
+.Sh OPERANDS
+
+The following operands are supported:
+.Bl -tag -width
+.It string
+A string.
+.It suffix
+A string.
+.El
+
+.Sh STDIN
+
+Not used.
+
+.Sh INPUT FILES
+
+None.
+
+.Sh ENVIRONMENT VARIABLES
+
+The following environment variables affect the execution of cmp:
+.Bl -tag -width
+.It LANG
+Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+.It LC_ALL
+If set to a non-empty string value, override the values of all the
+other internationalization variables.
+.It LC_CTYPE
+Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments).
+.It LC_MESSAGES
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error and informative
+messages written to standard output.
+.It NLSPATH
+[XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+.El
+
+.Sh ASYNCHRONOUS EVENTS
+
+Default.
+
+.Sh STDOUT
+
+The basename utility writes a line to the standard output in the
+following format:
+
+"%s\n", <resulting string>
+
+.Sh STDERR
+
+The standard error is used only for diagnostic messages.
+
+.Sh OUTPUT FILES
+
+None.
+
+.Sh EXTENDED DESCRIPTION
+
+None.
+
+.Sh EXIT STATUS
+
+The following exit values are returned:
+
+.Bl -tag -width
+.It 0
+Successful completion.
+.It >0
+An error occurred.
+.El
+
+.Sh CONSEQUENCES OF ERRORS
+
+Default.
+

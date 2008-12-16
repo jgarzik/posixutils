@@ -1,0 +1,21 @@
+
+This is a checklist to follow when adding a utility:
+
+*) .gitignore
+
+*) Makefile.am: bin_PROGRAMS and foo_LDADD
+
+*) remove from doc/status/UNIMPLEMENTED
+
+*) create doc/status/foo.status (and add to doc/status/Makefile.am)
+
+*) if it has (or will have) translations, add to po/POTFILES.in
+
+*) add man page (and add to doc/man/Makefile.am)
+
+*) add at least a simple "it works" test to tests/
+
+*) make distcheck
+
+*) make update-po
+
