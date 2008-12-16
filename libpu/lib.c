@@ -264,3 +264,13 @@ int map_lookup(const struct strmap *map, const char *key)
 	return -1;
 }
 
+static char default_term[16] = "vt100";
+
+char *get_terminal(void)
+{
+	char *term = getenv("TERM");
+	if (!term || !strlen(term))
+		term = default_term;
+	return term;
+}
+

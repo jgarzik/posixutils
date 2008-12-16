@@ -168,7 +168,7 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
-	opt_term = getenv("TERM");
+	opt_term = get_terminal();
 	return walk(&walker, argc, argv);
 }
 

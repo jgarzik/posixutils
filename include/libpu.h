@@ -208,6 +208,7 @@ extern char *strpathcat(const char *dirn, const char *basen);
 extern struct pathelem *path_split(const char *pathname);
 extern void path_free(struct pathelem *pe);
 extern int have_dots(const char *fn);
+extern char *get_terminal(void);
 extern void pu_init(void);
 extern int ro_file_open(FILE **f_io, const char *fn);
 extern int iterate_directory(int old_dirfd, const char *dirfn, const char *basen,
