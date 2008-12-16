@@ -1,11 +1,15 @@
 
 EXTRA_DIST = \
+	test.data	\
+	cksum-test.data	\
+	basic-cksum	\
 	basic-cmp	\
 	basic-id	\
 	basic-ln	\
 	basic-rm
 
 TESTS = \
+	basic-cksum	\
 	basic-cmp	\
 	basic-id	\
 	basic-ln	\

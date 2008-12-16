@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-15 04:56-0500\n"
+"POT-Creation-Date: 2008-12-16 00:11-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -818,11 +818,11 @@ msgstr ""
 msgid "out of memory"
 msgstr "hors de la memoire"
 
-#: libpu/lib.c:41
+#: libpu/lib.c:42
 msgid "file..."
 msgstr ""
 
-#: libpu/lib.c:140
+#: libpu/lib.c:141
 msgid "getcwd(3) failed"
 msgstr ""
 
