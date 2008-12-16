@@ -36,6 +36,7 @@
 #include <argp.h>
 #include <dirent.h>
 #include <ctype.h>
+#include <locale.h>
 #include <libpu.h>
 
 const char file_args_doc[] = N_("file...");
