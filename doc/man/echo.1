@@ -1,0 +1,194 @@
+.Dd December 2008
+.Dt ECHO 1
+.Sh NAME
+.Nm echo
+.Nd write arguments to standard output
+.Sh SYNOPSIS
+.Nm echo
+.Op string ...
+.Sh DESCRIPTION
+The echo utility writes its arguments to standard output, followed by a
+<newline>.  If there are no arguments, only the <newline> is written.
+.Sh OPTIONS
+The echo utility shall not recognize the "--" argument in the manner
+specified by Guideline 10 of the Base Definitions volume of IEEE Std
+1003.1-2001, Section 12.2, Utility Syntax Guidelines; "--" shall be
+recognized as a string operand.  Implementations shall not support any
+options.
+.Sh OPERANDS
+The following operands shall be supported:
+.Bl -tag -width
+.It string
+A string to be written to standard output.  If the first operand is
+.Fl Ar n ,
+or if any of the operands contain a backslash
+.Po So \e Sc Pc
+character, the results are implementation-defined.
+[XSI] [Option Start] On XSI-conformant systems, if the first operand is
+.Fl Ar n ,
+it shall be treated as a string, not an option.  The following character
+sequences shall be recognized on XSI-conformant systems within any of
+the arguments:
+.Bl -tag -width
+.It \ea
+Write an <alert>.
+.It \eb
+Write a <backspace>.
+.It \ec
+Suppress the <newline> that otherwise follows the final argument in the
+output.  All characters following the
+.So \ec Sc
+in the arguments shall be ignored.
+.It \ef
+Write a <form-feed>.
+.It \en
+Write a <newline>.
+.It \er
+Write a <carriage-return>.
+.It \et
+Write a <tab>.
+.It \ev
+Write a <vertical-tab>.
+.It \e
+Write a backslash character.
+.It \e0 Ns Ar num
+Write an 8-bit value that is the zero, one, two, or three-digit octal
+number
+.Ar num Ns .  [Option End]
+.El
+.El
+.Sh STDIN
+Not used.
+.Sh INPUT FILES
+None.
+.Sh ENVIRONMENT VARIABLES
+.Pp
+The following environment variables shall affect the execution of
+.Nm echo Ns :
+.Ns
+.Bl -tag -width
+.It Ev LANG
+Provide a default value for the internationalization variables that are
+unset or null.  (See the Base Definitions volume of IEEE Std
+1003.1-2001, Section 8.2, Internationalization Variables for the
+precedence of internationalization variables used to determine the
+values of locale categories.)
+.It Ev LC_ALL
+If set to a non-empty string value, override the values of all the other
+internationalization variables.
+.It Ev LC_CTYPE
+[XSI] [Option Start] Determine the locale for the interpretation of
+sequences of bytes of text data as characters (for example, single-byte
+as opposed to multi-byte characters in arguments).  [Option End]
+.It Ev LC_MESSAGES
+Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+.It Ev NLSPATH
+[XSI] [Option Start] Determine the location of message catalogs for the
+processing of
+.Ev LC_MESSAGES . [Option End]
+.El
+.Sh ASYNCHRONOUS EVENTS
+Default.
+.Sh STDOUT
+The echo utility arguments shall be separated by single <space>s and a
+<newline> shall follow the last argument.  [XSI] [Option Start] Output
+transformations shall occur based on the escape sequences in the input.
+See the OPERANDS section.  [Option End]
+.Sh STDERR
+The standard error shall be used only for diagnostic messages.
+.Sh OUTPUT FILES
+None.
+.Sh EXTENDED DESCRIPTION
+None.
+.Sh EXIT STATUS
+The following exit values shall be returned:
+.Bl -tag -width
+.It 0
+Successful completion.
+.It >0
+An error occurred.
+.El
+.Sh CONSEQUENCES OF ERRORS
+Default.
+.Pp
+The following sections are informative.
+.Sh APPLICATION USAGE
+It is not possible to use echo portably across all POSIX systems unless
+both -n (as the first argument) and escape sequences are omitted.
+.Pp
+The printf utility can be used portably to emulate any of the
+traditional behaviors of the echo utility as follows (assuming that IFS
+has its standard value or is unset):
+.Bl -bullet
+.It
+The historic System V echo and the requirements on XSI implementations
+in this volume of IEEE Std 1003.1-2001 are equivalent to:
+.Pp
+.Dl printf \*q%b\en\*q \*q$*\*q
+.Pp
+.It
+The BSD echo is equivalent to:
+.Bd -literal -offset indent
+if [ "X$1" = "X-n" ]
+then
+    shift
+    printf "%s" "$*"
+else
+    printf "%s\en" "$*"
+fi
+.Ed
+.El
+.Pp
+New applications are encouraged to use printf instead of echo.
+.Sh EXAMPLES
+None.
+.Sh RATIONALE
+The echo utility has not been made obsolescent because of its extremely
+widespread use in historical applications.  Conforming applications that
+wish to do prompting without <newline>s or that could possibly be
+expecting to echo a -n, should use the printf utility derived from the
+Ninth Edition system.
+.Pp
+As specified, echo writes its arguments in the simplest of ways.  The
+two different historical versions of echo vary in fatally incompatible
+ways.
+.Pp
+The BSD echo checks the first argument for the string -n which causes it
+to suppress the <newline> that would otherwise follow the final argument
+in the output.
+.Pp
+The System V echo does not support any options, but allows escape
+sequences within its operands, as described for XSI implementations in
+the OPERANDS section.
+.Pp
+The echo utility does not support Utility Syntax Guideline 10 because
+historical applications depend on echo to echo all of its arguments,
+except for the -n option in the BSD version.
+.Sh FUTURE DIRECTIONS
+None.
+.Sh SEE ALSO
+printf
+.Sh CHANGE HISTORY
+First released in Issue 2.
+.Sh Issue 5
+In the OPTIONS section, the last sentence is changed to indicate
+that implementations "do not" support any options; in the previous issue
+this said "need not".
+.Sh Issue 6
+The following new requirements on POSIX implementations derive from
+alignment with the Single UNIX Specification:
+.Bl -bullet
+.It
+A set of character sequences is defined as string operands.
+.It
+.Ev LC_CTYPE
+is added to the list of environment variables affecting echo.
+.It
+In the OPTIONS section, implementations shall not support any options.
+.El
+.Pp
+IEEE Std 1003.1-2001/Cor 1-2002, item XCU/TC1/D6/21 is applied, so that
+the echo utility can accommodate historical BSD behavior.
+.Pp
+End of informative text.
