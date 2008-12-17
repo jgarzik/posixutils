@@ -37,6 +37,7 @@ EXTRA_DIST = \
 	rm.status		\
 	sleep.status		\
 	strings.status		\
+	tabs.status		\
 	tee.status		\
 	time.status		\
 	touch.status		\
