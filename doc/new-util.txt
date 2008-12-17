@@ -13,7 +13,8 @@ This is a checklist to follow when adding a utility:
 
 *) add man page (and add to doc/man/Makefile.am)
 
-*) add at least a simple "it works" test to tests/
+*) add at least a simple "it works" test to tests/ and modify
+   doc/tests/Makefile.am accordingly
 
 *) make distcheck
 
