@@ -7,7 +7,8 @@ EXTRA_DIST = \
 	basic-echo	\
 	basic-id	\
 	basic-ln	\
-	basic-rm
+	basic-rm	\
+	basic-wc
 
 TESTS = \
 	basic-cksum	\
@@ -15,7 +16,8 @@ TESTS = \
 	basic-echo	\
 	basic-id	\
 	basic-ln	\
-	basic-rm
+	basic-rm	\
+	basic-wc
 
 TESTS_ENVIRONMENT=top_srcdir=$(top_srcdir)
 
