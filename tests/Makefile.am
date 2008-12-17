@@ -4,6 +4,7 @@ EXTRA_DIST = \
 	cksum-test.data	\
 	basic-cksum	\
 	basic-cmp	\
+	basic-echo	\
 	basic-id	\
 	basic-ln	\
 	basic-rm
@@ -11,6 +12,7 @@ EXTRA_DIST = \
 TESTS = \
 	basic-cksum	\
 	basic-cmp	\
+	basic-echo	\
 	basic-id	\
 	basic-ln	\
 	basic-rm

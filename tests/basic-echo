@@ -1,0 +1,73 @@
+#!/bin/sh
+
+A=$(../echo \\a)
+B=$(printf \\a\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: alert"
+	exit 1
+fi
+
+A=$(../echo \\b)
+B=$(printf \\b\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: backspace"
+	exit 1
+fi
+
+A=$(../echo \\c)
+B=$(printf \\0)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: suppress new line"
+	exit 1
+fi
+
+A=$(../echo \\f)
+B=$(printf \\f\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: form feed"
+	exit 1
+fi
+
+A=$(../echo \\n)
+B=$(printf \\n\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: new line"
+	exit 1
+fi
+
+A=$(../echo \\r)
+B=$(printf \\r\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: carriage return"
+	exit 1
+fi
+
+A=$(../echo \\t)
+B=$(printf \\t\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: horizontal tab"
+	exit 1
+fi
+
+A=$(../echo \\v)
+B=$(printf \\v\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: vertical tab"
+	exit 1
+fi
+
+A=$(../echo \\\\)
+B=$(printf \\\\\\n)
+if [ "$A" != "$B" ]
+then
+	echo "basic-echo failed: backslash"
+	exit 1
+fi
