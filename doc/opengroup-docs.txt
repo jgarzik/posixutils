@@ -1,0 +1,25 @@
+
+The Institute of Electrical and Electronics Engineers and The Open Group, have
+given us permission to reprint portions of their documentation.
+
+In the following statement, the phrase "this text" refers to portions of the
+posixutils documentation.
+
+Portions of this text are reprinted and reproduced in electronic form in
+posixutils, from IEEE Std 1003.1, 2004 Edition, Standard for Information
+Technology -- Portable Operating System Interface (POSIX), The Open Group Base
+Specifications Issue 6, Copyright (C) 2001-2003 by the Institute of
+Electrical and Electronics Engineers, Inc and The Open Group.  In the event
+of any discrepancy between these versions and the original IEEE and The Open
+Group Standard, the original IEEE and The Open Group Standard is the referee
+document.  The original Standard can be obtained online at
+http://www.opengroup.org/unix/online.html
+
+
+
+Addendum by jgarzik:  The specific portions granted permission are
+
+	The Base Definitions Volume, Chapters 6 through 11 inclusive.
+	The Shell and Utilities Volume, Chapters 2 and 4.
+	http://www.opengroup.org/onlinepubs/000095399
+
