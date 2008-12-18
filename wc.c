@@ -203,26 +203,36 @@ static int count_fd(const char *fn, int fd, struct count_info *info)
 static void print_info (const char *fn, struct count_info *info)
 {
 	char numstr[128], s[32];
-
+	const char *std_in = "(standard input)";
+	bool need_space;
+	bool need_filename = (strcmp(fn, std_in) != 0);
 	numstr[0] = 0;
 
 	if (outmask & WC_LINE) {
-		sprintf(s, "%lu ", info->lines);
+		need_space = (need_filename || outmask & WC_WORD
+					    || outmask & WC_CHAR
+					    || outmask & WCT_BYTE);
+		sprintf(s, "%lu%s", info->lines, need_space ? " " : "");
 		strcat(numstr, s);
 	}
 	if (outmask & WC_WORD) {
-		sprintf(s, "%lu ", info->words);
+		need_space = (need_filename || outmask & WC_CHAR
+					    || outmask & WCT_BYTE);
+		sprintf(s, "%lu%s", info->words, need_space ? " " : "");
 		strcat(numstr, s);
 	}
 	if (outmask & WC_CHAR) {
+		need_space = need_filename;
 		if (out_type == WCT_BYTE)
-			sprintf(s, "%lu ", info->bytes);
+			sprintf(s, "%lu%s", info->bytes,
+						need_filename ? " " : "");
 		else
-			sprintf(s, "%lu ", info->chars);
+			sprintf(s, "%lu%s", info->chars,
+						need_filename ? " " : "");
 		strcat(numstr, s);
 	}
 
-	printf("%s%s\n", numstr, fn);
+	printf("%s%s\n", numstr, need_filename ? fn : "");
 }
 
 static int wc_actor(struct walker *w, const char *fn, int fd)
