@@ -91,9 +91,31 @@ static void tab_repeating(int tab_n)
 
 static void cmdline(int argc, char **argv)
 {
-	int opt, col = 1;
+	int opt, i, col = 1, err = 0;
 	bool changed = false;
 	char tmparg[4096], *tok, *tmp_s;
+	const int skip = 2;	/* skip -T */
+
+	/* get terminal type immediately, so that calculations
+	 * based on terminal size, needed during argument parsing,
+	 * will succeed.
+	 */
+	for (i = 1; i < argc; i++)
+		if (strncmp(argv[i], "-T", 2) == 0) {
+			if (*(argv[i] + skip) == '\0') {
+				i++;
+				if (i < argc)
+					opt_term = argv[i];
+			} else {
+				opt_term = argv[i] + skip;
+			}
+		}
+
+	if (setupterm(opt_term, STDOUT_FILENO, &err) != OK) {
+		fprintf(stderr, _("tabs: setupterm failed for term type %s\n"),
+			(opt_term && *opt_term) ? opt_term : _("(null)"));
+		exit(1);
+	}
 
 	tab_repeating(8);
 
@@ -145,7 +167,6 @@ static void cmdline(int argc, char **argv)
 		case 'u': changed = true; tab_stock(tabset_u); break;
 
 		case 'T':
-			opt_term = optarg;
 			break;
 
 		default:
@@ -224,13 +245,8 @@ static bool push_str(const char *val)
 
 static void set_hw_tabs(void)
 {
-	int err = 0, i, col = 0;
+	int i, col = 0;
 	char *tab_set;
-
-	if (setupterm(opt_term, STDOUT_FILENO, &err) != OK) {
-		fprintf(stderr, _("tabs: setupterm failed\n"));
-		exit(1);
-	}
 
 	tab_set = xtigetstr("hts");
 	if (!tab_set) {
