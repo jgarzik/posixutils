@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-17 19:27-0500\n"
+"POT-Creation-Date: 2008-12-20 18:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -690,22 +690,26 @@ msgstr ""
 msgid "tabs: tab stop table limit reached\n"
 msgstr ""
 
-#: tabs.c:183
+#: tabs.c:115
+#, c-format
+msgid "tabs: setupterm failed for term type %s\n"
+msgstr ""
+
+#: tabs.c:116
+msgid "(null)"
+msgstr ""
+
+#: tabs.c:204
 #, c-format
 msgid "tabs: tabspec beyond max-columns specified\n"
 msgstr ""
 
-#: tabs.c:231
-#, c-format
-msgid "tabs: setupterm failed\n"
-msgstr ""
-
-#: tabs.c:237
+#: tabs.c:253
 #, c-format
 msgid "tabs: terminal unable to set tabs\n"
 msgstr ""
 
-#: tabs.c:260
+#: tabs.c:276
 #, c-format
 msgid "tabs: buffer overflow\n"
 msgstr ""
