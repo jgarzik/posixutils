@@ -40,6 +40,7 @@ time.c
 touch.c
 tput.c
 tty.c
+uname.c
 uniq.c
 unlink.c
 uuencode.c

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 05:34-0500\n"
+"POT-Creation-Date: 2008-12-22 07:07-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -364,7 +364,7 @@ msgstr ""
 msgid "Output only the effective user ID"
 msgstr ""
 
-#: ipcrm.c:37
+#: ipcrm.c:37 uname.c:39
 msgid "ipcrm - remove a message queue, semaphore set or shared memory id"
 msgstr ""
 
@@ -824,6 +824,36 @@ msgstr "tput: setupterm pas\n"
 #, c-format
 msgid "not a tty\n"
 msgstr "pas un tty\n"
+
+#: uname.c:43
+msgid "Behave as though all of the options -mnrsv were specified."
+msgstr ""
+
+#: uname.c:45
+msgid ""
+"Write the name of the hardware type on which the system is running to "
+"standard output."
+msgstr ""
+
+#: uname.c:47
+msgid ""
+"Write the name of this node within an implementation-defined communications "
+"network."
+msgstr ""
+
+#: uname.c:49
+msgid "Write the current release level of the operating system implementation."
+msgstr ""
+
+#: uname.c:51
+msgid "Write the name of the implementation of the operating system."
+msgstr ""
+
+#: uname.c:53
+msgid ""
+"Write the current version level of this release of the operating system "
+"implementation."
+msgstr ""
 
 #: uniq.c:37
 msgid "uniq - report or filter out repeated lines in a file"

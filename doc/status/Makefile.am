@@ -45,6 +45,7 @@ EXTRA_DIST = \
 	tput.status		\
 	true.status		\
 	tty.status		\
+	uname.status		\
 	uniq.status		\
 	unlink.status		\
 	uuencode.status		\

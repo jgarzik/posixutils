@@ -1,7 +1,7 @@
 
 Version 5 - unreleased
 
-	- New utilities: cmp, tput, tabs, stty, uniq
+	- New utilities: cmp, tput, tabs, stty, uname, uniq
 
 	- Bug fixes.
 
