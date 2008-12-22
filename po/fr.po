@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 04:18-0500\n"
+"POT-Creation-Date: 2008-12-22 04:23-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -694,7 +694,12 @@ msgstr ""
 msgid "stty: invalid compact settings format\n"
 msgstr ""
 
-#: stty.c:399
+#: stty.c:358
+#, fuzzy, c-format
+msgid "stty: '%s' missing required argument\n"
+msgstr "arguments inadmissibles\n"
+
+#: stty.c:405
 #, fuzzy, c-format
 msgid "stty: invalid argument '%s'\n"
 msgstr "arguments inadmissibles\n"

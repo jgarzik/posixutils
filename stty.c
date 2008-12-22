@@ -354,6 +354,12 @@ static int stty_set(const char *setting)
 	int i;
 	unsigned int speed;
 
+	if (!setting) {
+		fprintf(stderr, _("stty: '%s' missing required argument\n"),
+			last_param ? last_param->name : "(null)");
+		return 1;
+	}
+
 	if (last_param) {
 		const struct stty_param *param;
 		unsigned int speed;

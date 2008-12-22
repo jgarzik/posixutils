@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 04:18-0500\n"
+"POT-Creation-Date: 2008-12-22 04:23-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -690,7 +690,12 @@ msgstr ""
 msgid "stty: invalid compact settings format\n"
 msgstr ""
 
-#: stty.c:399
+#: stty.c:358
+#, c-format
+msgid "stty: '%s' missing required argument\n"
+msgstr ""
+
+#: stty.c:405
 #, c-format
 msgid "stty: invalid argument '%s'\n"
 msgstr ""
