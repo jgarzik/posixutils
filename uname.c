@@ -27,16 +27,12 @@
 #include <sys/utsname.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/ipc.h>
-#include <sys/msg.h>
-#include <sys/sem.h>
-#include <sys/shm.h>
 #include <argp.h>
 #include <libpu.h>
 
 
 static const char doc[] =
-N_("ipcrm - remove a message queue, semaphore set or shared memory id");
+N_("uname - return system name");
 
 static struct argp_option options[] = {
 	{ "all", 'a', NULL, 0,
