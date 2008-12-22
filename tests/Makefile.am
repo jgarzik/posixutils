@@ -8,6 +8,9 @@ EXTRA_DIST = \
 	basic-id	\
 	basic-ln	\
 	basic-rm	\
+	basic-uniq	\
+	uniq.data1	\
+	uniq.data2	\
 	basic-wc
 
 TESTS = \
@@ -17,6 +20,7 @@ TESTS = \
 	basic-id	\
 	basic-ln	\
 	basic-rm	\
+	basic-uniq	\
 	basic-wc
 
 TESTS_ENVIRONMENT=top_srcdir=$(top_srcdir)

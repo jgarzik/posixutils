@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 04:23-0500\n"
+"POT-Creation-Date: 2008-12-22 05:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -819,6 +819,21 @@ msgstr ""
 #: tty.c:35
 #, c-format
 msgid "not a tty\n"
+msgstr ""
+
+#: uniq.c:37
+msgid "uniq - report or filter out repeated lines in a file"
+msgstr ""
+
+#: uniq.c:43
+msgid ""
+"Precede each output line with a count of the number of times the line "
+"occurred in the input."
+msgstr ""
+
+#: uniq.c:179
+#, c-format
+msgid "uniq: missing source file\n"
 msgstr ""
 
 #: uuencode.c:39

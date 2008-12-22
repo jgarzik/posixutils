@@ -1,0 +1,15 @@
+#!/bin/sh
+
+FILE="basic-uniq-$$"
+
+../uniq -c "$top_srcdir/tests/uniq.data1" > $FILE
+
+if ! cmp -s $FILE "$top_srcdir/tests/uniq.data2"
+then
+	echo "basic uniq test failed"
+	rm -f $FILE
+	exit 1
+fi
+
+rm -f $FILE
+exit 0

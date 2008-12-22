@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 04:23-0500\n"
+"POT-Creation-Date: 2008-12-22 05:34-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -824,6 +824,21 @@ msgstr "tput: setupterm pas\n"
 #, c-format
 msgid "not a tty\n"
 msgstr "pas un tty\n"
+
+#: uniq.c:37
+msgid "uniq - report or filter out repeated lines in a file"
+msgstr ""
+
+#: uniq.c:43
+msgid ""
+"Precede each output line with a count of the number of times the line "
+"occurred in the input."
+msgstr ""
+
+#: uniq.c:179
+#, fuzzy, c-format
+msgid "uniq: missing source file\n"
+msgstr "source/target manquant\n"
 
 #: uuencode.c:39
 msgid "uuencode - encode a binary file"
