@@ -25,7 +25,7 @@ bin_PROGRAMS = \
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO, and doc/status/PROGRAM.status, for more information.
-noinst_PROGRAMS = chown mkdir mkfifo mv pathchk split stty uniq
+noinst_PROGRAMS = chown ipcs mkdir mkfifo mv pathchk split stty uniq
 
 
 asa_LDADD = $(LIBPU)
@@ -57,6 +57,8 @@ grep_LDADD = $(LIBPU)
 head_LDADD = $(LIBPU)
 
 id_LDADD = $(LIBPU)
+
+ipcs_LDADD = $(LIBPU)
 
 ipcrm_LDADD = $(LIBPU)
 

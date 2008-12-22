@@ -19,6 +19,7 @@ EXTRA_DIST = \
 	head.status		\
 	id.status		\
 	ipcrm.status		\
+	ipcs.status		\
 	kill.status		\
 	link.status		\
 	ln.status		\

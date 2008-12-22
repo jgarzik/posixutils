@@ -47,6 +47,7 @@ grep
 head
 id
 ipcrm
+ipcs
 kill
 link
 ln

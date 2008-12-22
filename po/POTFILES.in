@@ -14,6 +14,7 @@ getconf.c
 grep.c
 head.c
 id.c
+ipcs.c
 ipcrm.c
 link.c
 ln.c
