@@ -33,6 +33,7 @@ rmdir.c
 sleep.c
 split.c
 strings.c
+stty.c
 tabs.c
 tee.c
 time.c

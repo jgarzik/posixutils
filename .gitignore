@@ -66,6 +66,7 @@ rmdir
 sleep
 split
 strings
+stty
 tabs
 tee
 time
