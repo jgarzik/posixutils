@@ -37,7 +37,7 @@ struct order {
 	char		*succ;
 };
 
-static char linebuf[4096];
+static char linebuf[LINE_MAX + 1];
 static char *extra_token;
 
 static char **dict, **out_vals;
@@ -234,7 +234,7 @@ int main (int argc, char *argv[])
 		}
 	}
 
-	while (fgets(linebuf, sizeof(linebuf), f)) {
+	while (fgets_unlocked(linebuf, sizeof(linebuf), f)) {
 		if (process_line())
 			return 1;
 	}

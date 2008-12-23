@@ -23,6 +23,8 @@
 #endif
 #include "posixutils-config.h"
 
+#define _GNU_SOURCE		/* for fgets_unlocked(3) */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -47,10 +49,6 @@ static struct argp_option options[] = {
 static bool opt_count;
 static int opt_skip;
 
-enum {
-	max_line_sz		= 4096,
-};
-
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 static int uniq_pre_walk(struct walker *w);
@@ -68,7 +66,7 @@ static struct walker walker = {
 	.cmdline_arg		= uniq_actor,
 };
 
-static char last_line[max_line_sz];
+static char last_line[LINE_MAX + 1];
 static unsigned long last_line_dups;
 static size_t last_line_len;
 static bool have_last_line;
@@ -122,7 +120,7 @@ static int process_line(const char *line)
 static int do_uniq(const char *src_fn, const char *dest_fn)
 {
 	FILE *f = NULL;
-	char line[max_line_sz];
+	char line[LINE_MAX + 1];
 	bool err = false;
 
 	if (ro_file_open(&f, src_fn))
@@ -138,7 +136,7 @@ static int do_uniq(const char *src_fn, const char *dest_fn)
 		}
 	}
 
-	while (fgets(line, sizeof(line), f)) {
+	while (fgets_unlocked(line, sizeof(line), f)) {
 		if (process_line(line)) {
 			err = true;
 			break;

@@ -119,7 +119,7 @@ int ask_question(const char *prefix, const char *msg,
 
 	fprintf(stderr, msg, prefix, fn);
 
-	src = fgets(s, sizeof(s), stdin);
+	src = fgets_unlocked(s, sizeof(s), stdin);
 	if ((!src) || (toupper(s[0]) != 'Y'))
 		return 0;
 

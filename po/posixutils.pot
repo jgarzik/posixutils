@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 22:28-0500\n"
+"POT-Creation-Date: 2008-12-23 03:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: asa.c:37
+#: asa.c:39
 msgid "asa - interpret carriage-control characters"
 msgstr ""
 
-#: asa.c:53
+#: asa.c:55
 #, c-format
 msgid "malformed line\n"
 msgstr ""
@@ -932,17 +932,17 @@ msgid ""
 "implementation."
 msgstr ""
 
-#: uniq.c:37
+#: uniq.c:39
 msgid "uniq - report or filter out repeated lines in a file"
 msgstr ""
 
-#: uniq.c:43
+#: uniq.c:45
 msgid ""
 "Precede each output line with a count of the number of times the line "
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:179
+#: uniq.c:177
 #, c-format
 msgid "uniq: missing source file\n"
 msgstr ""

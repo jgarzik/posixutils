@@ -23,6 +23,8 @@
 #endif
 #include "posixutils-config.h"
 
+#define _GNU_SOURCE		/* for fgets_unlocked(3) */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -44,7 +46,7 @@ static int asa_actor(struct walker *w, const char *pr_fn, FILE *f)
 {
 	char *line, buf[LINE_MAX + 1];
 
-	while ((line = fgets(buf, sizeof(buf), f)) != NULL) {
+	while ((line = fgets_unlocked(buf, sizeof(buf), f)) != NULL) {
 		size_t len;
 		char ch = *line;
 

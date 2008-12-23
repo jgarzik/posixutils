@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 22:28-0500\n"
+"POT-Creation-Date: 2008-12-23 03:56-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: asa.c:37
+#: asa.c:39
 msgid "asa - interpret carriage-control characters"
 msgstr ""
 
-#: asa.c:53
+#: asa.c:55
 #, c-format
 msgid "malformed line\n"
 msgstr ""
@@ -936,17 +936,17 @@ msgid ""
 "implementation."
 msgstr ""
 
-#: uniq.c:37
+#: uniq.c:39
 msgid "uniq - report or filter out repeated lines in a file"
 msgstr ""
 
-#: uniq.c:43
+#: uniq.c:45
 msgid ""
 "Precede each output line with a count of the number of times the line "
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:179
+#: uniq.c:177
 #, fuzzy, c-format
 msgid "uniq: missing source file\n"
 msgstr "source/target manquant\n"
