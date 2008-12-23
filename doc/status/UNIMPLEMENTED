@@ -1,64 +1,75 @@
 The following utilities (and/or shell commands) are specified by POSIX,
 but no code yet exists for these:
 
-Utilities
-
-    * admin
-    * ar
+cron utilities:
     * at
-    * awk
     * batch
-    * bc
-    * c99
-    * cal
-    * cflow
+    * crontab
+
+SCCS utilities:
+    * admin
+    * delta
+    * get
+    * sact
+    * sccs
+    * rmdel
+    * prs
+    * unget
+    * val
+
+File manipulation utilities:
+    * cp
     * chgrp
     * chmod
-    * cp
-    * crontab
-    * csplit
-    * ctags
-    * cut
-    * cxref
-    * dd
-    * delta
-    * diff
     * du
+    * find
+    * ls
+
+Text manipulation utilities:
+    * cut
+    * expand
+    * fold
+    * nl
+    * paste
+    * tr
+    * sort
+    * tsort
+    * tail
+    * pr
+    * od
+    * unexpand
+
+Complex text manipulation utilities:
+    * awk
+    * diff
     * ed
     * ex
-    * expand
-    * expr
-    * fc
-    * file
-    * find
-    * fold
-    * fort77
-    * fuser
-    * gencat
-    * get
-    * getopts
-    * iconv
-    * join
+    * m4
+    * vi
     * lex
+    * yacc
+    * patch
+    * sed
+
+Software Development utilities:
+    * ar
+    * c99
+    * cflow
+    * csplit
+    * ctags
+    * cxref
+    * fort77
+    * make
+    * nm
+    * strip
+
+Locale utilities:
+    * gencat
+    * iconv
     * locale
     * localedef
-    * lp
-    * ls
-    * m4
-    * mailx
-    * make
-    * man
-    * more
-    * nl
-    * nm
-    * od
-    * paste
-    * patch
-    * pax
-    * pr
-    * printf
-    * prs
-    * ps
+
+Batch subsystem utilities:
     * qalter
     * qdel
     * qhold
@@ -70,30 +81,26 @@ Utilities
     * qsig
     * qstat
     * qsub
-    * rmdel
-    * sact
-    * sccs
-    * sed
-    * sh
-    * sort
-    * strip
-    * tail
-    * talk
-    * test
-    * tr
-    * tsort
-    * unexpand
-    * unget
+
+UUCP utilities:
     * uucp
-    * uudecode
     * uustat
     * uux
-    * val
-    * vi
-    * who
+
+Communication:
+    * talk
     * write
-    * xargs
-    * yacc
+
+Interactive utilities:
+    * bc
+    * more
+    * mailx
+    * sh
+
+Shell facilities:
+    * fc
+    * getopts
+    * join
 
 Shell commands
     * alias
@@ -125,4 +132,21 @@ Shell commands
     * unalias
     * unset
     * wait
+
+Misc. utilities
+
+    * cal
+    * dd
+    * expr
+    * file
+    * fuser
+    * lp
+    * man
+    * pax
+    * printf
+    * ps
+    * test
+    * uudecode
+    * who
+    * xargs
 
