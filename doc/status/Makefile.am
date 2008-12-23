@@ -45,6 +45,7 @@ EXTRA_DIST = \
 	touch.status		\
 	tput.status		\
 	true.status		\
+	tsort.status		\
 	tty.status		\
 	uname.status		\
 	uniq.status		\

@@ -33,7 +33,6 @@ Text manipulation utilities:
     * paste
     * tr
     * sort
-    * tsort
     * tail
     * pr
     * od

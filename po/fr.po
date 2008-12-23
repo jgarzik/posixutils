@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-22 18:28-0500\n"
+"POT-Creation-Date: 2008-12-22 22:28-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -886,6 +886,16 @@ msgstr "Indiquer le type de terminal."
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr "tput: setupterm pas\n"
+
+#: tsort.c:146
+#, c-format
+msgid "tsort: max recursion limit reached\n"
+msgstr ""
+
+#: tsort.c:223
+#, c-format
+msgid "usage: tsort FILE\n"
+msgstr ""
 
 #: tty.c:35
 #, c-format

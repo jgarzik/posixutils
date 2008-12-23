@@ -8,6 +8,9 @@ EXTRA_DIST = \
 	basic-id	\
 	basic-ln	\
 	basic-rm	\
+	basic-tsort	\
+	tsort.data1	\
+	tsort.data2	\
 	basic-uniq	\
 	uniq.data1	\
 	uniq.data2	\
@@ -20,6 +23,7 @@ TESTS = \
 	basic-id	\
 	basic-ln	\
 	basic-rm	\
+	basic-tsort	\
 	basic-uniq	\
 	basic-wc
 

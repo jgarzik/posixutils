@@ -74,6 +74,7 @@ time
 touch
 tput
 true
+tsort
 tty
 uname
 uniq

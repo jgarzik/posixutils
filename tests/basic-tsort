@@ -1,0 +1,15 @@
+#!/bin/sh
+
+FILE="basic-tsort-$$"
+
+../tsort "$top_srcdir/tests/tsort.data1" > $FILE
+
+if ! cmp -s $FILE "$top_srcdir/tests/tsort.data2"
+then
+	echo "basic tsort test failed"
+	rm -f $FILE
+	exit 1
+fi
+
+rm -f $FILE
+exit 0
