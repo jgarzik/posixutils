@@ -1,5 +1,5 @@
 
-INCLUDES = -I$(top_srcdir)/include -DLOCALEDIR=\"@datadir@/locale\"
+AM_CPPFLAGS = -I$(top_srcdir)/include -DLOCALEDIR=\"@datadir@/locale\"
 
 noinst_LIBRARIES = libpu.a
 

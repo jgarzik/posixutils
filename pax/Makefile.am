@@ -1,7 +1,7 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-INCLUDES = -I$(top_srcdir)/include
+AM_CPPFLAGS = -I$(top_srcdir)/include
 
 EXTRA_DIST = pax-options.data
 

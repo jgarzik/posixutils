@@ -4,7 +4,7 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = doc m4 po include platform \
 	libpu compress pax tests
 
-INCLUDES = -I$(top_srcdir)/include
+AM_CPPFLAGS = -I$(top_srcdir)/include
 
 EXTRA_DIST = config.rpath mkinstalldirs	TODO	\
 	gen-siglist.pl gen-strmap.pl		\
