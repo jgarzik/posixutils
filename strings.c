@@ -113,14 +113,13 @@ static int string_print(const char *s)
 
 static int strings_buf(void)
 {
-	char *p, *sep = NULL, *lastsep;
+	char *p, *sep = NULL;
 	size_t len, diff;
 	int i;
 
 	p = st.buf;
 	len = st.used;
 	while (1) {
-		lastsep = sep;
 		sep = find_sep(p, len);
 		if (!sep) {
 			if (len > (BUFLEN / 2)) {

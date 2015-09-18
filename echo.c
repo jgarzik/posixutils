@@ -49,7 +49,6 @@ void get_octal(const char *s)
 	int multiplier = 1;
 	int oct;
 	int olen;
-	int slen;
 	int i;
 
 /* we except only 8-bit octal */
@@ -59,7 +58,6 @@ void get_octal(const char *s)
 	char octal_numbers[] = "01234567";
 
 	olen = strspn(s, octal_numbers);
-	slen = strlen(s);
 
 	for (i = 0; i < maxlen && i < olen; i++)
 		o[i] = s[i];

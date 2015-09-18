@@ -103,10 +103,8 @@ static void tput_reset(bool is_init)
 		f = fopen(val, "r");
 		if (f) {
 			int ch;
-			char chv;
 
 			while ((ch = getc(f)) != EOF) {
-				chv = ch;
 				write(STDOUT_FILENO, &ch, 1);
 			}
 

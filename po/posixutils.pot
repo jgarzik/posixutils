@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2008-12-23 03:56-0500\n"
+"POT-Creation-Date: 2015-09-18 01:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -878,7 +879,7 @@ msgstr ""
 msgid "Indicate the type of terminal."
 msgstr ""
 
-#: tput.c:140
+#: tput.c:138
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr ""
@@ -942,7 +943,7 @@ msgid ""
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:177
+#: uniq.c:180
 #, c-format
 msgid "uniq: missing source file\n"
 msgstr ""

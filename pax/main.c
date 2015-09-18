@@ -431,7 +431,6 @@ static int pax_read_archive(void)
 	pax_ops.input_init();
 
 	while (1) {
-		ssize_t buflen;
 		size_t rrc;
 		int prc;
 
@@ -444,7 +443,6 @@ static int pax_read_archive(void)
 			goto out;
 		}
 
-		buflen = rrc;
 		prc = pax_ops.input(buf, &rrc);
 		if (prc < 0) {
 			fprintf(stderr, "input failed: err %d\n", prc);
