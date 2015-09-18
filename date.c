@@ -54,7 +54,7 @@ static void pr_formatted(const struct tm *tm, const char *fmt)
 	size_t len;
 
 	len = strftime(date_buf, sizeof(date_buf), fmt, tm);
-	date_buf[sizeof(date_buf) - 1] = 0;
+	date_buf[len] = 0;
 
 	printf("%s\n", date_buf);
 }
