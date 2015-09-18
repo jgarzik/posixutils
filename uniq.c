@@ -153,6 +153,9 @@ static int do_uniq(const char *src_fn, const char *dest_fn)
 		perror(dest_fn);
 	fclose(f);
 
+	if (err)
+		return 1;
+
 	return 0;
 }
 

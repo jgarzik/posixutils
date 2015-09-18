@@ -304,13 +304,13 @@ int main (int argc, char *argv[])
 {
 	char *input_fn = NULL, *fn_name;
 	int fd, rc;
-	int idx;
+	int idx = -1;
 	error_t arc;
 
 	pu_init();
 
 	arc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
-	if (idx < 0)
+	if ((arc != 0) || (idx < 0))
 		return 1;
 
 	if ((argc - idx) == 1)
