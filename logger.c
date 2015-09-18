@@ -53,7 +53,7 @@ int main (int argc, char *argv[])
 		strcat(s, argv[i]);
 	}
 
-	syslog(LOG_USER | LOG_NOTICE, s);
+	syslog(LOG_USER | LOG_NOTICE, "%s", s);
 
 	return 0;
 }

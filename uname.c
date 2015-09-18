@@ -130,7 +130,7 @@ int main (int argc, char *argv[])
 	if (outstr[0])
 		outstr[strlen(outstr) - 1] = '\n';
 
-	printf(outstr);
+	printf("%s", outstr);
 
 	return 0;
 }
