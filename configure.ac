@@ -35,8 +35,8 @@ AC_CHECK_LIB(ncurses,setupterm,CURSES_LIB="-lncurses",exit 1)
 
 AC_DEFINE(_ISOC99_SOURCE, 1, [ISOC99 source])
 AC_DEFINE(_POSIX_SOURCE, 1, [POSIX source])
-dnl AC_DEFINE(_POSIX_C_SOURCE, 199506L, [POSIX C source])
-AC_DEFINE(_XOPEN_SOURCE, 600, [X/Open source])
+AC_DEFINE(_POSIX_C_SOURCE, 200809L, [POSIX C source])
+AC_DEFINE(_XOPEN_SOURCE, 700, [X/Open source])
 AC_DEFINE(_XOPEN_SOURCE_EXTENDED, 1, [X/open extended source])
 AC_DEFINE(_LARGEFILE64_SOURCE, 1, [largefile support])
 

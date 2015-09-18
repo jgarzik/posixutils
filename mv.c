@@ -175,7 +175,7 @@ static int copy_reg_file(const char *src, struct stat *st, const char *target)
 	}
 
 	/* open output file */
-	out_fd = open(target, O_CREAT | O_TRUNC | O_WRONLY);
+	out_fd = open(target, O_CREAT | O_TRUNC | O_WRONLY, 0666);
 	if (out_fd < 0) {
 		perror(target);
 		rc = 1;
