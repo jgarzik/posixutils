@@ -30,6 +30,8 @@ dnl Checks for library functions.
 ZLIB_LIB=""
 CURSES_LIB=""
 
+AC_CHECK_FUNCS(__fsetlocking)
+
 AC_CHECK_LIB(z,inflate,ZLIB_LIB="-lz",exit 1)
 AC_CHECK_LIB(ncurses,setupterm,CURSES_LIB="-lncurses",exit 1)
 

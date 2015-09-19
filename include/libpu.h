@@ -266,4 +266,14 @@ static inline const char *slist_ref(struct strlist *slist, unsigned int idx)
 	return slist->list[idx].s;
 }
 
+#ifdef HAVE___FSETLOCKING
+#include <stdio_ext.h>
+#else
+enum { FSETLOCKING_BYCALLER = 0, };
+static inline int __fsetlocking(FILE *stream, int type)
+{
+	return type;
+}
+#endif
+
 #endif /* __POSIXUTILS_LIB_H__ */
