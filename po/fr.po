@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 07:44-0400\n"
+"POT-Creation-Date: 2015-09-21 08:18-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -460,7 +460,7 @@ msgstr ""
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
-#: link.cc:35 mesg.cc:54 sleep.cc:50
+#: link.cc:35 mesg.cc:55 sleep.cc:50
 #, c-format
 msgid "invalid arguments\n"
 msgstr "arguments inadmissibles\n"
@@ -504,17 +504,17 @@ msgstr "aucuns arguments\n"
 msgid "getlogin(3)"
 msgstr ""
 
-#: mesg.cc:67
+#: mesg.cc:68
 #, c-format
 msgid "no terminal device found\n"
 msgstr ""
 
-#: mesg.cc:79
+#: mesg.cc:80
 #, c-format
 msgid "is y\n"
 msgstr ""
 
-#: mesg.cc:82
+#: mesg.cc:83
 #, c-format
 msgid "is n\n"
 msgstr ""
@@ -762,12 +762,12 @@ msgstr ""
 msgid "stty: invalid compact settings format\n"
 msgstr ""
 
-#: stty.cc:358
+#: stty.cc:357
 #, fuzzy, c-format
 msgid "stty: '%s' missing required argument\n"
 msgstr "arguments inadmissibles\n"
 
-#: stty.cc:405
+#: stty.cc:404
 #, fuzzy, c-format
 msgid "stty: invalid argument '%s'\n"
 msgstr "arguments inadmissibles\n"

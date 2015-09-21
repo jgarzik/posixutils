@@ -255,4 +255,11 @@ static inline int __fsetlocking(FILE *stream, int type)
 }
 #endif
 
+#ifndef HAVE_FGETS_UNLOCKED
+static inline char *fgets_unlocked(char *s, int size, FILE *stream)
+{
+	return fgets(s, size, stream);
+}
+#endif
+
 #endif /* __POSIXUTILS_LIB_H__ */

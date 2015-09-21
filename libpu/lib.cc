@@ -177,8 +177,10 @@ int ro_file_open(FILE **f_o, const char *fn)
 		return 1;
 	}
 
+#ifdef POSIX_FADV_SEQUENTIAL
 	/* Do we care about the return value of posix_fadvise(2) ? */
 	posix_fadvise(fileno(f), 0, 0, POSIX_FADV_SEQUENTIAL);
+#endif
 
 	__fsetlocking(f, FSETLOCKING_BYCALLER);
 	*f_o = f;
