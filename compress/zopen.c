@@ -87,7 +87,7 @@ typedef long count_int;
 
 typedef u_char char_type;
 static char_type magic_header[] =
-	{'\037', '\235'};		/* 1F 9D */
+	{ 0x1F, 0x9D };		/* 1F 9D */
 
 #define	BIT_MASK	0x1f		/* Defines for third byte of header. */
 #define	BLOCK_MASK	0x80
@@ -100,12 +100,14 @@ static char_type magic_header[] =
 
 #define	MAXCODE(n_bits)	((1 << (n_bits)) - 1)
 
+enum zopen_state {
+	S_START, S_MIDDLE, S_EOF
+};
+
 struct s_zstate {
 	FILE *zs_fp;			/* File stream for I/O */
 	char zs_mode;			/* r or w */
-	enum {
-		S_START, S_MIDDLE, S_EOF
-	} zs_state;			/* State of computation */
+	enum zopen_state zs_state;	/* State of computation */
 	u_int zs_n_bits;		/* Number of bits/code. */
 	u_int zs_maxbits;		/* User settable max # bits/code. */
 	code_int zs_maxcode;		/* Maximum code, given n_bits. */
