@@ -322,7 +322,7 @@ decompress(const char *in, const char *out, int bits)
 	if ((ofp = fopen(out, "w")) == NULL ||
 	    (nr != 0 && fwrite(buf, 1, nr, ofp) != nr)) {
 		cwarn("%s", out);
-		(void)fclose(zfp);
+		(void)zclose(zfp);
 		return;
 	}
 
