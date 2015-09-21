@@ -31,11 +31,6 @@ getconf-path.h
 getconf-system.h
 signal-copy.h
 
-cat
-chown
-cksum
-cmp
-comm
 date
 df
 dirname

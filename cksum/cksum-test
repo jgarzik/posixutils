@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TMPFILE="basic-cksum-$$"
+
+./cksum $srcdir/test.data | \
+	awk -F ' ' '{print $1, $2}' > $TMPFILE
+if [ $? -ne 0 ]
+then
+	rm -f $TMPFILE
+	exit 1
+fi
+
+cmp -s $srcdir/cksum-test.data $TMPFILE
+retval=$?
+rm -f $TMPFILE
+
+exit $retval

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+OUTFN="cat-test.$$"
+
+./cat $srcdir/cat.1 > $OUTFN
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN
+	exit 1
+fi
+
+cmp -s $srcdir/cat.1 $OUTFN
+retval=$?
+rm -f $OUTFN
+
+exit $retval

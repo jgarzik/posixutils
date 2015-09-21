@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 12:22-0400\n"
+"POT-Creation-Date: 2015-09-21 14:57-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -36,111 +36,111 @@ msgstr "nombre inadmissible des arguments\n"
 msgid "invalid pathname\n"
 msgstr "nom inadmissible\n"
 
-#: cat.cc:37
+#: cat/cat.cc:37
 msgid "cat - concatenate files and print on the standard output"
 msgstr "cat - enchainez les dossiers et imprimez sur le rendement standard"
 
-#: cat.cc:40
+#: cat/cat.cc:40
 msgid "(ignored)"
 msgstr ""
 
-#: chown.cc:45
+#: chown/chown.cc:45
 msgid "chown - change file owner and group"
 msgstr ""
 
-#: chown.cc:47
+#: chown/chown.cc:47
 msgid "owner[:group] file ..."
 msgstr ""
 
-#: chown.cc:51
+#: chown/chown.cc:51
 msgid "Set uid/gid of symlink, if file is a symlink."
 msgstr "Placez uid/gid de symlink, si le dossier est un symlink."
 
-#: chown.cc:53
+#: chown/chown.cc:53
 msgid "Recurse into symlinked dirs on the command line."
 msgstr "Recurse dans symlinked des dirs sur la ligne de commande."
 
-#: chown.cc:55
+#: chown/chown.cc:55
 msgid ""
 "Recurse into symlinked dirs on the command line or found during traversal."
 msgstr ""
 "Recurse dans symlinked des dirs sur la ligne de commande ou a trouve pendant "
 "le traversal."
 
-#: chown.cc:57
+#: chown/chown.cc:57
 msgid "Do not follow symlinks."
 msgstr "Ne suivez pas les symlinks."
 
-#: chown.cc:59
+#: chown/chown.cc:59
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown.cc:90
+#: chown/chown.cc:90
 #, fuzzy, c-format
 msgid "invalid group '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: chown.cc:116
+#: chown/chown.cc:116
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown.cc:123
+#: chown/chown.cc:123
 #, fuzzy, c-format
 msgid "invalid owner '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: cksum.cc:33
+#: cksum/cksum.cc:33
 msgid "cksum - checksum and count the bytes in a file"
 msgstr "cksum - somme et comptent les bytes dans un dossier"
 
-#: cmp.cc:36
+#: cmp/cmp.cc:36
 #, fuzzy
 msgid "cmp - compare two files"
 msgstr "cmp - comparer deux fichiers"
 
-#: cmp.cc:42
+#: cmp/cmp.cc:42
 msgid ""
 "Write the byte number (decimal) and the differing bytes (octal) for each "
 "difference."
 msgstr ""
 
-#: cmp.cc:44
+#: cmp/cmp.cc:44
 msgid "Write nothing for differing files; return exit status only."
 msgstr ""
 
-#: cmp.cc:73
+#: cmp/cmp.cc:73
 #, c-format
 msgid "cmp: two pathnames required for comparison\n"
 msgstr ""
 
-#: cmp.cc:117
+#: cmp/cmp.cc:117
 #, c-format
 msgid "cmp: EOF on %s\n"
 msgstr "cmp: EOF sur %s\n"
 
-#: cmp.cc:139
+#: cmp/cmp.cc:139
 #, c-format
 msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
 
-#: comm.cc:39
+#: comm/comm.cc:39
 msgid "comm - compare two sorted files line by line"
 msgstr "comm - comparez la ligne de deux dossiers assortis par la ligne"
 
-#: comm.cc:41
+#: comm/comm.cc:41
 msgid "file1 file2"
 msgstr "file1 file2"
 
-#: comm.cc:45
+#: comm/comm.cc:45
 msgid "Suppress the output column of lines unique to file1."
 msgstr "Supprimez la colonne de rendement des lignes uniques a file1."
 
-#: comm.cc:47
+#: comm/comm.cc:47
 msgid "Suppress the output column of lines unique to file2."
 msgstr "Supprimez la colonne de rendement des lignes uniques a file2."
 
-#: comm.cc:49
+#: comm/comm.cc:49
 msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 "Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
@@ -990,11 +990,11 @@ msgstr ""
 msgid "total"
 msgstr "total"
 
-#: what.cc:39
+#: what.cc:38
 msgid "what - identify SCCS files"
 msgstr ""
 
-#: what.cc:45
+#: what.cc:44
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 

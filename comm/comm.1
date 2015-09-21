@@ -1,0 +1,197 @@
+.Dd December 2008
+.Dt COMM 1
+
+.Sh NAME
+
+.Nm comm
+.Nd select or reject lines common to two files
+
+.Sh SYNOPSIS
+
+.Nm comm
+.Ar [-123] file1 file2
+
+.Sh DESCRIPTION
+
+    The comm utility shall read file1 and file2, which should be ordered in
+the current collating sequence, and produce three text columns as output:
+lines only in file1, lines only in file2, and lines in both files.
+
+    If the lines in both files are not ordered according to the collating
+sequence of the current locale, the results are unspecified.
+
+.Sh OPTIONS
+
+    The comm utility shall conform to the Base Definitions volume of IEEE
+Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following options shall be supported:
+
+    -1
+        Suppress the output column of lines unique to file1.
+    -2
+        Suppress the output column of lines unique to file2.
+    -3
+        Suppress the output column of lines duplicated in file1 and file2.
+
+.Sh OPERANDS
+
+    The following operands shall be supported:
+
+    file1
+        A pathname of the first file to be compared. If file1 is '-', the
+standard input shall be used.
+    file2
+        A pathname of the second file to be compared. If file2 is '-', the
+standard input shall be used.
+
+    If both file1 and file2 refer to standard input or to the same FIFO
+special, block special, or character special file, the results are
+undefined.
+
+.Sh STDIN
+
+    The standard input shall be used only if one of the file1 or file2
+operands refers to standard input. See the INPUT FILES section.
+
+.Sh INPUT FILES
+
+    The input files shall be text files.
+
+.Sh ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of comm:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_COLLATE
+        Determine the locale for the collating sequence comm expects to have
+been used when the input files were sorted.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments and input files).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+
+.Sh ASYNCHRONOUS EVENTS
+
+    Default.
+
+.Sh STDOUT
+
+    The comm utility shall produce output depending on the options selected.
+If the -1, -2, and -3 options are all selected, comm shall write nothing to
+standard output.
+
+    If the -1 option is not selected, lines contained only in file1 shall be
+written using the format:
+
+    "%s\n", <line in file1>
+
+    If the -2 option is not selected, lines contained only in file2 are
+written using the format:
+
+    "%s%s\n", <lead>, <line in file2>
+
+    where the string <lead> is as follows:
+
+    <tab>
+        The -1 option is not selected.
+    null string
+        The -1 option is selected.
+
+    If the -3 option is not selected, lines contained in both files shall be
+written using the format:
+
+    "%s%s\n", <lead>, <line in both>
+
+    where the string <lead> is as follows:
+
+    <tab><tab>
+        Neither the -1 nor the -2 option is selected.
+    <tab>
+        Exactly one of the -1 and -2 options is selected.
+    null string
+        Both the -1 and -2 options are selected.
+
+    If the input files were ordered according to the collating sequence of
+the current locale, the lines written shall be in the collating sequence of
+the original lines.
+
+.Sh STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+.Sh OUTPUT FILES
+
+    None.
+
+.Sh EXTENDED DESCRIPTION
+
+    None.
+
+.Sh EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        All input files were successfully output as specified.
+    >0
+        An error occurred.
+
+.Sh CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+.Sh APPLICATION USAGE
+
+    If the input files are not properly presorted, the output of comm might
+not be useful.
+
+.Sh EXAMPLES
+
+    If a file named xcu contains a sorted list of the utilities in this
+volume of IEEE Std 1003.1-2001, a file named xpg3 contains a sorted list of
+the utilities specified in the X/Open Portability Guide, Issue 3, and a file
+named svid89 contains a sorted list of the utilities in the System V
+Interface Definition Third Edition:
+
+    comm -23 xcu xpg3 | comm -23 - svid89
+
+    would print a list of utilities in this volume of IEEE Std 1003.1-2001
+not specified by either of the other documents:
+
+    comm -12 xcu xpg3 | comm -12 - svid89
+
+    would print a list of utilities specified by all three documents, and:
+
+    comm -12 xpg3 svid89 | comm -23 - xcu
+
+    would print a list of utilities specified by both XPG3 and the SVID, but
+not specified in this volume of IEEE Std 1003.1-2001.
+
+.Sh RATIONALE
+
+    None.
+
+.Sh FUTURE DIRECTIONS
+
+    None.
+
+.Sh SEE ALSO
+
+    cmp, diff, sort, uniq
+

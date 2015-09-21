@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT(posixutils, 5git, [http://sourceforge.net/projects/nix-utils  ..])
 AC_PREREQ(2.60)
-AC_CONFIG_SRCDIR([cat.cc])
+AC_CONFIG_SRCDIR([true.c])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([gnu])
 AC_CONFIG_HEADERS([posixutils-config.h])
@@ -57,6 +57,11 @@ AC_CONFIG_FILES([Makefile
 		include/Makefile
 		asa/Makefile
 		basename/Makefile
+		cat/Makefile
+		chown/Makefile
+		cksum/Makefile
+		cmp/Makefile
+		comm/Makefile
 		compress/Makefile
 		pax/Makefile
 		platform/Makefile

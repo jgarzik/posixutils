@@ -3,7 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = \
 	doc m4 po include platform libpu \
-	asa basename compress pax tests
+	asa basename cat chown cksum cmp comm compress pax tests
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
@@ -19,29 +19,15 @@ CLEANFILES = kill-siglist.h getconf-path.h getconf-system.h \
 LIBPU = libpu/libpu.a @ARGP_LIB@
 
 bin_PROGRAMS = \
-	cat cksum cmp comm date df dirname echo env false	\
+	date df dirname echo env false	\
 	getconf	grep head id ipcrm kill link logger logname ln mesg	\
 	nice nohup pwd renice rm rmdir sleep strings tabs tee time	\
 	touch tput true tsort tty uname unlink uuencode wc what
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO, and doc/status/PROGRAM.status, for more information.
-noinst_PROGRAMS = chown ipcs mkdir mkfifo mv pathchk split stty uniq
+noinst_PROGRAMS = ipcs mkdir mkfifo mv pathchk split stty uniq
 
-
-cat_SOURCES = cat.cc
-cat_LDADD = $(LIBPU)
-
-chown_SOURCES = chown.cc
-chown_LDADD = $(LIBPU)
-
-cksum_SOURCES = cksum.cc cksum_crctab.h
-cksum_LDADD = $(LIBPU)
-
-cmp_SOURCES = cmp.cc
-cmp_LDADD = $(LIBPU)
-comm_SOURCES = comm.cc
-comm_LDADD = $(LIBPU)
 
 date_SOURCES = date.cc
 date_LDADD = $(LIBPU)
