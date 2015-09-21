@@ -59,7 +59,7 @@ static void tput_clear(void)
 	tputs(clear_screen, lines > 0 ? lines : 1, putchar);
 }
 
-static char *init_names[] = {
+static const char *init_names[] = {
 	"iprog",
 	"is1",
 	"is2",
@@ -67,7 +67,7 @@ static char *init_names[] = {
 	"is3",
 };
 
-static char *reset_names[] = {
+static const char *reset_names[] = {
 	"rprog",
 	"rs1",
 	"rs2",
@@ -77,7 +77,7 @@ static char *reset_names[] = {
 
 static void tput_reset(bool is_init)
 {
-	char **caps = is_init ? init_names : reset_names;
+	const char **caps = is_init ? init_names : reset_names;
 	char *val;
 
 	val = xtigetstr(caps[0]);

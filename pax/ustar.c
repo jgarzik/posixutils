@@ -72,7 +72,7 @@ struct ustar_state {
 };
 
 static struct ustar_state global_state;
-static const char zero_rec[REC_SZ];
+static const char zero_rec[REC_SZ] = "";
 
 
 static void ustar_input_init(void)

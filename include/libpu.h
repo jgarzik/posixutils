@@ -170,7 +170,7 @@ struct walker {
 
 	int			exit_status;
 
-	void			*private;
+	void			*priv;
 
 	int			curdir_fd;
 	struct strlist		strlist;
@@ -210,7 +210,7 @@ extern void path_free(struct pathelem *pe);
 extern int have_dots(const char *fn);
 
 extern char *get_terminal(void);
-extern char *xtigetstr(char *capname);
+extern char *xtigetstr(const char *capname);
 
 extern void pu_init(void);
 extern int ro_file_open(FILE **f_io, const char *fn);
@@ -224,19 +224,6 @@ extern char *slist_shift(struct strlist *slist);
 extern char *slist_pop(struct strlist *slist);
 extern int walk(struct walker *w, int argc, char **argv);
 
-
-#define PU_FN_WALKER(pu_actor,pu_flags) \
-	struct cmdline_walker walker = {				\
-		.argc		= argc,					\
-		.argv		= argv,					\
-		.argp		= &argp,				\
-		.flags		= (pu_flags),				\
-		.fn_actor	= (pu_actor),				\
-	};								\
-									\
-	pu_init();							\
-									\
-	return walk_cmdline(&walker);
 
 static inline uint32_t swab32(uint32_t val)
 {

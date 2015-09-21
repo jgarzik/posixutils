@@ -60,7 +60,7 @@ static void do_print_header(const char *fn)
 
 static inline const char *find_nl(const char *s, size_t len)
 {
-	return memchr(s, '\n', len);
+	return (const char *) memchr(s, '\n', len);
 }
 
 static int head_fd(struct walker *w, const char *fn, int fd)

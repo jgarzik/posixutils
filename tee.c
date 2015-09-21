@@ -173,7 +173,7 @@ out:
 
 static int build_flist_actor(struct walker *w, const char *fn, const struct stat *lst)
 {
-	struct tee_flist *new, *tmp;
+	struct tee_flist *new_ent, *tmp;
 	int open_flags;
 	int fd;
 
@@ -188,15 +188,15 @@ static int build_flist_actor(struct walker *w, const char *fn, const struct stat
 		return 1;
 	}
 
-	new = xmalloc(sizeof(*new));
-	new->fn = fn;
-	new->fd = fd;
-	new->next = NULL;
+	new_ent = (struct tee_flist *) xmalloc(sizeof(*new_ent));
+	new_ent->fn = fn;
+	new_ent->fd = fd;
+	new_ent->next = NULL;
 
 	tmp = flist_root;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = new;
+	tmp->next = new_ent;
 
 	return 0;
 }
@@ -213,15 +213,15 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int tee_init(struct walker *w, int argc, char **argv)
 {
-	struct tee_flist *new;
+	struct tee_flist *new_ent;
 
 	pu_init();
 
-	new = xmalloc(sizeof(*new));
-	new->fn = STDOUT_NAME;
-	new->fd = STDOUT_FILENO;
-	new->next = NULL;
-	flist_root = new;
+	new_ent = (struct tee_flist *) xmalloc(sizeof(*new_ent));
+	new_ent->fn = STDOUT_NAME;
+	new_ent->fd = STDOUT_FILENO;
+	new_ent->next = NULL;
+	flist_root = new_ent;
 
 	return 0;
 }

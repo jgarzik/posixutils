@@ -38,7 +38,7 @@ char *get_terminal(void)
 	return term;
 }
 
-char *xtigetstr(char *capname)
+char *xtigetstr(const char *capname)
 {
 	char *s = tigetstr(capname);
 	if (s == (char *)-1)
