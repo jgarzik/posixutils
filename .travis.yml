@@ -38,7 +38,7 @@ before_script:
 script:
   - OUTDIR=$BASE_OUTDIR/$TRAVIS_PULL_REQUEST/$TRAVIS_JOB_NUMBER-$HOST
   - POSIXUTILS_CONFIG_ALL="--prefix=$TRAVIS_BUILD_DIR/depends/$HOST --bindir=$OUTDIR/bin --libdir=$OUTDIR/lib"
-  - ./configure --cache-file=config.cache $POSIXUTILS_CONFIG_ALL $POSIXUTILS_CONFIG || ( cat config.log && false)
+  - CFLAGS="-O3 -Wall -g" CXXFLAGS="-O3 -Wall -g" ./configure --cache-file=config.cache $POSIXUTILS_CONFIG_ALL $POSIXUTILS_CONFIG || ( cat config.log && false)
   - make -s $MAKEJOBS $GOAL || ( echo "Build failure. Verbose build follows." && make $GOAL ; false )
   - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib
   - if [ "$RUN_TESTS" = "true" ]; then make check; fi
