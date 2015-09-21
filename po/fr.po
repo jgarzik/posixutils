@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-20 23:37-0400\n"
+"POT-Creation-Date: 2015-09-20 23:50-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -75,17 +75,17 @@ msgstr "Ne suivez pas les symlinks."
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown.c:97
+#: chown.c:90
 #, fuzzy, c-format
 msgid "invalid group '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: chown.c:123
+#: chown.c:116
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown.c:130
+#: chown.c:123
 #, fuzzy, c-format
 msgid "invalid owner '%s'\n"
 msgstr "nom inadmissible\n"
@@ -109,17 +109,17 @@ msgstr ""
 msgid "Write nothing for differing files; return exit status only."
 msgstr ""
 
-#: cmp.c:79
+#: cmp.c:73
 #, c-format
 msgid "cmp: two pathnames required for comparison\n"
 msgstr ""
 
-#: cmp.c:123
+#: cmp.c:117
 #, c-format
 msgid "cmp: EOF on %s\n"
 msgstr "cmp: EOF sur %s\n"
 
-#: cmp.c:145
+#: cmp.c:139
 #, c-format
 msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
@@ -171,23 +171,23 @@ msgstr ""
 msgid "Include total allocated-space figures in the output."
 msgstr ""
 
-#: df.c:201
+#: df.c:195
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:203
+#: df.c:197
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:222
+#: df.c:216
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df.c:225
+#: df.c:219
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
@@ -319,12 +319,12 @@ msgid ""
 "to be matching lines"
 msgstr ""
 
-#: grep.c:190
+#: grep.c:183
 #, fuzzy, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr "nom inadmissible\n"
 
-#: grep.c:477
+#: grep.c:470
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -485,12 +485,12 @@ msgstr ""
 msgid "Create symbolic links instead of hard links"
 msgstr ""
 
-#: ln.c:165
+#: ln.c:160
 #, fuzzy, c-format
 msgid "ln: missing link source/target\n"
 msgstr "source/target manquant\n"
 
-#: ln.c:181
+#: ln.c:176
 #, c-format
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
@@ -527,7 +527,7 @@ msgstr ""
 msgid "Create any missing intermediate pathname components"
 msgstr ""
 
-#: mkdir.c:88
+#: mkdir.c:85
 #, c-format
 msgid "parent '%s' is not a directory\n"
 msgstr ""
@@ -614,12 +614,12 @@ msgstr ""
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk.c:96
+#: pathchk.c:93
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk.c:106
+#: pathchk.c:103
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
@@ -883,7 +883,7 @@ msgstr "tput - changement des caracteristiques administration"
 msgid "Indicate the type of terminal."
 msgstr "Indiquer le type de terminal."
 
-#: tput.c:138
+#: tput.c:134
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr "tput: setupterm pas\n"
@@ -947,7 +947,7 @@ msgid ""
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:182
+#: uniq.c:177
 #, fuzzy, c-format
 msgid "uniq: missing source file\n"
 msgstr "source/target manquant\n"
@@ -986,7 +986,7 @@ msgid ""
 "Write to the standard output the number of characters in each input file"
 msgstr ""
 
-#: wc.c:287
+#: wc.c:282
 msgid "total"
 msgstr "total"
 

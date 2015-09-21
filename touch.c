@@ -61,12 +61,7 @@ static int touch_fn_actor(struct walker *w, const char *fn, const struct stat *l
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.init			= touch_init,
-	.pre_walk		= touch_pre_walk,
-	.cmdline_arg		= touch_fn_actor,
-};
+static struct walker walker;
 
 static bool opt_default = true;
 static bool opt_atime;
@@ -240,5 +235,9 @@ static int touch_pre_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.init			= touch_init;
+	walker.pre_walk			= touch_pre_walk;
+	walker.cmdline_arg		= touch_fn_actor;
 	return walk(&walker, argc, argv);
 }

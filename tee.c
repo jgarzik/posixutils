@@ -53,12 +53,7 @@ static int build_flist_actor(struct walker *w, const char *fn, const struct stat
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, file_args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.init			= tee_init,
-	.post_walk		= tee_post_walk,
-	.cmdline_arg		= build_flist_actor,
-};
+static struct walker walker;
 
 #define ERRSTR_NOMEM PFX "out of memory\n"
 #define REALLY_FREE
@@ -243,5 +238,9 @@ static int tee_post_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.init			= tee_init;
+	walker.post_walk		= tee_post_walk;
+	walker.cmdline_arg		= build_flist_actor;
 	return walk(&walker, argc, argv);
 }

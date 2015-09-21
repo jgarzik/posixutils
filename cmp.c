@@ -51,13 +51,7 @@ static int cmp_pre_walk(struct walker *w);
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.pre_walk		= cmp_pre_walk,
-	.post_walk		= cmp_post_walk,
-	.cmdline_arg		= cmp_actor,
-};
-
+static struct walker walker;
 
 static bool opt_verbose;
 static bool opt_silent;
@@ -168,5 +162,9 @@ static int cmp_actor(struct walker *w, const char *fn, const struct stat *lst)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.pre_walk			= cmp_pre_walk;
+	walker.post_walk		= cmp_post_walk;
+	walker.cmdline_arg		= cmp_actor;
 	return walk(&walker, argc, argv);
 }

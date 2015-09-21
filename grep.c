@@ -82,14 +82,7 @@ static int grep_file(struct walker *w, const char *pr_fn, FILE *f);
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.init			= grep_init,
-	.pre_walk		= grep_pre_walk,
-	.post_walk		= grep_post_walk,
-	.cmdline_file		= grep_file,
-};
+static struct walker walker;
 
 enum match_type {
 	MATCH_BRE,		/* match basic regex */
@@ -500,5 +493,11 @@ static int grep_post_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.init			= grep_init;
+	walker.pre_walk			= grep_pre_walk;
+	walker.post_walk		= grep_post_walk;
+	walker.cmdline_file		= grep_file;
 	return walk(&walker, argc, argv);
 }

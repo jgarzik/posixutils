@@ -51,10 +51,7 @@ static int pathchk_fn_actor(struct walker *w, const char *fn, const struct stat 
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.cmdline_arg		= pathchk_fn_actor,
-};
+static struct walker walker;
 
 static bool opt_portable;
 
@@ -168,6 +165,8 @@ static int pathchk_fn_actor(struct walker *w, const char *fn, const struct stat 
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.cmdline_arg		= pathchk_fn_actor;
 	return walk(&walker, argc, argv);
 }
 

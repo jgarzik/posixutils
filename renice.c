@@ -57,10 +57,7 @@ static int renice_actor(struct walker *w, const char *fn, const struct stat *lst
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.cmdline_arg		= renice_actor,
-};
+static struct walker walker;
 
 static int nice_increment;
 static int nice_mode = PRIO_PROCESS;
@@ -150,6 +147,8 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.cmdline_arg		= renice_actor;
 	return walk(&walker, argc, argv);
 }
 

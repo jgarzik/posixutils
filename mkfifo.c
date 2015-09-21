@@ -45,10 +45,7 @@ static int mkfifo_arg(struct walker *w, const char *fn, const struct stat *lst);
 
 static const struct argp argp = { options, args_parse_opt, file_args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.cmdline_arg		= mkfifo_arg,
-};
+static struct walker walker;
 
 DECLARE_PU_PARSE_ARGS
 
@@ -65,6 +62,8 @@ static int mkfifo_arg(struct walker *w, const char *fn, const struct stat *lst)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.cmdline_arg		= mkfifo_arg;
 	return walk(&walker, argc, argv);
 }
 

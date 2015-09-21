@@ -46,12 +46,7 @@ static int cat_fd(struct walker *w, const char *fn, int fd);
 
 static const struct argp argp = { options, parse_opt, file_args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.cmdline_fd		= cat_fd,
-};
-
+static struct walker walker;
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
 {
@@ -73,6 +68,10 @@ static int cat_fd(struct walker *w, const char *fn, int fd)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.cmdline_fd		= cat_fd;
+
 	return walk(&walker, argc, argv);
 }
 

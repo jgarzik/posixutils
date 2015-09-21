@@ -77,14 +77,7 @@ static uid_t opt_uid = (uid_t) -1;
 static gid_t opt_gid = (gid_t) -1;
 
 static const struct argp argp = { options, parse_opt, args_doc, doc };
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_STAT,
-	.init			= chown_init,
-	.pre_walk		= chown_pre_walk,
-	.cmdline_arg		= chown_arg,
-	.dirent			= chown_dirent,
-};
+static struct walker walker;
 
 
 static int set_group(const char *group)
@@ -333,5 +326,11 @@ static int chown_pre_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_STAT;
+	walker.init			= chown_init;
+	walker.pre_walk			= chown_pre_walk;
+	walker.cmdline_arg		= chown_arg;
+	walker.dirent			= chown_dirent;
 	return walk(&walker, argc, argv);
 }

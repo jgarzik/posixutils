@@ -91,16 +91,16 @@ static int asa_actor(struct walker *w, const char *pr_fn, FILE *f)
 	return 0;
 }
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.cmdline_file		= asa_actor,
-};
+static struct walker walker;
 
 DECLARE_PU_PARSE_ARGS
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.cmdline_file		= asa_actor;
+
 	return walk(&walker, argc, argv);
 }
 

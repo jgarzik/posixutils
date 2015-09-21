@@ -42,12 +42,7 @@ static int head_fd(struct walker *w, const char *fn, int fd);
 static int head_pre_walk(struct walker *w);
 static const struct argp argp = { options, parse_opt, file_args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.pre_walk		= head_pre_walk,
-	.cmdline_fd		= head_fd,
-};
+static struct walker walker;
 
 enum random_constants {
 	HEAD_BUF_SZ = 8192
@@ -140,5 +135,9 @@ static int head_pre_walk(struct walker *w)
 
 int main(int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.pre_walk			= head_pre_walk;
+	walker.cmdline_fd		= head_fd;
 	return walk(&walker, argc, argv);
 }

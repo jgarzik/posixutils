@@ -103,15 +103,15 @@ static int cksum_fd(struct walker *w, const char *fn, int fd)
 	return 0;
 }
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.cmdline_fd		= cksum_fd,
-};
+static struct walker walker;
+
 DECLARE_PU_PARSE_ARGS
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.cmdline_fd		= cksum_fd;
 	return walk(&walker, argc, argv);
 }
 

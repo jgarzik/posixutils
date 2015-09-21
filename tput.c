@@ -52,11 +52,7 @@ static const struct argp argp = { options, parse_opt, args_doc, doc };
 
 static char *opt_term;
 
-static struct walker walker = {
-	.argp			= &argp,
-	.cmdline_arg		= tput_actor,
-	.pre_walk		= tput_pre_walk,
-};
+static struct walker walker;
 
 static void tput_clear(void)
 {
@@ -158,6 +154,9 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 int main (int argc, char *argv[])
 {
 	opt_term = get_terminal();
+	walker.argp			= &argp;
+	walker.cmdline_arg		= tput_actor;
+	walker.pre_walk			= tput_pre_walk;
 	return walk(&walker, argc, argv);
 }
 

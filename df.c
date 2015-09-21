@@ -60,13 +60,7 @@ static int df_arg(struct walker *w, const char *fn, const struct stat *lst);
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_STAT,
-	.pre_walk		= df_pre_walk,
-	.post_walk		= df_post_walk,
-	.cmdline_arg		= df_arg,
-};
+static struct walker walker;
 
 struct fslist {
 	char			*devname;
@@ -249,5 +243,10 @@ static int df_post_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_STAT;
+	walker.pre_walk			= df_pre_walk;
+	walker.post_walk		= df_post_walk;
+	walker.cmdline_arg		= df_arg;
 	return walk(&walker, argc, argv);
 }

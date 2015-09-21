@@ -55,12 +55,7 @@ static int wc_actor(struct walker *w, const char *fn, int fd);
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.post_walk		= wc_post_walk,
-	.cmdline_fd		= wc_actor,
-};
+static struct walker walker;
 
 enum {
 	WC_CHAR		= (1 << 0),
@@ -291,5 +286,9 @@ static int wc_post_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.post_walk		= wc_post_walk;
+	walker.cmdline_fd		= wc_actor;
 	return walk(&walker, argc, argv);
 }

@@ -45,10 +45,7 @@ static int rmdir_fn_actor(struct walker *w, const char *fn, const struct stat *s
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp				= &argp,
-	.cmdline_arg			= rmdir_fn_actor,
-};
+static struct walker walker;
 
 static char pathbuf[PATH_MAX + 2];
 static bool opt_recurse;
@@ -100,6 +97,8 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
+	walker.argp				= &argp;
+	walker.cmdline_arg			= rmdir_fn_actor;
 	return walk(&walker, argc, argv);
 }
 

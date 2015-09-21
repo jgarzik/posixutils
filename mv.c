@@ -321,13 +321,13 @@ static int do_2arg_form(int argc, char **argv, int idx)
 
 int main (int argc, char *argv[])
 {
-	struct cmdline_walker walker = {
-		.argc		= argc,
-		.argv		= argv,
-		.argp		= &argp,
-		.flags		= CFL_SKIP_LAST,
-		.fn_actor	= mv_fn_actor,
-	};
+	struct cmdline_walker walker;
+	walker.argc		= argc;
+	walker.argv		= argv;
+	walker.argp		= &argp;
+	walker.flags		= CFL_SKIP_LAST;
+	walker.fn_actor		= mv_fn_actor;
+
 	int rc, idx, have_2arg_form = 1;
 	struct stat st;
 

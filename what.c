@@ -50,10 +50,7 @@ static int what_actor(struct walker *w, const char *fn, FILE *f);
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.cmdline_file		= what_actor,
-};
+static struct walker walker;
 
 static bool opt_short;
 static char what_buf[LINE_MAX + 1];
@@ -141,6 +138,8 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.cmdline_file		= what_actor;
 	return walk(&walker, argc, argv);
 }
 

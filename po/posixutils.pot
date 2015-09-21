@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-20 23:37-0400\n"
+"POT-Creation-Date: 2015-09-20 23:50-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,17 +73,17 @@ msgstr ""
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown.c:97
+#: chown.c:90
 #, c-format
 msgid "invalid group '%s'\n"
 msgstr ""
 
-#: chown.c:123
+#: chown.c:116
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown.c:130
+#: chown.c:123
 #, c-format
 msgid "invalid owner '%s'\n"
 msgstr ""
@@ -106,17 +106,17 @@ msgstr ""
 msgid "Write nothing for differing files; return exit status only."
 msgstr ""
 
-#: cmp.c:79
+#: cmp.c:73
 #, c-format
 msgid "cmp: two pathnames required for comparison\n"
 msgstr ""
 
-#: cmp.c:123
+#: cmp.c:117
 #, c-format
 msgid "cmp: EOF on %s\n"
 msgstr ""
 
-#: cmp.c:145
+#: cmp.c:139
 #, c-format
 msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
@@ -167,23 +167,23 @@ msgstr ""
 msgid "Include total allocated-space figures in the output."
 msgstr ""
 
-#: df.c:201
+#: df.c:195
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:203
+#: df.c:197
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:222
+#: df.c:216
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df.c:225
+#: df.c:219
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
@@ -315,12 +315,12 @@ msgid ""
 "to be matching lines"
 msgstr ""
 
-#: grep.c:190
+#: grep.c:183
 #, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr ""
 
-#: grep.c:477
+#: grep.c:470
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -481,12 +481,12 @@ msgstr ""
 msgid "Create symbolic links instead of hard links"
 msgstr ""
 
-#: ln.c:165
+#: ln.c:160
 #, c-format
 msgid "ln: missing link source/target\n"
 msgstr ""
 
-#: ln.c:181
+#: ln.c:176
 #, c-format
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
@@ -523,7 +523,7 @@ msgstr ""
 msgid "Create any missing intermediate pathname components"
 msgstr ""
 
-#: mkdir.c:88
+#: mkdir.c:85
 #, c-format
 msgid "parent '%s' is not a directory\n"
 msgstr ""
@@ -610,12 +610,12 @@ msgstr ""
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk.c:96
+#: pathchk.c:93
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk.c:106
+#: pathchk.c:103
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
@@ -879,7 +879,7 @@ msgstr ""
 msgid "Indicate the type of terminal."
 msgstr ""
 
-#: tput.c:138
+#: tput.c:134
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr ""
@@ -943,7 +943,7 @@ msgid ""
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:182
+#: uniq.c:177
 #, c-format
 msgid "uniq: missing source file\n"
 msgstr ""
@@ -982,7 +982,7 @@ msgid ""
 "Write to the standard output the number of characters in each input file"
 msgstr ""
 
-#: wc.c:287
+#: wc.c:282
 msgid "total"
 msgstr ""
 

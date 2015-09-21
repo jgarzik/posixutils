@@ -61,12 +61,7 @@ static int uniq_actor(struct walker *w, const char *fn, const struct stat *lst)
 	return 0;
 }
 
-static struct walker walker = {
-	.argp			= &argp,
-	.pre_walk		= uniq_pre_walk,
-	.post_walk		= uniq_post_walk,
-	.cmdline_arg		= uniq_actor,
-};
+static struct walker walker;
 
 static char last_line[LINE_MAX + 1];
 static unsigned long last_line_dups;
@@ -194,5 +189,9 @@ static int uniq_post_walk(struct walker *w)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.pre_walk		= uniq_pre_walk;
+	walker.post_walk		= uniq_post_walk;
+	walker.cmdline_arg		= uniq_actor;
 	return walk(&walker, argc, argv);
 }

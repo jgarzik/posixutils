@@ -49,11 +49,7 @@ static int strings_actor(struct walker *w, const char *fn, int fd);
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.flags			= WF_NO_FILES_STDIN,
-	.cmdline_fd		= strings_actor,
-};
+static struct walker walker;
 
 static int opt_strlen = 4;
 static enum opt_prefix {
@@ -203,5 +199,8 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.flags			= WF_NO_FILES_STDIN;
+	walker.cmdline_fd		= strings_actor;
 	return walk(&walker, argc, argv);
 }

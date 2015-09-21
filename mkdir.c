@@ -48,10 +48,7 @@ static int mkdir_arg(struct walker *w, const char *fn, const struct stat *lst);
 
 static const struct argp argp = { options, parse_opt, file_args_doc, doc };
 
-static struct walker walker = {
-	.argp			= &argp,
-	.cmdline_arg		= mkdir_arg,
-};
+static struct walker walker;
 
 static bool opt_recurse;
 
@@ -104,6 +101,8 @@ static int mkdir_arg(struct walker *w, const char *fn, const struct stat *lst)
 
 int main (int argc, char *argv[])
 {
+	walker.argp			= &argp;
+	walker.cmdline_arg		= mkdir_arg;
 	return walk(&walker, argc, argv);
 }
 

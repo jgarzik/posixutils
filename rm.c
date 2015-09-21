@@ -232,6 +232,15 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
-	PU_FN_WALKER(rm_fn_actor, 0)
+	struct cmdline_walker walker;
+	walker.argc	= argc;
+	walker.argv	= argv;
+	walker.argp	= &argp;
+	walker.flags	= 0;
+	walker.fn_actor	= rm_fn_actor;
+
+	pu_init();
+
+	return walk_cmdline(&walker);
 }
 
