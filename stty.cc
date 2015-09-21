@@ -351,8 +351,7 @@ static int param_speed(unsigned int speed, bool is_input)
 static int stty_set(const char *setting)
 {
 	bool set_val = true;
-	int i;
-	unsigned int speed;
+	unsigned int speed, i;
 
 	if (!setting) {
 		fprintf(stderr, _("stty: '%s' missing required argument\n"),

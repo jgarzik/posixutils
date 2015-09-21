@@ -352,13 +352,13 @@ static int zip_flush_hdr(struct zip_state *state)
 	struct zip_extra_hdr ex_hdr;
 	struct pax_file_info *fi = &state->curfile;
 
-	while (extra_len >= sizeof(struct zip_extra_hdr)) {
+	while (extra_len >= (ssize_t)sizeof(struct zip_extra_hdr)) {
 		memcpy(&ex_hdr, buf, sizeof(ex_hdr));
 		buf += sizeof(ex_hdr);
 		extra_len -= sizeof(ex_hdr);
 
 		entry_len = from_le16(ex_hdr.len);
-		if (entry_len > extra_len)
+		if ((ssize_t)entry_len > extra_len)
 			return PXE_GARBAGE;
 
 		switch(from_le16(ex_hdr.tag)) {

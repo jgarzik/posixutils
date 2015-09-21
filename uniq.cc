@@ -49,7 +49,7 @@ static struct argp_option options[] = {
 };
 
 static bool opt_count;
-static int opt_skip;
+static unsigned int opt_skip;
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, args_doc, doc };

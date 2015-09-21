@@ -224,7 +224,7 @@ static void cmdline(int argc, char **argv)
 }
 
 static char outbuf[tabs_outbuf_sz];
-static int outbuf_avail = tabs_outbuf_sz - 1;
+static unsigned int outbuf_avail = tabs_outbuf_sz - 1;
 
 static bool push_str(const char *val)
 {

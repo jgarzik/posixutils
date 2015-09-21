@@ -55,14 +55,15 @@ static void usage(const char *progname)
 
 static int valid_signum(int signum)
 {
-	if ((signum < 0) || (signum > ARRAY_SIZE(platform_siglist)))
+	if ((signum < 0) || ((size_t)signum > ARRAY_SIZE(platform_siglist)))
 		return 0;	/* not valid */
 	return 1;		/* valid */
 }
 
 static int signame_to_num(const char *signame)
 {
-	int i = 0, recurse = 0, rc, tmp = -1;
+	unsigned int i = 0;
+	int recurse = 0, rc, tmp = -1;
 	const char *s;
 
 	/* parse -[number] */
@@ -108,7 +109,7 @@ static void list_signal(int signum)
 
 static void list_signals(void)
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i < ARRAY_SIZE(platform_siglist); i++)
 		list_signal(i);

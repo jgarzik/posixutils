@@ -43,14 +43,14 @@ static char linebuf[LINE_MAX + 1];
 static char *extra_token;
 
 static char **dict, **out_vals;
-static int dict_size, dict_alloc;
+static unsigned int dict_size, dict_alloc;
 
 struct order *order;
-static int order_size, order_alloc;
+static unsigned int order_size, order_alloc;
 
-static char *add_token(const char *buf, int buflen, bool ok_add)
+static char *add_token(const char *buf, size_t buflen, bool ok_add)
 {
-	int i;
+	unsigned int i;
 
 	/* linear search for token in dictionary */
 	/* TODO: use a hash table or tree */
@@ -95,7 +95,7 @@ static int push_pair(char *a, char *b)
 	return 0;
 }
 
-static int push_token(const char *_s, int slen)
+static int push_token(const char *_s, size_t slen)
 {
 	char *id = add_token(_s, slen, true);
 	if (!id)
@@ -114,7 +114,7 @@ static int push_token(const char *_s, int slen)
 
 static int process_line(void)
 {
-	int mlen;
+	size_t mlen;
 	char *p = linebuf, *end;
 
 	while (*p) {
@@ -141,7 +141,7 @@ static int max_recurse;
 
 static bool item_precedes(const char *a, const char *b)
 {
-	int i;
+	unsigned int i;
 
 	max_recurse--;			/* crude hack! */
 	if (max_recurse <= 0) {
@@ -205,7 +205,7 @@ static int init_arrays(void)
 
 static void write_vals(void)
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i < dict_size; i++)
 		printf("%s\n", out_vals[i]);

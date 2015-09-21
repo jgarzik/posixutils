@@ -115,7 +115,7 @@ static bool env_listed(const char *s)
 static int do_env(void)
 {
 	char **env, **arg, *msg;
-	int n_env, i, j;
+	unsigned int i, j, n_env;
 
 	arg = (char **) xmalloc((arg_list.len + 1) * sizeof(char *));
 	for (i = 0; i < arg_list.len; i++)

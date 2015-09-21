@@ -49,7 +49,7 @@ enum random_constants {
 };
 
 static char buf[HEAD_BUF_SZ];
-static int head_lines = 10;
+static unsigned int head_lines = 10;
 static int print_header;
 
 static void do_print_header(const char *fn)

@@ -223,7 +223,7 @@ compress(const char *in, const char *out, int bits)
 		goto err;
 	}
 	while ((nr = fread(buf, 1, sizeof(buf), ifp)) != 0)
-		if (zwrite(zfp, buf, nr) != nr) {
+		if ((size_t)zwrite(zfp, buf, nr) != nr) {
 			cwarn("%s", out);
 			goto err;
 		}

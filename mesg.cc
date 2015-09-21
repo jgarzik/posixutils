@@ -43,7 +43,8 @@ static struct {
 
 int main (int argc, char *argv[])
 {
-	int i, ttyfd = -1;
+	unsigned int i;
+	int ttyfd = -1;
 	const char *ttyname;
 	struct stat st;
 

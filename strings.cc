@@ -51,7 +51,7 @@ static const struct argp argp = { options, parse_opt, args_doc, doc };
 
 static struct walker walker;
 
-static int opt_strlen = 4;
+static unsigned int opt_strlen = 4;
 static enum opt_prefix {
 	PFX_NONE,
 	PFX_DECIMAL,
@@ -111,11 +111,12 @@ static int strings_buf(void)
 {
 	char *p, *sep = NULL;
 	size_t len, diff;
-	int i;
 
 	p = st.buf;
 	len = st.used;
 	while (1) {
+		unsigned int i;
+
 		sep = find_sep(p, len);
 		if (!sep) {
 			if (len > (BUFLEN / 2)) {
@@ -141,7 +142,7 @@ static int strings_buf(void)
 				break;
 
 		if (i >= opt_strlen)
-			if (string_print(p) < opt_strlen)
+			if (string_print(p) < (int)opt_strlen)
 				return 1;
 
 		p = sep + 1;
