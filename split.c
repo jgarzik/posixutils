@@ -155,7 +155,7 @@ static int incr_suffix(void)
 	int i;
 
 	if (!suffix) {
-		suffix = xmalloc(opt_suffix_len + 1);
+		suffix = (char *) xmalloc(opt_suffix_len + 1);
 		for (i = 0; i < opt_suffix_len; i++)
 			suffix[i] = 'a';
 		suffix[opt_suffix_len] = 0;
@@ -184,7 +184,7 @@ static int open_output(void)
 			return rc;
 
 		assert(output_fn == NULL);
-		output_fn = xmalloc(opt_suffix_len + strlen(opt_prefix) + 1);
+		output_fn = (char *) xmalloc(opt_suffix_len + strlen(opt_prefix) + 1);
 		sprintf(output_fn, "%s%s", opt_prefix, suffix);
 
 		output_fd = open(output_fn, O_WRONLY | O_CREAT | O_TRUNC, 0666);

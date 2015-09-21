@@ -48,10 +48,10 @@ void slist_push(struct strlist *slist, const char *s, bool alloced)
 		alloc_len = slist->alloc_len * sizeof(struct strent);
 
 		if (slist->list == slist->buf) {
-			slist->list = xmalloc(alloc_len);
+			slist->list = (struct strent *) xmalloc(alloc_len);
 			memcpy(slist->list, slist->buf, sizeof(slist->buf));
 		} else
-			slist->list = xrealloc(slist->list, alloc_len);
+			slist->list = (struct strent *) xrealloc(slist->list, alloc_len);
 	}
 
 	/* store string */

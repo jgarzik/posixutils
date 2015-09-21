@@ -45,7 +45,7 @@ int main (int argc, char *argv[])
 	for (i = 1; i < argc; i++)
 		len += strlen(argv[i]) + 1;
 
-	s = xmalloc(len);
+	s = (char *) xmalloc(len);
 
 	strcpy(s, argv[1]);
 	for (i = 2; i < argc; i++) {

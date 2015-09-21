@@ -181,7 +181,7 @@ static struct zip_state global_state;
 static void zip_sched_buf(struct zip_state *state, void *buf, size_t buflen,
 			  enum zip_input_state next_state)
 {
-	state->sch_buf = buf;
+	state->sch_buf = (char *) buf;
 	state->sch_buf_len = buflen;
 	state->sch_buf_pos = 0;
 	state->sch_next_state = next_state;
@@ -215,7 +215,7 @@ static void zip_input_init(void)
 
 	state->input_state = ZS_BEGIN_REC;
 
-	state->outbuf = xmalloc(OUTBUF_SZ);
+	state->outbuf = (char *) xmalloc(OUTBUF_SZ);
 }
 
 static void zip_input_fini(void)
@@ -317,11 +317,11 @@ static int zip_file_hdr_end(struct zip_state *state)
 	fi->mtime		= dos_time_xlat(hdr->mdate, hdr->mtime);
 	fi->compressed_size	= hdr->size_c;
 	if (hdr->name_len > 0) {
-		fi->pathname	= xmalloc(hdr->name_len + 1);
+		fi->pathname	= (char *) xmalloc(hdr->name_len + 1);
 		memset(fi->pathname, 0, hdr->name_len + 1);
 	}
 	if (hdr->extra_len > 0)
-		state->extra	= xmalloc(hdr->extra_len);
+		state->extra	= (char *) xmalloc(hdr->extra_len);
 
 	state->data_bytes = fi->compressed_size;
 

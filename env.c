@@ -117,7 +117,7 @@ static int do_env(void)
 	char **env, **arg, *msg;
 	int n_env, i, j;
 
-	arg = xmalloc((arg_list.len + 1) * sizeof(char *));
+	arg = (char **) xmalloc((arg_list.len + 1) * sizeof(char *));
 	for (i = 0; i < arg_list.len; i++)
 		arg[i] = (char *) arg_list.list[i].s;
 	arg[i] = NULL;
@@ -126,7 +126,7 @@ static int do_env(void)
 	if (!opt_no_inherit)
 		n_env += count_env();
 
-	env = xmalloc(n_env * sizeof(char *));
+	env = (char **) xmalloc(n_env * sizeof(char *));
 	memset(env, 0, n_env * sizeof(char *));
 
 	for (i = 0; i < env_list.len; i++)
@@ -142,7 +142,7 @@ static int do_env(void)
 	environ = env;
 	execvp(arg[0], arg);
 
-	msg = xmalloc(strlen(arg[0]) + 16);
+	msg = (char *) xmalloc(strlen(arg[0]) + 16);
 	sprintf(msg, _("execv(%s)"), arg[0]);
 	perror(msg);
 	return 1;

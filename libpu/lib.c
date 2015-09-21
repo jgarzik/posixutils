@@ -81,8 +81,10 @@ ssize_t copy_fd(const char *dest_fn, int dest_fd,
 	return bytes;
 }
 
-int write_fd(int fd, const void *buf, size_t count, const char *fn)
+int write_fd(int fd, const void *buf_, size_t count, const char *fn)
 {
+	const char *buf = (const char *) buf_;
+
 	while (count > 0) {
 		ssize_t wrc = write(fd, buf, count);
 		if (wrc < 0) {
@@ -135,7 +137,7 @@ char *xgetcwd(void)
 
 	while (cwd_ret == NULL) {
 		len <<= 1;
-		cwd = xrealloc(cwd, len);
+		cwd = (char *) xrealloc(cwd, len);
 
 		cwd_ret = getcwd(cwd, len);
 		if ((cwd_ret == NULL) && (errno != ERANGE)) {
@@ -191,7 +193,7 @@ int iterate_directory(int old_dirfd, const char *dirfn, const char *basen,
 	int dirfd, rc = 0;
 	struct dirent *de;
 
-	fn = xmalloc(strlen(dirfn) + strlen(basen) + 2);
+	fn = (char *) xmalloc(strlen(dirfn) + strlen(basen) + 2);
 	sprintf(fn, "%s/%s", dirfn, basen);
 
 	dirfd = open(basen, O_DIRECTORY);

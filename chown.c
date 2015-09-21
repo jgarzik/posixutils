@@ -106,8 +106,8 @@ static int set_owner_group(const char *owner_group)
 	unsigned int u;
 
 	len = strlen(owner_group);
-	owner = malloc(len + 1);
-	group = malloc(len + 1);
+	owner = (char *) malloc(len + 1);
+	group = (char *) malloc(len + 1);
 
 	rc = sscanf(owner_group, "%s:%s", owner, group);
 	if (rc == 2)

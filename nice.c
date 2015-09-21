@@ -100,7 +100,7 @@ int main (int argc, char *argv[])
 	n_args = argc - idx;
 	assert(n_args >= 1);
 
-	nice_args = xmalloc((n_args + 1) * sizeof(char *));
+	nice_args = (char **) xmalloc((n_args + 1) * sizeof(char *));
 
 	for (i = 0; i < n_args; i++)
 		nice_args[i] = argv[idx + i];

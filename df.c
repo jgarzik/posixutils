@@ -97,7 +97,7 @@ static void push_mntent(struct mntent *me)
 {
 	struct stat st;
 
-	struct fslist *fl = xcalloc(1, sizeof(struct fslist));
+	struct fslist *fl = (struct fslist *) xcalloc(1, sizeof(struct fslist));
 	fl->devname = xstrdup(me->mnt_fsname);
 	fl->dir = xstrdup(me->mnt_dir);
 

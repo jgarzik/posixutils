@@ -118,7 +118,7 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 		fn = alloc_fn;
 	}
 
-	entry = xmalloc(sizeof(struct dirent) + NAME_MAX + 1);
+	entry = (struct dirent *) xmalloc(sizeof(struct dirent) + NAME_MAX + 1);
 
 	testbits = WF_FOLLOW_LINK;
 	if (have_path)

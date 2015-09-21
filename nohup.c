@@ -44,7 +44,7 @@ static int redirect_fd = STDOUT_FILENO;
 static void redirect_stdout(void)
 {
 	const char *home_env = getenv("HOME");
-	char *fn = xmalloc((home_env ? strlen(home_env) : 0) + 10);
+	char *fn = (char *) xmalloc((home_env ? strlen(home_env) : 0) + 10);
 	int fd;
 
 	sprintf(fn, _("nohup.out"));

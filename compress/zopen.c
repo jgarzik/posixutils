@@ -248,7 +248,7 @@ int zwrite(void *cookie, const void *wbp, int num)
 	if (num == 0)
 		return (0);
 
-	zs = cookie;
+	zs = (struct s_zstate *) cookie;
 	count = num;
 	bp = (const u_char *)wbp;
 	if (state == S_MIDDLE)
@@ -328,7 +328,7 @@ int zclose(void *cookie)
 	struct s_zstate *zs;
 	int rval;
 
-	zs = cookie;
+	zs = (struct s_zstate *) cookie;
 	if (zmode == 'w') {		/* Put out the final code. */
 		if (output(zs, (code_int) ent) == -1) {
 			(void)fclose(fp);
@@ -464,7 +464,7 @@ int zread(void *cookie, void *rbp, int num)
 	if (num == 0)
 		return (0);
 
-	zs = cookie;
+	zs = (struct s_zstate *) cookie;
 	count = num;
 	bp = (u_char *)rbp;
 	switch (state) {
@@ -691,7 +691,7 @@ zopen(const char *fname, const char *mode, int bits)
 		return (NULL);
 	}
 
-	if ((zs = calloc(1, sizeof(struct s_zstate))) == NULL)
+	if ((zs = (struct s_zstate *) calloc(1, sizeof(struct s_zstate))) == NULL)
 		return (NULL);
 
 	maxbits = bits ? bits : BITS;	/* User settable max # bits/code. */

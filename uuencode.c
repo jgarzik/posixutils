@@ -124,7 +124,7 @@ static void push_line (void)
 	line_len = 0;
 	line_bytes = 0;
 	if (!opt_base64)
-		line_start = push_outbuf(" ", 1);
+		line_start = (unsigned char *) push_outbuf(" ", 1);
 }
 
 static void encode_chunk(const unsigned char *s)
@@ -259,7 +259,7 @@ static int do_encode(int fd, const char *fn_string)
 	do_header(fd, fn_string);
 
 	if (!opt_base64)
-		line_start = push_outbuf(" ", 1);
+		line_start = (unsigned char *) push_outbuf(" ", 1);
 	line_len = 0;
 	line_bytes = 0;
 

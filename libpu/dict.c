@@ -48,7 +48,7 @@ struct dictionary {
 
 struct dict_entry *new_de(void *opaque, int len)
 {
-	struct dictionary *d = opaque;
+	struct dictionary *d = (struct dictionary *) opaque;
 	unsigned long addr;
 
 	/*
@@ -79,13 +79,13 @@ struct dict_entry *new_de(void *opaque, int len)
 		d->de_buf_pos++;
 
 	/* finally, return the address of the data area allocated */
-	return (void *) addr;
+	return (struct dict_entry *) (void *) addr;
 }
 
 /* hash function from Karl Nelson in a post to gtk-devel-list */
 static inline unsigned int x31_hash (const void *buf, int len)
 {
-	const char *p = buf;
+	const char *p = (const char *) buf;
 	unsigned int h = 0;
 
 	for (; len > 0; len--, p++)
@@ -95,7 +95,7 @@ static inline unsigned int x31_hash (const void *buf, int len)
 
 void dict_add(void *opaque, const void *buf, int len, long val)
 {
-	struct dictionary *d = opaque;
+	struct dictionary *d = (struct dictionary *) opaque;
 	struct dict_entry *de;
 	unsigned int hash, idx;
 
@@ -116,7 +116,7 @@ void dict_add(void *opaque, const void *buf, int len, long val)
 
 long dict_lookup(void *opaque, const void *buf, int len)
 {
-	struct dictionary *d = opaque;
+	struct dictionary *d = (struct dictionary *) opaque;
 	struct dict_entry *de;
 	unsigned int hash, idx;
 
@@ -138,7 +138,7 @@ long dict_lookup(void *opaque, const void *buf, int len)
 
 void dict_clear(void *opaque)
 {
-	struct dictionary *d = opaque;
+	struct dictionary *d = (struct dictionary *) opaque;
 
 	/* delete existing dictionary entries */
 	memset(&d->table, 0, sizeof(d->table));
@@ -148,7 +148,7 @@ void dict_clear(void *opaque)
 
 void dict_free(void *opaque)
 {
-	struct dictionary *d = opaque;
+	struct dictionary *d = (struct dictionary *) opaque;
 
 	dict_clear(d);
 
@@ -162,14 +162,14 @@ void dict_free(void *opaque)
 
 void dict_init(void *opaque)
 {
-	struct dictionary *d = opaque;
+	struct dictionary *d = (struct dictionary *) opaque;
 
 	dict_clear(d);
 }
 
 void *dict_new(void)
 {
-	struct dictionary *d = xcalloc(1, sizeof(struct dictionary));
+	struct dictionary *d = (struct dictionary *) xcalloc(1, sizeof(struct dictionary));
 	d->de_buf = xmalloc(DE_BUF_SZ);
 	d->de_buf_len = DE_BUF_SZ;
 	return d;

@@ -113,7 +113,7 @@ static int do_confstr(int val)
 		return 1;
 	}
 
-	buf = xmalloc(n);
+	buf = (char *) xmalloc(n);
 	confstr(val, buf, n);
 
 	printf("%s\n", buf);

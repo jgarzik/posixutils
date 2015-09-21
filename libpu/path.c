@@ -38,7 +38,7 @@ static void componentize(const char *path, char **dirc, char **dirn,
 
 struct pathelem *path_split(const char *pathname)
 {
-	struct pathelem *pe = xmalloc(sizeof(struct pathelem));
+	struct pathelem *pe = (struct pathelem *) xmalloc(sizeof(struct pathelem));
 
 	componentize(pathname, &pe->dirc, &pe->dirn, &pe->basec, &pe->basen);
 

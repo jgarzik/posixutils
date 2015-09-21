@@ -126,7 +126,7 @@ static void ustar_hdr_str(const char *s_in, size_t maxlen, char **s_out)
 	char *s;
 
 	len = strnlen(s_in, maxlen);
-	s = xmalloc(len + 1);
+	s = (char *) xmalloc(len + 1);
 
 	memcpy(s, s_in, len);
 	s[len] = 0;

@@ -124,7 +124,7 @@ static void add_grpent(struct grpent **head, struct grpent **tail_io,
 {
 	struct grpent *ent, *tail = *tail_io;
 
-	ent = xmalloc(sizeof(struct grpent) + strlen(gr->gr_name) + 1);
+	ent = (struct grpent *) xmalloc(sizeof(struct grpent) + strlen(gr->gr_name) + 1);
 	ent->gid = gr->gr_gid;
 	ent->next = NULL;
 	strcpy(ent->name, gr->gr_name);

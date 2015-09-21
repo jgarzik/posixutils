@@ -92,7 +92,7 @@ static const char *arg_name(int mask)
 
 static void push_opt(int mask, unsigned long arg)
 {
-	struct arglist *tmp, *node = xcalloc(1, sizeof(struct arglist));
+	struct arglist *tmp, *node = (struct arglist *) xcalloc(1, sizeof(struct arglist));
 
 	node->mask = mask;
 	node->arg = arg;

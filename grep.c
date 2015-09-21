@@ -167,7 +167,7 @@ static void compile_patterns(void)
 
 			/* replace pattern with new string */
 			if (need_pre || need_suff) {
-				char *s = xmalloc(len + 3);
+				char *s = (char *) xmalloc(len + 3);
 				sprintf(s, "%s%s%s",
 					need_pre ? "^" : "",
 					pat_str,
@@ -198,7 +198,7 @@ static void add_pattern(const char *pat_str)
 		else
 			alloc_patterns <<= 1;
 
-		patterns = xrealloc(patterns,
+		patterns = (struct pattern *) xrealloc(patterns,
 				    alloc_patterns * sizeof(struct pattern));
 	}
 
@@ -219,7 +219,7 @@ static void add_patterns(const char *pattern_list_in)
 		int i;
 
 		/* search for newline */
-		nl = memchr(pattern_list, '\n', len);
+		nl = (char *) memchr(pattern_list, '\n', len);
 
 		/* if no newline, this is last pattern in list */
 		if (!nl) {
@@ -333,7 +333,7 @@ static int match_string(const char *line)
 	/* attach to match substring within line */
 	else
 		for (i = 0; i < n_patterns; i++) {
-			char *s;
+			const char *s;
 			if (opt_ignore_case)
 				 s = strcasestr(line, patterns[i].pat_str);
 			else

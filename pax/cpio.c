@@ -117,7 +117,7 @@ static int cpio_hdr(struct cpio_state *state)
 		return PXE_GARBAGE;
 	state->name_len = l;
 
-	fi->pathname = xmalloc(state->name_len + 1);
+	fi->pathname = (char *) xmalloc(state->name_len + 1);
 	memset(fi->pathname, 0, state->name_len + 1);
 
 	COPYOCTAL(c_filesize, size);

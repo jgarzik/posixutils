@@ -69,7 +69,7 @@ static char *add_token(const char *buf, int buflen, bool ok_add)
 
 	if (dict_size == dict_alloc) {
 		dict_alloc *= 2;
-		dict = realloc(dict, sizeof(char *) * dict_alloc);
+		dict = (char **) realloc(dict, sizeof(char *) * dict_alloc);
 		if (!dict)
 			return NULL;
 	}
@@ -85,7 +85,7 @@ static int push_pair(char *a, char *b)
 {
 	if (order_size == order_alloc) {
 		order_alloc *= 2;
-		order = xrealloc(order, sizeof(struct order) * order_alloc);
+		order = (struct order *) xrealloc(order, sizeof(struct order) * order_alloc);
 	}
 
 	order[order_size].pred = a;
@@ -181,7 +181,7 @@ static int compare_items(const void *_a, const void *_b)
 
 static int do_sort(void)
 {
-	out_vals = calloc(dict_size, sizeof(char *));
+	out_vals = (char **) calloc(dict_size, sizeof(char *));
 	if (!out_vals)
 		return 1;
 
@@ -194,10 +194,10 @@ static int do_sort(void)
 
 static int init_arrays(void)
 {
-	dict = xcalloc(512, sizeof(char *));
+	dict = (char **) xcalloc(512, sizeof(char *));
 	dict_alloc = 512;
 
-	order = xcalloc(512, sizeof(struct order));
+	order = (struct order *) xcalloc(512, sizeof(struct order));
 	order_alloc = 512;
 
 	return 0;

@@ -60,7 +60,7 @@ char *xstrdup(const char *s)
 
 char *strpathcat(const char *dirn, const char *basen)
 {
-	char *s = xmalloc(strlen(dirn) + strlen(basen) + 2);
+	char *s = (char *) xmalloc(strlen(dirn) + strlen(basen) + 2);
 	sprintf(s, "%s/%s", dirn, basen);
 	return s;
 }

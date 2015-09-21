@@ -119,7 +119,7 @@ static void parse_user_time(char *ut)
 
 	memset(&tm, 0, sizeof(tm));
 
-	suff = strchr(ut, '.');
+	suff = (char *) strchr(ut, '.');
 	if (suff) {
 		*suff = 0;
 		suff++;

@@ -423,7 +423,7 @@ static int pax_read_archive(void)
 	}
 
 	assert(block_size > 0);
-	buf = xmalloc(block_size);
+	buf = (char *) xmalloc(block_size);
 
 	pax_ops.input_init();
 
