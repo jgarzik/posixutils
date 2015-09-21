@@ -1,4 +1,4 @@
-asa.cc
+asa/asa.cc
 basename.cc
 cat.cc
 chown.cc

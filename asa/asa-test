@@ -1,0 +1,16 @@
+#!/bin/sh
+
+OUTFN="asa-test.$$"
+
+./asa $srcdir/asa-test.in1 > $OUTFN
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN
+	exit 1
+fi
+
+cmp -s $srcdir/asa-test.out1 $OUTFN
+retval=$?
+rm -f $OUTFN
+
+exit $retval

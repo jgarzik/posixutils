@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 11:21-0400\n"
+"POT-Creation-Date: 2015-09-21 11:56-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: asa.cc:41
+#: asa/asa.cc:41
 msgid "asa - interpret carriage-control characters"
 msgstr ""
 
-#: asa.cc:57
+#: asa/asa.cc:57
 #, c-format
 msgid "malformed line\n"
 msgstr ""
