@@ -9,9 +9,7 @@ SUBDIRS = \
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-siglist.pl gen-strmap.pl
-BUILT_SOURCES = kill-siglist.h
-CLEANFILES = kill-siglist.h
+EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-strmap.pl
 
 LIBPU = libpu/libpu.a @ARGP_LIB@
 
@@ -121,5 +119,3 @@ wc_LDADD = $(LIBPU)
 what_SOURCES = what.cc
 what_LDADD = $(LIBPU)
 
-kill-siglist.h: Makefile
-	$(PERL) $(srcdir)/gen-siglist.pl signal-copy.h >$@

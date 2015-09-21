@@ -1,5 +1,8 @@
 
 getconf
+getconf-confstr.h
+getconf-path.h
+getconf-system.h
 
 *.log
 *.trs

@@ -25,10 +25,6 @@ posixutils-config.h*
 autom4te.cache
 .deps
 
-kill-siglist.h
-getconf-confstr.h
-getconf-path.h
-getconf-system.h
 signal-copy.h
 
 link
