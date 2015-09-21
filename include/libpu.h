@@ -31,6 +31,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <argp.h>
+#include <dirent.h>
 
 #if ENABLE_NLS
 # include <libintl.h>
@@ -260,6 +261,10 @@ static inline char *fgets_unlocked(char *s, int size, FILE *stream)
 {
 	return fgets(s, size, stream);
 }
+#endif
+
+#ifndef NAME_MAX
+#define NAME_MAX MAXNAMLEN
 #endif
 
 #endif /* __POSIXUTILS_LIB_H__ */
