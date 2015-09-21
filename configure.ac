@@ -68,6 +68,14 @@ AC_CONFIG_FILES([Makefile
 		dirname/Makefile
 		echo/Makefile
 		env/Makefile
+		false/Makefile
+		getconf/Makefile
+		grep/Makefile
+		head/Makefile
+		id/Makefile
+		ipcrm/Makefile
+		ipcs/Makefile
+		kill/Makefile
 		pax/Makefile
 		platform/Makefile
 		platform/signal/Makefile

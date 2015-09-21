@@ -1,7 +1,7 @@
 #!/bin/sh
 
-TEST_UID=`../id -ur`
-TEST_EUID=`../id -u`
+TEST_UID=`./id -ur`
+TEST_EUID=`./id -u`
 
 if [ $UID -ne $TEST_UID ]
 then

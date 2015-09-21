@@ -4,52 +4,26 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = \
 	doc m4 po include platform libpu \
 	asa basename cat chown cksum cmp comm compress \
-	date df dirname echo env pax tests
+	date df dirname echo env false getconf grep head \
+	id ipcrm ipcs kill pax tests
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-EXTRA_DIST = config.rpath mkinstalldirs	TODO	\
-	gen-siglist.pl gen-strmap.pl		\
-	getconf-path.data getconf-system.data getconf-confstr.data
-
-BUILT_SOURCES = kill-siglist.h getconf-path.h getconf-system.h \
-	getconf-confstr.h
-CLEANFILES = kill-siglist.h getconf-path.h getconf-system.h \
-	getconf-confstr.h
+EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-siglist.pl gen-strmap.pl
+BUILT_SOURCES = kill-siglist.h
+CLEANFILES = kill-siglist.h
 
 LIBPU = libpu/libpu.a @ARGP_LIB@
 
 bin_PROGRAMS = \
-	false	\
-	getconf	grep head id ipcrm kill link logger logname ln mesg	\
+	link logger logname ln mesg	\
 	nice nohup pwd renice rm rmdir sleep strings tabs tee time	\
 	touch tput true tsort tty uname unlink uuencode wc what
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO, and doc/status/PROGRAM.status, for more information.
-noinst_PROGRAMS = ipcs mkdir mkfifo mv pathchk split stty uniq
+noinst_PROGRAMS = mkdir mkfifo mv pathchk split stty uniq
 
-
-getconf_SOURCES = getconf.cc
-getconf_LDADD = $(LIBPU)
-
-grep_SOURCES = grep.cc
-grep_LDADD = $(LIBPU)
-
-head_SOURCES = head.cc
-head_LDADD = $(LIBPU)
-
-id_SOURCES = id.cc
-id_LDADD = $(LIBPU)
-
-ipcs_SOURCES = ipcs.cc
-ipcs_LDADD = $(LIBPU)
-
-ipcrm_SOURCES = ipcrm.cc
-ipcrm_LDADD = $(LIBPU)
-
-kill_SOURCES = kill.cc
-kill_LDADD = $(LIBPU)
 
 link_SOURCES = link.cc
 link_LDADD = $(LIBPU)
@@ -149,10 +123,3 @@ what_LDADD = $(LIBPU)
 
 kill-siglist.h: Makefile
 	$(PERL) $(srcdir)/gen-siglist.pl signal-copy.h >$@
-getconf-path.h: Makefile
-	$(PERL) $(srcdir)/gen-strmap.pl $(srcdir)/getconf-path.data >$@
-getconf-system.h: Makefile
-	$(PERL) $(srcdir)/gen-strmap.pl $(srcdir)/getconf-system.data >$@
-getconf-confstr.h: Makefile
-	$(PERL) $(srcdir)/gen-strmap.pl $(srcdir)/getconf-confstr.data >$@
-

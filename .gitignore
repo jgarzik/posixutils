@@ -31,14 +31,6 @@ getconf-path.h
 getconf-system.h
 signal-copy.h
 
-false
-getconf
-grep
-head
-id
-ipcrm
-ipcs
-kill
 link
 ln
 logger

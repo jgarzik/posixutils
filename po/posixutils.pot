@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 15:48-0400\n"
+"POT-Creation-Date: 2015-09-21 16:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,254 +205,254 @@ msgstr ""
 msgid "execv(%s)"
 msgstr ""
 
-#: getconf.cc:36
+#: getconf/getconf.cc:36
 msgid "getconf - get configuration values"
 msgstr ""
 
-#: getconf.cc:38
+#: getconf/getconf.cc:38
 msgid "[system_var | path_var pathname]"
 msgstr ""
 
-#: getconf.cc:42
+#: getconf/getconf.cc:42
 msgid "not implemented yet"
 msgstr ""
 
-#: getconf.cc:77
+#: getconf/getconf.cc:77
 #, c-format
 msgid "invalid path variable %s\n"
 msgstr ""
 
-#: getconf.cc:79
+#: getconf/getconf.cc:79
 #, c-format
 msgid "invalid system variable %s\n"
 msgstr ""
 
-#: getconf.cc:90
+#: getconf/getconf.cc:90
 #, c-format
 msgid "undefined"
 msgstr ""
 
-#: getconf.cc:95
+#: getconf/getconf.cc:95
 msgid "pathconf(3)"
 msgstr ""
 
-#: getconf.cc:97
+#: getconf/getconf.cc:97
 msgid "sysconf(3)"
 msgstr ""
 
-#: getconf.cc:112
+#: getconf/getconf.cc:112
 #, c-format
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf.cc:168 ipcs.cc:371 nice.cc:91 pwd.cc:110 split.cc:370
+#: getconf/getconf.cc:168 ipcs/ipcs.cc:371 nice.cc:91 pwd.cc:110 split.cc:370
 #, c-format
 msgid "argp_parse failed: %s\n"
 msgstr ""
 
-#: grep.cc:45
+#: grep/grep.cc:45
 msgid "grep - print lines matching a pattern"
 msgstr ""
 
-#: grep.cc:47
+#: grep/grep.cc:47
 msgid "[pattern_list] [file...]"
 msgstr ""
 
-#: grep.cc:51
+#: grep/grep.cc:51
 msgid "Match using extended regular expressions"
 msgstr ""
 
-#: grep.cc:53
+#: grep/grep.cc:53
 msgid "Match using fixed strings"
 msgstr ""
 
-#: grep.cc:55
+#: grep/grep.cc:55
 msgid "Write only a count of selected lines to standard output"
 msgstr ""
 
-#: grep.cc:57
+#: grep/grep.cc:57
 msgid "Specify one or more patterns to be used during the search for input"
 msgstr ""
 
-#: grep.cc:59
+#: grep/grep.cc:59
 msgid ""
 "Read one or more patterns from the file named by the pathname pattern_file"
 msgstr ""
 
-#: grep.cc:61
+#: grep/grep.cc:61
 msgid "Perform pattern matching in searches without regard to case"
 msgstr ""
 
-#: grep.cc:63
+#: grep/grep.cc:63
 msgid ""
 "Write only the names of files containing selected lines to standard output"
 msgstr ""
 
-#: grep.cc:65
+#: grep/grep.cc:65
 msgid "Precede each output line by its relative line number in the file"
 msgstr ""
 
-#: grep.cc:67
+#: grep/grep.cc:67
 msgid ""
 "Quiet. Nothing shall be written to the standard output, regardless of "
 "matching lines. Exit with zero status if an input line is selected."
 msgstr ""
 
-#: grep.cc:70
+#: grep/grep.cc:70
 msgid ""
 "Suppress the error messages ordinarily written for nonexistent or unreadable "
 "files"
 msgstr ""
 
-#: grep.cc:72
+#: grep/grep.cc:72
 msgid "Select lines not matching any of the specified patterns"
 msgstr ""
 
-#: grep.cc:74
+#: grep/grep.cc:74
 msgid ""
 "Consider only input lines that use all characters in the line, excluding the "
 "terminating <newline>, to match an entire fixed string or regular expression "
 "to be matching lines"
 msgstr ""
 
-#: grep.cc:183
+#: grep/grep.cc:183
 #, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr ""
 
-#: grep.cc:470
+#: grep/grep.cc:470
 #, c-format
 msgid "no patterns specified"
 msgstr ""
 
-#: head.cc:32
+#: head/head.cc:32
 msgid "head - output the first part of files"
 msgstr ""
 
-#: head.cc:36
+#: head/head.cc:36
 msgid "first number lines of each input file to copy to stdout"
 msgstr ""
 
-#: id.cc:37
+#: id/id.cc:37
 msgid "id - return user identity"
 msgstr ""
 
-#: id.cc:39
+#: id/id.cc:39
 msgid "[user]"
 msgstr ""
 
-#: id.cc:42
+#: id/id.cc:42
 msgid "Output only the effective group ID"
 msgstr ""
 
-#: id.cc:44
+#: id/id.cc:44
 msgid "Output all different group IDs"
 msgstr ""
 
-#: id.cc:46
+#: id/id.cc:46
 msgid "Output the name instead of the numeric ID"
 msgstr ""
 
-#: id.cc:48
+#: id/id.cc:48
 msgid "Output the real ID instead of the effective ID"
 msgstr ""
 
-#: id.cc:50
+#: id/id.cc:50
 msgid "Output only the effective user ID"
 msgstr ""
 
-#: ipcs.cc:44
+#: ipcs/ipcs.cc:44
 msgid "ipcs - report XSI interprocess communication facilities status"
 msgstr ""
 
-#: ipcs.cc:48
+#: ipcs/ipcs.cc:48
 msgid "Write information about active message queues."
 msgstr ""
 
-#: ipcs.cc:50
+#: ipcs/ipcs.cc:50
 msgid "Write information about active shared memory segments."
 msgstr ""
 
-#: ipcs.cc:52
+#: ipcs/ipcs.cc:52
 msgid "Write information about active semaphore sets."
 msgstr ""
 
-#: ipcs.cc:55
+#: ipcs/ipcs.cc:55
 msgid ""
 "Use all print options. (This is a shorthand notation for -b, -c, -o, -p, and "
 "-t.)"
 msgstr ""
 
-#: ipcs.cc:57
+#: ipcs/ipcs.cc:57
 msgid "Write information on maximum allowable size."
 msgstr ""
 
-#: ipcs.cc:59
+#: ipcs/ipcs.cc:59
 msgid "Write creator's user name and group name"
 msgstr ""
 
-#: ipcs.cc:61
+#: ipcs/ipcs.cc:61
 msgid "Write information on outstanding usage."
 msgstr ""
 
-#: ipcs.cc:63
+#: ipcs/ipcs.cc:63
 msgid "Write process number information."
 msgstr ""
 
-#: ipcs.cc:65
+#: ipcs/ipcs.cc:65
 msgid "Write time information."
 msgstr ""
 
-#: ipcs.cc:142
+#: ipcs/ipcs.cc:142
 #, c-format
 msgid "stftime(3) failed\n"
 msgstr ""
 
-#: ipcs.cc:146
+#: ipcs/ipcs.cc:146
 #, c-format
 msgid "IPC status from %s as of %s\n"
 msgstr ""
 
-#: ipcs.cc:156
+#: ipcs/ipcs.cc:156
 #, c-format
 msgid "Message queues:\n"
 msgstr ""
 
-#: ipcs.cc:231
+#: ipcs/ipcs.cc:231
 #, c-format
 msgid "Shared memory:\n"
 msgstr ""
 
-#: ipcs.cc:304
+#: ipcs/ipcs.cc:304
 #, c-format
 msgid "Semaphores:\n"
 msgstr ""
 
-#: ipcrm.cc:37
+#: ipcrm/ipcrm.cc:37
 msgid "ipcrm - remove a message queue, semaphore set or shared memory id"
 msgstr ""
 
-#: ipcrm.cc:41
+#: ipcrm/ipcrm.cc:41
 msgid "Remove message queue identifier msgid from system"
 msgstr ""
 
-#: ipcrm.cc:43
+#: ipcrm/ipcrm.cc:43
 msgid "Remove shared memory identifier shmid from system"
 msgstr ""
 
-#: ipcrm.cc:45
+#: ipcrm/ipcrm.cc:45
 msgid "Remove semaphore identifier semid from system"
 msgstr ""
 
-#: ipcrm.cc:47
+#: ipcrm/ipcrm.cc:47
 msgid "Remove message queue identifier, created with key msgkey, from system"
 msgstr ""
 
-#: ipcrm.cc:49
+#: ipcrm/ipcrm.cc:49
 msgid "Remove shared memory identifier, created with key shmkey, from system"
 msgstr ""
 
-#: ipcrm.cc:51
+#: ipcrm/ipcrm.cc:51
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
