@@ -33,7 +33,6 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <libpu.h>
-#include "cksum_crctab.h"
 
 static const char doc[] =
 N_("what - identify SCCS files");
