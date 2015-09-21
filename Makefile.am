@@ -15,7 +15,7 @@ BUILT_SOURCES = kill-siglist.h getconf-path.h getconf-system.h \
 CLEANFILES = kill-siglist.h getconf-path.h getconf-system.h \
 	getconf-confstr.h
 
-LIBPU = libpu/libpu.a
+LIBPU = libpu/libpu.a @ARGP_LIB@
 
 bin_PROGRAMS = \
 	asa basename cat cksum cmp comm date df dirname echo env false	\

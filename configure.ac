@@ -34,6 +34,7 @@ AC_CHECK_FUNCS(__fsetlocking fgets_unlocked)
 
 AC_CHECK_LIB(z,inflate,ZLIB_LIB="-lz",exit 1)
 AC_CHECK_LIB(ncurses,setupterm,CURSES_LIB="-lncurses",exit 1)
+AC_CHECK_LIB(argp, argp_parse, ARGP_LIB=-largp)
 
 AC_DEFINE(_ISOC99_SOURCE, 1, [ISOC99 source])
 AC_DEFINE(_POSIX_SOURCE, 1, [POSIX source])
@@ -44,6 +45,7 @@ AC_DEFINE(_LARGEFILE64_SOURCE, 1, [largefile support])
 
 AC_SUBST(ZLIB_LIB)
 AC_SUBST(CURSES_LIB)
+AC_SUBST(ARGP_LIB)
 
 AC_CONFIG_FILES([Makefile
 		po/Makefile.in

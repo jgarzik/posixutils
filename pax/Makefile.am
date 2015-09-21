@@ -13,7 +13,7 @@ LIBPU = ../libpu/libpu.a
 noinst_PROGRAMS = pax
 
 pax_SOURCES = main.cc pax.h pax.cc ustar.cc cpio.cc zip.cc
-pax_LDADD = $(LIBPU) @ZLIB_LIB@
+pax_LDADD = $(LIBPU) @ZLIB_LIB@ @ARGP_LIB@
 
 pax-options.h: Makefile
 	$(PERL) $(top_srcdir)/gen-strmap.pl $(srcdir)/pax-options.data >$@
