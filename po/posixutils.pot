@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-18 01:31-0400\n"
+"POT-Creation-Date: 2015-09-20 23:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: asa.c:39
+#: asa.c:41
 msgid "asa - interpret carriage-control characters"
 msgstr ""
 
-#: asa.c:55
+#: asa.c:57
 #, c-format
 msgid "malformed line\n"
 msgstr ""
@@ -44,46 +44,46 @@ msgstr ""
 msgid "(ignored)"
 msgstr ""
 
-#: chown.c:43
+#: chown.c:45
 msgid "chown - change file owner and group"
 msgstr ""
 
-#: chown.c:45
+#: chown.c:47
 msgid "owner[:group] file ..."
 msgstr ""
 
-#: chown.c:49
+#: chown.c:51
 msgid "Set uid/gid of symlink, if file is a symlink."
 msgstr ""
 
-#: chown.c:51
+#: chown.c:53
 msgid "Recurse into symlinked dirs on the command line."
 msgstr ""
 
-#: chown.c:53
+#: chown.c:55
 msgid ""
 "Recurse into symlinked dirs on the command line or found during traversal."
 msgstr ""
 
-#: chown.c:55
+#: chown.c:57
 msgid "Do not follow symlinks."
 msgstr ""
 
-#: chown.c:57
+#: chown.c:59
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown.c:95
+#: chown.c:97
 #, c-format
 msgid "invalid group '%s'\n"
 msgstr ""
 
-#: chown.c:121
+#: chown.c:123
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown.c:128
+#: chown.c:130
 #, c-format
 msgid "invalid owner '%s'\n"
 msgstr ""
@@ -121,23 +121,23 @@ msgstr ""
 msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
 
-#: comm.c:37
+#: comm.c:39
 msgid "comm - compare two sorted files line by line"
 msgstr ""
 
-#: comm.c:39
+#: comm.c:41
 msgid "file1 file2"
 msgstr ""
 
-#: comm.c:43
+#: comm.c:45
 msgid "Suppress the output column of lines unique to file1."
 msgstr ""
 
-#: comm.c:45
+#: comm.c:47
 msgid "Suppress the output column of lines unique to file2."
 msgstr ""
 
-#: comm.c:47
+#: comm.c:49
 msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 
@@ -151,39 +151,39 @@ msgid ""
 "\"UTC0\""
 msgstr ""
 
-#: df.c:40
+#: df.c:42
 msgid "df - report filesystem disk space usage"
 msgstr ""
 
-#: df.c:46
+#: df.c:48
 msgid "Use 1024-byte units, instead of the default 512-byte units"
 msgstr ""
 
-#: df.c:48
+#: df.c:50
 msgid "Use POSIX-defined output format"
 msgstr ""
 
-#: df.c:50
+#: df.c:52
 msgid "Include total allocated-space figures in the output."
-msgstr ""
-
-#: df.c:199
-#, c-format
-msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
 #: df.c:201
 #, c-format
+msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
+msgstr ""
+
+#: df.c:203
+#, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:220
+#: df.c:222
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df.c:223
+#: df.c:225
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
@@ -245,82 +245,82 @@ msgstr ""
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf.c:168 ipcs.c:369 nice.c:91 pwd.c:108 split.c:367
+#: getconf.c:168 ipcs.c:371 nice.c:91 pwd.c:110 split.c:370
 #, c-format
 msgid "argp_parse failed: %s\n"
 msgstr ""
 
-#: grep.c:41
+#: grep.c:45
 msgid "grep - print lines matching a pattern"
 msgstr ""
 
-#: grep.c:43
+#: grep.c:47
 msgid "[pattern_list] [file...]"
 msgstr ""
 
-#: grep.c:47
+#: grep.c:51
 msgid "Match using extended regular expressions"
 msgstr ""
 
-#: grep.c:49
+#: grep.c:53
 msgid "Match using fixed strings"
 msgstr ""
 
-#: grep.c:51
+#: grep.c:55
 msgid "Write only a count of selected lines to standard output"
 msgstr ""
 
-#: grep.c:53
-msgid "Specify one or more patterns to be used during the search for input"
-msgstr ""
-
-#: grep.c:55
-msgid ""
-"Read one or more patterns from the file named by the pathname pattern_file"
-msgstr ""
-
 #: grep.c:57
-msgid "Perform pattern matching in searches without regard to case"
+msgid "Specify one or more patterns to be used during the search for input"
 msgstr ""
 
 #: grep.c:59
 msgid ""
-"Write only the names of files containing selected lines to standard output"
+"Read one or more patterns from the file named by the pathname pattern_file"
 msgstr ""
 
 #: grep.c:61
-msgid "Precede each output line by its relative line number in the file"
+msgid "Perform pattern matching in searches without regard to case"
 msgstr ""
 
 #: grep.c:63
+msgid ""
+"Write only the names of files containing selected lines to standard output"
+msgstr ""
+
+#: grep.c:65
+msgid "Precede each output line by its relative line number in the file"
+msgstr ""
+
+#: grep.c:67
 msgid ""
 "Quiet. Nothing shall be written to the standard output, regardless of "
 "matching lines. Exit with zero status if an input line is selected."
 msgstr ""
 
-#: grep.c:66
+#: grep.c:70
 msgid ""
 "Suppress the error messages ordinarily written for nonexistent or unreadable "
 "files"
 msgstr ""
 
-#: grep.c:68
+#: grep.c:72
 msgid "Select lines not matching any of the specified patterns"
 msgstr ""
 
-#: grep.c:70
+#: grep.c:74
 msgid ""
 "Consider only input lines that use all characters in the line, excluding the "
 "terminating <newline>, to match an entire fixed string or regular expression "
 "to be matching lines"
 msgstr ""
 
-#: grep.c:186
+#: grep.c:190
 #, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr ""
 
-#: grep.c:473
+#: grep.c:477
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -361,69 +361,69 @@ msgstr ""
 msgid "Output only the effective user ID"
 msgstr ""
 
-#: ipcs.c:42
+#: ipcs.c:44
 msgid "ipcs - report XSI interprocess communication facilities status"
 msgstr ""
 
-#: ipcs.c:46
+#: ipcs.c:48
 msgid "Write information about active message queues."
 msgstr ""
 
-#: ipcs.c:48
+#: ipcs.c:50
 msgid "Write information about active shared memory segments."
 msgstr ""
 
-#: ipcs.c:50
+#: ipcs.c:52
 msgid "Write information about active semaphore sets."
 msgstr ""
 
-#: ipcs.c:53
+#: ipcs.c:55
 msgid ""
 "Use all print options. (This is a shorthand notation for -b, -c, -o, -p, and "
 "-t.)"
 msgstr ""
 
-#: ipcs.c:55
+#: ipcs.c:57
 msgid "Write information on maximum allowable size."
 msgstr ""
 
-#: ipcs.c:57
+#: ipcs.c:59
 msgid "Write creator's user name and group name"
 msgstr ""
 
-#: ipcs.c:59
+#: ipcs.c:61
 msgid "Write information on outstanding usage."
 msgstr ""
 
-#: ipcs.c:61
+#: ipcs.c:63
 msgid "Write process number information."
 msgstr ""
 
-#: ipcs.c:63
+#: ipcs.c:65
 msgid "Write time information."
 msgstr ""
 
-#: ipcs.c:140
+#: ipcs.c:142
 #, c-format
 msgid "stftime(3) failed\n"
 msgstr ""
 
-#: ipcs.c:144
+#: ipcs.c:146
 #, c-format
 msgid "IPC status from %s as of %s\n"
 msgstr ""
 
-#: ipcs.c:154
+#: ipcs.c:156
 #, c-format
 msgid "Message queues:\n"
 msgstr ""
 
-#: ipcs.c:229
+#: ipcs.c:231
 #, c-format
 msgid "Shared memory:\n"
 msgstr ""
 
-#: ipcs.c:302
+#: ipcs.c:304
 #, c-format
 msgid "Semaphores:\n"
 msgstr ""
@@ -532,29 +532,29 @@ msgstr ""
 msgid "mkfifo - make FIFOs (named pipes)"
 msgstr ""
 
-#: mv.c:42
+#: mv.c:44
 msgid "mv - move (rename) files"
 msgstr ""
 
-#: mv.c:46
+#: mv.c:48
 msgid "Do not prompt for confirmation if the destination path exists."
 msgstr ""
 
-#: mv.c:48
+#: mv.c:50
 msgid "Prompt for confirmation if the destination path exists"
 msgstr ""
 
-#: mv.c:262
+#: mv.c:264
 #, c-format
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
 
-#: mv.c:300
+#: mv.c:302
 #, c-format
 msgid "mv: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: mv.c:339
+#: mv.c:341
 #, c-format
 msgid "missing source/target\n"
 msgstr ""
@@ -602,29 +602,29 @@ msgstr ""
 msgid "nohup: no arguments\n"
 msgstr ""
 
-#: pathchk.c:38
+#: pathchk.c:40
 msgid "pathchk - check whether file names are valid or portable"
 msgstr ""
 
-#: pathchk.c:44
+#: pathchk.c:46
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk.c:94
+#: pathchk.c:96
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk.c:104
+#: pathchk.c:106
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
 
-#: pwd.c:38
+#: pwd.c:40
 msgid "pwd - print name of current/working directory"
 msgstr ""
 
-#: pwd.c:42
+#: pwd.c:44
 msgid ""
 "If the PWD environment variable contains an absolute pathname of the current "
 "directory that does not contain the filenames dot or dot-dot, pwd shall "
@@ -632,7 +632,7 @@ msgid ""
 "behave as the -P option."
 msgstr ""
 
-#: pwd.c:44
+#: pwd.c:46
 msgid ""
 "The absolute pathname written shall not contain filenames that, in the "
 "context of the pathname, refer to files of type symbolic link."
@@ -666,21 +666,21 @@ msgid ""
 "adjusted"
 msgstr ""
 
-#: rm.c:42
+#: rm.c:44
 msgid "rm - remove files or directories"
 msgstr ""
 
-#: rm.c:48
+#: rm.c:50
 msgid ""
 "Do not prompt for confirmation. Do not write diagnostic messages or modify "
 "the exit status in the case of nonexistent operands."
 msgstr ""
 
-#: rm.c:50
+#: rm.c:52
 msgid "Prompt for confirmation"
 msgstr ""
 
-#: rm.c:52
+#: rm.c:54
 msgid "Remove file hierarchies"
 msgstr ""
 
@@ -702,36 +702,36 @@ msgstr ""
 msgid "invalid sleep argument\n"
 msgstr ""
 
-#: split.c:43
+#: split.c:46
 msgid "split - split a file into pieces"
 msgstr ""
 
-#: split.c:45
+#: split.c:48
 msgid "[file [prefix]]"
 msgstr ""
 
-#: split.c:49
+#: split.c:52
 msgid ""
 "Use N letters to form the suffix portion of the filenames of the split file"
 msgstr ""
 
-#: split.c:51
+#: split.c:54
 msgid "Split a file into pieces n bytes in size"
 msgstr ""
 
-#: split.c:53
+#: split.c:56
 msgid "Specify the number of lines in each resulting file piece"
 msgstr ""
 
-#: split.c:284
+#: split.c:287
 msgid "setvbuf(3) failed"
 msgstr ""
 
-#: split.c:328
+#: split.c:331
 msgid "(standard input)"
 msgstr ""
 
-#: split.c:373
+#: split.c:376
 #, c-format
 msgid "prefix + suffix too large\n"
 msgstr ""
@@ -884,12 +884,12 @@ msgstr ""
 msgid "tput: setupterm failed\n"
 msgstr ""
 
-#: tsort.c:146
+#: tsort.c:148
 #, c-format
 msgid "tsort: max recursion limit reached\n"
 msgstr ""
 
-#: tsort.c:223
+#: tsort.c:225
 #, c-format
 msgid "usage: tsort FILE\n"
 msgstr ""
@@ -933,17 +933,17 @@ msgid ""
 "implementation."
 msgstr ""
 
-#: uniq.c:39
+#: uniq.c:41
 msgid "uniq - report or filter out repeated lines in a file"
 msgstr ""
 
-#: uniq.c:45
+#: uniq.c:47
 msgid ""
 "Precede each output line with a count of the number of times the line "
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:180
+#: uniq.c:182
 #, c-format
 msgid "uniq: missing source file\n"
 msgstr ""
@@ -986,11 +986,11 @@ msgstr ""
 msgid "total"
 msgstr ""
 
-#: what.c:37
+#: what.c:39
 msgid "what - identify SCCS files"
 msgstr ""
 
-#: what.c:43
+#: what.c:45
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 
@@ -998,10 +998,10 @@ msgstr ""
 msgid "out of memory"
 msgstr ""
 
-#: libpu/lib.c:42
+#: libpu/lib.c:43
 msgid "file..."
 msgstr ""
 
-#: libpu/lib.c:141
+#: libpu/lib.c:142
 msgid "getcwd(3) failed"
 msgstr ""

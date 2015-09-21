@@ -22,6 +22,8 @@
 #endif
 #include "posixutils-config.h"
 
+#define __STDC_FORMAT_MACROS 1
+
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>

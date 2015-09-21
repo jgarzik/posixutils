@@ -22,7 +22,11 @@
 #endif
 #include "posixutils-config.h"
 
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE		/* for strcasestr(3), fgets_unlocked(3) */
+#endif
+
+#define __STDC_FORMAT_MACROS 1
 
 #include <sys/types.h>
 #include <sys/stat.h>

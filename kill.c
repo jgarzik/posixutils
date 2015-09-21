@@ -22,7 +22,9 @@
 #endif
 #include "posixutils-config.h"
 
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 
 #include <sys/types.h>
 #include <unistd.h>

@@ -23,7 +23,9 @@
 #endif
 #include "posixutils-config.h"
 
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE		/* for MSG_INFO, MSG_STAT */
+#endif
 
 #include <sys/types.h>
 #include <sys/utsname.h>

@@ -23,7 +23,9 @@
 #endif
 #include "posixutils-config.h"
 
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE		/* for fgets_unlocked(3) */
+#endif
 
 #include <sys/types.h>
 #include <sys/stat.h>
