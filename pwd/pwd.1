@@ -1,0 +1,140 @@
+NAME
+
+    pwd - return working directory name
+
+SYNOPSIS
+
+    pwd [-L | -P ]
+
+DESCRIPTION
+
+    The pwd utility shall write to standard output an absolute pathname of
+the current working directory, which does not contain the filenames dot or
+dot-dot.
+
+OPTIONS
+
+    The pwd utility shall conform to the Base Definitions volume of IEEE Std
+1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following options shall be supported by the implementation:
+
+    -L
+        If the PWD environment variable contains an absolute pathname of the
+current directory that does not contain the filenames dot or dot-dot, pwd
+shall write this pathname to standard output. Otherwise, the -L option shall
+behave as the -P option.
+    -P
+        The absolute pathname written shall not contain filenames that, in
+the context of the pathname, refer to files of type symbolic link.
+
+    If both -L and -P are specified, the last one shall apply. If neither -L
+nor -P is specified, the pwd utility shall behave as if -L had been
+specified.
+
+OPERANDS
+
+    None.
+
+STDIN
+
+    Not used.
+
+INPUT FILES
+
+    None.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of pwd:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+    PWD
+        If the -P option is in effect, this variable shall be set to an
+absolute pathname of the current working directory that does not contain any
+components that specify symbolic links, does not contain any components that
+are dot, and does not contain any components that are dot-dot. If an
+application sets or unsets the value of PWD , the behavior of pwd is
+unspecified.
+
+ASYNCHRONOUS EVENTS
+
+    Default.
+
+STDOUT
+
+    The pwd utility output is an absolute pathname of the current working
+directory:
+
+    "%s\n", <directory pathname>
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    None.
+
+EXTENDED DESCRIPTION
+
+    None.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        Successful completion.
+    >0
+        An error occurred.
+
+CONSEQUENCES OF ERRORS
+
+    If an error is detected, output shall not be written to standard output,
+a diagnostic message shall be written to standard error, and the exit status
+is not zero.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    None.
+
+EXAMPLES
+
+    None.
+
+RATIONALE
+
+    Some implementations have historically provided pwd as a shell special
+built-in command.
+
+    In most utilities, if an error occurs, partial output may be written to
+standard output. This does not happen in historical implementations of pwd.
+Because pwd is frequently used in historical shell scripts without checking
+the exit status, it is important that the historical behavior is required
+here; therefore, the CONSEQUENCES OF ERRORS section specifically disallows
+any partial output being written to standard output.
+
+FUTURE DIRECTIONS
+
+    None.
+
+SEE ALSO
+
+    cd, the System Interfaces volume of IEEE Std 1003.1-2001, getcwd()
+

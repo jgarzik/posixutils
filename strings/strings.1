@@ -1,0 +1,174 @@
+NAME
+
+    strings - find printable strings in files
+
+SYNOPSIS
+
+    [UP] [Option Start] strings [-a][-t format][-n number][file...][Option
+End]
+
+DESCRIPTION
+
+    The strings utility shall look for printable strings in regular files and
+shall write those strings to standard output. A printable string is any
+sequence of four (by default) or more printable characters terminated by a
+<newline> or NUL character. Additional implementation-defined strings may be
+written; see localedef.
+
+OPTIONS
+
+    The strings utility shall conform to the Base Definitions volume of IEEE
+Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following options shall be supported:
+
+    -a
+        Scan files in their entirety. If -a is not specified, it is
+implementation-defined what portion of each file is scanned for strings.
+    -n  number
+        Specify the minimum string length, where the number argument is a
+positive decimal integer. The default shall be 4.
+    -t  format
+        Write each string preceded by its byte offset from the start of the
+file. The format shall be dependent on the single character used as the
+format option-argument:
+
+        d
+            The offset shall be written in decimal.
+        o
+            The offset shall be written in octal.
+        x
+            The offset shall be written in hexadecimal.
+
+OPERANDS
+
+    The following operand shall be supported:
+
+    file
+        A pathname of a regular file to be used as input. If no file operand
+is specified, the strings utility shall read from the standard input.
+
+STDIN
+
+    See the INPUT FILES section.
+
+INPUT FILES
+
+    The input files named by the utility arguments or the standard input
+shall be regular files of any format.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of
+strings:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments and input files) and to identify printable strings.
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+
+ASYNCHRONOUS EVENTS
+
+    Default.
+
+STDOUT
+
+    Strings found shall be written to the standard output, one per line.
+
+    When the -t option is not specified, the format of the output shall be:
+
+    "%s", <string>
+
+    With the -t o option, the format of the output shall be:
+
+    "%o %s", <byte offset>, <string>
+
+    With the -t x option, the format of the output shall be:
+
+    "%x %s", <byte offset>, <string>
+
+    With the -t d option, the format of the output shall be:
+
+    "%d %s", <byte offset>, <string>
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    None.
+
+EXTENDED DESCRIPTION
+
+    None.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        Successful completion.
+    >0
+        An error occurred.
+
+CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    By default the data area (as opposed to the text, "bss", or header areas)
+of a binary executable file is scanned. Implementations document which areas
+are scanned.
+
+    Some historical implementations do not require NUL or <newline>
+terminators for strings to permit those languages that do not use NUL as a
+string terminator to have their strings written.
+
+EXAMPLES
+
+    None.
+
+RATIONALE
+
+    Apart from rationalizing the option syntax and slight difficulties with
+object and executable binary files, strings is specified to match historical
+practice closely. The -a and -n options were introduced to replace the
+non-conforming - and - number options.
+
+    The -o option historically means different things on different
+implementations. Some use it to mean " offset in decimal", while others use
+it as " offset in octal". Instead of trying to decide which way would be
+least objectionable, the -t option was added. It was originally named -O to
+mean "offset", but was changed to -t to be consistent with od.
+
+    The ISO C standard function isprint() is restricted to a domain of
+unsigned char. This volume of IEEE Std 1003.1-2001 requires implementations
+to write strings as defined by the current locale.
+
+FUTURE DIRECTIONS
+
+    None.
+
+SEE ALSO
+
+    localedef, nm
+
+

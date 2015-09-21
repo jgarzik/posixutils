@@ -6,7 +6,9 @@ SUBDIRS = \
 	asa basename cat chown cksum cmp comm compress \
 	date df dirname echo env false getconf grep head \
 	id ipcrm ipcs kill link ln logger logname mesg mkdir \
-	mkfifo mv nice nohup pax tests
+	mkfifo mv nice nohup pathchk pax pwd renice rm rmdir \
+	sleep split strings stty \
+	tests
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
@@ -15,40 +17,13 @@ EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-strmap.pl
 LIBPU = libpu/libpu.a @ARGP_LIB@
 
 bin_PROGRAMS = \
-	pwd renice rm rmdir sleep strings tabs tee time	\
+	tabs tee time	\
 	touch tput true tsort tty uname unlink uuencode wc what
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO, and doc/status/PROGRAM.status, for more information.
-noinst_PROGRAMS = pathchk split stty uniq
+noinst_PROGRAMS = uniq
 
-
-pathchk_SOURCES = pathchk.cc
-pathchk_LDADD = $(LIBPU)
-
-pwd_SOURCES = pwd.cc
-pwd_LDADD = $(LIBPU)
-
-renice_SOURCES = renice.cc
-renice_LDADD = $(LIBPU)
-
-rm_SOURCES = rm.cc
-rm_LDADD = $(LIBPU)
-
-rmdir_SOURCES = rmdir.cc
-rmdir_LDADD = $(LIBPU)
-
-sleep_SOURCES = sleep.cc
-sleep_LDADD = $(LIBPU)
-
-split_SOURCES = split.cc
-split_LDADD = $(LIBPU)
-
-strings_SOURCES = strings.cc
-strings_LDADD = $(LIBPU)
-
-stty_SOURCES = stty.cc
-stty_LDADD = $(LIBPU)
 
 tabs_SOURCES = tabs.cc
 tabs_LDADD = $(LIBPU) $(CURSES_LIB)

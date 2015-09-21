@@ -1,0 +1,150 @@
+NAME
+
+    rmdir - remove directories
+
+SYNOPSIS
+
+    rmdir [-p] dir...
+
+DESCRIPTION
+
+    The rmdir utility shall remove the directory entry specified by each dir
+operand.
+
+    For each dir operand, the rmdir utility shall perform actions equivalent
+to the rmdir() function called with the dir operand as its only argument.
+
+    Directories shall be processed in the order specified. If a directory and
+a subdirectory of that directory are specified in a single invocation of the
+rmdir utility, the application shall specify the subdirectory before the
+parent directory so that the parent directory will be empty when the rmdir
+utility tries to remove it.
+
+OPTIONS
+
+    The rmdir utility shall conform to the Base Definitions volume of IEEE
+Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following option shall be supported:
+
+    -p
+        Remove all directories in a pathname. For each dir operand:
+
+            The directory entry it names shall be removed.
+
+            If the dir operand includes more than one pathname component,
+effects equivalent to the following command shall occur:
+
+            rmdir -p $(dirname dir)
+
+OPERANDS
+
+    The following operand shall be supported:
+
+    dir
+        A pathname of an empty directory to be removed.
+
+STDIN
+
+    Not used.
+
+INPUT FILES
+
+    None.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of rmdir:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+
+ASYNCHRONOUS EVENTS
+
+    Default.
+
+STDOUT
+
+    Not used.
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    None.
+
+EXTENDED DESCRIPTION
+
+    None.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        Each directory entry specified by a dir operand was removed
+successfully.
+    >0
+        An error occurred.
+
+CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    The definition of an empty directory is one that contains, at most,
+directory entries for dot and dot-dot.
+
+EXAMPLES
+
+    If a directory a in the current directory is empty except it contains a
+directory b and a/b is empty except it contains a directory c:
+
+    rmdir -p a/b/c
+
+    removes all three directories.
+
+RATIONALE
+
+    On historical System V systems, the -p option also caused a message to be
+written to the standard output. The message indicated whether the whole path
+was removed or whether part of the path remained for some reason. The STDERR
+section requires this diagnostic when the entire path specified by a dir
+operand is not removed, but does not allow the status message reporting
+success to be written as a diagnostic.
+
+    The rmdir utility on System V also included a -s option that suppressed
+the informational message output by the -p option. This option has been
+omitted because the informational message is not specified by this volume of
+IEEE Std 1003.1-2001.
+
+FUTURE DIRECTIONS
+
+    None.
+
+SEE ALSO
+
+    rm, the System Interfaces volume of IEEE Std 1003.1-2001, remove(),
+rmdir(), unlink()
+

@@ -27,15 +27,6 @@ autom4te.cache
 
 signal-copy.h
 
-pathchk
-pwd
-renice
-rm
-rmdir
-sleep
-split
-strings
-stty
 tabs
 tee
 time

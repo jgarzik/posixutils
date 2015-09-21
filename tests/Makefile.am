@@ -1,7 +1,6 @@
 
 EXTRA_DIST = \
 	test.data	\
-	basic-rm	\
 	basic-tsort	\
 	tsort.data1	\
 	tsort.data2	\
@@ -11,7 +10,6 @@ EXTRA_DIST = \
 	basic-wc
 
 TESTS = \
-	basic-rm	\
 	basic-tsort	\
 	basic-uniq	\
 	basic-wc

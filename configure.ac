@@ -87,6 +87,15 @@ AC_CONFIG_FILES([Makefile
 		nice/Makefile
 		nohup/Makefile
 		pax/Makefile
+		pathchk/Makefile
+		pwd/Makefile
+		renice/Makefile
+		rm/Makefile
+		rmdir/Makefile
+		sleep/Makefile
+		split/Makefile
+		strings/Makefile
+		stty/Makefile
 		platform/Makefile
 		platform/signal/Makefile
 		tests/Makefile])

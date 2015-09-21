@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 16:48-0400\n"
+"POT-Creation-Date: 2015-09-21 17:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,8 +245,8 @@ msgstr ""
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf/getconf.cc:168 ipcs/ipcs.cc:371 nice/nice.cc:91 pwd.cc:110
-#: split.cc:370
+#: getconf/getconf.cc:168 ipcs/ipcs.cc:371 nice/nice.cc:91 pwd/pwd.cc:110
+#: split/split.cc:370
 #, c-format
 msgid "argp_parse failed: %s\n"
 msgstr ""
@@ -457,7 +457,7 @@ msgstr ""
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
-#: link/link.cc:35 mesg/mesg.cc:55 sleep.cc:50
+#: link/link.cc:35 mesg/mesg.cc:55 sleep/sleep.cc:50
 #, c-format
 msgid "invalid arguments\n"
 msgstr ""
@@ -603,29 +603,29 @@ msgstr ""
 msgid "nohup: no arguments\n"
 msgstr ""
 
-#: pathchk.cc:40
+#: pathchk/pathchk.cc:40
 msgid "pathchk - check whether file names are valid or portable"
 msgstr ""
 
-#: pathchk.cc:46
+#: pathchk/pathchk.cc:46
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk.cc:93
+#: pathchk/pathchk.cc:93
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk.cc:103
+#: pathchk/pathchk.cc:103
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
 
-#: pwd.cc:40
+#: pwd/pwd.cc:40
 msgid "pwd - print name of current/working directory"
 msgstr ""
 
-#: pwd.cc:44
+#: pwd/pwd.cc:44
 msgid ""
 "If the PWD environment variable contains an absolute pathname of the current "
 "directory that does not contain the filenames dot or dot-dot, pwd shall "
@@ -633,138 +633,138 @@ msgid ""
 "behave as the -P option."
 msgstr ""
 
-#: pwd.cc:46
+#: pwd/pwd.cc:46
 msgid ""
 "The absolute pathname written shall not contain filenames that, in the "
 "context of the pathname, refer to files of type symbolic link."
 msgstr ""
 
-#: renice.cc:40
+#: renice/renice.cc:40
 msgid "renice - alter priority of running processes"
 msgstr ""
 
-#: renice.cc:42
+#: renice/renice.cc:42
 msgid "ID ..."
 msgstr ""
 
-#: renice.cc:46
+#: renice/renice.cc:46
 msgid "Interpret all operands as unsigned decimal integer process group IDs"
 msgstr ""
 
-#: renice.cc:48
+#: renice/renice.cc:48
 msgid ""
 "Interpret all operands as unsigned decimal integer process IDs. The -p "
 "option is the default if no options are specified"
 msgstr ""
 
-#: renice.cc:50
+#: renice/renice.cc:50
 msgid "Interpret all operands as users."
 msgstr ""
 
-#: renice.cc:52
+#: renice/renice.cc:52
 msgid ""
 "Specify how the nice value of the specified process or processes is to be "
 "adjusted"
 msgstr ""
 
-#: rm.cc:45
+#: rm/rm.cc:45
 msgid "rm - remove files or directories"
 msgstr ""
 
-#: rm.cc:51
+#: rm/rm.cc:51
 msgid ""
 "Do not prompt for confirmation. Do not write diagnostic messages or modify "
 "the exit status in the case of nonexistent operands."
 msgstr ""
 
-#: rm.cc:53
+#: rm/rm.cc:53
 msgid "Prompt for confirmation"
 msgstr ""
 
-#: rm.cc:55
+#: rm/rm.cc:55
 msgid "Remove file hierarchies"
 msgstr ""
 
-#: rmdir.cc:34
+#: rmdir/rmdir.cc:34
 msgid "rmdir - remove empty directories"
 msgstr ""
 
-#: rmdir.cc:40
+#: rmdir/rmdir.cc:40
 msgid "Remove all directories in a pathname."
 msgstr ""
 
-#: sleep.cc:45
+#: sleep/sleep.cc:45
 #, c-format
 msgid "cannot install SIGALARM handler\n"
 msgstr ""
 
-#: sleep.cc:56
+#: sleep/sleep.cc:56
 #, c-format
 msgid "invalid sleep argument\n"
 msgstr ""
 
-#: split.cc:46
+#: split/split.cc:46
 msgid "split - split a file into pieces"
 msgstr ""
 
-#: split.cc:48
+#: split/split.cc:48
 msgid "[file [prefix]]"
 msgstr ""
 
-#: split.cc:52
+#: split/split.cc:52
 msgid ""
 "Use N letters to form the suffix portion of the filenames of the split file"
 msgstr ""
 
-#: split.cc:54
+#: split/split.cc:54
 msgid "Split a file into pieces n bytes in size"
 msgstr ""
 
-#: split.cc:56
+#: split/split.cc:56
 msgid "Specify the number of lines in each resulting file piece"
 msgstr ""
 
-#: split.cc:287
+#: split/split.cc:287
 msgid "setvbuf(3) failed"
 msgstr ""
 
-#: split.cc:331
+#: split/split.cc:331
 msgid "(standard input)"
 msgstr ""
 
-#: split.cc:376
+#: split/split.cc:376
 #, c-format
 msgid "prefix + suffix too large\n"
 msgstr ""
 
-#: strings.cc:34
+#: strings/strings.cc:34
 msgid "strings - find printable strings in files"
 msgstr ""
 
-#: strings.cc:40
+#: strings/strings.cc:40
 msgid "Scan files in their entirety"
 msgstr ""
 
-#: strings.cc:42
+#: strings/strings.cc:42
 msgid "Specify the minimum string length"
 msgstr ""
 
-#: strings.cc:44
+#: strings/strings.cc:44
 msgid ""
 "Write each string preceded by its byte offset from the start of the file"
 msgstr ""
 
-#: stty.cc:230
+#: stty/stty.cc:230
 #, c-format
 msgid "stty: invalid compact settings format\n"
 msgstr ""
 
-#: stty.cc:357
+#: stty/stty.cc:357
 #, c-format
 msgid "stty: '%s' missing required argument\n"
 msgstr ""
 
-#: stty.cc:404
+#: stty/stty.cc:404
 #, c-format
 msgid "stty: invalid argument '%s'\n"
 msgstr ""
