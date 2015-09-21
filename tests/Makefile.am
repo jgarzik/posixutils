@@ -1,7 +1,6 @@
 
 EXTRA_DIST = \
 	test.data	\
-	basic-echo	\
 	basic-id	\
 	basic-ln	\
 	basic-rm	\
@@ -14,7 +13,6 @@ EXTRA_DIST = \
 	basic-wc
 
 TESTS = \
-	basic-echo	\
 	basic-id	\
 	basic-ln	\
 	basic-rm	\

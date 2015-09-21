@@ -63,6 +63,11 @@ AC_CONFIG_FILES([Makefile
 		cmp/Makefile
 		comm/Makefile
 		compress/Makefile
+		date/Makefile
+		df/Makefile
+		dirname/Makefile
+		echo/Makefile
+		env/Makefile
 		pax/Makefile
 		platform/Makefile
 		platform/signal/Makefile

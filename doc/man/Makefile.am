@@ -1,3 +1,3 @@
 
-dist_man_MANS = echo.1 false.1 tabs.1 true.1
+dist_man_MANS = false.1 tabs.1 true.1
 

@@ -1,0 +1,224 @@
+.Dd December 2008
+.Dt DIRNAME 1
+
+.Sh NAME
+
+.Nm dirname
+.Nd return the directory portion of a pathname
+
+.Sh SYNOPSIS
+
+.Nm dirname
+.Ar string
+
+.Sh DESCRIPTION
+
+    The string operand shall be treated as a pathname, as defined in the
+Base Definitions volume of IEEE Std 1003.1-2001, Section 3.266, Pathname.
+The string string shall be converted to the name of the directory containing
+the filename corresponding to the last pathname component in string,
+performing actions equivalent to the following steps in order:
+
+        If string is //, skip steps 2 to 5.
+
+        If string consists entirely of slash characters, string shall be set
+to a single slash character. In this case, skip steps 3 to 8.
+
+        If there are any trailing slash characters in string, they shall be
+removed.
+
+        If there are no slash characters remaining in string, string shall
+be set to a single period character. In this case, skip steps 5 to 8.
+
+        If there are any trailing non-slash characters in string, they shall
+be removed.
+
+        If the remaining string is //, it is implementation-defined whether
+steps 7 and 8 are skipped or processed.
+
+        If there are any trailing slash characters in string, they shall be
+removed.
+
+        If the remaining string is empty, string shall be set to a single
+slash character.
+
+    The resulting string shall be written to standard output.
+
+.Sh OPTIONS
+
+    None.
+
+.Sh OPERANDS
+
+    The following operand shall be supported:
+
+    string
+        A string.
+
+.Sh STDIN
+
+    Not used.
+
+.Sh INPUT FILES
+
+    None.
+
+.Sh ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of
+dirname:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+
+.Sh ASYNCHRONOUS EVENTS
+
+    Default.
+
+.Sh STDOUT
+
+    The dirname utility shall write a line to the standard output in the
+following format:
+
+    "%s\n", <resulting string>
+
+.Sh STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+.Sh OUTPUT FILES
+
+    None.
+
+.Sh EXTENDED DESCRIPTION
+
+    None.
+
+.Sh EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        Successful completion.
+    >0
+        An error occurred.
+
+.Sh CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+.Sh APPLICATION USAGE
+
+    The definition of pathname specifies implementation-defined behavior for
+pathnames starting with two slash characters. Therefore, applications shall
+not arbitrarily add slashes to the beginning of a pathname unless they can
+ensure that there are more or less than two or are prepared to deal with the
+implementation-defined consequences.
+
+.Sh EXAMPLES
+
+        Command
+        	
+
+        Results
+
+        dirname /
+        	
+
+        /
+
+        dirname //
+        	
+
+        / or //
+
+        dirname /a/b/
+        	
+
+        /a
+
+        dirname //a//b//
+        	
+
+        //a
+
+        dirname
+        	
+
+        Unspecified
+
+        dirname a
+        	
+
+        . ($? = 0)
+
+        dirname ""
+        	
+
+        . ($? = 0)
+
+        dirname /a
+        	
+
+        /
+
+        dirname /a/b
+        	
+
+        /a
+
+        dirname a/b
+        	
+
+        a
+
+.Sh RATIONALE
+
+    The dirname utility originated in System III. It has evolved through the
+System V releases to a version that matches the requirements specified in
+this description in System V Release 3. 4.3 BSD and earlier versions did not
+include dirname.
+
+    The behaviors of basename and dirname in this volume of IEEE Std
+1003.1-2001 have been coordinated so that when string is a valid pathname:
+
+    $(basename "string")
+
+    would be a valid filename for the file in the directory:
+
+    $(dirname "string")
+
+    This would not work for the versions of these utilities in early
+proposals due to the way processing of trailing slashes was specified.
+Consideration was given to leaving processing unspecified if there were
+trailing slashes, but this cannot be done; the Base Definitions volume of
+IEEE Std 1003.1-2001, Section 3.266, Pathname allows trailing slashes. The
+basename and dirname utilities have to specify consistent handling for all
+valid pathnames.
+
+.Sh FUTURE DIRECTIONS
+
+    None.
+
+.Sh SEE ALSO
+
+    basename, Parameters and Variables
+

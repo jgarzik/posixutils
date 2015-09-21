@@ -6,10 +6,10 @@ cksum/cksum.cc
 cmp/cmp.cc
 comm/comm.cc
 compress/compress.cc
-date.cc
-df.cc
-dirname.cc
-env.cc
+date/date.cc
+df/df.cc
+dirname/dirname.cc
+env/env.cc
 getconf.cc
 grep.cc
 head.cc

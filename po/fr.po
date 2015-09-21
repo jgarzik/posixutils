@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 14:57-0400\n"
+"POT-Creation-Date: 2015-09-21 15:48-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -26,12 +26,12 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:48 dirname.cc:44 unlink.cc:36
+#: basename/basename.cc:48 dirname/dirname.cc:44 unlink.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr "nombre inadmissible des arguments\n"
 
-#: basename/basename.cc:56 dirname.cc:52
+#: basename/basename.cc:56 dirname/dirname.cc:52
 #, c-format
 msgid "invalid pathname\n"
 msgstr "nom inadmissible\n"
@@ -145,66 +145,66 @@ msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 "Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
 
-#: date.cc:36
+#: date/date.cc:36
 msgid "date - print or set the system date and time"
 msgstr "date - imprimez ou placez la date et l'heure de systeme"
 
-#: date.cc:42
+#: date/date.cc:42
 msgid ""
 "Perform operations as if the TZ environment variable was set to the string "
 "\"UTC0\""
 msgstr ""
 
-#: df.cc:42
+#: df/df.cc:42
 msgid "df - report filesystem disk space usage"
 msgstr ""
 
-#: df.cc:48
+#: df/df.cc:48
 msgid "Use 1024-byte units, instead of the default 512-byte units"
 msgstr ""
 
-#: df.cc:50
+#: df/df.cc:50
 msgid "Use POSIX-defined output format"
 msgstr ""
 
-#: df.cc:52
+#: df/df.cc:52
 msgid "Include total allocated-space figures in the output."
 msgstr ""
 
-#: df.cc:195
+#: df/df.cc:195
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.cc:197
+#: df/df.cc:197
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.cc:216
+#: df/df.cc:216
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df.cc:219
+#: df/df.cc:219
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
 
-#: env.cc:31
+#: env/env.cc:31
 msgid "env - set the environment for command invocation"
 msgstr ""
 
-#: env.cc:33
+#: env/env.cc:33
 msgid "[name=value]... utility [args]..."
 msgstr ""
 
-#: env.cc:37
+#: env/env.cc:37
 msgid "Invoke utility with exactly the environment specified by the arguments"
 msgstr ""
 
-#: env.cc:146
+#: env/env.cc:146
 #, c-format
 msgid "execv(%s)"
 msgstr ""
