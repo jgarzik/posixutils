@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 11:56-0400\n"
+"POT-Creation-Date: 2015-09-21 12:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,12 +26,12 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename.cc:48 dirname.cc:44 unlink.cc:36
+#: basename/basename.cc:48 dirname.cc:44 unlink.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr ""
 
-#: basename.cc:56 dirname.cc:52
+#: basename/basename.cc:56 dirname.cc:52
 #, c-format
 msgid "invalid pathname\n"
 msgstr ""

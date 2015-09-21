@@ -1,0 +1,15 @@
+#!/bin/sh
+
+OUT=`../basename test1.cc .cc`
+if [ $OUT -ne "test1" ]
+then
+	exit 1
+fi
+
+OUT=`../basename test1.h .cc`
+if [ $OUT -ne "test1.h" ]
+then
+	exit 1
+fi
+
+exit 0

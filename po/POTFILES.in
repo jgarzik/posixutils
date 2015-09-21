@@ -1,5 +1,5 @@
 asa/asa.cc
-basename.cc
+basename/basename.cc
 cat.cc
 chown.cc
 cksum.cc

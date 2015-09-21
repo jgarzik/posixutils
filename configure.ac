@@ -56,6 +56,7 @@ AC_CONFIG_FILES([Makefile
 		libpu/Makefile
 		include/Makefile
 		asa/Makefile
+		basename/Makefile
 		compress/Makefile
 		pax/Makefile
 		platform/Makefile
