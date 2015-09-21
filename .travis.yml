@@ -29,6 +29,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
 
 install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install gettext; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install argp-standalone; fi
 
 before_script:
