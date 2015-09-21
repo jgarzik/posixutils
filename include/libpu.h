@@ -189,14 +189,6 @@ extern void die(const char *msg);
 extern error_t noopts_parse_opt (int key, char *arg, struct argp_state *state);
 extern int ask_question(const char *prefix, const char *msg, const char *fn);
 
-extern struct dict_entry *new_de(void *d, int len);
-extern void dict_add(void *d, const void *buf, int len, long val);
-extern long dict_lookup(void *d, const void *buf, int len);
-extern void dict_clear(void *d);
-extern void dict_free(void *d);
-extern void dict_init(void *d);
-extern void *dict_new(void);
-
 extern const char file_args_doc[];
 extern struct argp_option no_options[];
 extern void *xmalloc(size_t size);
