@@ -1,0 +1,145 @@
+NAME
+
+    what - identify SCCS files (DEVELOPMENT)
+
+SYNOPSIS
+
+    [XSI] [Option Start] what [-s] file... [Option End]
+
+DESCRIPTION
+
+    The what utility shall search the given files for all occurrences of the
+pattern that get (see get ) substitutes for the %Z% keyword ( "@(#)" ) and
+shall write to standard output what follows until the first occurrence of one
+of the following:
+
+    "   >   newline   \   NUL
+
+OPTIONS
+
+    The what utility shall conform to the Base Definitions volume of IEEE Std
+1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following option shall be supported:
+
+    -s
+        Quit after finding the first occurrence of the pattern in each file.
+
+OPERANDS
+
+    The following operands shall be supported:
+
+    file
+        A pathname of a file to search.
+
+STDIN
+
+    Not used.
+
+INPUT FILES
+
+    The input files shall be of any file type.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of what:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments and input files).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        Determine the location of message catalogs for the processing of
+LC_MESSAGES .
+
+ASYNCHRONOUS EVENTS
+
+    Default.
+
+STDOUT
+
+    The standard output shall consist of the following for each file operand:
+
+    "%s:\n\t%s\n", <pathname>, <identification string>
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    None.
+
+EXTENDED DESCRIPTION
+
+    None.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+    0
+        Any matches were found.
+    1
+        Otherwise.
+
+CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    The what utility is intended to be used in conjunction with the SCCS
+command get, which automatically inserts identifying information, but it can
+also be used where the information is inserted by any other means.
+
+    When the string "@(#)" is included in a library routine in a shared
+library, it might not be found in an a.out file using that library routine.
+
+EXAMPLES
+
+    If the C-language program in file f.c contains:
+
+    char ident[] = "@(#)identification information";
+
+    and f.c is compiled to yield f.o and a.out, then the command:
+
+    what f.c f.o a.out
+
+    writes:
+
+    f.c:
+        identification information
+        ...
+    f.o:
+        identification information
+        ...
+    a.out:
+        identification information
+        ...
+
+RATIONALE
+
+    None.
+
+FUTURE DIRECTIONS
+
+    None.
+
+SEE ALSO
+
+    get
+

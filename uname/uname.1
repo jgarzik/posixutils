@@ -1,0 +1,167 @@
+NAME
+
+    uname - return system name
+
+SYNOPSIS
+
+    uname [-snrvma]
+
+DESCRIPTION
+
+    By default, the uname utility shall write the operating system name to
+standard output. When options are specified, symbols representing one or more
+system characteristics shall be written to the standard output. The format
+and contents of the symbols are implementation-defined. On systems conforming
+to the System Interfaces volume of IEEE Std 1003.1-2001, the symbols written
+shall be those supported by the uname() function as defined in the System
+Interfaces volume of IEEE Std 1003.1-2001.
+
+OPTIONS
+
+    The uname utility shall conform to the Base Definitions volume of IEEE
+Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following options shall be supported:
+
+    -a
+        Behave as though all of the options -mnrsv were specified.
+    -m
+        Write the name of the hardware type on which the system is running to
+standard output.
+    -n
+        Write the name of this node within an implementation-defined
+communications network.
+    -r
+        Write the current release level of the operating system
+implementation.
+    -s
+        Write the name of the implementation of the operating system.
+    -v
+        Write the current version level of this release of the operating
+system implementation.
+
+    If no options are specified, the uname utility shall write the operating
+system name, as if the -s option had been specified.
+
+OPERANDS
+
+    None.
+
+STDIN
+
+    Not used.
+
+INPUT FILES
+
+    None.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of uname:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+
+ASYNCHRONOUS EVENTS
+
+    Default.
+
+STDOUT
+
+    By default, the output shall be a single line of the following form:
+
+    "%s\n", <sysname>
+
+    If the -a option is specified, the output shall be a single line of the
+following form:
+
+    "%s %s %s %s %s\n", <sysname>, <nodename>, <release>,
+        <version>, <machine>
+
+    Additional implementation-defined symbols may be written; all such
+symbols shall be written at the end of the line of output before the
+<newline>.
+
+    If options are specified to select different combinations of the symbols,
+only those symbols shall be written, in the order shown above for the -a
+option. If a symbol is not selected for writing, its corresponding trailing
+<blank>s also shall not be written.
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    None.
+
+EXTENDED DESCRIPTION
+
+    None.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        The requested information was successfully written.
+    >0
+        An error occurred.
+
+CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    Note that any of the symbols could include embedded <space>s, which may
+affect parsing algorithms if multiple options are selected for output.
+
+    The node name is typically a name that the system uses to identify itself
+for inter-system communication addressing.
+
+EXAMPLES
+
+    The following command:
+
+    uname -sr
+
+    writes the operating system name and release level, separated by one or
+more <blank>s.
+
+RATIONALE
+
+    It was suggested that this utility cannot be used portably since the
+format of the symbols is implementation-defined. The POSIX.1 working group
+could not achieve consensus on defining these formats in the underlying
+uname() function, and there was no expectation that this volume of IEEE Std
+1003.1-2001 would be any more successful. Some applications may still find
+this historical utility of value. For example, the symbols could be used for
+system log entries or for comparison with operator or user input.
+
+FUTURE DIRECTIONS
+
+    None.
+
+SEE ALSO
+
+    The System Interfaces volume of IEEE Std 1003.1-2001, uname()
+

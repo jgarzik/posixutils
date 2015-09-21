@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT(posixutils, 5git, [http://sourceforge.net/projects/nix-utils  ..])
 AC_PREREQ(2.60)
-AC_CONFIG_SRCDIR([true.c])
+AC_CONFIG_SRCDIR([true/true.c])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([gnu])
 AC_CONFIG_HEADERS([posixutils-config.h])
@@ -50,7 +50,6 @@ AC_SUBST(ARGP_LIB)
 AC_CONFIG_FILES([Makefile
 		po/Makefile.in
 		doc/Makefile
-		doc/man/Makefile
 		doc/status/Makefile
 		m4/Makefile 
 		libpu/Makefile
@@ -96,9 +95,22 @@ AC_CONFIG_FILES([Makefile
 		split/Makefile
 		strings/Makefile
 		stty/Makefile
+		tabs/Makefile
+		tee/Makefile
+		time/Makefile
+		touch/Makefile
+		tput/Makefile
+		true/Makefile
+		tsort/Makefile
+		tty/Makefile
+		uname/Makefile
+		uniq/Makefile
+		unlink/Makefile
+		uuencode/Makefile
+		wc/Makefile
+		what/Makefile
 		platform/Makefile
-		platform/signal/Makefile
-		tests/Makefile])
+		platform/signal/Makefile])
 AC_CONFIG_LINKS(signal-copy.h:platform/signal/$target_cpu-$target_os.h)
 AC_OUTPUT
 

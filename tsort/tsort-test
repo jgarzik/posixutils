@@ -2,9 +2,9 @@
 
 FILE="basic-tsort-$$"
 
-../tsort "$top_srcdir/tests/tsort.data1" > $FILE
+./tsort "$srcdir/tsort.data1" > $FILE
 
-if ! cmp -s $FILE "$top_srcdir/tests/tsort.data2"
+if ! cmp -s $FILE "$srcdir/tsort.data2"
 then
 	echo "basic tsort test failed"
 	rm -f $FILE

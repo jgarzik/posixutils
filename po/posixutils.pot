@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 17:06-0400\n"
+"POT-Creation-Date: 2015-09-21 17:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:48 dirname/dirname.cc:44 unlink.cc:36
+#: basename/basename.cc:48 dirname/dirname.cc:44 unlink/unlink.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr ""
@@ -769,65 +769,65 @@ msgstr ""
 msgid "stty: invalid argument '%s'\n"
 msgstr ""
 
-#: tabs.cc:68
+#: tabs/tabs.cc:68
 #, c-format
 msgid "tabs: tab stop table limit reached\n"
 msgstr ""
 
-#: tabs.cc:115
+#: tabs/tabs.cc:115
 #, c-format
 msgid "tabs: setupterm failed for term type %s\n"
 msgstr ""
 
-#: tabs.cc:116
+#: tabs/tabs.cc:116
 msgid "(null)"
 msgstr ""
 
-#: tabs.cc:204
+#: tabs/tabs.cc:204
 #, c-format
 msgid "tabs: tabspec beyond max-columns specified\n"
 msgstr ""
 
-#: tabs.cc:253
+#: tabs/tabs.cc:253
 #, c-format
 msgid "tabs: terminal unable to set tabs\n"
 msgstr ""
 
-#: tabs.cc:276
+#: tabs/tabs.cc:276
 #, c-format
 msgid "tabs: buffer overflow\n"
 msgstr ""
 
-#: tee.cc:40
+#: tee/tee.cc:40
 msgid "tee - read from standard input and write to standard output and files"
 msgstr ""
 
-#: tee.cc:44
+#: tee/tee.cc:44
 msgid "Append the output to the files"
 msgstr ""
 
-#: tee.cc:46
+#: tee/tee.cc:46
 msgid "Ignore the SIGINT signal"
 msgstr ""
 
-#: time.cc:44
+#: time/time.cc:44
 msgid "exec failed"
 msgstr ""
 
-#: time.cc:58
+#: time/time.cc:58
 msgid "wait4(child)"
 msgstr ""
 
-#: time.cc:63
+#: time/time.cc:63
 #, c-format
 msgid "exec failed\n"
 msgstr ""
 
-#: time.cc:68
+#: time/time.cc:68
 msgid "gettimeofday 2"
 msgstr ""
 
-#: time.cc:80
+#: time/time.cc:80
 #, c-format
 msgid ""
 "real %Lu.%Lu\n"
@@ -835,163 +835,163 @@ msgid ""
 "sys %Lu.%Lu\n"
 msgstr ""
 
-#: time.cc:103
+#: time/time.cc:103
 #, c-format
 msgid "no args\n"
 msgstr ""
 
-#: time.cc:108
+#: time/time.cc:108
 msgid "gettimeofday"
 msgstr ""
 
-#: time.cc:114
+#: time/time.cc:114
 msgid "fork"
 msgstr ""
 
-#: touch.cc:40
+#: touch/touch.cc:40
 msgid "touch - change file timestamps"
 msgstr ""
 
-#: touch.cc:46
+#: touch/touch.cc:46
 msgid "Change the access time of file"
 msgstr ""
 
-#: touch.cc:48
+#: touch/touch.cc:48
 msgid "Do not create a specified file if it does not exist"
 msgstr ""
 
-#: touch.cc:50
+#: touch/touch.cc:50
 msgid "Change the modification time of file"
 msgstr ""
 
-#: touch.cc:52
+#: touch/touch.cc:52
 msgid "Use the corresponding time of FILE instead of the current time"
 msgstr ""
 
-#: touch.cc:54
+#: touch/touch.cc:54
 msgid "Use the specified time STAMP instead of the current time"
 msgstr ""
 
-#: tput.cc:38
+#: tput/tput.cc:38
 msgid "tput - change terminal characteristics"
 msgstr ""
 
-#: tput.cc:44
+#: tput/tput.cc:44
 msgid "Indicate the type of terminal."
 msgstr ""
 
-#: tput.cc:134
+#: tput/tput.cc:134
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr ""
 
-#: tsort.cc:148
+#: tsort/tsort.cc:148
 #, c-format
 msgid "tsort: max recursion limit reached\n"
 msgstr ""
 
-#: tsort.cc:225
+#: tsort/tsort.cc:225
 #, c-format
 msgid "usage: tsort FILE\n"
 msgstr ""
 
-#: tty.cc:35
+#: tty/tty.cc:35
 #, c-format
 msgid "not a tty\n"
 msgstr ""
 
-#: uname.cc:35
+#: uname/uname.cc:35
 msgid "uname - return system name"
 msgstr ""
 
-#: uname.cc:39
+#: uname/uname.cc:39
 msgid "Behave as though all of the options -mnrsv were specified."
 msgstr ""
 
-#: uname.cc:41
+#: uname/uname.cc:41
 msgid ""
 "Write the name of the hardware type on which the system is running to "
 "standard output."
 msgstr ""
 
-#: uname.cc:43
+#: uname/uname.cc:43
 msgid ""
 "Write the name of this node within an implementation-defined communications "
 "network."
 msgstr ""
 
-#: uname.cc:45
+#: uname/uname.cc:45
 msgid "Write the current release level of the operating system implementation."
 msgstr ""
 
-#: uname.cc:47
+#: uname/uname.cc:47
 msgid "Write the name of the implementation of the operating system."
 msgstr ""
 
-#: uname.cc:49
+#: uname/uname.cc:49
 msgid ""
 "Write the current version level of this release of the operating system "
 "implementation."
 msgstr ""
 
-#: uniq.cc:41
+#: uniq/uniq.cc:41
 msgid "uniq - report or filter out repeated lines in a file"
 msgstr ""
 
-#: uniq.cc:47
+#: uniq/uniq.cc:47
 msgid ""
 "Precede each output line with a count of the number of times the line "
 "occurred in the input."
 msgstr ""
 
-#: uniq.cc:177
+#: uniq/uniq.cc:177
 #, c-format
 msgid "uniq: missing source file\n"
 msgstr ""
 
-#: uuencode.cc:39
+#: uuencode/uuencode.cc:39
 msgid "uuencode - encode a binary file"
 msgstr ""
 
-#: uuencode.cc:41
+#: uuencode/uuencode.cc:41
 msgid "[file] decode_pathname"
 msgstr ""
 
-#: uuencode.cc:45
+#: uuencode/uuencode.cc:45
 msgid "Encode the output using the MIME Base64 algorithm"
 msgstr ""
 
-#: wc.cc:37
+#: wc/wc.cc:37
 msgid "wc - print the number of newlines, words, and bytes in files"
 msgstr ""
 
-#: wc.cc:43
+#: wc/wc.cc:43
 msgid "Write to the standard output the number of bytes in each input file"
 msgstr ""
 
-#: wc.cc:45
+#: wc/wc.cc:45
 msgid ""
 "Write to the standard output the number of <newline>s in each input file"
 msgstr ""
 
-#: wc.cc:47
+#: wc/wc.cc:47
 msgid "Write to the standard output the number of words in each input file"
 msgstr ""
 
-#: wc.cc:49
+#: wc/wc.cc:49
 msgid ""
 "Write to the standard output the number of characters in each input file"
 msgstr ""
 
-#: wc.cc:282
+#: wc/wc.cc:282
 msgid "total"
 msgstr ""
 
-#: what.cc:38
+#: what/what.cc:38
 msgid "what - identify SCCS files"
 msgstr ""
 
-#: what.cc:44
+#: what/what.cc:44
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 

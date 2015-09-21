@@ -1,0 +1,186 @@
+NAME
+
+    tput - change terminal characteristics
+
+SYNOPSIS
+
+    [UP] [Option Start] tput [-T type] operand... [Option End]
+
+DESCRIPTION
+
+    The tput utility shall display terminal-dependent information. The manner
+in which this information is retrieved is unspecified. The information
+displayed shall clear the terminal screen, initialize the user's terminal, or
+reset the user's terminal, depending on the operand given. The exact
+consequences of displaying this information are unspecified.
+
+OPTIONS
+
+    The tput utility shall conform to the Base Definitions volume of IEEE Std
+1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following option shall be supported:
+
+    -T  type
+        Indicate the type of terminal. If this option is not supplied and the
+TERM variable is unset or null, an unspecified default terminal type shall be
+used. The setting of type shall take precedence over the value in TERM .
+
+OPERANDS
+
+    The following strings shall be supported as operands by the
+implementation in the POSIX locale:
+
+    clear
+        Display the clear-screen sequence.
+    init
+        Display the sequence that initializes the user's terminal in an
+implementation-defined manner.
+    reset
+        Display the sequence that resets the user's terminal in an
+implementation-defined manner.
+
+    If a terminal does not support any of the operations described by these
+operands, this shall not be considered an error condition.
+
+STDIN
+
+    Not used.
+
+INPUT FILES
+
+    None.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of tput:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+    TERM
+        Determine the terminal type. If this variable is unset or null, and
+if the -T option is not specified, an unspecified default terminal type shall
+be used.
+
+ASYNCHRONOUS EVENTS
+
+    Default.
+
+STDOUT
+
+    If standard output is a terminal device, it may be used for writing the
+appropriate sequence to clear the screen or reset or initialize the terminal.
+If standard output is not a terminal device, undefined results occur.
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    None.
+
+EXTENDED DESCRIPTION
+
+    None.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        The requested string was written successfully.
+     1
+        Unspecified.
+     2
+        Usage error.
+     3
+        No information is available about the specified terminal type.
+     4
+        The specified operand is invalid.
+    >4
+        An error occurred.
+
+CONSEQUENCES OF ERRORS
+
+    If one of the operands is not available for the terminal, tput continues
+processing the remaining operands.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    The difference between resetting and initializing a terminal is left
+unspecified, as they vary greatly based on hardware types. In general,
+resetting is a more severe action.
+
+    Some terminals use control characters to perform the stated functions,
+and on such terminals it might make sense to use tput to store the
+initialization strings in a file or environment variable for later use.
+However, because other terminals might rely on system calls to do this work,
+the standard output cannot be used in a portable manner, such as the
+following non-portable constructs:
+
+    ClearVar=`tput clear`
+    tput reset | mailx -s "Wake Up" ddg
+
+EXAMPLES
+
+        Initialize the terminal according to the type of terminal in the
+environmental variable TERM . This command can be included in a .profile
+file.
+
+        tput init
+
+        Reset a 450 terminal.
+
+        tput -T 450 reset
+
+RATIONALE
+
+    The list of operands was reduced to a minimum for the following reasons:
+
+        The only features chosen were those that were likely to be used by
+human users interacting with a terminal.
+
+        Specifying the full terminfo set was not considered desirable, but
+the standard developers did not want to select among operands.
+
+        This volume of IEEE Std 1003.1-2001 does not attempt to provide
+applications with sophisticated terminal handling capabilities, as that falls
+outside of its assigned scope and intersects with the responsibilities of
+other standards bodies.
+
+    The difference between resetting and initializing a terminal is left
+unspecified as this varies greatly based on hardware types. In general,
+resetting is a more severe action.
+
+    The exit status of 1 is historically reserved for finding out if a
+Boolean operand is not set. Although the operands were reduced to a minimum,
+the exit status of 1 should still be reserved for the Boolean operands, for
+those sites that wish to support them.
+
+FUTURE DIRECTIONS
+
+    None.
+
+SEE ALSO
+
+    stty, tabs
+
