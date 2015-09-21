@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 08:18-0400\n"
+"POT-Creation-Date: 2015-09-21 11:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -532,29 +532,29 @@ msgstr ""
 msgid "mkfifo - make FIFOs (named pipes)"
 msgstr ""
 
-#: mv.cc:44
+#: mv.cc:45
 msgid "mv - move (rename) files"
 msgstr ""
 
-#: mv.cc:48
+#: mv.cc:49
 msgid "Do not prompt for confirmation if the destination path exists."
 msgstr ""
 
-#: mv.cc:50
+#: mv.cc:51
 msgid "Prompt for confirmation if the destination path exists"
 msgstr ""
 
-#: mv.cc:264
+#: mv.cc:265
 #, c-format
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
 
-#: mv.cc:302
+#: mv.cc:303
 #, c-format
 msgid "mv: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: mv.cc:341
+#: mv.cc:342
 #, c-format
 msgid "missing source/target\n"
 msgstr ""
@@ -666,21 +666,21 @@ msgid ""
 "adjusted"
 msgstr ""
 
-#: rm.cc:44
+#: rm.cc:45
 msgid "rm - remove files or directories"
 msgstr ""
 
-#: rm.cc:50
+#: rm.cc:51
 msgid ""
 "Do not prompt for confirmation. Do not write diagnostic messages or modify "
 "the exit status in the case of nonexistent operands."
 msgstr ""
 
-#: rm.cc:52
+#: rm.cc:53
 msgid "Prompt for confirmation"
 msgstr ""
 
-#: rm.cc:54
+#: rm.cc:55
 msgid "Remove file hierarchies"
 msgstr ""
 
@@ -998,10 +998,10 @@ msgstr ""
 msgid "out of memory"
 msgstr ""
 
-#: libpu/lib.cc:43
+#: libpu/lib.cc:44
 msgid "file..."
 msgstr ""
 
-#: libpu/lib.cc:144
+#: libpu/lib.cc:145
 msgid "getcwd(3) failed"
 msgstr ""
