@@ -36,12 +36,12 @@
  */
 
 #if defined(LIBC_SCCS) && !defined(lint)
-static char sccsid[] = "@(#)zopen.c	8.1 (Berkeley) 6/27/93";
+static char sccsid[] = "@(#)compress_zopen.c	8.1 (Berkeley) 6/27/93";
 #endif /* LIBC_SCCS and not lint */
 
 #include <sys/cdefs.h>
 #if 0
-__FBSDID("$FreeBSD: src/usr.bin/compress/zopen.c,v 1.12 2005/05/18 05:24:08 kan Exp $");
+__FBSDID("$FreeBSD: src/usr.bin/compress/compress_zopen.c,v 1.12 2005/05/18 05:24:08 kan Exp $");
 #endif
 
 /*-
@@ -58,7 +58,7 @@ __FBSDID("$FreeBSD: src/usr.bin/compress/zopen.c,v 1.12 2005/05/18 05:24:08 kan 
  * Cleaned up and converted to library returning I/O streams by
  * Diomidis Spinellis <dds@doc.ic.ac.uk>.
  *
- * zopen(filename, mode, bits)
+ * compress_zopen(filename, mode, bits)
  *	Returns a FILE * that can be used for read or write.  The modes
  *	supported are only "r" and "w".  Seeking is not allowed.  On
  *	reading the file is decompressed, on writing it is compressed.
@@ -236,7 +236,7 @@ static int	output(struct s_zstate *, code_int);
  * file size for noticeable speed improvement on small files.  Please direct
  * questions about this implementation to ames!jaw.
  */
-int zwrite(void *cookie, const void *wbp, int num)
+int compress_zwrite(void *cookie, const void *wbp, int num)
 {
 	code_int i;
 	int c, disp;
@@ -323,7 +323,7 @@ nomatch:	if (output(zs, (code_int) ent) == -1)
 	return (num);
 }
 
-int zclose(void *cookie)
+int compress_zclose(void *cookie)
 {
 	struct s_zstate *zs;
 	int rval;
@@ -455,7 +455,7 @@ output(struct s_zstate *zs, code_int ocode)
  * compressed file.  The tables used herein are shared with those of the
  * compress() routine.  See the definitions above.
  */
-int zread(void *cookie, void *rbp, int num)
+int compress_zread(void *cookie, void *rbp, int num)
 {
 	u_int count;
 	struct s_zstate *zs;
@@ -681,7 +681,7 @@ cl_hash(struct s_zstate *zs, count_int cl_hsize)	/* Reset code table. */
 }
 
 void *
-zopen(const char *fname, const char *mode, int bits)
+compress_zopen(const char *fname, const char *mode, int bits)
 {
 	struct s_zstate *zs;
 

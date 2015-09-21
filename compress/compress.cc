@@ -218,12 +218,12 @@ compress(const char *in, const char *out, int bits)
 	if (!S_ISREG(isb.st_mode))
 		isreg = 0;
 
-	if ((zfp = zopen(out, "w", bits)) == NULL) {
+	if ((zfp = compress_zopen(out, "w", bits)) == NULL) {
 		cwarn("%s", out);
 		goto err;
 	}
 	while ((nr = fread(buf, 1, sizeof(buf), ifp)) != 0)
-		if ((size_t)zwrite(zfp, buf, nr) != nr) {
+		if ((size_t)compress_zwrite(zfp, buf, nr) != nr) {
 			cwarn("%s", out);
 			goto err;
 		}
@@ -234,7 +234,7 @@ compress(const char *in, const char *out, int bits)
 	}
 	ifp = NULL;
 
-	if (zclose(zfp)) {
+	if (compress_zclose(zfp)) {
 		cwarn("%s", out);
 		goto err;
 	}
@@ -276,7 +276,7 @@ compress(const char *in, const char *out, int bits)
 err:	if (zfp) {
 		if (oreg)
 			(void)unlink(out);
-		(void)zclose(zfp);
+		(void)compress_zclose(zfp);
 	}
 	if (ifp)
 		(void)fclose(ifp);
@@ -299,7 +299,7 @@ decompress(const char *in, const char *out, int bits)
 
 	zfp = NULL;
 	ofp = NULL;
-	if ((zfp = zopen(in, "r", bits)) == NULL) {
+	if ((zfp = compress_zopen(in, "r", bits)) == NULL) {
 		cwarn("%s", in);
 		return;
 	}
@@ -314,28 +314,28 @@ decompress(const char *in, const char *out, int bits)
 	 * Try to read the first few uncompressed bytes from the input file
 	 * before blindly truncating the output file.
 	 */
-	if ((nr = zread(zfp, buf, sizeof(buf))) == 0) {
+	if ((nr = compress_zread(zfp, buf, sizeof(buf))) == 0) {
 		cwarn("%s", in);
-		(void)zclose(zfp);
+		(void)compress_zclose(zfp);
 		return;
 	}
 	if ((ofp = fopen(out, "w")) == NULL ||
 	    (nr != 0 && fwrite(buf, 1, nr, ofp) != nr)) {
 		cwarn("%s", out);
-		(void)zclose(zfp);
+		(void)compress_zclose(zfp);
 		return;
 	}
 
-	while ((nr = zread(zfp, buf, sizeof(buf))) != 0)
+	while ((nr = compress_zread(zfp, buf, sizeof(buf))) != 0)
 		if (fwrite(buf, 1, nr, ofp) != nr) {
 			cwarn("%s", out);
 			goto err;
 		}
 
 #if 0		/* FIXME */
-	if (ferror(ifp) || zclose(zfp)) {
+	if (ferror(ifp) || compress_zclose(zfp)) {
 #else
-	if (zclose(zfp)) {
+	if (compress_zclose(zfp)) {
 #endif
 		cwarn("%s", in);
 		goto err;
@@ -361,7 +361,7 @@ err:	if (ofp) {
 		(void)fclose(ofp);
 	}
 	if (zfp)
-		(void)zclose(zfp);
+		(void)compress_zclose(zfp);
 }
 
 void

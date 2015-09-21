@@ -23,15 +23,15 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $FreeBSD: src/usr.bin/compress/zopen.h,v 1.5 2002/03/22 01:19:31 imp Exp $
+ * $FreeBSD: src/usr.bin/compress/compress_zopen.h,v 1.5 2002/03/22 01:19:31 imp Exp $
  */
 
 #ifndef _ZOPEN_H_
 #define _ZOPEN_H_
 
-extern void  *zopen(const char *, const char *, int);
-extern int zwrite(void *cookie, const void *wbp, int num);
-extern int zread(void *cookie, void *rbp, int num);
-extern int zclose(void *cookie);
+extern void  *compress_zopen(const char *, const char *, int);
+extern int compress_zwrite(void *cookie, const void *wbp, int num);
+extern int compress_zread(void *cookie, void *rbp, int num);
+extern int compress_zclose(void *cookie);
 
 #endif /* _ZOPEN_H_ */
