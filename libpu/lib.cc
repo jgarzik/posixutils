@@ -23,7 +23,8 @@
 #include "posixutils-config.h"
 
 #ifndef _GNU_SOURCE
-#define _GNU_SOURCE			/* for O_DIRECTORY */
+#define _GNU_SOURCE 1			/* for O_DIRECTORY */
+#define _DARWIN_C_SOURCE 1		/* for O_DIRECTORY */
 #endif
 
 #include <sys/types.h>
