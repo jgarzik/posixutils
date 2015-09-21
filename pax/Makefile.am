@@ -12,7 +12,7 @@ LIBPU = ../libpu/libpu.a
 
 noinst_PROGRAMS = pax
 
-pax_SOURCES = main.c pax.h pax.c ustar.c cpio.c zip.c
+pax_SOURCES = main.cc pax.h pax.cc ustar.cc cpio.cc zip.cc
 pax_LDADD = $(LIBPU) @ZLIB_LIB@
 
 pax-options.h: Makefile

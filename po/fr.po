@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 07:38-0400\n"
+"POT-Creation-Date: 2015-09-21 07:44-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -17,618 +17,618 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: asa.c:41
+#: asa.cc:41
 msgid "asa - interpret carriage-control characters"
 msgstr ""
 
-#: asa.c:57
+#: asa.cc:57
 #, c-format
 msgid "malformed line\n"
 msgstr ""
 
-#: basename.c:48 dirname.c:44 unlink.c:36
+#: basename.cc:48 dirname.cc:44 unlink.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr "nombre inadmissible des arguments\n"
 
-#: basename.c:56 dirname.c:52
+#: basename.cc:56 dirname.cc:52
 #, c-format
 msgid "invalid pathname\n"
 msgstr "nom inadmissible\n"
 
-#: cat.c:37
+#: cat.cc:37
 msgid "cat - concatenate files and print on the standard output"
 msgstr "cat - enchainez les dossiers et imprimez sur le rendement standard"
 
-#: cat.c:40
+#: cat.cc:40
 msgid "(ignored)"
 msgstr ""
 
-#: chown.c:45
+#: chown.cc:45
 msgid "chown - change file owner and group"
 msgstr ""
 
-#: chown.c:47
+#: chown.cc:47
 msgid "owner[:group] file ..."
 msgstr ""
 
-#: chown.c:51
+#: chown.cc:51
 msgid "Set uid/gid of symlink, if file is a symlink."
 msgstr "Placez uid/gid de symlink, si le dossier est un symlink."
 
-#: chown.c:53
+#: chown.cc:53
 msgid "Recurse into symlinked dirs on the command line."
 msgstr "Recurse dans symlinked des dirs sur la ligne de commande."
 
-#: chown.c:55
+#: chown.cc:55
 msgid ""
 "Recurse into symlinked dirs on the command line or found during traversal."
 msgstr ""
 "Recurse dans symlinked des dirs sur la ligne de commande ou a trouve pendant "
 "le traversal."
 
-#: chown.c:57
+#: chown.cc:57
 msgid "Do not follow symlinks."
 msgstr "Ne suivez pas les symlinks."
 
-#: chown.c:59
+#: chown.cc:59
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown.c:90
+#: chown.cc:90
 #, fuzzy, c-format
 msgid "invalid group '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: chown.c:116
+#: chown.cc:116
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown.c:123
+#: chown.cc:123
 #, fuzzy, c-format
 msgid "invalid owner '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: cksum.c:33
+#: cksum.cc:33
 msgid "cksum - checksum and count the bytes in a file"
 msgstr "cksum - somme et comptent les bytes dans un dossier"
 
-#: cmp.c:36
+#: cmp.cc:36
 #, fuzzy
 msgid "cmp - compare two files"
 msgstr "cmp - comparer deux fichiers"
 
-#: cmp.c:42
+#: cmp.cc:42
 msgid ""
 "Write the byte number (decimal) and the differing bytes (octal) for each "
 "difference."
 msgstr ""
 
-#: cmp.c:44
+#: cmp.cc:44
 msgid "Write nothing for differing files; return exit status only."
 msgstr ""
 
-#: cmp.c:73
+#: cmp.cc:73
 #, c-format
 msgid "cmp: two pathnames required for comparison\n"
 msgstr ""
 
-#: cmp.c:117
+#: cmp.cc:117
 #, c-format
 msgid "cmp: EOF on %s\n"
 msgstr "cmp: EOF sur %s\n"
 
-#: cmp.c:139
+#: cmp.cc:139
 #, c-format
 msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
 
-#: comm.c:39
+#: comm.cc:39
 msgid "comm - compare two sorted files line by line"
 msgstr "comm - comparez la ligne de deux dossiers assortis par la ligne"
 
-#: comm.c:41
+#: comm.cc:41
 msgid "file1 file2"
 msgstr "file1 file2"
 
-#: comm.c:45
+#: comm.cc:45
 msgid "Suppress the output column of lines unique to file1."
 msgstr "Supprimez la colonne de rendement des lignes uniques a file1."
 
-#: comm.c:47
+#: comm.cc:47
 msgid "Suppress the output column of lines unique to file2."
 msgstr "Supprimez la colonne de rendement des lignes uniques a file2."
 
-#: comm.c:49
+#: comm.cc:49
 msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 "Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
 
-#: date.c:36
+#: date.cc:36
 msgid "date - print or set the system date and time"
 msgstr "date - imprimez ou placez la date et l'heure de systeme"
 
-#: date.c:42
+#: date.cc:42
 msgid ""
 "Perform operations as if the TZ environment variable was set to the string "
 "\"UTC0\""
 msgstr ""
 
-#: df.c:42
+#: df.cc:42
 msgid "df - report filesystem disk space usage"
 msgstr ""
 
-#: df.c:48
+#: df.cc:48
 msgid "Use 1024-byte units, instead of the default 512-byte units"
 msgstr ""
 
-#: df.c:50
+#: df.cc:50
 msgid "Use POSIX-defined output format"
 msgstr ""
 
-#: df.c:52
+#: df.cc:52
 msgid "Include total allocated-space figures in the output."
 msgstr ""
 
-#: df.c:195
+#: df.cc:195
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:197
+#: df.cc:197
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df.c:216
+#: df.cc:216
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df.c:219
+#: df.cc:219
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
 
-#: env.c:31
+#: env.cc:31
 msgid "env - set the environment for command invocation"
 msgstr ""
 
-#: env.c:33
+#: env.cc:33
 msgid "[name=value]... utility [args]..."
 msgstr ""
 
-#: env.c:37
+#: env.cc:37
 msgid "Invoke utility with exactly the environment specified by the arguments"
 msgstr ""
 
-#: env.c:146
+#: env.cc:146
 #, c-format
 msgid "execv(%s)"
 msgstr ""
 
-#: getconf.c:36
+#: getconf.cc:36
 msgid "getconf - get configuration values"
 msgstr ""
 
-#: getconf.c:38
+#: getconf.cc:38
 msgid "[system_var | path_var pathname]"
 msgstr ""
 
-#: getconf.c:42
+#: getconf.cc:42
 msgid "not implemented yet"
 msgstr ""
 
-#: getconf.c:77
+#: getconf.cc:77
 #, fuzzy, c-format
 msgid "invalid path variable %s\n"
 msgstr "nom inadmissible\n"
 
-#: getconf.c:79
+#: getconf.cc:79
 #, fuzzy, c-format
 msgid "invalid system variable %s\n"
 msgstr "argument inadmissible de sommeil\n"
 
-#: getconf.c:90
+#: getconf.cc:90
 #, c-format
 msgid "undefined"
 msgstr ""
 
-#: getconf.c:95
+#: getconf.cc:95
 msgid "pathconf(3)"
 msgstr ""
 
-#: getconf.c:97
+#: getconf.cc:97
 msgid "sysconf(3)"
 msgstr ""
 
-#: getconf.c:112
+#: getconf.cc:112
 #, c-format
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf.c:168 ipcs.c:371 nice.c:91 pwd.c:110 split.c:370
+#: getconf.cc:168 ipcs.cc:371 nice.cc:91 pwd.cc:110 split.cc:370
 #, c-format
 msgid "argp_parse failed: %s\n"
 msgstr ""
 
-#: grep.c:45
+#: grep.cc:45
 msgid "grep - print lines matching a pattern"
 msgstr ""
 
-#: grep.c:47
+#: grep.cc:47
 msgid "[pattern_list] [file...]"
 msgstr ""
 
-#: grep.c:51
+#: grep.cc:51
 msgid "Match using extended regular expressions"
 msgstr ""
 
-#: grep.c:53
+#: grep.cc:53
 msgid "Match using fixed strings"
 msgstr ""
 
-#: grep.c:55
+#: grep.cc:55
 msgid "Write only a count of selected lines to standard output"
 msgstr ""
 
-#: grep.c:57
+#: grep.cc:57
 msgid "Specify one or more patterns to be used during the search for input"
 msgstr ""
 
-#: grep.c:59
+#: grep.cc:59
 msgid ""
 "Read one or more patterns from the file named by the pathname pattern_file"
 msgstr ""
 
-#: grep.c:61
+#: grep.cc:61
 msgid "Perform pattern matching in searches without regard to case"
 msgstr ""
 
-#: grep.c:63
+#: grep.cc:63
 msgid ""
 "Write only the names of files containing selected lines to standard output"
 msgstr ""
 
-#: grep.c:65
+#: grep.cc:65
 msgid "Precede each output line by its relative line number in the file"
 msgstr ""
 
-#: grep.c:67
+#: grep.cc:67
 msgid ""
 "Quiet. Nothing shall be written to the standard output, regardless of "
 "matching lines. Exit with zero status if an input line is selected."
 msgstr ""
 
-#: grep.c:70
+#: grep.cc:70
 msgid ""
 "Suppress the error messages ordinarily written for nonexistent or unreadable "
 "files"
 msgstr ""
 
-#: grep.c:72
+#: grep.cc:72
 msgid "Select lines not matching any of the specified patterns"
 msgstr ""
 
-#: grep.c:74
+#: grep.cc:74
 msgid ""
 "Consider only input lines that use all characters in the line, excluding the "
 "terminating <newline>, to match an entire fixed string or regular expression "
 "to be matching lines"
 msgstr ""
 
-#: grep.c:183
+#: grep.cc:183
 #, fuzzy, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr "nom inadmissible\n"
 
-#: grep.c:470
+#: grep.cc:470
 #, c-format
 msgid "no patterns specified"
 msgstr ""
 
-#: head.c:32
+#: head.cc:32
 msgid "head - output the first part of files"
 msgstr ""
 
-#: head.c:36
+#: head.cc:36
 msgid "first number lines of each input file to copy to stdout"
 msgstr ""
 
-#: id.c:37
+#: id.cc:37
 msgid "id - return user identity"
 msgstr ""
 
-#: id.c:39
+#: id.cc:39
 msgid "[user]"
 msgstr ""
 
-#: id.c:42
+#: id.cc:42
 msgid "Output only the effective group ID"
 msgstr ""
 
-#: id.c:44
+#: id.cc:44
 msgid "Output all different group IDs"
 msgstr ""
 
-#: id.c:46
+#: id.cc:46
 msgid "Output the name instead of the numeric ID"
 msgstr ""
 
-#: id.c:48
+#: id.cc:48
 msgid "Output the real ID instead of the effective ID"
 msgstr ""
 
-#: id.c:50
+#: id.cc:50
 msgid "Output only the effective user ID"
 msgstr ""
 
-#: ipcs.c:44
+#: ipcs.cc:44
 msgid "ipcs - report XSI interprocess communication facilities status"
 msgstr ""
 
-#: ipcs.c:48
+#: ipcs.cc:48
 msgid "Write information about active message queues."
 msgstr ""
 
-#: ipcs.c:50
+#: ipcs.cc:50
 msgid "Write information about active shared memory segments."
 msgstr ""
 
-#: ipcs.c:52
+#: ipcs.cc:52
 msgid "Write information about active semaphore sets."
 msgstr ""
 
-#: ipcs.c:55
+#: ipcs.cc:55
 msgid ""
 "Use all print options. (This is a shorthand notation for -b, -c, -o, -p, and "
 "-t.)"
 msgstr ""
 
-#: ipcs.c:57
+#: ipcs.cc:57
 msgid "Write information on maximum allowable size."
 msgstr ""
 
-#: ipcs.c:59
+#: ipcs.cc:59
 msgid "Write creator's user name and group name"
 msgstr ""
 
-#: ipcs.c:61
+#: ipcs.cc:61
 msgid "Write information on outstanding usage."
 msgstr ""
 
-#: ipcs.c:63
+#: ipcs.cc:63
 msgid "Write process number information."
 msgstr ""
 
-#: ipcs.c:65
+#: ipcs.cc:65
 msgid "Write time information."
 msgstr ""
 
-#: ipcs.c:142
+#: ipcs.cc:142
 #, c-format
 msgid "stftime(3) failed\n"
 msgstr ""
 
-#: ipcs.c:146
+#: ipcs.cc:146
 #, c-format
 msgid "IPC status from %s as of %s\n"
 msgstr ""
 
-#: ipcs.c:156
+#: ipcs.cc:156
 #, c-format
 msgid "Message queues:\n"
 msgstr ""
 
-#: ipcs.c:231
+#: ipcs.cc:231
 #, c-format
 msgid "Shared memory:\n"
 msgstr ""
 
-#: ipcs.c:304
+#: ipcs.cc:304
 #, c-format
 msgid "Semaphores:\n"
 msgstr ""
 
-#: ipcrm.c:37
+#: ipcrm.cc:37
 msgid "ipcrm - remove a message queue, semaphore set or shared memory id"
 msgstr ""
 
-#: ipcrm.c:41
+#: ipcrm.cc:41
 msgid "Remove message queue identifier msgid from system"
 msgstr ""
 
-#: ipcrm.c:43
+#: ipcrm.cc:43
 msgid "Remove shared memory identifier shmid from system"
 msgstr ""
 
-#: ipcrm.c:45
+#: ipcrm.cc:45
 msgid "Remove semaphore identifier semid from system"
 msgstr ""
 
-#: ipcrm.c:47
+#: ipcrm.cc:47
 msgid "Remove message queue identifier, created with key msgkey, from system"
 msgstr ""
 
-#: ipcrm.c:49
+#: ipcrm.cc:49
 msgid "Remove shared memory identifier, created with key shmkey, from system"
 msgstr ""
 
-#: ipcrm.c:51
+#: ipcrm.cc:51
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
-#: link.c:35 mesg.c:54 sleep.c:50
+#: link.cc:35 mesg.cc:54 sleep.cc:50
 #, c-format
 msgid "invalid arguments\n"
 msgstr "arguments inadmissibles\n"
 
-#: link.c:40
+#: link.cc:40
 msgid "link(2)"
 msgstr ""
 
-#: ln.c:41
+#: ln.cc:41
 msgid "ln - make links between files"
 msgstr ""
 
-#: ln.c:43
+#: ln.cc:43
 msgid "file... TARGET"
 msgstr ""
 
-#: ln.c:47
+#: ln.cc:47
 msgid "Force existing dest. pathnames to be removed to allow the link"
 msgstr ""
 
-#: ln.c:49
+#: ln.cc:49
 msgid "Create symbolic links instead of hard links"
 msgstr ""
 
-#: ln.c:160
+#: ln.cc:160
 #, fuzzy, c-format
 msgid "ln: missing link source/target\n"
 msgstr "source/target manquant\n"
 
-#: ln.c:176
+#: ln.cc:176
 #, c-format
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: logger.c:40
+#: logger.cc:40
 #, c-format
 msgid "no arguments\n"
 msgstr "aucuns arguments\n"
 
-#: logname.c:39
+#: logname.cc:39
 msgid "getlogin(3)"
 msgstr ""
 
-#: mesg.c:67
+#: mesg.cc:67
 #, c-format
 msgid "no terminal device found\n"
 msgstr ""
 
-#: mesg.c:79
+#: mesg.cc:79
 #, c-format
 msgid "is y\n"
 msgstr ""
 
-#: mesg.c:82
+#: mesg.cc:82
 #, c-format
 msgid "is n\n"
 msgstr ""
 
-#: mkdir.c:38
+#: mkdir.cc:38
 msgid "mkdir - make directories"
 msgstr ""
 
-#: mkdir.c:42
+#: mkdir.cc:42
 msgid "Create any missing intermediate pathname components"
 msgstr ""
 
-#: mkdir.c:85
+#: mkdir.cc:85
 #, c-format
 msgid "parent '%s' is not a directory\n"
 msgstr ""
 
-#: mkfifo.c:37
+#: mkfifo.cc:37
 msgid "mkfifo - make FIFOs (named pipes)"
 msgstr ""
 
-#: mv.c:44
+#: mv.cc:44
 msgid "mv - move (rename) files"
 msgstr ""
 
-#: mv.c:48
+#: mv.cc:48
 msgid "Do not prompt for confirmation if the destination path exists."
 msgstr ""
 
-#: mv.c:50
+#: mv.cc:50
 msgid "Prompt for confirmation if the destination path exists"
 msgstr ""
 
-#: mv.c:264
+#: mv.cc:264
 #, c-format
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
 
-#: mv.c:302
+#: mv.cc:302
 #, c-format
 msgid "mv: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: mv.c:341
+#: mv.cc:341
 #, c-format
 msgid "missing source/target\n"
 msgstr "source/target manquant\n"
 
-#: nice.c:35
+#: nice.cc:35
 msgid "nice - run a program with modified scheduling priority"
 msgstr ""
 
-#: nice.c:37
+#: nice.cc:37
 msgid "command [arg...]"
 msgstr ""
 
-#: nice.c:41
+#: nice.cc:41
 msgid "Positive or negative integer indicating desired priority adjustment"
 msgstr ""
 
-#: nice.c:96
+#: nice.cc:96
 msgid "nice(2)"
 msgstr ""
 
-#: nice.c:112 nohup.c:103
+#: nice.cc:112 nohup.cc:103
 msgid "execvp(3)"
 msgstr ""
 
-#: nohup.c:50 nohup.c:53
+#: nohup.cc:50 nohup.cc:53
 #, c-format
 msgid "nohup.out"
 msgstr ""
 
-#: nohup.c:62
+#: nohup.cc:62
 msgid "stdout redirect failed"
 msgstr ""
 
-#: nohup.c:66
+#: nohup.cc:66
 #, c-format
 msgid "nohup: appending output to '%s'\n"
 msgstr ""
 
-#: nohup.c:77
+#: nohup.cc:77
 msgid "stderr redirect failed"
 msgstr ""
 
-#: nohup.c:89
+#: nohup.cc:89
 #, fuzzy, c-format
 msgid "nohup: no arguments\n"
 msgstr "aucuns arguments\n"
 
-#: pathchk.c:40
+#: pathchk.cc:40
 msgid "pathchk - check whether file names are valid or portable"
 msgstr ""
 
-#: pathchk.c:46
+#: pathchk.cc:46
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk.c:93
+#: pathchk.cc:93
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk.c:103
+#: pathchk.cc:103
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
 
-#: pwd.c:40
+#: pwd.cc:40
 msgid "pwd - print name of current/working directory"
 msgstr ""
 
-#: pwd.c:44
+#: pwd.cc:44
 msgid ""
 "If the PWD environment variable contains an absolute pathname of the current "
 "directory that does not contain the filenames dot or dot-dot, pwd shall "
@@ -636,201 +636,201 @@ msgid ""
 "behave as the -P option."
 msgstr ""
 
-#: pwd.c:46
+#: pwd.cc:46
 msgid ""
 "The absolute pathname written shall not contain filenames that, in the "
 "context of the pathname, refer to files of type symbolic link."
 msgstr ""
 
-#: renice.c:40
+#: renice.cc:40
 msgid "renice - alter priority of running processes"
 msgstr ""
 
-#: renice.c:42
+#: renice.cc:42
 msgid "ID ..."
 msgstr ""
 
-#: renice.c:46
+#: renice.cc:46
 msgid "Interpret all operands as unsigned decimal integer process group IDs"
 msgstr ""
 
-#: renice.c:48
+#: renice.cc:48
 msgid ""
 "Interpret all operands as unsigned decimal integer process IDs. The -p "
 "option is the default if no options are specified"
 msgstr ""
 
-#: renice.c:50
+#: renice.cc:50
 msgid "Interpret all operands as users."
 msgstr ""
 
-#: renice.c:52
+#: renice.cc:52
 msgid ""
 "Specify how the nice value of the specified process or processes is to be "
 "adjusted"
 msgstr ""
 
-#: rm.c:44
+#: rm.cc:44
 msgid "rm - remove files or directories"
 msgstr ""
 
-#: rm.c:50
+#: rm.cc:50
 msgid ""
 "Do not prompt for confirmation. Do not write diagnostic messages or modify "
 "the exit status in the case of nonexistent operands."
 msgstr ""
 
-#: rm.c:52
+#: rm.cc:52
 msgid "Prompt for confirmation"
 msgstr ""
 
-#: rm.c:54
+#: rm.cc:54
 msgid "Remove file hierarchies"
 msgstr ""
 
-#: rmdir.c:34
+#: rmdir.cc:34
 msgid "rmdir - remove empty directories"
 msgstr ""
 
-#: rmdir.c:40
+#: rmdir.cc:40
 msgid "Remove all directories in a pathname."
 msgstr ""
 
-#: sleep.c:45
+#: sleep.cc:45
 #, c-format
 msgid "cannot install SIGALARM handler\n"
 msgstr "ne peut pas installer le traiteur de SIGALARM\n"
 
-#: sleep.c:56
+#: sleep.cc:56
 #, c-format
 msgid "invalid sleep argument\n"
 msgstr "argument inadmissible de sommeil\n"
 
-#: split.c:46
+#: split.cc:46
 msgid "split - split a file into pieces"
 msgstr ""
 
-#: split.c:48
+#: split.cc:48
 msgid "[file [prefix]]"
 msgstr ""
 
-#: split.c:52
+#: split.cc:52
 msgid ""
 "Use N letters to form the suffix portion of the filenames of the split file"
 msgstr ""
 
-#: split.c:54
+#: split.cc:54
 msgid "Split a file into pieces n bytes in size"
 msgstr ""
 
-#: split.c:56
+#: split.cc:56
 msgid "Specify the number of lines in each resulting file piece"
 msgstr ""
 
-#: split.c:287
+#: split.cc:287
 msgid "setvbuf(3) failed"
 msgstr ""
 
-#: split.c:331
+#: split.cc:331
 msgid "(standard input)"
 msgstr ""
 
-#: split.c:376
+#: split.cc:376
 #, c-format
 msgid "prefix + suffix too large\n"
 msgstr ""
 
-#: strings.c:34
+#: strings.cc:34
 msgid "strings - find printable strings in files"
 msgstr ""
 
-#: strings.c:40
+#: strings.cc:40
 msgid "Scan files in their entirety"
 msgstr ""
 
-#: strings.c:42
+#: strings.cc:42
 msgid "Specify the minimum string length"
 msgstr ""
 
-#: strings.c:44
+#: strings.cc:44
 msgid ""
 "Write each string preceded by its byte offset from the start of the file"
 msgstr ""
 
-#: stty.c:230
+#: stty.cc:230
 #, c-format
 msgid "stty: invalid compact settings format\n"
 msgstr ""
 
-#: stty.c:358
+#: stty.cc:358
 #, fuzzy, c-format
 msgid "stty: '%s' missing required argument\n"
 msgstr "arguments inadmissibles\n"
 
-#: stty.c:405
+#: stty.cc:405
 #, fuzzy, c-format
 msgid "stty: invalid argument '%s'\n"
 msgstr "arguments inadmissibles\n"
 
-#: tabs.c:68
+#: tabs.cc:68
 #, c-format
 msgid "tabs: tab stop table limit reached\n"
 msgstr ""
 
-#: tabs.c:115
+#: tabs.cc:115
 #, fuzzy, c-format
 msgid "tabs: setupterm failed for term type %s\n"
 msgstr "tput: setupterm pas\n"
 
-#: tabs.c:116
+#: tabs.cc:116
 msgid "(null)"
 msgstr ""
 
-#: tabs.c:204
+#: tabs.cc:204
 #, c-format
 msgid "tabs: tabspec beyond max-columns specified\n"
 msgstr ""
 
-#: tabs.c:253
+#: tabs.cc:253
 #, c-format
 msgid "tabs: terminal unable to set tabs\n"
 msgstr ""
 
-#: tabs.c:276
+#: tabs.cc:276
 #, c-format
 msgid "tabs: buffer overflow\n"
 msgstr ""
 
-#: tee.c:40
+#: tee.cc:40
 msgid "tee - read from standard input and write to standard output and files"
 msgstr ""
 
-#: tee.c:44
+#: tee.cc:44
 msgid "Append the output to the files"
 msgstr ""
 
-#: tee.c:46
+#: tee.cc:46
 msgid "Ignore the SIGINT signal"
 msgstr ""
 
-#: time.c:44
+#: time.cc:44
 msgid "exec failed"
 msgstr ""
 
-#: time.c:58
+#: time.cc:58
 msgid "wait4(child)"
 msgstr ""
 
-#: time.c:63
+#: time.cc:63
 #, c-format
 msgid "exec failed\n"
 msgstr ""
 
-#: time.c:68
+#: time.cc:68
 msgid "gettimeofday 2"
 msgstr ""
 
-#: time.c:80
+#: time.cc:80
 #, c-format
 msgid ""
 "real %Lu.%Lu\n"
@@ -838,175 +838,175 @@ msgid ""
 "sys %Lu.%Lu\n"
 msgstr ""
 
-#: time.c:103
+#: time.cc:103
 #, fuzzy, c-format
 msgid "no args\n"
 msgstr "aucuns arguments\n"
 
-#: time.c:108
+#: time.cc:108
 msgid "gettimeofday"
 msgstr ""
 
-#: time.c:114
+#: time.cc:114
 msgid "fork"
 msgstr ""
 
-#: touch.c:40
+#: touch.cc:40
 msgid "touch - change file timestamps"
 msgstr ""
 
-#: touch.c:46
+#: touch.cc:46
 msgid "Change the access time of file"
 msgstr ""
 
-#: touch.c:48
+#: touch.cc:48
 msgid "Do not create a specified file if it does not exist"
 msgstr ""
 
-#: touch.c:50
+#: touch.cc:50
 msgid "Change the modification time of file"
 msgstr ""
 
-#: touch.c:52
+#: touch.cc:52
 msgid "Use the corresponding time of FILE instead of the current time"
 msgstr ""
 
-#: touch.c:54
+#: touch.cc:54
 msgid "Use the specified time STAMP instead of the current time"
 msgstr ""
 
-#: tput.c:38
+#: tput.cc:38
 msgid "tput - change terminal characteristics"
 msgstr "tput - changement des caracteristiques administration"
 
-#: tput.c:44
+#: tput.cc:44
 msgid "Indicate the type of terminal."
 msgstr "Indiquer le type de terminal."
 
-#: tput.c:134
+#: tput.cc:134
 #, c-format
 msgid "tput: setupterm failed\n"
 msgstr "tput: setupterm pas\n"
 
-#: tsort.c:148
+#: tsort.cc:148
 #, c-format
 msgid "tsort: max recursion limit reached\n"
 msgstr ""
 
-#: tsort.c:225
+#: tsort.cc:225
 #, c-format
 msgid "usage: tsort FILE\n"
 msgstr ""
 
-#: tty.c:35
+#: tty.cc:35
 #, c-format
 msgid "not a tty\n"
 msgstr "pas un tty\n"
 
-#: uname.c:35
+#: uname.cc:35
 msgid "uname - return system name"
 msgstr ""
 
-#: uname.c:39
+#: uname.cc:39
 msgid "Behave as though all of the options -mnrsv were specified."
 msgstr ""
 
-#: uname.c:41
+#: uname.cc:41
 msgid ""
 "Write the name of the hardware type on which the system is running to "
 "standard output."
 msgstr ""
 
-#: uname.c:43
+#: uname.cc:43
 msgid ""
 "Write the name of this node within an implementation-defined communications "
 "network."
 msgstr ""
 
-#: uname.c:45
+#: uname.cc:45
 msgid "Write the current release level of the operating system implementation."
 msgstr ""
 
-#: uname.c:47
+#: uname.cc:47
 msgid "Write the name of the implementation of the operating system."
 msgstr ""
 
-#: uname.c:49
+#: uname.cc:49
 msgid ""
 "Write the current version level of this release of the operating system "
 "implementation."
 msgstr ""
 
-#: uniq.c:41
+#: uniq.cc:41
 msgid "uniq - report or filter out repeated lines in a file"
 msgstr ""
 
-#: uniq.c:47
+#: uniq.cc:47
 msgid ""
 "Precede each output line with a count of the number of times the line "
 "occurred in the input."
 msgstr ""
 
-#: uniq.c:177
+#: uniq.cc:177
 #, fuzzy, c-format
 msgid "uniq: missing source file\n"
 msgstr "source/target manquant\n"
 
-#: uuencode.c:39
+#: uuencode.cc:39
 msgid "uuencode - encode a binary file"
 msgstr ""
 
-#: uuencode.c:41
+#: uuencode.cc:41
 msgid "[file] decode_pathname"
 msgstr ""
 
-#: uuencode.c:45
+#: uuencode.cc:45
 msgid "Encode the output using the MIME Base64 algorithm"
 msgstr ""
 
-#: wc.c:37
+#: wc.cc:37
 msgid "wc - print the number of newlines, words, and bytes in files"
 msgstr ""
 
-#: wc.c:43
+#: wc.cc:43
 msgid "Write to the standard output the number of bytes in each input file"
 msgstr ""
 
-#: wc.c:45
+#: wc.cc:45
 msgid ""
 "Write to the standard output the number of <newline>s in each input file"
 msgstr ""
 
-#: wc.c:47
+#: wc.cc:47
 msgid "Write to the standard output the number of words in each input file"
 msgstr ""
 
-#: wc.c:49
+#: wc.cc:49
 msgid ""
 "Write to the standard output the number of characters in each input file"
 msgstr ""
 
-#: wc.c:282
+#: wc.cc:282
 msgid "total"
 msgstr "total"
 
-#: what.c:39
+#: what.cc:39
 msgid "what - identify SCCS files"
 msgstr ""
 
-#: what.c:45
+#: what.cc:45
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 
-#: libpu/alloc.c:33 libpu/alloc.c:41 libpu/alloc.c:49 libpu/alloc.c:57
+#: libpu/alloc.cc:33 libpu/alloc.cc:41 libpu/alloc.cc:49 libpu/alloc.cc:57
 msgid "out of memory"
 msgstr "hors de la memoire"
 
-#: libpu/lib.c:43
+#: libpu/lib.cc:43
 msgid "file..."
 msgstr ""
 
-#: libpu/lib.c:144
+#: libpu/lib.cc:144
 msgid "getcwd(3) failed"
 msgstr ""
 

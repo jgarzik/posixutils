@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT(posixutils, 5git, [http://sourceforge.net/projects/nix-utils  ..])
-AC_PREREQ(2.52)
-AC_CONFIG_SRCDIR([cat.c])
+AC_PREREQ(2.60)
+AC_CONFIG_SRCDIR([asa.cc])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([gnu])
 AC_CONFIG_HEADERS([posixutils-config.h])
@@ -10,7 +10,7 @@ AM_MAINTAINER_MODE
 
 dnl Checks for programs.
 AC_PROG_CC
-AC_PROG_GCC_TRADITIONAL
+AC_PROG_CXX
 AC_PROG_RANLIB
 AC_ISC_POSIX
 

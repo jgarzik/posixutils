@@ -3,6 +3,6 @@ AM_CPPFLAGS = -I$(top_srcdir)/include -DLOCALEDIR=\"@datadir@/locale\"
 
 noinst_LIBRARIES = libpu.a
 
-libpu_a_SOURCES = alloc.c cmdline.c dict.c lib.c \
-		  path.c slist.c term.c walk.c
+libpu_a_SOURCES = alloc.cc cmdline.cc dict.cc lib.cc \
+		  path.cc slist.cc term.cc walk.cc
 

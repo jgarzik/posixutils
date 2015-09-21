@@ -1,7 +1,7 @@
 
 bin_PROGRAMS = compress
 
-compress_SOURCES = zopen.c zopen.h compress.c
+compress_SOURCES = zopen.cc zopen.h compress.cc
 
 EXTRA_DIST = NOTES README revision.log
 
