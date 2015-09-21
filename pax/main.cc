@@ -356,7 +356,7 @@ size_t my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
 
 static int pax_list(struct pax_file_info *fi)
 {
-	char *fn;
+	const char *fn;
 
 	if (fi->pathname && (*fi->pathname))
 		fn = fi->pathname;
@@ -504,7 +504,9 @@ static int pax_file_arg(struct walker *w, const char *fn, const struct stat *lst
 			goto out;
 		}
 
+#ifdef POSIX_FADV_SEQUENTIAL
 		posix_fadvise(fd, 0, 0, POSIX_FADV_SEQUENTIAL);
+#endif
 
 		while (1) {
 			int frc;

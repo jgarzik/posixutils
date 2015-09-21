@@ -267,4 +267,8 @@ static inline char *fgets_unlocked(char *s, int size, FILE *stream)
 #define NAME_MAX MAXNAMLEN
 #endif
 
+#ifndef ACCESSPERMS
+# define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO) /* 0777 */
+#endif
+
 #endif /* __POSIXUTILS_LIB_H__ */
