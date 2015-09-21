@@ -111,7 +111,7 @@ err_out:
 	return 1;
 }
 
-static void parse_user_time(const char *ut)
+static void parse_user_time(char *ut)
 {
 	struct tm tm;
 	char *suff;
