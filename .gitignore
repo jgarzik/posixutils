@@ -27,16 +27,6 @@ autom4te.cache
 
 signal-copy.h
 
-link
-ln
-logger
-logname
-mesg
-mkdir
-mkfifo
-mv
-nice
-nohup
 pathchk
 pwd
 renice

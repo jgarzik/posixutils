@@ -1,0 +1,6 @@
+
+mkfifo
+
+*.log
+*.trs
+

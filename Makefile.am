@@ -5,7 +5,8 @@ SUBDIRS = \
 	doc m4 po include platform libpu \
 	asa basename cat chown cksum cmp comm compress \
 	date df dirname echo env false getconf grep head \
-	id ipcrm ipcs kill pax tests
+	id ipcrm ipcs kill link ln logger logname mesg mkdir \
+	mkfifo mv nice nohup pax tests
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
@@ -14,44 +15,13 @@ EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-strmap.pl
 LIBPU = libpu/libpu.a @ARGP_LIB@
 
 bin_PROGRAMS = \
-	link logger logname ln mesg	\
-	nice nohup pwd renice rm rmdir sleep strings tabs tee time	\
+	pwd renice rm rmdir sleep strings tabs tee time	\
 	touch tput true tsort tty uname unlink uuencode wc what
 
 # all programs listed here are works-in-progress (WIP)
 # see file TODO, and doc/status/PROGRAM.status, for more information.
-noinst_PROGRAMS = mkdir mkfifo mv pathchk split stty uniq
+noinst_PROGRAMS = pathchk split stty uniq
 
-
-link_SOURCES = link.cc
-link_LDADD = $(LIBPU)
-
-logger_SOURCES = logger.cc
-logger_LDADD = $(LIBPU)
-
-logname_SOURCES = logname.cc
-logname_LDADD = $(LIBPU)
-
-ln_SOURCES = ln.cc
-ln_LDADD = $(LIBPU)
-
-mkdir_SOURCES = mkdir.cc
-mkdir_LDADD = $(LIBPU)
-
-mkfifo_SOURCES = mkfifo.cc
-mkfifo_LDADD = $(LIBPU)
-
-mesg_SOURCES = mesg.cc
-mesg_LDADD = $(LIBPU)
-
-mv_SOURCES = mv.cc
-mv_LDADD = $(LIBPU)
-
-nice_SOURCES = nice.cc
-nice_LDADD = $(LIBPU)
-
-nohup_SOURCES = nohup.cc
-nohup_LDADD = $(LIBPU)
 
 pathchk_SOURCES = pathchk.cc
 pathchk_LDADD = $(LIBPU)

@@ -37,7 +37,7 @@ then
 fi
 rm -f $FN.1
 
-../ln $FN $FN.1
+./ln $FN $FN.1
 if [ ! $FN -ef $FN.1 ]
 then
 	echo "basic-ln 5: hardlink test failed"
@@ -46,7 +46,7 @@ then
 fi
 rm -f $FN.1
 
-../ln -s $FN $FN.1
+./ln -s $FN $FN.1
 if [ ! -h $FN.1 ]
 then
 	echo "basic-ln 6: symlink test failed"

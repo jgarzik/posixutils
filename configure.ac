@@ -76,6 +76,16 @@ AC_CONFIG_FILES([Makefile
 		ipcrm/Makefile
 		ipcs/Makefile
 		kill/Makefile
+		link/Makefile
+		ln/Makefile
+		logger/Makefile
+		logname/Makefile
+		mesg/Makefile
+		mkdir/Makefile
+		mkfifo/Makefile
+		mv/Makefile
+		nice/Makefile
+		nohup/Makefile
 		pax/Makefile
 		platform/Makefile
 		platform/signal/Makefile

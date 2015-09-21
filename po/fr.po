@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 16:21-0400\n"
+"POT-Creation-Date: 2015-09-21 16:48-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -249,7 +249,8 @@ msgstr ""
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf/getconf.cc:168 ipcs/ipcs.cc:371 nice.cc:91 pwd.cc:110 split.cc:370
+#: getconf/getconf.cc:168 ipcs/ipcs.cc:371 nice/nice.cc:91 pwd.cc:110
+#: split.cc:370
 #, c-format
 msgid "argp_parse failed: %s\n"
 msgstr ""
@@ -460,148 +461,148 @@ msgstr ""
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
-#: link.cc:35 mesg.cc:55 sleep.cc:50
+#: link/link.cc:35 mesg/mesg.cc:55 sleep.cc:50
 #, c-format
 msgid "invalid arguments\n"
 msgstr "arguments inadmissibles\n"
 
-#: link.cc:40
+#: link/link.cc:40
 msgid "link(2)"
 msgstr ""
 
-#: ln.cc:41
+#: ln/ln.cc:41
 msgid "ln - make links between files"
 msgstr ""
 
-#: ln.cc:43
+#: ln/ln.cc:43
 msgid "file... TARGET"
 msgstr ""
 
-#: ln.cc:47
+#: ln/ln.cc:47
 msgid "Force existing dest. pathnames to be removed to allow the link"
 msgstr ""
 
-#: ln.cc:49
+#: ln/ln.cc:49
 msgid "Create symbolic links instead of hard links"
 msgstr ""
 
-#: ln.cc:160
+#: ln/ln.cc:160
 #, fuzzy, c-format
 msgid "ln: missing link source/target\n"
 msgstr "source/target manquant\n"
 
-#: ln.cc:176
+#: ln/ln.cc:176
 #, c-format
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: logger.cc:40
+#: logger/logger.cc:40
 #, c-format
 msgid "no arguments\n"
 msgstr "aucuns arguments\n"
 
-#: logname.cc:39
+#: logname/logname.cc:39
 msgid "getlogin(3)"
 msgstr ""
 
-#: mesg.cc:68
+#: mesg/mesg.cc:68
 #, c-format
 msgid "no terminal device found\n"
 msgstr ""
 
-#: mesg.cc:80
+#: mesg/mesg.cc:80
 #, c-format
 msgid "is y\n"
 msgstr ""
 
-#: mesg.cc:83
+#: mesg/mesg.cc:83
 #, c-format
 msgid "is n\n"
 msgstr ""
 
-#: mkdir.cc:38
+#: mkdir/mkdir.cc:38
 msgid "mkdir - make directories"
 msgstr ""
 
-#: mkdir.cc:42
+#: mkdir/mkdir.cc:42
 msgid "Create any missing intermediate pathname components"
 msgstr ""
 
-#: mkdir.cc:85
+#: mkdir/mkdir.cc:85
 #, c-format
 msgid "parent '%s' is not a directory\n"
 msgstr ""
 
-#: mkfifo.cc:37
+#: mkfifo/mkfifo.cc:37
 msgid "mkfifo - make FIFOs (named pipes)"
 msgstr ""
 
-#: mv.cc:45
+#: mv/mv.cc:45
 msgid "mv - move (rename) files"
 msgstr ""
 
-#: mv.cc:49
+#: mv/mv.cc:49
 msgid "Do not prompt for confirmation if the destination path exists."
 msgstr ""
 
-#: mv.cc:51
+#: mv/mv.cc:51
 msgid "Prompt for confirmation if the destination path exists"
 msgstr ""
 
-#: mv.cc:265
+#: mv/mv.cc:265
 #, c-format
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
 
-#: mv.cc:303
+#: mv/mv.cc:303
 #, c-format
 msgid "mv: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: mv.cc:342
+#: mv/mv.cc:342
 #, c-format
 msgid "missing source/target\n"
 msgstr "source/target manquant\n"
 
-#: nice.cc:35
+#: nice/nice.cc:35
 msgid "nice - run a program with modified scheduling priority"
 msgstr ""
 
-#: nice.cc:37
+#: nice/nice.cc:37
 msgid "command [arg...]"
 msgstr ""
 
-#: nice.cc:41
+#: nice/nice.cc:41
 msgid "Positive or negative integer indicating desired priority adjustment"
 msgstr ""
 
-#: nice.cc:96
+#: nice/nice.cc:96
 msgid "nice(2)"
 msgstr ""
 
-#: nice.cc:112 nohup.cc:103
+#: nice/nice.cc:112 nohup/nohup.cc:103
 msgid "execvp(3)"
 msgstr ""
 
-#: nohup.cc:50 nohup.cc:53
+#: nohup/nohup.cc:50 nohup/nohup.cc:53
 #, c-format
 msgid "nohup.out"
 msgstr ""
 
-#: nohup.cc:62
+#: nohup/nohup.cc:62
 msgid "stdout redirect failed"
 msgstr ""
 
-#: nohup.cc:66
+#: nohup/nohup.cc:66
 #, c-format
 msgid "nohup: appending output to '%s'\n"
 msgstr ""
 
-#: nohup.cc:77
+#: nohup/nohup.cc:77
 msgid "stderr redirect failed"
 msgstr ""
 
-#: nohup.cc:89
+#: nohup/nohup.cc:89
 #, fuzzy, c-format
 msgid "nohup: no arguments\n"
 msgstr "aucuns arguments\n"
