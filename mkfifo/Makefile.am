@@ -3,7 +3,8 @@ LIBPU = ../libpu/libpu.a @ARGP_LIB@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-bin_PROGRAMS = mkfifo
+# noinst=WIP
+noinst_PROGRAMS = mkfifo
 
 dist_man_MANS = mkfifo.1
 

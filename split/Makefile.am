@@ -3,7 +3,8 @@ LIBPU = ../libpu/libpu.a @ARGP_LIB@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-bin_PROGRAMS = split
+# noinst=WIP
+noinst_PROGRAMS = split
 
 dist_man_MANS = split.1
 

@@ -3,7 +3,8 @@ LIBPU = ../libpu/libpu.a @ARGP_LIB@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-bin_PROGRAMS = stty
+# noinst=WIP
+noinst_PROGRAMS = stty
 
 dist_man_MANS = stty.1
 

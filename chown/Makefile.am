@@ -3,7 +3,8 @@ LIBPU = ../libpu/libpu.a @ARGP_LIB@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-bin_PROGRAMS = chown
+# noinst=WIP
+noinst_PROGRAMS = chown
 
 dist_man_MANS = chown.1
 

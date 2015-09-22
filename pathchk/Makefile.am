@@ -3,7 +3,8 @@ LIBPU = ../libpu/libpu.a @ARGP_LIB@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-bin_PROGRAMS = pathchk
+# noinst=WIP
+noinst_PROGRAMS = pathchk
 
 dist_man_MANS = pathchk.1
 

@@ -3,7 +3,8 @@ LIBPU = ../libpu/libpu.a @ARGP_LIB@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
-bin_PROGRAMS = uniq
+# noinst=WIP
+noinst_PROGRAMS = uniq
 
 dist_man_MANS = uniq.1
 
