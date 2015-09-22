@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <errno.h>
+#include <string>
 #include <libpu.h>
 
 
@@ -66,7 +67,7 @@ static const char *opt_spec;
 #include "getconf-confstr.h"
 #undef STRMAP
 
-static int do_var(const struct strmap *map, int pathvar)
+static int do_var(const struct strmap *map, bool pathvar)
 {
 	int val;
 	long l;
@@ -81,21 +82,18 @@ static int do_var(const struct strmap *map, int pathvar)
 	}
 
 	errno = 0;
-	if (pathvar)
+	if (pathvar) {
 		l = pathconf(opt_pathname, val);
-	else
-		l = sysconf(val);
-	if (l < 0) {
-		if (errno == 0) {
-			printf(_("undefined"));
-			return 0;
-		}
-
-		if (pathvar)
+		if (l < 0) {
 			perror(_("pathconf(3)"));
-		else
+			return 1;
+		}
+	} else {
+		l = sysconf(val);
+		if (l < 0) {
 			perror(_("sysconf(3)"));
-		return 1;
+			return 1;
+		}
 	}
 
 	printf("%ld\n", l);
@@ -104,20 +102,17 @@ static int do_var(const struct strmap *map, int pathvar)
 
 static int do_confstr(int val)
 {
-	char *buf;
-	size_t n;
-
-	n = confstr(val, NULL, 0);
+	size_t n = confstr(val, NULL, 0);
 	if (n == 0) {
 		fprintf(stderr, _("invalid confstr variable %s\n"), opt_var);
 		return 1;
 	}
 
-	buf = (char *) xmalloc(n);
-	confstr(val, buf, n);
+	n++;				// C nul
+	std::string buf(n, '\0');
+	confstr(val, &buf[0], n);
 
-	printf("%s\n", buf);
-	free(buf);
+	printf("%s\n", buf.c_str());
 
 	return 0;
 }
@@ -171,7 +166,7 @@ int main (int argc, char *argv[])
 
 	/* if we have a pathname argument, we use pathconf(3) */
 	if (opt_pathname)
-		return do_var(pathvar_map, 1);
+		return do_var(pathvar_map, true);
 
 	/* if it's in the confstr list, use confstr(3) */
 	val = map_lookup(confstr_map, opt_var);
@@ -179,6 +174,6 @@ int main (int argc, char *argv[])
 		return do_confstr(val);
 
 	/* otherwise, use the sysconf(3) variable list */
-	return do_var(sysvar_map, 0);
+	return do_var(sysvar_map, false);
 }
 
