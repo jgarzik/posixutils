@@ -12,5 +12,7 @@ cksum_LDADD = $(LIBPU)
 
 TESTS = cksum-test
 
-EXTRA_DIST = cksum-test cksum-test.data test.data
+EXTRA_DIST = cksum-test \
+	cksum-test.data test.data \
+	test.data2 cksum-test.data2
 
