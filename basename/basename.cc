@@ -22,58 +22,47 @@
 #endif
 #include "posixutils-config.h"
 
-#include <limits.h>
-#include <libgen.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <libgen.h>
+#include <string>
 #include <libpu.h>
-
-
-static char pathbuf[PATH_MAX + 2];
 
 
 int main (int argc, char *argv[])
 {
-	char *bn, *suffix;
+	std::string suffix;
 
 	pu_init();
 
-	if (argc == 2)
-		suffix = NULL;
-	else if (argc == 3)
-		suffix = argv[2];
+	// basename PATH
+	if (argc == 2) {
+		// do nothing
+
+	// basename PATH SUFFIX
+	} else if (argc == 3)
+		suffix.assign(argv[2]);
+
+	// too few or too many args
 	else {
 		fprintf(stderr, _("invalid number of arguments\n"));
 		return 1;
 	}
 
-	strncpy(pathbuf, argv[1], sizeof(pathbuf));
-	pathbuf[sizeof(pathbuf) - 1] = 0;
+	// take input path, strip directories using basename(3)
+	std::string pathbuf(argv[1]);
+	std::string bn(basename(&pathbuf[0]));
 
-	if (strlen(pathbuf) > PATH_MAX) {
-		fprintf(stderr, _("invalid pathname\n"));
-		return 1;
-	}
+	// strip suffix, if match present
+	size_t suffix_len = suffix.size();
+	size_t trunc_len = bn.size() - suffix_len;
 
-	bn = basename(pathbuf);
+	if ((suffix_len > 0) &&
+	    (suffix_len < bn.size()) &&
+	    (suffix == bn.substr(trunc_len)))
+		bn.resize(trunc_len);
 
-	if (suffix) {
-		int len, slen;
-
-		len = strlen(bn);
-		slen = strlen(suffix);
-
-		if (len > slen) {
-			char *s = bn + (len - slen);
-
-			if (!memcmp(s, suffix, slen))
-				*s = 0;
-		}
-	}
-
-	printf("%s\n", bn);
+	// final processed output
+	printf("%s\n", bn.c_str());
 
 	return 0;
 }
