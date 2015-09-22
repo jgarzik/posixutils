@@ -64,6 +64,7 @@ AC_CONFIG_FILES([Makefile
 		compress/Makefile
 		date/Makefile
 		df/Makefile
+		diff/Makefile
 		dirname/Makefile
 		echo/Makefile
 		env/Makefile

@@ -9,6 +9,7 @@ compress/compress.cc
 date/date.cc
 df/df.cc
 dirname/dirname.cc
+diff/diff.cc
 env/env.cc
 getconf/getconf.cc
 grep/grep.cc

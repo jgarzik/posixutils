@@ -1,0 +1,454 @@
+.Dd December 2008
+.Dt DIFF 1
+
+.Sh NAME
+
+.Nm diff
+.Nd compare two files
+
+.Sh SYNOPSIS
+
+.Nm diff
+.Ar [-c| -e| -f| -C n][-br] file1 file2
+
+.Sh DESCRIPTION
+
+    The diff utility shall compare the contents of file1 and file2 and write
+to standard output a list of changes necessary to convert file1 into file2.
+This list should be minimal. No output shall be produced if the files are
+identical.
+
+.Sh OPTIONS
+
+    The diff utility shall conform to the Base Definitions volume of IEEE Std
+1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+    The following options shall be supported:
+
+    -b
+        Cause any amount of white space at the end of a line to be treated as
+a single <newline> (that is, the white-space characters preceding the
+<newline> are ignored) and other strings of white-space characters, not
+including <newline>s, to compare equal.
+    -c
+        Produce output in a form that provides three lines of context.
+    -C n
+        Produce output in a form that provides n lines of context (where n
+shall be interpreted as a positive decimal integer).
+    -e
+        Produce output in a form suitable as input for the ed utility, which
+can then be used to convert file1 into file2.
+    -f
+        Produce output in an alternative form, similar in format to -e, but
+not intended to be suitable as input for the ed utility, and in the opposite
+order.
+    -r
+        Apply diff recursively to files and directories of the same name when
+file1 and file2 are both directories.
+
+.Sh OPERANDS
+
+    The following operands shall be supported:
+
+    file1, file2
+        A pathname of a file to be compared. If either the file1 or file2
+operand is '-', the standard input shall be used in its place.
+
+    If both file1 and file2 are directories, diff shall not compare block
+special files, character special files, or FIFO special files to any files
+and shall not compare regular files to directories. Further details are as
+specified in Diff Directory Comparison Format. The behavior of diff on other
+file types is implementation-defined when found in directories.
+
+    If only one of file1 and file2 is a directory, diff shall be applied to
+the non-directory file and the file contained in the directory file with a
+filename that is the same as the last component of the non-directory file.
+
+.Sh STDIN
+
+    The standard input shall be used only if one of the file1 or file2
+operands references standard input. See the INPUT FILES section.
+
+.Sh INPUT FILES
+
+    The input files may be of any type.
+
+.Sh ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of diff:
+
+    LANG
+        Provide a default value for the internationalization variables that
+are unset or null. (See the Base Definitions volume of IEEE Std 1003.1-2001,
+Section 8.2, Internationalization Variables for the precedence of
+internationalization variables used to determine the values of locale
+categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the
+other internationalization variables.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of
+text data as characters (for example, single-byte as opposed to multi-byte
+characters in arguments and input files).
+    LC_MESSAGES
+        Determine the locale that should be used to affect the format and
+contents of diagnostic messages written to standard error and informative
+messages written to standard output.
+    LC_TIME
+        Determine the locale for affecting the format of file timestamps
+written with the -C and -c options.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for
+the processing of LC_MESSAGES . [Option End]
+    TZ
+        Determine the timezone used for calculating file timestamps written
+with the -C and -c options. If TZ is unset or null, an unspecified default
+timezone shall be used.
+
+.Sh ASYNCHRONOUS EVENTS
+
+    Default.
+
+.Sh STDOUT
+
+    Diff Directory Comparison Format
+
+    If both file1 and file2 are directories, the following output formats
+shall be used.
+
+    In the POSIX locale, each file that is present in only one directory
+shall be reported using the following format:
+
+    "Only in %s: %s\n", <directory pathname>, <filename>
+
+    In the POSIX locale, subdirectories that are common to the two
+directories may be reported with the following format:
+
+    "Common subdirectories: %s and %s\n", <directory1 pathname>,
+        <directory2 pathname>
+
+    For each file common to the two directories if the two files are not to
+be compared, the following format shall be used in the POSIX locale:
+
+    "File %s is a %s while file %s is a %s\n", <directory1 pathname>,
+        <file type of directory1 pathname>, <directory2 pathname>,
+        <file type of directory2 pathname>
+
+    For each file common to the two directories, if the files are compared
+and are identical, no output shall be written. If the two files differ, the
+following format is written:
+
+    "diff %s %s %s\n", <diff_options>, <filename1>, <filename2>
+
+    where <diff_options> are the options as specified on the command line.
+
+    All directory pathnames listed in this section shall be relative to the
+original command line arguments. All other names of files listed in this
+section shall be filenames (pathname components).
+    Diff Binary Output Format
+
+    In the POSIX locale, if one or both of the files being compared are not
+text files, an unspecified format shall be used that contains the pathnames
+of two files being compared and the string "differ".
+
+    If both files being compared are text files, depending on the options
+specified, one of the following formats shall be used to write the
+differences.
+    Diff Default Output Format
+
+    The default (without -e, -f, -c, or -C options) diff utility output shall
+contain lines of these forms:
+
+    "%da%d\n", <num1>, <num2>
+
+
+    "%da%d,%d\n", <num1>, <num2>, <num3>
+
+
+    "%dd%d\n", <num1>, <num2>
+
+
+    "%d,%dd%d\n", <num1>, <num2>, <num3>
+
+
+    "%dc%d\n", <num1>, <num2>
+
+
+    "%d,%dc%d\n", <num1>, <num2>, <num3>
+
+
+    "%dc%d,%d\n", <num1>, <num2>, <num3>
+
+
+    "%d,%dc%d,%d\n", <num1>, <num2>, <num3>, <num4>
+
+    These lines resemble ed subcommands to convert file1 into file2. The line
+numbers before the action letters shall pertain to file1; those after shall
+pertain to file2. Thus, by exchanging a for d and reading the line in reverse
+order, one can also determine how to convert file2 into file1. As in ed,
+identical pairs (where num1= num2) are abbreviated as a single number.
+
+    Following each of these lines, diff shall write to standard output all
+lines affected in the first file using the format:
+
+    "<%s", <line>
+
+    and all lines affected in the second file using the format:
+
+    ">%s", <line>
+
+    If there are lines affected in both file1 and file2 (as with the c
+subcommand), the changes are separated with a line consisting of three
+hyphens:
+
+    "---\n"
+
+    Diff -e Output Format
+
+    With the -e option, a script shall be produced that shall, when provided
+as input to ed, along with an appended w (write) command, convert file1 into
+file2. Only the a (append), c (change), d (delete), i (insert), and s
+(substitute) commands of ed shall be used in this script. Text lines, except
+those consisting of the single character period ( '.' ), shall be output as
+they appear in the file.
+    Diff -f Output Format
+
+    With the -f option, an alternative format of script shall be produced. It
+is similar to that produced by -e, with the following differences:
+
+        It is expressed in reverse sequence; the output of -e orders changes
+from the end of the file to the beginning; the -f from beginning to end.
+
+        The command form <lines> <command-letter> used by -e is reversed. For
+example, 10c with -e would be c10 with -f.
+
+        The form used for ranges of line numbers is <space>-separated, rather
+than comma-separated.
+
+    Diff -c or -C Output Format
+
+    With the -c or -C option, the output format shall consist of affected
+lines along with surrounding lines of context. The affected lines shall show
+which ones need to be deleted or changed in file1, and those added from
+file2. With the -c option, three lines of context, if available, shall be
+written before and after the affected lines. With the -C option, the user can
+specify how many lines of context are written. The exact format follows.
+
+    The name and last modification time of each file shall be output in the
+following format:
+
+    "*** %s %s\n", file1, <file1 timestamp>
+    "--- %s %s\n", file2, <file2 timestamp>
+
+    Each <file> field shall be the pathname of the corresponding file being
+compared. The pathname written for standard input is unspecified.
+
+    In the POSIX locale, each <timestamp> field shall be equivalent to the
+output from the following command:
+
+    date "+%a %b %e %T %Y"
+
+    without the trailing <newline>, executed at the time of last modification
+of the corresponding file (or the current time, if the file is standard
+input).
+
+    Then, the following output formats shall be applied for every set of
+changes.
+
+    First, a line shall be written in the following format:
+
+    "***************\n"
+
+    Next, the range of lines in file1 shall be written in the following
+format if the range contains two or more lines:
+
+    "*** %d,%d ****\n", <beginning line number>, <ending line number>
+
+    and the following format otherwise:
+
+    "*** %d ****\n", <ending line number>
+
+    The ending line number of an empty range shall be the number of the
+preceding line, or 0 if the range is at the start of the file.
+
+    Next, the affected lines along with lines of context (unaffected lines)
+shall be written. Unaffected lines shall be written in the following format:
+
+    "%s", <unaffected_line>
+
+    Deleted lines shall be written as:
+
+    "-%s", <deleted_line>
+
+    Changed lines shall be written as:
+
+    "!%s", <changed_line>
+
+    Next, the range of lines in file2 shall be written in the following
+format if the range contains two or more lines:
+
+    "--- %d,%d ----\n", <beginning line number>, <ending line number>
+
+    and the following format otherwise:
+
+    "--- %d ----\n", <ending line number>
+
+    Then, lines of context and changed lines shall be written as described in
+the previous formats. Lines added from file2 shall be written in the
+following format:
+
+    "+%s", <added_line>
+
+.Sh STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+.Sh OUTPUT FILES
+
+    None.
+
+.Sh EXTENDED DESCRIPTION
+
+    None.
+
+.Sh EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        No differences were found.
+     1
+        Differences were found.
+    >1
+        An error occurred.
+
+.Sh CONSEQUENCES OF ERRORS
+
+    Default.
+
+The following sections are informative.
+.Sh APPLICATION USAGE
+
+    If lines at the end of a file are changed and other lines are added, diff
+output may show this as a delete and add, as a change, or as a change and
+add; diff is not expected to know which happened and users should not care
+about the difference in output as long as it clearly shows the differences
+between the files.
+
+.Sh EXAMPLES
+
+    If dir1 is a directory containing a directory named x, dir2 is a
+directory containing a directory named x, dir1/x and dir2/x both contain
+files named date.out, and dir2/x contains a file named y, the command:
+
+    diff -r dir1 dir2
+
+    could produce output similar to:
+
+    Common subdirectories: dir1/x and dir2/x
+    Only in dir2/x: y
+    diff -r dir1/x/date.out dir2/x/date.out
+    1c1
+    < Mon Jul  2 13:12:16 PDT 1990
+    ---
+    > Tue Jun 19 21:41:39 PDT 1990
+
+.Sh RATIONALE
+
+    The -h option was omitted because it was insufficiently specified and
+does not add to applications portability.
+
+    Historical implementations employ algorithms that do not always produce a
+minimum list of differences; the current language about making every effort
+is the best this volume of IEEE Std 1003.1-2001 can do, as there is no metric
+that could be employed to judge the quality of implementations against any
+and all file contents. The statement "This list should be minimal'' clearly
+implies that implementations are not expected to provide the following output
+when comparing two 100-line files that differ in only one character on a
+single line:
+
+    1,100c1,100
+    all 100 lines from file1 preceded with "< "
+    ---
+    all 100 lines from file2 preceded with "> "
+
+    The "Only in" messages required when the -r option is specified are not
+used by most historical implementations if the -e option is also specified.
+It is required here because it provides useful information that must be
+provided to update a target directory hierarchy to match a source hierarchy.
+The "Common subdirectories" messages are written by System V and 4.3 BSD when
+the -r option is specified. They are allowed here but are not required
+because they are reporting on something that is the same, not reporting a
+difference, and are not needed to update a target hierarchy.
+
+    The -c option, which writes output in a format using lines of context,
+has been included. The format is useful for a variety of reasons, among them
+being much improved readability and the ability to understand difference
+changes when the target file has line numbers that differ from another
+similar, but slightly different, copy. The patch utility is most valuable
+when working with difference listings using the context format. The BSD
+version of -c takes an optional argument specifying the amount of context.
+Rather than overloading -c and breaking the Utility Syntax Guidelines for
+diff, the standard developers decided to add a separate option for specifying
+a context diff with a specified amount of context ( -C). Also, the format for
+context diffs was extended slightly in 4.3 BSD to allow multiple changes that
+are within context lines from each other to be merged together. The output
+format contains an additional four asterisks after the range of affected
+lines in the first filename. This was to provide a flag for old programs
+(like old versions of patch) that only understand the old context format. The
+version of context described here does not require that multiple changes
+within context lines be merged, but it does not prohibit it either. The
+extension is upwards-compatible, so any vendors that wish to retain the old
+version of diff can do so by adding the extra four asterisks (that is,
+utilities that currently use diff and understand the new merged format will
+also understand the old unmerged format, but not vice versa).
+
+    The substitute command was added as an additional format for the -e
+option. This was added to provide implementations with a way to fix the
+classic "dot alone on a line" bug present in many versions of diff. Since
+many implementations have fixed this bug, the standard developers decided not
+to standardize broken behavior, but rather to provide the necessary tool for
+fixing the bug. One way to fix this bug is to output two periods whenever a
+lone period is needed, then terminate the append command with a period, and
+then use the substitute command to convert the two periods into one period.
+
+    The BSD-derived -r option was added to provide a mechanism for using diff
+to compare two file system trees. This behavior is useful, is standard
+practice on all BSD-derived systems, and is not easily reproducible with the
+find utility.
+
+    The requirement that diff not compare files in some circumstances, even
+though they have the same name, is based on the actual output of historical
+implementations. The message specified here is already in use when a
+directory is being compared to a non-directory. It is extended here to
+preclude the problems arising from running into FIFOs and other files that
+would cause diff to hang waiting for input with no indication to the user
+that diff was hung. In most common usage, diff -r should indicate differences
+in the file hierarchies, not the difference of contents of devices pointed to
+by the hierarchies.
+
+    Many early implementations of diff require seekable files. Since the
+System Interfaces volume of IEEE Std 1003.1-2001 supports named pipes, the
+standard developers decided that such a restriction was unreasonable. Note
+also that the allowed filename - almost always refers to a pipe.
+
+    No directory search order is specified for diff. The historical ordering
+is, in fact, not optimal, in that it prints out all of the differences at the
+current level, including the statements about all common subdirectories
+before recursing into those subdirectories.
+
+    The message:
+
+    "diff %s %s %s\n", <diff_options>, <filename1>, <filename2>
+
+    does not vary by locale because it is the representation of a command,
+not an English sentence.
+
+.Sh FUTURE DIRECTIONS
+
+    None.
+
+.Sh SEE ALSO
+
+    cmp, comm, ed, find
+
