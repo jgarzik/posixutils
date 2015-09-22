@@ -22,22 +22,14 @@
 #endif
 #include "posixutils-config.h"
 
-#include <limits.h>
 #include <libgen.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <string>
 #include <libpu.h>
-
-
-static char pathbuf[PATH_MAX + 2];
 
 
 int main (int argc, char *argv[])
 {
-	char *dn;
-
 	pu_init();
 
 	if (argc != 2) {
@@ -45,16 +37,10 @@ int main (int argc, char *argv[])
 		return 1;
 	}
 
-	strncpy(pathbuf, argv[1], sizeof(pathbuf));
-	pathbuf[sizeof(pathbuf) - 1] = 0;
+	std::string pathbuf(argv[1]);
+	std::string dn(dirname(&pathbuf[0]));
 
-	if (strlen(pathbuf) > PATH_MAX) {
-		fprintf(stderr, _("invalid pathname\n"));
-		return 1;
-	}
-
-	dn = dirname(pathbuf);
-	printf("%s\n", dn);
+	printf("%s\n", dn.c_str());
 
 	return 0;
 }
