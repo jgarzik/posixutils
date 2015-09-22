@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 22:47-0400\n"
+"POT-Creation-Date: 2015-09-22 06:37-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:47 dirname/dirname.cc:44 unlink/unlink.cc:36
+#: basename/basename.cc:47 dirname/dirname.cc:36 unlink/unlink.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr "nombre inadmissible des arguments\n"
@@ -39,48 +39,48 @@ msgstr "cat - enchainez les dossiers et imprimez sur le rendement standard"
 msgid "(ignored)"
 msgstr ""
 
-#: chown/chown.cc:45
+#: chown/chown.cc:46
 msgid "chown - change file owner and group"
 msgstr ""
 
-#: chown/chown.cc:47
+#: chown/chown.cc:48
 msgid "owner[:group] file ..."
 msgstr ""
 
-#: chown/chown.cc:51
+#: chown/chown.cc:52
 msgid "Set uid/gid of symlink, if file is a symlink."
 msgstr "Placez uid/gid de symlink, si le dossier est un symlink."
 
-#: chown/chown.cc:53
+#: chown/chown.cc:54
 msgid "Recurse into symlinked dirs on the command line."
 msgstr "Recurse dans symlinked des dirs sur la ligne de commande."
 
-#: chown/chown.cc:55
+#: chown/chown.cc:56
 msgid ""
 "Recurse into symlinked dirs on the command line or found during traversal."
 msgstr ""
 "Recurse dans symlinked des dirs sur la ligne de commande ou a trouve pendant "
 "le traversal."
 
-#: chown/chown.cc:57
+#: chown/chown.cc:58
 msgid "Do not follow symlinks."
 msgstr "Ne suivez pas les symlinks."
 
-#: chown/chown.cc:59
+#: chown/chown.cc:60
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown/chown.cc:90
+#: chown/chown.cc:91
 #, fuzzy, c-format
 msgid "invalid group '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: chown/chown.cc:116
+#: chown/chown.cc:117
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown/chown.cc:123
+#: chown/chown.cc:124
 #, fuzzy, c-format
 msgid "invalid owner '%s'\n"
 msgstr "nom inadmissible\n"
@@ -186,11 +186,6 @@ msgstr ""
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
-
-#: dirname/dirname.cc:52
-#, c-format
-msgid "invalid pathname\n"
-msgstr "nom inadmissible\n"
 
 #: env/env.cc:31
 msgid "env - set the environment for command invocation"
@@ -1010,6 +1005,9 @@ msgstr ""
 #: libpu/lib.cc:145
 msgid "getcwd(3) failed"
 msgstr ""
+
+#~ msgid "invalid pathname\n"
+#~ msgstr "nom inadmissible\n"
 
 #~ msgid "compress - compress data"
 #~ msgstr "compress - donnees de compresse"

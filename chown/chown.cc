@@ -36,6 +36,7 @@
 #include <stdbool.h>
 #include <dirent.h>
 #include <fcntl.h>
+#include <alloca.h>
 #include <pwd.h>
 #include <grp.h>
 #include <libpu.h>
@@ -106,8 +107,8 @@ static int set_owner_group(const char *owner_group)
 	unsigned int u;
 
 	len = strlen(owner_group);
-	owner = (char *) malloc(len + 1);
-	group = (char *) malloc(len + 1);
+	owner = (char *) alloca(len + 1);
+	group = (char *) alloca(len + 1);
 
 	rc = sscanf(owner_group, "%s:%s", owner, group);
 	if (rc == 2)
@@ -131,9 +132,6 @@ static int set_owner_group(const char *owner_group)
 		rc = set_group(group);
 	else
 		rc = 0;
-
-	free(owner);
-	free(group);
 
 	return rc;
 }
