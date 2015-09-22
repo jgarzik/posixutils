@@ -74,7 +74,7 @@ static uint32_t fincrc(uint32_t crc_in, size_t n)
 static int cksum_fd(struct walker *w, const char *fn, int fd)
 {
 	ssize_t rc;
-	size_t bytes = 0;
+	unsigned long long bytes = 0;
 	uint32_t crc = 0;
 	int have_stdin;
 
@@ -94,9 +94,9 @@ static int cksum_fd(struct walker *w, const char *fn, int fd)
 	crc = fincrc(crc, bytes);
 
 	have_stdin = (fd == STDIN_FILENO);
-	printf("%u %lu%s%s\n",
+	printf("%u %llu%s%s\n",
 	       crc,
-	       (unsigned long) bytes,
+	       bytes,
 	       have_stdin ? "" : " ",
 	       have_stdin ? "" : fn);
 
