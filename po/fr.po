@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-21 17:19-0400\n"
+"POT-Creation-Date: 2015-09-21 22:47-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -26,15 +26,10 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:48 dirname/dirname.cc:44 unlink/unlink.cc:36
+#: basename/basename.cc:47 dirname/dirname.cc:44 unlink/unlink.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr "nombre inadmissible des arguments\n"
-
-#: basename/basename.cc:56 dirname/dirname.cc:52
-#, c-format
-msgid "invalid pathname\n"
-msgstr "nom inadmissible\n"
 
 #: cat/cat.cc:37
 msgid "cat - concatenate files and print on the standard output"
@@ -191,6 +186,11 @@ msgstr ""
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
+
+#: dirname/dirname.cc:52
+#, c-format
+msgid "invalid pathname\n"
+msgstr "nom inadmissible\n"
 
 #: env/env.cc:31
 msgid "env - set the environment for command invocation"

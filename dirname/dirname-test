@@ -1,4 +1,25 @@
 #!/bin/sh
 
-# TODO
-exit 77
+IN_FN="$srcdir/dirname-test.data"
+OUT_FN="dirname-test.$$"
+
+while read tst_in
+do
+	read tst_out
+
+	OUT_DATA=`./dirname "$tst_in"`
+	if [ $? -ne 0 ]
+	then
+		echo "dirname-test T1 query failed: $tst_in"
+		exit 1
+	fi
+
+	if [ "$tst_out" != "$OUT_DATA" ]
+	then
+		echo "dirname-test T2 query failed: $tst_in"
+		exit 1
+	fi
+
+done < $IN_FN
+
+exit 0

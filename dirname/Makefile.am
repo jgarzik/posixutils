@@ -12,5 +12,5 @@ dirname_LDADD = $(LIBPU)
 
 TESTS = dirname-test
 
-EXTRA_DIST = dirname-test
+EXTRA_DIST = dirname-test dirname-test.data
 
