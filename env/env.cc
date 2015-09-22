@@ -25,7 +25,11 @@
 
 #include <unistd.h>
 #include <string.h>
+#include <string>
+#include <vector>
 #include <libpu.h>
+
+using namespace std;
 
 static const char doc[] =
 N_("env - set the environment for command invocation");
@@ -44,7 +48,7 @@ static bool opt_no_inherit;
 
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
-static struct strlist env_list, arg_list;
+vector<string> env_list, arg_list;
 static bool parsing_env = true;
 extern char **environ;
 
@@ -60,15 +64,15 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 		    (!strchr(arg, '=') || (*arg == '=')))
 			parsing_env = false;
 		if (parsing_env)
-			slist_push(&env_list, arg, false);
+			env_list.push_back(arg);
 		else
-			slist_push(&arg_list, arg, false);
+			arg_list.push_back(arg);
 		break;
 
 	case ARGP_KEY_END:
-		if (opt_no_inherit && env_list.len == 0) /* no env */
+		if (opt_no_inherit && env_list.size() == 0) /* no env */
 			argp_usage (state);
-		if (arg_list.len == 0)		/* not enough args */
+		if (arg_list.size() == 0)		/* not enough args */
 			argp_usage (state);
 		return ARGP_ERR_UNKNOWN;
 
@@ -87,25 +91,20 @@ static int count_env(void)
 	return i;
 }
 
-static bool env_listed(const char *s)
+static bool env_listed(const char *s_)
 {
-	const char *end, *s2, *end2;
-	size_t slen, slen2, i;
-
-	end = strchr(s, '=');
-	if (!end)
+	string s(s_);
+	size_t eq_pos = s.find('=');
+	if ((eq_pos == string::npos) ||
+	    (eq_pos == (s.size() - 1)))
 		return false;
 
-	slen = end - s;
-	if (!slen)
-		return false;
+	string key = s.substr(0, eq_pos);
 
-	for (i = 0; i < env_list.len; i++) {
-		s2 = env_list.list[i].s;
-		end2 = strchr(s2, '=');
-		slen2 = end2 - s2;
-		if ((slen == slen2) &&
-		    (!strncmp(s, s2, slen)))
+	for (unsigned int i = 0; i < env_list.size(); i++) {
+		size_t eq_pos2 = env_list[i].find('=');
+		if ((eq_pos == eq_pos2) &&
+		    (key == env_list[i].substr(0, eq_pos)))
 			return true;
 	}
 
@@ -117,26 +116,28 @@ static int do_env(void)
 	char **env, **arg, *msg;
 	unsigned int i, j, n_env;
 
-	arg = (char **) xmalloc((arg_list.len + 1) * sizeof(char *));
-	for (i = 0; i < arg_list.len; i++)
-		arg[i] = (char *) arg_list.list[i].s;
+	arg = (char **) xmalloc((arg_list.size() + 1) * sizeof(char *));
+	for (i = 0; i < arg_list.size(); i++)
+		arg[i] = &arg_list[i][0];
 	arg[i] = NULL;
 
-	n_env = env_list.len + 1;
+	n_env = env_list.size() + 1;
 	if (!opt_no_inherit)
 		n_env += count_env();
 
 	env = (char **) xmalloc(n_env * sizeof(char *));
 	memset(env, 0, n_env * sizeof(char *));
 
-	for (i = 0; i < env_list.len; i++)
-		env[i] = (char *) env_list.list[i].s;
+	for (i = 0; i < env_list.size(); i++)
+		env[i] = &env_list[i][0];
 
-	j = 0;
-	while (environ[j]) {
-		if (!env_listed(environ[j]))
-			env[i++] = environ[j];
-		j++;
+	if (!opt_no_inherit) {
+		j = 0;
+		while (environ[j]) {
+			if (!env_listed(environ[j]))
+				env[i++] = environ[j];
+			j++;
+		}
 	}
 
 	environ = env;
