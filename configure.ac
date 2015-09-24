@@ -11,6 +11,7 @@ AM_MAINTAINER_MODE
 dnl Checks for programs.
 AC_PROG_CC
 AC_PROG_CXX
+AC_PROG_YACC
 AC_PROG_RANLIB
 AC_ISC_POSIX
 
@@ -70,6 +71,7 @@ AC_CONFIG_FILES([Makefile
 		dirname/Makefile
 		echo/Makefile
 		env/Makefile
+		expr/Makefile
 		false/Makefile
 		getconf/Makefile
 		grep/Makefile
