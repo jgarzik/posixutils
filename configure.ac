@@ -15,6 +15,7 @@ AC_PROG_RANLIB
 AC_ISC_POSIX
 
 AC_PATH_PROG(PERL, perl)
+AC_PATH_PROG(PYTHON, python)
 
 dnl Checks for libraries.
 ALL_LINGUAS="fr"

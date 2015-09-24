@@ -10,5 +10,5 @@ SUBDIRS = \
 	sleep sort split strings stty tabs tee time touch tput \
 	true tsort tty uname uniq unlink uuencode wc what
 
-EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-strmap.pl
+EXTRA_DIST = config.rpath mkinstalldirs	TODO gen-strmap.pl testrunner.py
 

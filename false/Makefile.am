@@ -7,5 +7,5 @@ false_SOURCES = false.c
 
 TESTS = false-test
 
-EXTRA_DIST = false-test
+EXTRA_DIST = false-test false-tests.json
 

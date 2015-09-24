@@ -7,5 +7,5 @@ true_SOURCES = true.c
 
 TESTS = true-test
 
-EXTRA_DIST = true-test
+EXTRA_DIST = true-test true-tests.json
 

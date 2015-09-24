@@ -1,9 +1,4 @@
 #!/bin/sh
 
-./true
-if [ $? -ne 0 ]
-then
-	exit 1
-fi
+$srcdir/../testrunner.py $srcdir/true-tests.json
 
-exit 0

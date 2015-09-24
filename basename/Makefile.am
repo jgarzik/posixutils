@@ -12,5 +12,5 @@ basename_LDADD = $(LIBPU)
 
 TESTS = basename-test
 
-EXTRA_DIST = basename-test
+EXTRA_DIST = basename-test basename-tests.json
 
