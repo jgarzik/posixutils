@@ -146,6 +146,7 @@ enum walker_flags {
 	WF_FOLLOW_LINK_CMDLINE	= (1 << 3),
 	WF_RECURSE		= (1 << 4),
 	WF_STDIN_DASH		= (1 << 5),
+	WF_NO_CLOSE		= (1 << 6),
 };
 
 enum walker_cmdline_arg_ret {

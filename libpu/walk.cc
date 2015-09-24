@@ -61,7 +61,7 @@ static int walk_cmdline_fd(struct walker *w, const char *fn, const struct stat *
 
 	err = w->cmdline_fd(w, fn, fd);
 
-	if (close(fd) < 0) {
+	if ((!(w->flags & WF_NO_CLOSE)) && (close(fd) < 0)) {
 		perror(fn);
 		w->exit_status = EXIT_FAILURE;
 	}
@@ -94,7 +94,7 @@ static int walk_cmdline_file(struct walker *w, const char *fn, const struct stat
 		w->exit_status = EXIT_FAILURE;
 	}
 
-	if (fn != NULL)
+	if ((f != stdin) && (!(w->flags & WF_NO_CLOSE)))
 		if (fclose(f)) {
 			perror(fn);
 			w->exit_status = EXIT_FAILURE;
