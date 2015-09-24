@@ -73,6 +73,7 @@ class SortLine {
 public:
 	string line;
 
+	SortLine() {}
 	SortLine(const char *s) : line(s) {
 	}
 };
@@ -94,13 +95,48 @@ static int opt_separator = -1;
 static vector<string> opt_keydef;
 static vector<SortLine> lines;
 
+static bool line_compare(const SortLine& a, const SortLine& b)
+{
+	int rc = strcoll(a.line.c_str(), b.line.c_str());
+
+	if (opt_reverse)
+		rc = -rc;
+
+	return (rc <= 0);
+}
+
+static bool check_line(const SortLine& line)
+{
+	static bool have_prev = false;
+	static SortLine prev_line;
+
+	if (!have_prev) {
+		prev_line = line;
+		have_prev = true;
+		return true;
+	}
+
+	bool cmp_rc = line_compare(prev_line, line);
+
+	prev_line = line;
+
+	return cmp_rc;
+}
+
 static int sort_actor(struct walker *w, const char *fn, FILE *f)
 {
 	char *c_line, linebuf[4096];
 
 	while ((c_line = fgets_unlocked(linebuf, sizeof(linebuf), f)) != NULL){
 		SortLine line(c_line);
-		lines.push_back(line);
+
+		if (opt_mode == MODE_CHECK) {
+			if (!check_line(line)) {
+				w->exit_status = 1;
+				return RC_STOP_WALK;
+			}
+		} else
+			lines.push_back(line);
 	}
 
 	if (ferror(f)) {
@@ -108,21 +144,14 @@ static int sort_actor(struct walker *w, const char *fn, FILE *f)
 		w->exit_status = 1;
 	}
 	
-	return 0;
-}
-
-static bool line_compare(const SortLine& a, const SortLine& b)
-{
-	bool rc = (strcoll(a.line.c_str(), b.line.c_str()) < 0);
-
-	if (opt_reverse)
-		rc = !rc;
-
-	return rc;
+	return RC_OK;
 }
 
 static int sort_post_walk(struct walker *w)
 {
+	if (opt_mode != MODE_SORT)
+		return w->exit_status;
+
 	std::sort(lines.begin(), lines.end(), line_compare);
 
 	for (vector<SortLine>::iterator it = lines.begin();

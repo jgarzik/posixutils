@@ -36,4 +36,32 @@ then
 	exit 1
 fi
 
+./sort -c $srcdir/test.t1
+if [ $? -ne 0 ]
+then
+	echo T3 failed
+	exit 1
+fi
+
+./sort -r -c $srcdir/test.t1
+if [ $? -ne 1 ]
+then
+	echo T3.1 failed
+	exit 1
+fi
+
+./sort -r -c $srcdir/test.t2
+if [ $? -ne 0 ]
+then
+	echo T4 failed
+	exit 1
+fi
+
+./sort -c $srcdir/test.t2
+if [ $? -ne 1 ]
+then
+	echo T4.1 failed
+	exit 1
+fi
+
 exit 0
