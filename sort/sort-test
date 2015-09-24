@@ -1,0 +1,39 @@
+#!/bin/sh
+
+TMPFILE="sort-test.$$"
+
+./sort $srcdir/test.data > $TMPFILE
+if [ $? -ne 0 ]
+then
+	echo T1.1 failed
+	rm -f $TMPFILE
+	exit 1
+fi
+
+cmp -s $TMPFILE $srcdir/test.t1
+retval=$?
+rm -f $TMPFILE
+if [ $retval -ne 0 ]
+then
+	echo T1 failed
+	exit 1
+fi
+
+./sort -r $srcdir/test.data > $TMPFILE
+if [ $? -ne 0 ]
+then
+	echo T2.1 failed
+	rm -f $TMPFILE
+	exit 1
+fi
+
+cmp -s $TMPFILE $srcdir/test.t2
+retval=$?
+rm -f $TMPFILE
+if [ $retval -ne 0 ]
+then
+	echo T2 failed
+	exit 1
+fi
+
+exit 0

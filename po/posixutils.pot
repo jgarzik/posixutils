@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-22 06:37-0400\n"
+"POT-Creation-Date: 2015-09-23 23:18-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr ""
 msgid "comm - compare two sorted files line by line"
 msgstr ""
 
-#: comm/comm.cc:41
+#: comm/comm.cc:41 diff/diff.cc:46
 msgid "file1 file2"
 msgstr ""
 
@@ -183,64 +183,87 @@ msgstr ""
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
 
-#: env/env.cc:31
+#: diff/diff.cc:44
+msgid "diff - compare two files"
+msgstr ""
+
+#: diff/diff.cc:49
+msgid "Compare streams of blanks as equivalent"
+msgstr ""
+
+#: diff/diff.cc:51
+msgid "Context diff output, 3 lines"
+msgstr ""
+
+#: diff/diff.cc:53
+msgid "Context diff output, N lines"
+msgstr ""
+
+#: diff/diff.cc:55
+msgid "ed output"
+msgstr ""
+
+#: diff/diff.cc:57
+msgid "Alterna-ed output"
+msgstr ""
+
+#: diff/diff.cc:59
+msgid "Apply diff recursively to directories"
+msgstr ""
+
+#: env/env.cc:35
 msgid "env - set the environment for command invocation"
 msgstr ""
 
-#: env/env.cc:33
+#: env/env.cc:37
 msgid "[name=value]... utility [args]..."
 msgstr ""
 
-#: env/env.cc:37
+#: env/env.cc:41
 msgid "Invoke utility with exactly the environment specified by the arguments"
 msgstr ""
 
-#: env/env.cc:146
+#: env/env.cc:147
 #, c-format
 msgid "execv(%s)"
 msgstr ""
 
-#: getconf/getconf.cc:36
+#: getconf/getconf.cc:37
 msgid "getconf - get configuration values"
 msgstr ""
 
-#: getconf/getconf.cc:38
+#: getconf/getconf.cc:39
 msgid "[system_var | path_var pathname]"
 msgstr ""
 
-#: getconf/getconf.cc:42
+#: getconf/getconf.cc:43
 msgid "not implemented yet"
 msgstr ""
 
-#: getconf/getconf.cc:77
+#: getconf/getconf.cc:78
 #, c-format
 msgid "invalid path variable %s\n"
 msgstr ""
 
-#: getconf/getconf.cc:79
+#: getconf/getconf.cc:80
 #, c-format
 msgid "invalid system variable %s\n"
 msgstr ""
 
-#: getconf/getconf.cc:90
-#, c-format
-msgid "undefined"
-msgstr ""
-
-#: getconf/getconf.cc:95
+#: getconf/getconf.cc:88
 msgid "pathconf(3)"
 msgstr ""
 
-#: getconf/getconf.cc:97
+#: getconf/getconf.cc:94
 msgid "sysconf(3)"
 msgstr ""
 
-#: getconf/getconf.cc:112
+#: getconf/getconf.cc:107
 #, c-format
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf/getconf.cc:168 ipcs/ipcs.cc:371 nice/nice.cc:91 pwd/pwd.cc:110
+#: getconf/getconf.cc:163 ipcs/ipcs.cc:371 nice/nice.cc:91 pwd/pwd.cc:110
 #: split/split.cc:370
 #, c-format
 msgid "argp_parse failed: %s\n"
@@ -696,6 +719,63 @@ msgstr ""
 #: sleep/sleep.cc:56
 #, c-format
 msgid "invalid sleep argument\n"
+msgstr ""
+
+#: sort/sort.cc:35
+msgid "sort - sort, merge, or sequence check text files"
+msgstr ""
+
+#: sort/sort.cc:41
+msgid "Check that the single input file is ordered as specified"
+msgstr ""
+
+#: sort/sort.cc:43
+msgid "Merge only; the input file shall be assumed to be already sorted."
+msgstr ""
+
+#: sort/sort.cc:45
+msgid ""
+"Specify the name of an output file to be used instead of the standard output"
+msgstr ""
+
+#: sort/sort.cc:47
+msgid "Unique: suppress all but one in each set of lines having equal keys."
+msgstr ""
+
+#: sort/sort.cc:49
+msgid ""
+"Specify that only <blank>s and alphanumeric characters shall be significant "
+"in comparisons"
+msgstr ""
+
+#: sort/sort.cc:51
+msgid "Force lowercase to uppercase, for comparison"
+msgstr ""
+
+#: sort/sort.cc:53
+msgid "Ignore all characters that are non-printable"
+msgstr ""
+
+#: sort/sort.cc:55
+msgid "Restrict the sort key to an initial numeric string"
+msgstr ""
+
+#: sort/sort.cc:57
+msgid "Reverse the sense of comparisons"
+msgstr ""
+
+#: sort/sort.cc:59
+msgid ""
+"Ignore leading <blank>s when determining the starting and ending positions "
+"of a restricted sort key"
+msgstr ""
+
+#: sort/sort.cc:61
+msgid "Use char as the field separator character"
+msgstr ""
+
+#: sort/sort.cc:63
+msgid "The keydef argument is a restricted sort key field definition"
 msgstr ""
 
 #: split/split.cc:46

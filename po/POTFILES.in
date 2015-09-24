@@ -33,6 +33,7 @@ renice/renice.cc
 rm/rm.cc
 rmdir/rmdir.cc
 sleep/sleep.cc
+sort/sort.cc
 split/split.cc
 strings/strings.cc
 stty/stty.cc

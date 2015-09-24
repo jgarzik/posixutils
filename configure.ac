@@ -93,6 +93,7 @@ AC_CONFIG_FILES([Makefile
 		rm/Makefile
 		rmdir/Makefile
 		sleep/Makefile
+		sort/Makefile
 		split/Makefile
 		strings/Makefile
 		stty/Makefile

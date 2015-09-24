@@ -48,7 +48,8 @@ static int walk_cmdline_fd(struct walker *w, const char *fn, const struct stat *
 {
 	int fd, err;
 
-	if (fn == NULL)
+	if ((fn == NULL) ||
+	    ((w->flags & WF_STDIN_DASH) && (!strcmp(fn, "-"))))
 		return w->cmdline_fd(w, _("(standard input)"), STDIN_FILENO);
 
 	fd = open(fn, O_RDONLY);
@@ -74,7 +75,8 @@ static int walk_cmdline_file(struct walker *w, const char *fn, const struct stat
 	FILE *f;
 	int rc;
 
-	if (fn == NULL) {
+	if ((fn == NULL) ||
+	    ((w->flags & WF_STDIN_DASH) && (!strcmp(fn, "-")))) {
 		pr_fn = _("(standard input)");
 		f = stdin;
 	} else {
