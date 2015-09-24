@@ -12,5 +12,6 @@ sort_LDADD = $(LIBPU)
 
 TESTS = sort-test
 
-EXTRA_DIST = sort-test test.data test.t1 test.t2
+EXTRA_DIST = sort-test test.data test.t1 test.t2 \
+	test.t3 test.data3-1 test.data3-2 test.data3-3
 

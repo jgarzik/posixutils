@@ -1,6 +1,7 @@
 #!/bin/sh
 
-TMPFILE="sort-test.$$"
+TMPFILE="sort-test.$$.1"
+TMPFILE2="sort-test.$$.2"
 
 ./sort $srcdir/test.data > $TMPFILE
 if [ $? -ne 0 ]
@@ -61,6 +62,32 @@ fi
 if [ $? -ne 1 ]
 then
 	echo T4.1 failed
+	exit 1
+fi
+
+sort -m $srcdir/test.data3-1 $srcdir/test.data3-2 $srcdir/test.data3-3 > $TMPFILE
+if [ $? -ne 0 ]
+then
+	echo T5.1 failed
+	rm -f $TMPFILE
+	exit 1
+fi
+
+./sort -m $srcdir/test.data3-1 $srcdir/test.data3-2 $srcdir/test.data3-3 > $TMPFILE2
+if [ $? -ne 0 ]
+then
+	echo T5.2 failed
+	rm -f $TMPFILE $TMPFILE2
+	exit 1
+fi
+
+cmp -s $TMPFILE $TMPFILE2
+retval=$?
+rm -f $TMPFILE $TMPFILE2
+
+if [ $? -ne 0 ]
+then
+	echo T5.3 failed
 	exit 1
 fi
 

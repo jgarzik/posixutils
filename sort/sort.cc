@@ -28,6 +28,7 @@
 #include <algorithm>
 #include <argp.h>
 #include <libpu.h>
+#include <assert.h>
 
 using namespace std;
 
@@ -74,7 +75,32 @@ public:
 	string line;
 
 	SortLine() {}
-	SortLine(const char *s) : line(s) {
+	SortLine(const char *s) : line(s) {}
+	SortLine(const string& s_) : line(s_) {}
+
+	const char *c_str() { return line.c_str(); }
+};
+
+class MergeFile {
+public:
+	string filename;
+	FILE *f;
+
+	SortLine line;
+	bool have_line;
+
+	MergeFile() {}
+	MergeFile(const string& filename_, FILE *f_) :
+		filename(filename_), f(f_) {}
+
+	void push_line(const string& s) {
+		line.line.assign(s);
+		have_line = true;
+	}
+
+	void close() {
+		if (f && (f != stdin))
+			fclose(f);
 	}
 };
 
@@ -94,6 +120,7 @@ static bool opt_ignore_lblank = false;
 static int opt_separator = -1;
 static vector<string> opt_keydef;
 static vector<SortLine> lines;
+static vector <MergeFile> mergeFiles;
 
 static bool line_compare(const SortLine& a, const SortLine& b)
 {
@@ -103,6 +130,106 @@ static bool line_compare(const SortLine& a, const SortLine& b)
 		rc = -rc;
 
 	return (rc <= 0);
+}
+
+static int merge_actor(struct walker *w, const char *fn, FILE *f)
+{
+	MergeFile mf(fn, f);
+	mergeFiles.push_back(mf);
+
+	return RC_OK;
+}
+
+static bool merge_mode_input(MergeFile& mf)
+{
+	if (mf.have_line)
+		return true;
+
+	// FIXME stdin wrong
+	if (mf.f == NULL) {
+		int fo_rc = ro_file_open(&mf.f, mf.filename.c_str());
+		if (fo_rc)
+			return false;
+	}
+
+	char *c_line, linebuf[4096];
+
+	c_line = fgets_unlocked(linebuf, sizeof(linebuf), mf.f);
+	if (!c_line)
+		return false;
+
+	mf.push_line(c_line);
+
+	return true;
+}
+
+static unsigned int merge_mode_next_idx()
+{
+	unsigned int cmp_idx = 0;
+	for (unsigned int i = 1; i < mergeFiles.size(); i++) {
+		if (!line_compare(mergeFiles[cmp_idx].line,
+				  mergeFiles[i].line))
+			cmp_idx = i;
+	}
+
+	return cmp_idx;
+}
+
+static void merge_mode_output(MergeFile& mf)
+{
+	assert(mf.have_line);
+
+	printf("%s", mf.line.c_str());
+	mf.have_line = false;
+}
+
+static bool merge_mode_input_more()
+{
+	vector<unsigned int> del_idx;
+
+	for (unsigned int i = 0; i < mergeFiles.size(); i++)
+		if (!merge_mode_input(mergeFiles[i])) {
+			if (ferror(mergeFiles[i].f))
+				return false;
+			assert(feof(mergeFiles[i].f));
+			del_idx.push_back(i);
+		}
+
+	if (del_idx.size() == 0)
+		return true;
+
+	std::reverse(del_idx.begin(), del_idx.end());
+
+	for (unsigned int i = 0; i < del_idx.size(); i++) {
+		unsigned int target_idx = del_idx[i];
+		mergeFiles[target_idx].close();
+		mergeFiles.erase(mergeFiles.begin() + target_idx);
+	}
+
+	return true;
+}
+
+static int merge_mode_post_walk(struct walker *w)
+{
+	while (mergeFiles.size() > 0) {
+		if (!merge_mode_input_more())
+			return EXIT_FAILURE;
+
+		if (mergeFiles.size() == 0)
+			break;
+
+		if (mergeFiles.size() == 1)
+			merge_mode_output(mergeFiles[0]);
+
+		else {
+			assert(mergeFiles.size() > 1);
+
+			unsigned int next_idx = merge_mode_next_idx();
+			merge_mode_output(mergeFiles[next_idx]);
+		}
+	}
+
+	return EXIT_SUCCESS;
 }
 
 static bool check_line(const SortLine& line)
@@ -125,6 +252,8 @@ static bool check_line(const SortLine& line)
 
 static int sort_actor(struct walker *w, const char *fn, FILE *f)
 {
+	assert(opt_mode != MODE_MERGE);
+
 	char *c_line, linebuf[4096];
 
 	while ((c_line = fgets_unlocked(linebuf, sizeof(linebuf), f)) != NULL){
@@ -139,15 +268,20 @@ static int sort_actor(struct walker *w, const char *fn, FILE *f)
 			lines.push_back(line);
 	}
 
-	if (ferror(f)) {
-		perror(fn);
-		w->exit_status = 1;
-	}
-	
 	return RC_OK;
 }
 
-static int sort_post_walk(struct walker *w)
+static int sort_pre_walk(struct walker *w)
+{
+	if (opt_mode == MODE_MERGE) {
+		w->flags |= WF_NO_CLOSE;
+		w->cmdline_file = merge_actor;
+	}
+
+	return 0;
+}
+
+static int sort_mode_post_walk(struct walker *w)
 {
 	if (opt_mode != MODE_SORT)
 		return w->exit_status;
@@ -159,6 +293,16 @@ static int sort_post_walk(struct walker *w)
 		printf("%s", (*it).line.c_str());
 
 	return w->exit_status;
+}
+
+static int sort_post_walk(struct walker *w)
+{
+	if (opt_mode == MODE_CHECK)
+		return w->exit_status;
+	else if (opt_mode == MODE_SORT)
+		return sort_mode_post_walk(w);
+	else
+		return merge_mode_post_walk(w);
 }
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
@@ -199,6 +343,7 @@ int main (int argc, char *argv[])
 {
 	walker.argp			= &argp;
 	walker.flags			= WF_NO_FILES_STDIN | WF_STDIN_DASH;
+	walker.pre_walk			= sort_pre_walk;
 	walker.post_walk		= sort_post_walk;
 	walker.cmdline_file		= sort_actor;
 	return walk(&walker, argc, argv);
