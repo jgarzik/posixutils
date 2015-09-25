@@ -1,4 +1,18 @@
 #!/bin/sh
 
-# TODO
-exit 77
+OUTFN1="link-test.$$.1"
+OUTFN2="link-test.$$.2"
+
+echo "poof" > $OUTFN1
+./link $OUTFN1 $OUTFN2
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN1 $OUTFN2
+	exit 1
+fi
+
+cmp -s $OUTFN1 $OUTFN2
+retval=$?
+rm -f $OUTFN1 $OUTFN2
+
+exit $retval

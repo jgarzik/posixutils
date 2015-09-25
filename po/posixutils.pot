@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-24 08:17-0400\n"
+"POT-Creation-Date: 2015-09-25 00:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr ""
 msgid "comm - compare two sorted files line by line"
 msgstr ""
 
-#: comm/comm.cc:41 diff/diff.cc:46
+#: comm/comm.cc:41 diff/diff.cc:46 link/link.cc:35
 msgid "file1 file2"
 msgstr ""
 
@@ -475,13 +475,8 @@ msgstr ""
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
-#: link/link.cc:35 mesg/mesg.cc:55 sleep/sleep.cc:50
-#, c-format
-msgid "invalid arguments\n"
-msgstr ""
-
-#: link/link.cc:40
-msgid "link(2)"
+#: link/link.cc:33
+msgid "link - call link function"
 msgstr ""
 
 #: ln/ln.cc:41
@@ -517,6 +512,11 @@ msgstr ""
 
 #: logname/logname.cc:39
 msgid "getlogin(3)"
+msgstr ""
+
+#: mesg/mesg.cc:55 sleep/sleep.cc:50
+#, c-format
+msgid "invalid arguments\n"
 msgstr ""
 
 #: mesg/mesg.cc:68

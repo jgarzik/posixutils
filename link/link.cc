@@ -23,21 +23,59 @@
 #include "posixutils-config.h"
 
 #include <unistd.h>
+#include <string.h>
 #include <stdio.h>
+#include <argp.h>
 #include <libpu.h>
 
+
+static const char doc[] =
+N_("link - call link function");
+
+static const char args_doc[] = N_("file1 file2");
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state);
+static const struct argp argp = { NULL, parse_opt, args_doc, doc };
+static char *opt_filenames[2];
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state)
+{
+	switch (key) {
+	case ARGP_KEY_ARG:
+		if ((state->arg_num == 0) || (state->arg_num == 1))
+			opt_filenames[state->arg_num] = arg;
+		else
+			argp_usage(state);
+		break;
+
+	case ARGP_KEY_END:
+		if (state->arg_num < 2)         /* not enough args */
+			argp_usage (state);
+		return ARGP_ERR_UNKNOWN;
+
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
 
 int main (int argc, char *argv[])
 {
 	pu_init();
 
-	if (argc != 3) {
-		fprintf(stderr, _("invalid arguments\n"));
+	error_t rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (rc) {
+		fprintf(stderr, "%s: argp_parse failed: %s\n",
+			argv[0], strerror(rc));
 		return 1;
 	}
 
-	if (link(argv[1], argv[2]) < 0) {
-		perror(_("link(2)"));
+	if (link(opt_filenames[0], opt_filenames[1]) < 0) {
+		fprintf(stderr, "link(%s, %s): %s\n",
+			opt_filenames[0],
+			opt_filenames[1],
+			strerror(errno));
 		return 1;
 	}
 

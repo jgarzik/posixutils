@@ -1,12 +1,17 @@
-NAME
+.Dd December 2008
+.Dt LINK 1
 
-    link - call link function
+.Sh NAME
 
-SYNOPSIS
+.Nm link
+.Nd call link function
 
-    [XSI] [Option Start] link file1 file2[Option End]
+.Sh SYNOPSIS
 
-DESCRIPTION
+.Nm link
+.Ar file1 file2
+
+.Sh DESCRIPTION
 
     The link utility shall perform the function call:
 
@@ -14,11 +19,11 @@ DESCRIPTION
 
     A user may need appropriate privilege to invoke the link utility.
 
-OPTIONS
+.Sh OPTIONS
 
     None.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -27,15 +32,15 @@ OPERANDS
     file2
         The pathname of the new directory entry to be created.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     Not used.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of link:
 
@@ -59,27 +64,27 @@ contents of diagnostic messages written to standard error.
         Determine the location of message catalogs for the processing of
 LC_MESSAGES .
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     None.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -88,28 +93,28 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     None.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     None.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     ln, unlink(), the System Interfaces volume of IEEE Std 1003.1-2001,
 link()
