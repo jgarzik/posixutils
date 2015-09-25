@@ -1,25 +1,4 @@
 #!/bin/sh
 
-IN_FN="$srcdir/dirname-test.data"
-OUT_FN="dirname-test.$$"
+$srcdir/../testrunner.py $srcdir/dirname-tests.json
 
-while read tst_in
-do
-	read tst_out
-
-	OUT_DATA=`./dirname "$tst_in"`
-	if [ $? -ne 0 ]
-	then
-		echo "dirname-test T1 query failed: $tst_in"
-		exit 1
-	fi
-
-	if [ "$tst_out" != "$OUT_DATA" ]
-	then
-		echo "dirname-test T2 query failed: $tst_in"
-		exit 1
-	fi
-
-done < $IN_FN
-
-exit 0
