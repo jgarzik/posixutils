@@ -11,6 +11,7 @@ expr_SOURCES = expr.cc expr-parse.y
 expr_LDADD = $(LIBPU)
 
 BUILT_SOURCES = expr-parse.h
+CLEANFILES = expr-parse.c expr-parse.h
 AM_YFLAGS = -d
 
 TESTS = expr-test

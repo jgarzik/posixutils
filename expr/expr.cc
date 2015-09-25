@@ -58,6 +58,8 @@ extern "C" {
 long long yylval = 0;
 #define YYSTYPE long long
 #include "expr-parse.h"
+
+extern int yyparse(void);
 }
 
 static vector<string> tokens;
