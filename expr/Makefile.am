@@ -16,5 +16,5 @@ AM_YFLAGS = -d
 
 TESTS = expr-test
 
-EXTRA_DIST = expr-test
+EXTRA_DIST = expr-test expr-tests.json
 

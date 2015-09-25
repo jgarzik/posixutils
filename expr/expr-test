@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# TODO
-exit 77
+$srcdir/../testrunner.py $srcdir/expr-tests.json
+
