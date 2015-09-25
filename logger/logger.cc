@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2006 Jeff Garzik <jgarzik@pobox.com>
+ * Copyright 2004-2015 Jeff Garzik <jgarzik@pobox.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,38 +22,29 @@
 #endif
 #include "posixutils-config.h"
 
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <syslog.h>
+#include <string>
 #include <libpu.h>
 
 
 int main (int argc, char *argv[])
 {
-	int i, len;
-	char *s;
-
 	pu_init();
 
 	if (argc < 2) {
-		fprintf(stderr, _("no arguments\n"));
-		return 1;
+		fprintf(stderr, _("%s: no arguments\n"), argv[0]);
+		return EXIT_FAILURE;
 	}
 
-	len = 0;
-	for (i = 1; i < argc; i++)
-		len += strlen(argv[i]) + 1;
-
-	s = (char *) xmalloc(len);
-
-	strcpy(s, argv[1]);
-	for (i = 2; i < argc; i++) {
-		strcat(s, " ");
-		strcat(s, argv[i]);
+	std::string s(argv[1]);
+	for (int i = 2; i < argc; i++) {
+		s.append(" ");
+		s.append(argv[i]);
 	}
 
-	syslog(LOG_USER | LOG_NOTICE, "%s", s);
+	syslog(LOG_USER | LOG_NOTICE, "%s", s.c_str());
 
-	return 0;
+	return EXIT_SUCCESS;
 }

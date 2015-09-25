@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 08:25-0400\n"
+"POT-Creation-Date: 2015-09-25 08:38-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -512,9 +512,9 @@ msgstr "source/target manquant\n"
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: logger/logger.cc:40
-#, c-format
-msgid "no arguments\n"
+#: logger/logger.cc:37
+#, fuzzy, c-format
+msgid "%s: no arguments\n"
 msgstr "aucuns arguments\n"
 
 #: logname/logname.cc:39

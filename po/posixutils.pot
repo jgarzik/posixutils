@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 08:25-0400\n"
+"POT-Creation-Date: 2015-09-25 08:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -507,9 +507,9 @@ msgstr ""
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: logger/logger.cc:40
+#: logger/logger.cc:37
 #, c-format
-msgid "no arguments\n"
+msgid "%s: no arguments\n"
 msgstr ""
 
 #: logname/logname.cc:39
