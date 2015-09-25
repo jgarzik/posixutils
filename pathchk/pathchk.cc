@@ -14,6 +14,12 @@
  * along with this program; see the file COPYING.  If not, write to
  * the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
  *
+ - TODO
+ -1) complain if any component in a directory is not searchable,
+ -   if -p is not present
+ -
+ -   2) figure out how to check if a pathname component contains valid
+ -      characters for a specific path (-p not present).
  */
 
 

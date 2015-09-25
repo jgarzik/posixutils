@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 09:59-0400\n"
+"POT-Creation-Date: 2015-09-25 10:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -272,77 +272,77 @@ msgstr ""
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: grep/grep.cc:45
+#: grep/grep.cc:48
 msgid "grep - print lines matching a pattern"
 msgstr ""
 
-#: grep/grep.cc:47
+#: grep/grep.cc:50
 msgid "[pattern_list] [file...]"
 msgstr ""
 
-#: grep/grep.cc:51
+#: grep/grep.cc:54
 msgid "Match using extended regular expressions"
 msgstr ""
 
-#: grep/grep.cc:53
+#: grep/grep.cc:56
 msgid "Match using fixed strings"
 msgstr ""
 
-#: grep/grep.cc:55
+#: grep/grep.cc:58
 msgid "Write only a count of selected lines to standard output"
 msgstr ""
 
-#: grep/grep.cc:57
+#: grep/grep.cc:60
 msgid "Specify one or more patterns to be used during the search for input"
 msgstr ""
 
-#: grep/grep.cc:59
+#: grep/grep.cc:62
 msgid ""
 "Read one or more patterns from the file named by the pathname pattern_file"
 msgstr ""
 
-#: grep/grep.cc:61
+#: grep/grep.cc:64
 msgid "Perform pattern matching in searches without regard to case"
 msgstr ""
 
-#: grep/grep.cc:63
+#: grep/grep.cc:66
 msgid ""
 "Write only the names of files containing selected lines to standard output"
 msgstr ""
 
-#: grep/grep.cc:65
+#: grep/grep.cc:68
 msgid "Precede each output line by its relative line number in the file"
 msgstr ""
 
-#: grep/grep.cc:67
+#: grep/grep.cc:70
 msgid ""
 "Quiet. Nothing shall be written to the standard output, regardless of "
 "matching lines. Exit with zero status if an input line is selected."
 msgstr ""
 
-#: grep/grep.cc:70
+#: grep/grep.cc:73
 msgid ""
 "Suppress the error messages ordinarily written for nonexistent or unreadable "
 "files"
 msgstr ""
 
-#: grep/grep.cc:72
+#: grep/grep.cc:75
 msgid "Select lines not matching any of the specified patterns"
 msgstr ""
 
-#: grep/grep.cc:74
+#: grep/grep.cc:77
 msgid ""
 "Consider only input lines that use all characters in the line, excluding the "
 "terminating <newline>, to match an entire fixed string or regular expression "
 "to be matching lines"
 msgstr ""
 
-#: grep/grep.cc:183
+#: grep/grep.cc:186
 #, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr ""
 
-#: grep/grep.cc:470
+#: grep/grep.cc:473
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -546,46 +546,46 @@ msgstr ""
 msgid "is n\n"
 msgstr ""
 
-#: mkdir/mkdir.cc:38
+#: mkdir/mkdir.cc:44
 msgid "mkdir - make directories"
 msgstr ""
 
-#: mkdir/mkdir.cc:42
+#: mkdir/mkdir.cc:48
 msgid "Create any missing intermediate pathname components"
 msgstr ""
 
-#: mkdir/mkdir.cc:85
+#: mkdir/mkdir.cc:91
 #, c-format
 msgid "parent '%s' is not a directory\n"
 msgstr ""
 
-#: mkfifo/mkfifo.cc:37
+#: mkfifo/mkfifo.cc:39
 msgid "mkfifo - make FIFOs (named pipes)"
 msgstr ""
 
-#: mv/mv.cc:45
+#: mv/mv.cc:46
 msgid "mv - move (rename) files"
 msgstr ""
 
-#: mv/mv.cc:49
+#: mv/mv.cc:50
 msgid "Do not prompt for confirmation if the destination path exists."
 msgstr ""
 
-#: mv/mv.cc:51
+#: mv/mv.cc:52
 msgid "Prompt for confirmation if the destination path exists"
 msgstr ""
 
-#: mv/mv.cc:265
+#: mv/mv.cc:266
 #, c-format
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
 
-#: mv/mv.cc:303
+#: mv/mv.cc:304
 #, c-format
 msgid "mv: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: mv/mv.cc:342
+#: mv/mv.cc:343
 #, c-format
 msgid "missing source/target\n"
 msgstr ""
@@ -633,20 +633,20 @@ msgstr ""
 msgid "nohup: no arguments\n"
 msgstr ""
 
-#: pathchk/pathchk.cc:40
+#: pathchk/pathchk.cc:46
 msgid "pathchk - check whether file names are valid or portable"
 msgstr ""
 
-#: pathchk/pathchk.cc:46
+#: pathchk/pathchk.cc:52
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk/pathchk.cc:93
+#: pathchk/pathchk.cc:99
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk/pathchk.cc:103
+#: pathchk/pathchk.cc:109
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
@@ -697,21 +697,21 @@ msgid ""
 "adjusted"
 msgstr ""
 
-#: rm/rm.cc:45
+#: rm/rm.cc:84
 msgid "rm - remove files or directories"
 msgstr ""
 
-#: rm/rm.cc:51
+#: rm/rm.cc:90
 msgid ""
 "Do not prompt for confirmation. Do not write diagnostic messages or modify "
 "the exit status in the case of nonexistent operands."
 msgstr ""
 
-#: rm/rm.cc:53
+#: rm/rm.cc:92
 msgid "Prompt for confirmation"
 msgstr ""
 
-#: rm/rm.cc:55
+#: rm/rm.cc:94
 msgid "Remove file hierarchies"
 msgstr ""
 
