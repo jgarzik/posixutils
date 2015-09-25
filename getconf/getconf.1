@@ -1,14 +1,18 @@
-NAME
+.Dd December 2008
+.Dt GETCONF 1
 
-    getconf - get configuration values
+.Sh NAME
 
-SYNOPSIS
+.Nm getconf
+.Nd get configuration values
+
+.Sh SYNOPSIS
 
     getconf [ -v specification ] system_var
 
     getconf [ -v specification ] path_var pathname
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     In the first synopsis form, the getconf utility shall write to the
 standard output the value of the variable specified by the system_var
@@ -24,7 +28,7 @@ available by this volume of IEEE Std 1003.1-2001 or by the System Interfaces
 volume of IEEE Std 1003.1-2001 (see the OPERANDS section). The value shall
 reflect conditions in the current operating environment.
 
-OPTIONS
+.Sh OPTIONS
 
     The getconf utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -89,7 +93,7 @@ commands of the form:
 POSIX_V6_LPBIG_OFFBIG compilation environment specified in c99 , the EXTENDED
 DESCRIPTION.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -153,15 +157,15 @@ underscore. This requirement may be removed in a future version.
 
         The implementation may add other local values.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of
 getconf:
@@ -186,11 +190,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     If the specified variable is defined on the system and its value is
 described to be available from the confstr() function defined in the System
@@ -212,19 +216,19 @@ getconf shall write using the following format:
     If the variable name is invalid or an error occurs, nothing shall be
 written to standard output.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -234,16 +238,16 @@ state was written successfully.
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     None.
 
-EXAMPLES
+.Sh EXAMPLES
 
     The following example illustrates the value of {NGROUPS_MAX}:
 
@@ -281,7 +285,7 @@ compiled or executed, depending on the implementation; the system() call to
 getconf always supplies a value corresponding to conditions when the program
 is executed.
 
-RATIONALE
+.Sh RATIONALE
 
     The original need for this utility, and for the confstr() function, was
 to provide a way of finding the configuration-defined default value for the
@@ -308,11 +312,11 @@ string "undefined" is now used to specify this case with exit code 0 because
 so many things depend on an exit code of zero when an invoked utility is
 successful.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     c99, the Base Definitions volume of IEEE Std 1003.1-2001, <limits.h>, the
 System Interfaces volume of IEEE Std 1003.1-2001, confstr(), pathconf(),

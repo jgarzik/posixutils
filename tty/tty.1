@@ -1,38 +1,42 @@
-NAME
+.Dd December 2008
+.Dt TTY 1
 
-    tty - return user's terminal name
+.Sh NAME
 
-SYNOPSIS
+.Nm tty
+.Nd return user's terminal name
+
+.Sh SYNOPSIS
 
     tty
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The tty utility shall write to the standard output the name of the
 terminal that is open as standard input. The name that is used shall be
 equivalent to the string that would be returned by the ttyname() function
 defined in the System Interfaces volume of IEEE Std 1003.1-2001.
 
-OPTIONS
+.Sh OPTIONS
 
     The tty utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
 
-OPERANDS
+.Sh OPERANDS
 
     None.
 
-STDIN
+.Sh STDIN
 
     While no input is read from standard input, standard input shall be
 examined to determine whether or not it is a terminal, and, if so, to
 determine the name of the terminal.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of tty:
 
@@ -57,11 +61,11 @@ messages written to standard output.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     If standard input is a terminal device, a pathname of the terminal as
 specified by the ttyname() function defined in the System Interfaces volume
@@ -75,19 +79,19 @@ the format:
 
     "not a tty\n"
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -98,31 +102,31 @@ EXIT STATUS
     >1
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     This utility checks the status of the file open as standard input against
 that of an implementation-defined set of files. It is possible that no match
 can be found, or that the match found need not be the same file as that which
 was opened for standard input (although they are the same device).
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     None.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     The System Interfaces volume of IEEE Std 1003.1-2001, isatty(), ttyname()
 

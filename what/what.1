@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt WHAT 1
 
-    what - identify SCCS files (DEVELOPMENT)
+.Sh NAME
 
-SYNOPSIS
+.Nm what
+.Nd identify SCCS files (DEVELOPMENT)
+
+.Sh SYNOPSIS
 
     [XSI] [Option Start] what [-s] file... [Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The what utility shall search the given files for all occurrences of the
 pattern that get (see get ) substitutes for the %Z% keyword ( "@(#)" ) and
@@ -15,7 +19,7 @@ of the following:
 
     "   >   newline   \   NUL
 
-OPTIONS
+.Sh OPTIONS
 
     The what utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -25,22 +29,22 @@ OPTIONS
     -s
         Quit after finding the first occurrence of the pattern in each file.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
     file
         A pathname of a file to search.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input files shall be of any file type.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of what:
 
@@ -64,29 +68,29 @@ contents of diagnostic messages written to standard error.
         Determine the location of message catalogs for the processing of
 LC_MESSAGES .
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The standard output shall consist of the following for each file operand:
 
     "%s:\n\t%s\n", <pathname>, <identification string>
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -95,12 +99,12 @@ EXIT STATUS
     1
         Otherwise.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The what utility is intended to be used in conjunction with the SCCS
 command get, which automatically inserts identifying information, but it can
@@ -109,7 +113,7 @@ also be used where the information is inserted by any other means.
     When the string "@(#)" is included in a library routine in a shared
 library, it might not be found in an a.out file using that library routine.
 
-EXAMPLES
+.Sh EXAMPLES
 
     If the C-language program in file f.c contains:
 
@@ -131,15 +135,15 @@ EXAMPLES
         identification information
         ...
 
-RATIONALE
+.Sh RATIONALE
 
     None.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     get
 

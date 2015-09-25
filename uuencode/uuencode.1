@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt UUENCODE 1
 
-    uuencode - encode a binary file
+.Sh NAME
 
-SYNOPSIS
+.Nm uuencode
+.Nd encode a binary file
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] uuencode [-m][file] decode_pathname[Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The uuencode utility shall write an encoded version of the named input
 file, or standard input if no file is specified, to standard output. The
@@ -16,7 +20,7 @@ symbolic notation) of the input file and the decode_pathname, for re-creation
 of the file on another system that conforms to this volume of IEEE Std
 1003.1-2001.
 
-OPTIONS
+.Sh OPTIONS
 
     The uuencode utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -28,7 +32,7 @@ Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
 STDOUT. If -m is not specified, the historical algorithm described in STDOUT
 shall be used.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -41,15 +45,15 @@ results are unspecified.
     file
         A pathname of the file to be encoded.
 
-STDIN
+.Sh STDIN
 
     See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     Input files can be files of any type.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of
 uuencode:
@@ -74,11 +78,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     uuencode Base64 Algorithm
 
@@ -753,19 +757,19 @@ characters to be decoded plus 0x20 translated to the local character set as
 described above, followed by the encoded characters. The maximum number of
 octets to be encoded on each line shall be 45.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -774,12 +778,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The file is expanded by 35 percent (each three octets become four, plus
 control information) causing it to take longer to transmit.
@@ -801,11 +805,11 @@ from the local codeset, not if the file has been put into a ISO/IEC 646:1991
 standard representation first. Similarly, files processed by uuencode can be
 placed in pax archives, intermixed with other text files in the same codeset.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     A new algorithm was added at the request of the international community
 to parallel work in RFC 2045 (MIME). As with the historical uuencode format,
@@ -833,11 +837,11 @@ was omitted as being unnecessary.
     See the RATIONALE section in uudecode for the derivation of the
 /dev/stdout symbol.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     chmod(), mailx, uudecode
 

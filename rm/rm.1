@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt RM 1
 
-    rm - remove directory entries
+.Sh NAME
 
-SYNOPSIS
+.Nm rm
+.Nd remove directory entries
+
+.Sh SYNOPSIS
 
     rm [-fiRr] file...
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The rm utility shall remove the directory entry specified by each file
 argument.
@@ -71,7 +75,7 @@ remaining files.
 hierarchy, and shall not fail due to path length limitations (unless an
 operand specified by the user exceeds system limitations).
 
-OPTIONS
+.Sh OPTIONS
 
     The rm utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -90,24 +94,24 @@ occurrences of the -f option shall be ignored.
     -r
         Equivalent to -R.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
     file
         A pathname of a directory entry to be removed.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be used to read an input line in response to
 each prompt specified in the STDOUT section. Otherwise, the standard input
 shall not be used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of rm:
 
@@ -139,30 +143,30 @@ written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     Prompts shall be written to standard error under the conditions specified
 in the DESCRIPTION and OPTIONS sections. The prompts shall contain the file
 pathname, but their format is otherwise unspecified. The standard error also
 shall be used for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -172,12 +176,12 @@ equivalent to the rmdir() or unlink() functions were removed.
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The rm utility is forbidden to remove the names dot and dot-dot in order
 to avoid the consequences of inadvertently doing something like:
@@ -193,7 +197,7 @@ unlink() function defined in the System Interfaces volume of IEEE Std
 standard input is not a terminal, but in the absence of -i the mode prompting
 is not done when the standard input is not a terminal.
 
-EXAMPLES
+.Sh EXAMPLES
 
         The following command:
 
@@ -207,7 +211,7 @@ EXAMPLES
 
         removes the directory junk and all its contents, without prompting.
 
-RATIONALE
+.Sh RATIONALE
 
     For absolute clarity, paragraphs (2b) and (3) in the DESCRIPTION of rm
 describing the behavior when prompting for confirmation, should be
@@ -269,11 +273,11 @@ refer to, as a consequence of the dependence on the unlink() functionality,
 per the DESCRIPTION. When removing hierarchies with -r or -R, the prohibition
 on following symbolic links has to be made explicit.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     rmdir(), the System Interfaces volume of IEEE Std 1003.1-2001, remove(),
 rmdir(), unlink()

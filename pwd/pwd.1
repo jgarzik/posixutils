@@ -1,18 +1,22 @@
-NAME
+.Dd December 2008
+.Dt PWD 1
 
-    pwd - return working directory name
+.Sh NAME
 
-SYNOPSIS
+.Nm pwd
+.Nd return working directory name
+
+.Sh SYNOPSIS
 
     pwd [-L | -P ]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The pwd utility shall write to standard output an absolute pathname of
 the current working directory, which does not contain the filenames dot or
 dot-dot.
 
-OPTIONS
+.Sh OPTIONS
 
     The pwd utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -32,19 +36,19 @@ the context of the pathname, refer to files of type symbolic link.
 nor -P is specified, the pwd utility shall behave as if -L had been
 specified.
 
-OPERANDS
+.Sh OPERANDS
 
     None.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of pwd:
 
@@ -71,30 +75,30 @@ are dot, and does not contain any components that are dot-dot. If an
 application sets or unsets the value of PWD , the behavior of pwd is
 unspecified.
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The pwd utility output is an absolute pathname of the current working
 directory:
 
     "%s\n", <directory pathname>
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -103,22 +107,22 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     If an error is detected, output shall not be written to standard output,
 a diagnostic message shall be written to standard error, and the exit status
 is not zero.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     None.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     Some implementations have historically provided pwd as a shell special
 built-in command.
@@ -130,11 +134,11 @@ the exit status, it is important that the historical behavior is required
 here; therefore, the CONSEQUENCES OF ERRORS section specifically disallows
 any partial output being written to standard output.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     cd, the System Interfaces volume of IEEE Std 1003.1-2001, getcwd()
 

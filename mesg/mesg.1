@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt MESG 1
 
-    mesg - permit or deny messages
+.Sh NAME
 
-SYNOPSIS
+.Nm mesg
+.Nd permit or deny messages
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] mesg [y|n][Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The mesg utility shall control whether other users are allowed to send
 messages via write, talk, or other utilities to a terminal device. The
@@ -17,11 +21,11 @@ report the current state without changing it. Processes with appropriate
 privileges may be able to send messages to the terminal independent of the
 current state.
 
-OPTIONS
+.Sh OPTIONS
 
     None.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported in the POSIX locale:
 
@@ -32,15 +36,15 @@ device.
         Deny permission to other users to send messages to the terminal
 device.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of mesg:
 
@@ -64,28 +68,28 @@ contents of diagnostic messages written (by mesg) to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     If no operand is specified, mesg shall display the current terminal state
 in an unspecified format.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -96,12 +100,12 @@ EXIT STATUS
     >1
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The mechanism by which the message status of the terminal is changed is
 unspecified. Therefore, unspecified actions may cause the status of the
@@ -110,11 +114,11 @@ include, but are not limited to: another invocation of the mesg utility,
 login procedures; invocation of the stty utility, invocation of the chmod
 utility or chmod() function, and so on.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The terminal changed by mesg is that associated with the standard input,
 output, or error, rather than the controlling terminal for the session. This
@@ -138,11 +142,11 @@ between historical implementations. This output is generally not useful to
 shell scripts (they can use the exit status), so exact parsing of the output
 is unnecessary.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     talk, write()
 

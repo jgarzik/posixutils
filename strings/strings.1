@@ -1,13 +1,17 @@
-NAME
+.Dd December 2008
+.Dt STRINGS 1
 
-    strings - find printable strings in files
+.Sh NAME
 
-SYNOPSIS
+.Nm strings
+.Nd find printable strings in files
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] strings [-a][-t format][-n number][file...][Option
 End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The strings utility shall look for printable strings in regular files and
 shall write those strings to standard output. A printable string is any
@@ -15,7 +19,7 @@ sequence of four (by default) or more printable characters terminated by a
 <newline> or NUL character. Additional implementation-defined strings may be
 written; see localedef.
 
-OPTIONS
+.Sh OPTIONS
 
     The strings utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -40,7 +44,7 @@ format option-argument:
         x
             The offset shall be written in hexadecimal.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
@@ -48,16 +52,16 @@ OPERANDS
         A pathname of a regular file to be used as input. If no file operand
 is specified, the strings utility shall read from the standard input.
 
-STDIN
+.Sh STDIN
 
     See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input files named by the utility arguments or the standard input
 shall be regular files of any format.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of
 strings:
@@ -82,11 +86,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Strings found shall be written to the standard output, one per line.
 
@@ -106,19 +110,19 @@ STDOUT
 
     "%d %s", <byte offset>, <string>
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -127,12 +131,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     By default the data area (as opposed to the text, "bss", or header areas)
 of a binary executable file is scanned. Implementations document which areas
@@ -142,11 +146,11 @@ are scanned.
 terminators for strings to permit those languages that do not use NUL as a
 string terminator to have their strings written.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     Apart from rationalizing the option syntax and slight difficulties with
 object and executable binary files, strings is specified to match historical
@@ -163,11 +167,11 @@ mean "offset", but was changed to -t to be consistent with od.
 unsigned char. This volume of IEEE Std 1003.1-2001 requires implementations
 to write strings as defined by the current locale.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     localedef, nm
 

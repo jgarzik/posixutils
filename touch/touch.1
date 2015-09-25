@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt TOUCH 1
 
-    touch - change file access and modification times
+.Sh NAME
 
-SYNOPSIS
+.Nm touch
+.Nd change file access and modification times
+
+.Sh SYNOPSIS
 
     touch [-acm][ -r ref_file| -t time] file...
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The touch utility shall change the modification times, access times, or
 both of files. The modification time shall be equivalent to the value of the
@@ -37,7 +41,7 @@ argument.
             The utimbuf structure members actime and modtime are determined
 as described in the OPTIONS section.
 
-OPTIONS
+.Sh OPTIONS
 
     The touch utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -120,22 +124,22 @@ it is assumed to be zero.
     If neither the -a nor -m options were specified, touch shall behave as if
 both the -a and -m options were specified.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
     file
         A pathname of a file whose times shall be modified.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of touch:
 
@@ -163,27 +167,27 @@ the processing of LC_MESSAGES . [Option End]
 option-argument. If TZ is unset or null, an unspecified default timezone
 shall be used.
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -193,12 +197,12 @@ made.
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The interpretation of time is taken to be seconds since the Epoch (see
 the Base Definitions volume of IEEE Std 1003.1-2001, Section 4.14, Seconds
@@ -226,11 +230,11 @@ number. A portable script can avoid this problem by using:
 
     in this case.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The functionality of touch is described almost entirely through
 references to functions in the System Interfaces volume of IEEE Std
@@ -263,11 +267,11 @@ meaning.
 if -c was specified and the file did not exist. This volume of IEEE Std
 1003.1-2001 requires exit status zero if no errors occur.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     Applications should use the -r or -t options.
 
-SEE ALSO
+.Sh SEE ALSO
 
     date, the System Interfaces volume of IEEE Std 1003.1-2001, creat(),
 time(), utime(), the Base Definitions volume of IEEE Std 1003.1-2001,

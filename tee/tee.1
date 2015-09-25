@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt TEE 1
 
-    tee - duplicate standard input
+.Sh NAME
 
-SYNOPSIS
+.Nm tee
+.Nd duplicate standard input
+
+.Sh SYNOPSIS
 
     tee [-ai][file...]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The tee utility shall copy standard input to standard output, making a
 copy in zero or more files. The tee utility shall not buffer output.
@@ -14,7 +18,7 @@ copy in zero or more files. The tee utility shall not buffer output.
     If the -a option is not specified, output files shall be written (see
 File Read, Write, and Creation.
 
-OPTIONS
+.Sh OPTIONS
 
     The tee utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -26,7 +30,7 @@ OPTIONS
     -i
         Ignore the SIGINT signal.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -34,15 +38,15 @@ OPERANDS
         A pathname of an output file. Processing of at least 13 file operands
 shall be supported.
 
-STDIN
+.Sh STDIN
 
     The standard input can be of any type.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of tee:
 
@@ -66,29 +70,29 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default, except that if the -i option was specified, SIGINT shall be
 ignored.
 
-STDOUT
+.Sh STDOUT
 
     The standard output shall be a copy of the standard input.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     If any file operands are specified, the standard input shall be copied to
 each named file.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -97,7 +101,7 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     If a write to any successfully opened file operand fails, writes to other
 successfully opened file operands and standard output shall continue, but the
@@ -105,7 +109,7 @@ exit status shall be non-zero. Otherwise, the default actions specified in
 Utility Description Defaults apply.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The tee utility is usually used in a pipeline, to make a copy of the
 output of some utility.
@@ -113,13 +117,13 @@ output of some utility.
     The file operand is technically optional, but tee is no more useful than
 cat when none is specified.
 
-EXAMPLES
+.Sh EXAMPLES
 
     Save an unsorted intermediate form of the data in a pipeline:
 
     ... | tee unsorted | sort > sorted
 
-RATIONALE
+.Sh RATIONALE
 
     The buffering requirement means that tee is not allowed to use ISO C
 standard fully buffered or line-buffered writes. It does not mean that tee
@@ -140,11 +144,11 @@ file without O_APPEND. This volume of IEEE Std 1003.1-2001 requires
 functionality equivalent to using O_APPEND; see File Read, Write, and
 Creation.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     Introduction, cat, the System Interfaces volume of IEEE Std 1003.1-2001,
 lseek()

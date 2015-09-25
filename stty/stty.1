@@ -1,14 +1,18 @@
-NAME
+.Dd December 2008
+.Dt STTY 1
 
-    stty - set the options for a terminal
+.Sh NAME
 
-SYNOPSIS
+.Nm stty
+.Nd set the options for a terminal
+
+.Sh SYNOPSIS
 
     stty [ -a| -g]
 
     stty operands
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The stty utility shall set or report on terminal I/O characteristics for
 the device that is its standard input. Without options or operands specified,
@@ -28,7 +32,7 @@ volume of IEEE Std 1003.1-2001. On systems where none of these lines are
 available, and on lines not currently configured to support the termios
 interface, some of the operands need not affect terminal characteristics.
 
-OPTIONS
+.Sh OPTIONS
 
     The stty utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -43,7 +47,7 @@ form that can be used as arguments to another invocation of the stty utility
 on the same system. The form used shall not contain any characters that would
 require quoting to avoid word expansion by the shell; see Word Expansions.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported to set the terminal
 characteristics.
@@ -794,17 +798,17 @@ to setting:
     sane
         Reset all modes to some reasonable, unspecified, values.
 
-STDIN
+.Sh STDIN
 
     Although no input is read from standard input, standard input shall be
 used to get the current terminal I/O characteristics and to set new terminal
 I/O characteristics.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of stty:
 
@@ -829,11 +833,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     If operands are specified, no output shall be produced.
 
@@ -872,19 +876,19 @@ the -a option is specified, control characters shall be written as:
 the character if it is non-printable, or the string undef if the character is
 disabled.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -893,12 +897,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The -g flag is designed to facilitate the saving and restoring of
 terminal state from the shell level. For example, a program may:
@@ -914,11 +918,11 @@ systems.
     Since the -a format is so loosely specified, scripts that save and
 restore terminal settings should use the -g option.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The original stty description was taken directly from System V and
 reflected the System V terminal driver termio. It has been modified to
@@ -963,11 +967,11 @@ Using standard input also allows stty -a and stty -g output to be redirected
 for later use. Therefore, usage of standard input is required by this volume
 of IEEE Std 1003.1-2001.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     Shell Command Language, the Base Definitions volume of IEEE Std
 1003.1-2001, Chapter 11, General Terminal Interface, <termios.h>

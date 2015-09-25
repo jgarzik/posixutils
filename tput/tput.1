@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt TPUT 1
 
-    tput - change terminal characteristics
+.Sh NAME
 
-SYNOPSIS
+.Nm tput
+.Nd change terminal characteristics
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] tput [-T type] operand... [Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The tput utility shall display terminal-dependent information. The manner
 in which this information is retrieved is unspecified. The information
@@ -14,7 +18,7 @@ displayed shall clear the terminal screen, initialize the user's terminal, or
 reset the user's terminal, depending on the operand given. The exact
 consequences of displaying this information are unspecified.
 
-OPTIONS
+.Sh OPTIONS
 
     The tput utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -26,7 +30,7 @@ OPTIONS
 TERM variable is unset or null, an unspecified default terminal type shall be
 used. The setting of type shall take precedence over the value in TERM .
 
-OPERANDS
+.Sh OPERANDS
 
     The following strings shall be supported as operands by the
 implementation in the POSIX locale:
@@ -43,15 +47,15 @@ implementation-defined manner.
     If a terminal does not support any of the operations described by these
 operands, this shall not be considered an error condition.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of tput:
 
@@ -79,29 +83,29 @@ the processing of LC_MESSAGES . [Option End]
 if the -T option is not specified, an unspecified default terminal type shall
 be used.
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     If standard output is a terminal device, it may be used for writing the
 appropriate sequence to clear the screen or reset or initialize the terminal.
 If standard output is not a terminal device, undefined results occur.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -118,13 +122,13 @@ EXIT STATUS
     >4
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     If one of the operands is not available for the terminal, tput continues
 processing the remaining operands.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The difference between resetting and initializing a terminal is left
 unspecified, as they vary greatly based on hardware types. In general,
@@ -140,7 +144,7 @@ following non-portable constructs:
     ClearVar=`tput clear`
     tput reset | mailx -s "Wake Up" ddg
 
-EXAMPLES
+.Sh EXAMPLES
 
         Initialize the terminal according to the type of terminal in the
 environmental variable TERM . This command can be included in a .profile
@@ -152,7 +156,7 @@ file.
 
         tput -T 450 reset
 
-RATIONALE
+.Sh RATIONALE
 
     The list of operands was reduced to a minimum for the following reasons:
 
@@ -176,11 +180,11 @@ Boolean operand is not set. Although the operands were reduced to a minimum,
 the exit status of 1 should still be reserved for the Boolean operands, for
 those sites that wish to support them.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     stty, tabs
 

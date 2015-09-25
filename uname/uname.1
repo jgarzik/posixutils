@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt UNAME 1
 
-    uname - return system name
+.Sh NAME
 
-SYNOPSIS
+.Nm uname
+.Nd return system name
+
+.Sh SYNOPSIS
 
     uname [-snrvma]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     By default, the uname utility shall write the operating system name to
 standard output. When options are specified, symbols representing one or more
@@ -16,7 +20,7 @@ to the System Interfaces volume of IEEE Std 1003.1-2001, the symbols written
 shall be those supported by the uname() function as defined in the System
 Interfaces volume of IEEE Std 1003.1-2001.
 
-OPTIONS
+.Sh OPTIONS
 
     The uname utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -43,19 +47,19 @@ system implementation.
     If no options are specified, the uname utility shall write the operating
 system name, as if the -s option had been specified.
 
-OPERANDS
+.Sh OPERANDS
 
     None.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of uname:
 
@@ -79,11 +83,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     By default, the output shall be a single line of the following form:
 
@@ -104,19 +108,19 @@ only those symbols shall be written, in the order shown above for the -a
 option. If a symbol is not selected for writing, its corresponding trailing
 <blank>s also shall not be written.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -125,12 +129,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     Note that any of the symbols could include embedded <space>s, which may
 affect parsing algorithms if multiple options are selected for output.
@@ -138,7 +142,7 @@ affect parsing algorithms if multiple options are selected for output.
     The node name is typically a name that the system uses to identify itself
 for inter-system communication addressing.
 
-EXAMPLES
+.Sh EXAMPLES
 
     The following command:
 
@@ -147,7 +151,7 @@ EXAMPLES
     writes the operating system name and release level, separated by one or
 more <blank>s.
 
-RATIONALE
+.Sh RATIONALE
 
     It was suggested that this utility cannot be used portably since the
 format of the symbols is implementation-defined. The POSIX.1 working group
@@ -157,11 +161,11 @@ uname() function, and there was no expectation that this volume of IEEE Std
 this historical utility of value. For example, the symbols could be used for
 system log entries or for comparison with operator or user input.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     The System Interfaces volume of IEEE Std 1003.1-2001, uname()
 

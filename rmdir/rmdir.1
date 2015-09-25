@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt RMDIR 1
 
-    rmdir - remove directories
+.Sh NAME
 
-SYNOPSIS
+.Nm rmdir
+.Nd remove directories
+
+.Sh SYNOPSIS
 
     rmdir [-p] dir...
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The rmdir utility shall remove the directory entry specified by each dir
 operand.
@@ -20,7 +24,7 @@ rmdir utility, the application shall specify the subdirectory before the
 parent directory so that the parent directory will be empty when the rmdir
 utility tries to remove it.
 
-OPTIONS
+.Sh OPTIONS
 
     The rmdir utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -37,22 +41,22 @@ effects equivalent to the following command shall occur:
 
             rmdir -p $(dirname dir)
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
     dir
         A pathname of an empty directory to be removed.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of rmdir:
 
@@ -76,27 +80,27 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -106,17 +110,17 @@ successfully.
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The definition of an empty directory is one that contains, at most,
 directory entries for dot and dot-dot.
 
-EXAMPLES
+.Sh EXAMPLES
 
     If a directory a in the current directory is empty except it contains a
 directory b and a/b is empty except it contains a directory c:
@@ -125,7 +129,7 @@ directory b and a/b is empty except it contains a directory c:
 
     removes all three directories.
 
-RATIONALE
+.Sh RATIONALE
 
     On historical System V systems, the -p option also caused a message to be
 written to the standard output. The message indicated whether the whole path
@@ -139,11 +143,11 @@ the informational message output by the -p option. This option has been
 omitted because the informational message is not specified by this volume of
 IEEE Std 1003.1-2001.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     rm, the System Interfaces volume of IEEE Std 1003.1-2001, remove(),
 rmdir(), unlink()

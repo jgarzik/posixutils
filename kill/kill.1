@@ -1,8 +1,12 @@
-NAME
+.Dd December 2008
+.Dt KILL 1
 
-    kill - terminate or signal processes
+.Sh NAME
 
-SYNOPSIS
+.Nm kill
+.Nd terminate or signal processes
+
+.Sh SYNOPSIS
 
     kill -s signal_name pid ...
 
@@ -12,7 +16,7 @@ SYNOPSIS
 
     kill [-signal_number] pid ... [Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The kill utility shall send a signal to the process or processes
 specified by each pid operand.
@@ -27,7 +31,7 @@ to the kill() function defined in the System Interfaces volume of IEEE Std
 signal_number option, or the - signal_name option, or by SIGTERM, if none of
 these options is specified.
 
-OPTIONS
+.Sh OPTIONS
 
     The kill utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines, [XSI] [Option Start]
@@ -115,7 +119,7 @@ in the table are undefined.
 as a - signal_number option, not as a negative pid operand specifying a
 process group. [Option End]
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -141,15 +145,15 @@ Shell Execution Environment.
         A decimal integer specifying a signal number or the exit status of a
 process terminated by a signal.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of kill:
 
@@ -173,11 +177,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     When the -l option is not specified, the standard output shall not be
 used.
@@ -197,19 +201,19 @@ format:
 
     "%s\n", <signal_name>
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -220,12 +224,12 @@ process.
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     Process numbers can be found by using ps.
 
@@ -239,7 +243,7 @@ following examples:
     the kill operates in a different environment and does not share the
 shell's understanding of job numbers.
 
-EXAMPLES
+.Sh EXAMPLES
 
     Any of the commands:
 
@@ -279,7 +283,7 @@ should use a command similar to one of the following:
     kill -TERM -123
     kill -- -123
 
-RATIONALE
+.Sh RATIONALE
 
     The -l option originated from the C shell, and is also implemented in the
 KornShell. The C shell output can consist of multiple output lines because
@@ -322,11 +326,11 @@ following examples:
     the kill operates in a different environment and does not understand how
 the shell has managed its job numbers.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     Shell Command Language, ps, wait(), the System Interfaces volume of IEEE
 Std 1003.1-2001, kill(), the Base Definitions volume of IEEE Std 1003.1-2001,

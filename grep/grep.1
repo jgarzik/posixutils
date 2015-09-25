@@ -1,8 +1,12 @@
-NAME
+.Dd December 2008
+.Dt GREP 1
 
-    grep - search a file for a pattern
+.Sh NAME
 
-SYNOPSIS
+.Nm grep
+.Nd search a file for a pattern
+
+.Sh SYNOPSIS
 
     grep [-E| -F][-c| -l| -q][-insvx] -e pattern_list...
            [-f pattern_file]...[file...]
@@ -12,7 +16,7 @@ SYNOPSIS
 
     grep [-E| -F][-c| -l| -q][-insvx] pattern_list[file...]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The grep utility shall search the input files, selecting lines matching
 one or more patterns; the types of patterns are controlled by the options
@@ -33,7 +37,7 @@ matched against individual lines (excluding the terminating <newline>s) of
 the input, there is no way for a pattern to match a <newline> found in the
 input.
 
-OPTIONS
+.Sh OPTIONS
 
     The grep utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -99,7 +103,7 @@ specified patterns.
 excluding the terminating <newline> to match an entire fixed string or
 regular expression to be matching lines.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -110,16 +114,16 @@ This operand shall be treated as if it were specified as -e pattern_list.
         A pathname of a file to be searched for the patterns. If no file
 operands are specified, the standard input shall be used.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be used only if no file operands are specified.
 See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input files shall be text files.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of grep:
 
@@ -147,11 +151,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     If the -l option is in effect, and the -q option is not, the following
 shall be written for each file containing at least one selected input line:
@@ -180,19 +184,19 @@ following shall be written to standard output:
 
         "%s", <selected-line contents>
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -203,14 +207,14 @@ EXIT STATUS
     >1
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     If the -q option is specified, the exit status shall be zero if an input
 line is selected, even if an error was detected. Otherwise, default actions
 shall be performed.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     Care should be taken when using characters in pattern_list that may also
 be meaningful to the command interpreter. It is safest to enclose the entire
@@ -236,7 +240,7 @@ finds the first match) and requires less care by the user in choosing the set
 of files to supply as arguments (because it exits zero if it finds a match
 even if grep detected an access or read error on earlier file operands).
 
-EXAMPLES
+.Sh EXAMPLES
 
         To find all uses of the word "Posix" (in any case) in file text.mm
 and write with line numbers:
@@ -269,7 +273,7 @@ or "def" :
         grep -F -x 'abc
         def'
 
-RATIONALE
+.Sh RATIONALE
 
     This grep has been enhanced in an upwards-compatible way to provide the
 exact functionality of the historical egrep and fgrep commands as well. It
@@ -303,11 +307,11 @@ System V.
     The -x option, historically available only with fgrep, is available here
 for all of the non-obsolescent versions.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     sed
 

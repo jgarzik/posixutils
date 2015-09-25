@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 09:22-0400\n"
+"POT-Creation-Date: 2015-09-25 09:59-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -139,6 +139,15 @@ msgstr "Supprimez la colonne de rendement des lignes uniques a file2."
 msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 "Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
+
+#: comm/comm.cc:210 date/date.cc:177 diff/diff.cc:214 env/env.cc:159
+#: getconf/getconf.cc:162 id/id.cc:368 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
+#: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 nice/nice.cc:90
+#: pwd/pwd.cc:109 split/split.cc:369 uname/uname.cc:95
+#: uuencode/uuencode.cc:313
+#, c-format
+msgid "%s: argp_parse failed: %s\n"
+msgstr ""
 
 #: date/date.cc:36
 msgid "date - print or set the system date and time"
@@ -596,11 +605,6 @@ msgstr ""
 
 #: nice/nice.cc:41
 msgid "Positive or negative integer indicating desired priority adjustment"
-msgstr ""
-
-#: nice/nice.cc:91
-#, c-format
-msgid "argp_parse failed: %s\n"
 msgstr ""
 
 #: nice/nice.cc:96

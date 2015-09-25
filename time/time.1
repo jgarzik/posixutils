@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt TIME 1
 
-    time - time a simple command
+.Sh NAME
 
-SYNOPSIS
+.Nm time
+.Nd time a simple command
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] time [-p] utility [argument...][Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The time utility shall invoke the utility named by the utility operand
 with arguments supplied as the argument operands and write a message to
@@ -39,7 +43,7 @@ respectively:
     time a | b | c    { time a } | b | c
     a | b | time c    a | b | (time c)
 
-OPTIONS
+.Sh OPTIONS
 
     The time utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -50,7 +54,7 @@ OPTIONS
         Write the timing output to standard error in the format shown in the
 STDERR section.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -62,15 +66,15 @@ the results are undefined.
         Any string to be supplied as an argument when invoking the utility
 named by the utility operand.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of time:
 
@@ -100,15 +104,15 @@ the processing of LC_MESSAGES . [Option End]
 be invoked; see the Base Definitions volume of IEEE Std 1003.1-2001, Chapter
 8, Environment Variables.
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used to write the timing statistics. If -p is
 specified, the following format shall be used in the POSIX locale:
@@ -125,15 +129,15 @@ character shall be no less than one, even if this always results in a
 trailing zero. The implementation may append white space and additional
 information following the format shown here.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     If the utility utility is invoked, the exit status of time shall be the
 exit status of utility; otherwise, the time utility shall exit with one of
@@ -146,12 +150,12 @@ the following values:
       127
         The utility specified by utility could not be found.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The command, env, nice, nohup, time, and xargs utilities have been
 specified to use exit code 127 if an error occurs so that applications can
@@ -166,7 +170,7 @@ distinction between exit codes 126 and 127 is based on KornShell practice
 that uses 127 when all attempts to exec the utility fail with [ENOENT], and
 uses 126 when any attempt to exec the utility fails for any other reason.
 
-EXAMPLES
+.Sh EXAMPLES
 
     It is frequently desirable to apply time to pipelines or lists of
 commands. This can be done by placing pipelines and command lists in a single
@@ -178,7 +182,7 @@ complex command:
 
     time sh -c 'complex-command-line'
 
-RATIONALE
+.Sh RATIONALE
 
     When the time utility was originally proposed to be included in the ISO
 POSIX-2:1993 standard, questions were raised about its suitability for
@@ -217,11 +221,11 @@ shell compound commands, pipelines, special built-ins, and so on, cannot be
 used directly. However, utility includes user application programs and shell
 scripts, not just the standard utilities.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     Shell Command Language, sh, the System Interfaces volume of IEEE Std
 1003.1-2001, times()

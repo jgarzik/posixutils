@@ -1,21 +1,25 @@
-NAME
+.Dd December 2008
+.Dt SLEEP 1
 
-    sleep - suspend execution for an interval
+.Sh NAME
 
-SYNOPSIS
+.Nm sleep
+.Nd suspend execution for an interval
+
+.Sh SYNOPSIS
 
     sleep time
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The sleep utility shall suspend execution for at least the integral
 number of seconds specified by the time operand.
 
-OPTIONS
+.Sh OPTIONS
 
     None.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
@@ -23,15 +27,15 @@ OPERANDS
         A non-negative decimal integer specifying the number of seconds for
 which to suspend execution.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of sleep:
 
@@ -55,7 +59,7 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     If the sleep utility receives a SIGALRM signal, one of the following
 actions shall be taken:
@@ -70,23 +74,23 @@ include terminating with a non-zero exit status.
 
     The sleep utility shall take the standard action for all other signals.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -96,16 +100,16 @@ or a SIGALRM signal was received. See the ASYNCHRONOUS EVENTS section.
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     None.
 
-EXAMPLES
+.Sh EXAMPLES
 
     The sleep utility can be used to execute a command after a certain amount
 of time, as in:
@@ -119,7 +123,7 @@ of time, as in:
         command    sleep 37
     done
 
-RATIONALE
+.Sh RATIONALE
 
     The exit status is allowed to be zero when sleep is interrupted by the
 SIGALRM signal because most implementations of this utility rely on the
@@ -136,11 +140,11 @@ may mean that some implementations have to make multiple calls to the delay
 mechanism of the underlying operating system if its argument range is less
 than this.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     wait, the System Interfaces volume of IEEE Std 1003.1-2001, alarm(),
 sleep()

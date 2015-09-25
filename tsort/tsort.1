@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt TSORT 1
 
-    tsort - topological sort
+.Sh NAME
 
-SYNOPSIS
+.Nm tsort
+.Nd topological sort
+
+.Sh SYNOPSIS
 
     [XSI] [Option Start] tsort [file][Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The tsort utility shall write to standard output a totally ordered list
 of items consistent with a partial ordering of items contained in the input.
@@ -15,11 +19,11 @@ of items consistent with a partial ordering of items contained in the input.
 (non-empty strings) separated by <blank>s. Pairs of different items indicate
 ordering. Pairs of identical items indicate presence, but not ordering.
 
-OPTIONS
+.Sh OPTIONS
 
     None.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
@@ -27,16 +31,16 @@ OPERANDS
         A pathname of a text file to order. If no file operand is given, the
 standard input shall be used.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be a text file that is used if no file operand
 is given.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input file named by the file operand is a text file.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of tsort:
 
@@ -60,28 +64,28 @@ contents of diagnostic messages written to standard error.
         Determine the location of message catalogs for the processing of
 LC_MESSAGES .
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The standard output shall be a text file consisting of the order list
 produced from the partially ordered input.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -90,18 +94,18 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The LC_COLLATE variable need not affect the actions of tsort. The output
 ordering is not lexicographic, but depends on the pairs of items given as
 input.
 
-EXAMPLES
+.Sh EXAMPLES
 
     The command:
 
@@ -123,15 +127,15 @@ EXAMPLES
     g
     h
 
-RATIONALE
+.Sh RATIONALE
 
     None.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     None.
 

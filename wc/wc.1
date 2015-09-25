@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt WC 1
 
-    wc - word, line, and byte or character count
+.Sh NAME
 
-SYNOPSIS
+.Nm wc
+.Nd word, line, and byte or character count
+
+.Sh SYNOPSIS
 
     wc [-c|-m][-lw][file...]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The wc utility shall read one or more input files and, by default, write
 the number of <newline>s, words, and bytes contained in each input file to
@@ -18,7 +22,7 @@ than one input file is specified.
     The wc utility shall consider a word to be a non-zero-length string of
 characters delimited by white space.
 
-OPTIONS
+.Sh OPTIONS
 
     The wc utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -39,7 +43,7 @@ file.
     When any option is specified, wc shall report only the information
 requested by the specified options.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
@@ -47,16 +51,16 @@ OPERANDS
         A pathname of an input file. If no file operands are specified, the
 standard input shall be used.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be used only if no file operands are specified.
 See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input files may be of any type.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of wc:
 
@@ -82,11 +86,11 @@ messages written to standard output.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     By default, the standard output shall contain an entry for each input
 file of the form:
@@ -114,19 +118,19 @@ total (in the POSIX locale) shall be written instead of a pathname and the
 total of each column shall be written as appropriate. Such an additional
 line, if any, is written at the end of the output.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -135,12 +139,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The -m option is not a switch, but an option at the same level as -c.
 Thus, to produce the full default output with character counts instead of
@@ -148,11 +152,11 @@ bytes, the command required is:
 
     wc -mlw
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The output file format pseudo- printf() string differs from the System V
 version of wc:
@@ -187,11 +191,11 @@ this was documented, the changes required by this volume of IEEE Std
 1003.1-2001 should not break many historical applications (and do not break
 any historical conforming applications).
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     cksum
 

@@ -1,14 +1,18 @@
-NAME
+.Dd December 2008
+.Dt MV 1
 
-    mv - move files
+.Sh NAME
 
-SYNOPSIS
+.Nm mv
+.Nd move files
+
+.Sh SYNOPSIS
 
     mv [-fi] source_file target_file
 
     mv [-fi] source_file... target_file
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     In the first synopsis form, the mv utility shall move the file named by
 the source_file operand to the destination specified by the target_file. This
@@ -101,7 +105,7 @@ fails for any reason, mv shall write a diagnostic message to the standard
 error, do nothing more with the current source_file, and go on to any
 remaining source_files.
 
-OPTIONS
+.Sh OPTIONS
 
     The mv utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -118,7 +122,7 @@ occurrence of the -f option is ignored.
     Specifying more than one of the -f or -i options shall not be considered
 an error. The last option specified shall determine the behavior of mv.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -130,18 +134,18 @@ OPERANDS
         A pathname of an existing directory into which to move the input
 files.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be used to read an input line in response to
 each prompt specified in the STDERR section. Otherwise, the standard input
 shall not be used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input files specified by each source_file operand can be of any file
 type.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of mv:
 
@@ -173,30 +177,30 @@ written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     Prompts shall be written to the standard error under the conditions
 specified in the DESCRIPTION section. The prompts shall contain the
 destination pathname, but their format is otherwise unspecified. Otherwise,
 the standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     The output files may be of any file type.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -205,7 +209,7 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     If the copying or removal of source_file is prematurely terminated by a
 signal or error, mv may leave a partial copy of source_file at the source or
@@ -214,14 +218,14 @@ destination path simultaneously; termination at any point shall leave either
 source_file or the destination path complete.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     Some implementations mark for update the st_ctime field of renamed files
 and some do not. Applications which make use of the st_ctime field may behave
 differently with respect to renamed files unless they are designed to allow
 for either behavior.
 
-EXAMPLES
+.Sh EXAMPLES
 
     If the current directory contains only files a (of any type defined by
 the System Interfaces volume of IEEE Std 1003.1-2001), b (also of any type),
@@ -233,7 +237,7 @@ and a directory c:
     results with the original files a and b residing in the directory d in
 the current directory.
 
-RATIONALE
+.Sh RATIONALE
 
     Early proposals diverged from the SVID and BSD historical practice in
 that they required that when the destination path exists, the -f option is
@@ -291,11 +295,11 @@ symbolic link, the link itself is moved as a consequence of the dependence on
 the rename() functionality, per the DESCRIPTION. Across file systems, this
 has to be made explicit.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     cp, ln, the System Interfaces volume of IEEE Std 1003.1-2001, rename()
 

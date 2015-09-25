@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt NICE 1
 
-    nice - invoke a utility with an altered nice value
+.Sh NAME
 
-SYNOPSIS
+.Nm nice
+.Nd invoke a utility with an altered nice value
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] nice [-n increment] utility [argument...][Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The nice utility shall invoke a utility, requesting that it be run with a
 different nice value (see the Base Definitions volume of IEEE Std
@@ -19,7 +23,7 @@ affect the nice value; in this case, a warning message may be written to
 standard error, but this shall not prevent the invocation of utility or
 affect the exit status.
 
-OPTIONS
+.Sh OPTIONS
 
     The nice utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -31,7 +35,7 @@ OPTIONS
 effect on the execution of the utility as if the utility had called the
 nice() function with the numeric value of the increment option-argument.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -43,15 +47,15 @@ the results are undefined.
         Any string to be supplied as an argument when invoking the utility
 named by the utility operand.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of nice:
 
@@ -79,27 +83,27 @@ the processing of LC_MESSAGES . [Option End]
 See the Base Definitions volume of IEEE Std 1003.1-2001, Chapter 8,
 Environment Variables.
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     If utility is invoked, the exit status of nice shall be the exit status
 of utility; otherwise, the nice utility shall exit with one of the following
@@ -112,12 +116,12 @@ values:
       127
         The utility specified by utility could not be found.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The only guaranteed portable uses of this utility are:
 
@@ -152,11 +156,11 @@ distinction between exit codes 126 and 127 is based on KornShell practice
 that uses 127 when all attempts to exec the utility fail with [ENOENT], and
 uses 126 when any attempt to exec the utility fails for any other reason.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The 4.3 BSD version of nice does not check whether increment is a valid
 decimal integer. The command nice -x utility, for example, would be treated
@@ -198,11 +202,11 @@ just the general time-sharing activities implied by this volume of IEEE Std
 "implementation-defined" in nice and renice, a wide range of implementation
 strategies are possible.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     Shell Command Language, renice, the System Interfaces volume of IEEE Std
 1003.1-2001, nice()

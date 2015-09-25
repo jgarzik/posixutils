@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt PATHCHK 1
 
-    pathchk - check pathnames
+.Sh NAME
 
-SYNOPSIS
+.Nm pathchk
+.Nd check pathnames
+
+.Sh SYNOPSIS
 
     pathchk [-p] pathname...
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The pathchk utility shall check that one or more pathnames are valid
 (that is, they could be used to access or create a file without causing
@@ -37,7 +41,7 @@ pathname operand do not exist as long as a file matching the pathname
 specified by the missing components could be created that does not violate
 any of the checks specified above.
 
-OPTIONS
+.Sh OPTIONS
 
     The pathchk utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -57,22 +61,22 @@ Base Definitions volume of IEEE Std 1003.1-2001, Chapter 13, Headers,
             Contains any character in any component that is not in the
 portable filename character set
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
     pathname
         A pathname to be checked.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of
 pathchk:
@@ -97,27 +101,27 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -126,12 +130,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The test utility can be used to determine whether a given pathname names
 an existing file; it does not, however, give any indication of whether or not
@@ -146,7 +150,7 @@ System Interfaces volume of IEEE Std 1003.1-2001, it guarantees atomic
 creation, but still depends on applications to agree on conventions and
 cooperate on the use of files after they have been created.
 
-EXAMPLES
+.Sh EXAMPLES
 
     To verify that all pathnames in an imported data interchange archive are
 legitimate and unambiguous on the current system:
@@ -229,7 +233,7 @@ invoked, the:
             which verifies that the file did not already exist, but leaves
 $path.out in place for use by PROCESSING.
 
-RATIONALE
+.Sh RATIONALE
 
     The pathchk utility was new for the ISO POSIX-2:1993 standard. It, along
 with the set -C( noclobber) option added to the shell, replaces the mktemp,
@@ -266,11 +270,11 @@ create a file without risk of collisions, as long as applications trying to
 use the same filename name space are cooperating on the use of files after
 they have been created.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     Redirection, set, test
 

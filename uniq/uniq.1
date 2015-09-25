@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt UNIQ 1
 
-    uniq - report or filter out repeated lines in a file
+.Sh NAME
 
-SYNOPSIS
+.Nm uniq
+.Nd report or filter out repeated lines in a file
+
+.Sh SYNOPSIS
 
     uniq [-c|-d|-u][-f fields][-s char][input_file [output_file]]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The uniq utility shall read an input file comparing adjacent lines, and
 write one copy of each input line on the output. The second and succeeding
@@ -15,7 +19,7 @@ copies of repeated adjacent input lines shall not be written.
     Repeated lines in the input shall not be detected if they are not
 adjacent.
 
-OPTIONS
+.Sh OPTIONS
 
     The uniq utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -45,7 +49,7 @@ on an input line, a null string shall be used for comparison.
     -u
         Suppress the writing of lines that are repeated in the input.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -57,16 +61,16 @@ specified, or if the input_file is '-', the standard input shall be used.
 specified, the standard output shall be used. The results are unspecified if
 the file named by output_file is the file named by input_file.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be used only if no input_file operand is
 specified or if input_file is '-'. See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     The input file shall be a text file.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of uniq:
 
@@ -93,20 +97,20 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The standard output shall be used only if no output_file operand is
 specified. See the OUTPUT FILES section.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     If the -c option is specified, the output file shall be empty or each
 line shall be of the form:
@@ -118,11 +122,11 @@ form:
 
     "%s", <line>
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -131,17 +135,17 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The sort utility can be used to cause repeated lines to be adjacent in
 the input file.
 
-EXAMPLES
+.Sh EXAMPLES
 
     The following input file data (but flushed left) was used for a test
 series on uniq:
@@ -201,16 +205,16 @@ data starting from the third character:
         In the last example, the uniq utility found no input matching the
 above criteria.
 
-RATIONALE
+.Sh RATIONALE
 
     Some historical implementations have limited lines to be 1080 bytes in
 length, which does not meet the implied {LINE_MAX} limit.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     comm, sort
 

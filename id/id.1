@@ -1,8 +1,12 @@
-NAME
+.Dd December 2008
+.Dt ID 1
 
-    id - return user identity
+.Sh NAME
 
-SYNOPSIS
+.Nm id
+.Nd return user identity
+
+.Sh SYNOPSIS
 
     id [user]
 
@@ -12,7 +16,7 @@ SYNOPSIS
 
     id -u[-nr] [user]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     If no user operand is provided, the id utility shall write the user and
 group IDs and the corresponding user and group names of the invoking process
@@ -29,7 +33,7 @@ selected user has more than one allowable group membership listed in the
 group database, these shall be written in the same manner as the
 supplementary groups described in the preceding paragraph.
 
-OPTIONS
+.Sh OPTIONS
 
     The id utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -51,22 +55,22 @@ the format "%u".
     -u
         Output only the effective user ID, using the format "%u\n".
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
     user
         The login name for which information is to be written.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of id:
 
@@ -91,11 +95,11 @@ messages written to standard output.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The following formats shall be used when the LC_MESSAGES locale category
 specifies the POSIX locale. In other locales, the strings uid, gid, euid,
@@ -152,19 +156,19 @@ shall be omitted from the corresponding format string.
     When any of the options are specified, the output format shall be as
 described in the OPTIONS section.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -173,12 +177,12 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     Output produced by the -G option and by the default case could
 potentially produce very long lines on systems that support large numbers of
@@ -191,11 +195,11 @@ overflow the 2048-byte barrier using id -G). This is not expected to be a
 problem in practice, but in cases where it is a concern, applications should
 consider using fold -s before postprocessing the output of id.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The functionality provided by the 4 BSD groups utility can be simulated
 using:
@@ -217,11 +221,11 @@ Since output such as that produced by:
 
     is frequently wanted, it seemed desirable to add the options.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     fold, logname, who, the System Interfaces volume of IEEE Std 1003.1-2001,
 getgid(), getgroups(), getuid()

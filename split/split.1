@@ -1,14 +1,18 @@
-NAME
+.Dd December 2008
+.Dt SPLIT 1
 
-    split - split files into pieces
+.Sh NAME
 
-SYNOPSIS
+.Nm split
+.Nd split files into pieces
+
+.Sh SYNOPSIS
 
     [UP] [Option Start] split [-l line_count][-a suffix_length][file[name]]
 
     split -b n[k|m][-a suffix_length][file[name]][Option End]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The split utility shall read an input file and write one or more output
 files. The default size of each output file shall be 1000 lines. The size of
@@ -31,7 +35,7 @@ suffixes. If the file limit is not exceeded, the last file created shall
 contain the remainder of the input file, and may be smaller than the
 requested size.
 
-OPTIONS
+.Sh OPTIONS
 
     The split utility shall conform to the Base Definitions volume of IEEE
 Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -56,7 +60,7 @@ line_count argument is an unsigned decimal integer. The default is 1000. If
 the input does not end with a <newline>, the partial line shall be included
 in the last output file.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operands shall be supported:
 
@@ -69,15 +73,15 @@ operation. If no name argument is given, 'x' shall be used as the prefix of
 the output files. The combined length of the basename of prefix and
 suffix_length cannot exceed {NAME_MAX} bytes. See the OPTIONS section.
 
-STDIN
+.Sh STDIN
 
     See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     Any file can be used as input.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of split:
 
@@ -101,28 +105,28 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     Not used.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     The output files contain portions of the original input file; otherwise,
 unchanged.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -131,16 +135,16 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     None.
 
-EXAMPLES
+.Sh EXAMPLES
 
     In the following examples foo is a text file that contains 5000 lines.
 
@@ -163,7 +167,7 @@ bytes, each with the default prefix of x and a five-letter suffix:
 
         split -a 5 -b 20k foo
 
-RATIONALE
+.Sh RATIONALE
 
     The -b option was added to provide a mechanism for splitting files other
 than by lines. While most uses of the -b option are for transmitting files
@@ -185,11 +189,11 @@ suffixes" would normally be assumed, but since the related utility, csplit,
 does delete files under some circumstances, the historical behavior of split
 is made explicit to avoid misinterpretation.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     csplit
 

@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt HEAD 1
 
-    head - copy the first part of files
+.Sh NAME
 
-SYNOPSIS
+.Nm head
+.Nd copy the first part of files
+
+.Sh SYNOPSIS
 
     head [-n number][file...]
 
-DESCRIPTION
+.Sh DESCRIPTION
 
     The head utility shall copy its input files to the standard output,
 ending the output for each file at a designated point.
@@ -14,7 +18,7 @@ ending the output for each file at a designated point.
     Copying shall end at the point in each input file indicated by the -n
 number option. The option-argument number shall be counted in units of lines.
 
-OPTIONS
+.Sh OPTIONS
 
     The head utility shall conform to the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -32,7 +36,7 @@ standard output in its entirety. This shall not be an error.
     If no options are specified, head shall act as if -n 10 had been
 specified.
 
-OPERANDS
+.Sh OPERANDS
 
     The following operand shall be supported:
 
@@ -40,17 +44,17 @@ OPERANDS
         A pathname of an input file. If no file operands are specified, the
 standard input shall be used.
 
-STDIN
+.Sh STDIN
 
     The standard input shall be used only if no file operands are specified.
 See the INPUT FILES section.
 
-INPUT FILES
+.Sh INPUT FILES
 
     Input files shall be text files, but the line length is not restricted to
 {LINE_MAX} bytes.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of head:
 
@@ -74,11 +78,11 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The standard output shall contain designated portions of the input files.
 
@@ -90,19 +94,19 @@ for each with the header:
     except that the first header written shall not include the initial
 <newline>.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -111,24 +115,24 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The obsolescent - number form is withdrawn in this version. Applications
 should use the -n number option.
 
-EXAMPLES
+.Sh EXAMPLES
 
     To write the first ten lines of all files (except those with a leading
 period) in the directory:
 
     head *
 
-RATIONALE
+.Sh RATIONALE
 
     Although it is possible to simulate head with sed 10q for a single file,
 the standard developers decided that the popularity of head on historical BSD
@@ -142,11 +146,11 @@ logically related.
 practice and because other utilities in this volume of IEEE Std 1003.1-2001
 provide similar functionality.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     sed, tail
 
