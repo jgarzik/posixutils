@@ -53,7 +53,6 @@ AC_SUBST(ARGP_LIB)
 AC_CONFIG_FILES([Makefile
 		po/Makefile.in
 		doc/Makefile
-		doc/status/Makefile
 		m4/Makefile 
 		libpu/Makefile
 		include/Makefile

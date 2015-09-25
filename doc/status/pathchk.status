@@ -1,9 +1,0 @@
-util: pathchk
-
-1) complain if any component in a directory is not searchable,
-   if -p is not present
-
-   2) figure out how to check if a pathname component contains valid
-      characters for a specific path (-p not present).
-
-

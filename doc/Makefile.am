@@ -1,4 +1,3 @@
 
-EXTRA_DIST = new-util.txt opengroup-docs.txt util-groups.txt
+EXTRA_DIST = new-util.txt opengroup-docs.txt roadmap.txt
 
-SUBDIRS = status
