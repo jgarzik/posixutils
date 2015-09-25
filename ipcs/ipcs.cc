@@ -78,12 +78,14 @@ union semun {
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, NULL, doc };
 
-enum parse_options_bits {
+enum parse_options_ibits {
 	IOPT_MSG		= (1 << 0),
 	IOPT_SHM		= (1 << 1),
 	IOPT_SEM		= (1 << 2),
 	IOPT_ALL		= IOPT_MSG | IOPT_SHM | IOPT_SEM,
+};
 
+enum parse_options_rbits {
 	ROPT_SIZE		= (1 << 0),
 	ROPT_CREATOR		= (1 << 1),
 	ROPT_OUTST		= (1 << 2),
@@ -94,7 +96,7 @@ enum parse_options_bits {
 				  ROPT_PROC | ROPT_TIME,
 };
 
-static int opt_info, opt_print;
+static unsigned int opt_info, opt_print;
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
 {

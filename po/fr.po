@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 00:31-0400\n"
+"POT-Creation-Date: 2015-09-25 08:25-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -268,7 +268,7 @@ msgstr ""
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: getconf/getconf.cc:163 ipcs/ipcs.cc:371 nice/nice.cc:91 pwd/pwd.cc:110
+#: getconf/getconf.cc:163 ipcs/ipcs.cc:373 nice/nice.cc:91 pwd/pwd.cc:110
 #: split/split.cc:370
 #, c-format
 msgid "argp_parse failed: %s\n"
@@ -427,56 +427,58 @@ msgstr ""
 msgid "Write time information."
 msgstr ""
 
-#: ipcs/ipcs.cc:142
+#: ipcs/ipcs.cc:144
 #, c-format
 msgid "stftime(3) failed\n"
 msgstr ""
 
-#: ipcs/ipcs.cc:146
+#: ipcs/ipcs.cc:148
 #, c-format
 msgid "IPC status from %s as of %s\n"
 msgstr ""
 
-#: ipcs/ipcs.cc:156
+#: ipcs/ipcs.cc:158
 #, c-format
 msgid "Message queues:\n"
 msgstr ""
 
-#: ipcs/ipcs.cc:231
+#: ipcs/ipcs.cc:233
 #, c-format
 msgid "Shared memory:\n"
 msgstr ""
 
-#: ipcs/ipcs.cc:304
+#: ipcs/ipcs.cc:306
 #, c-format
 msgid "Semaphores:\n"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:37
-msgid "ipcrm - remove a message queue, semaphore set or shared memory id"
+#: ipcrm/ipcrm.cc:40
+msgid ""
+"ipcrm - remove an XSI message queue, semaphore set, or shared memory segment "
+"identifier"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:41
+#: ipcrm/ipcrm.cc:44
 msgid "Remove message queue identifier msgid from system"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:43
+#: ipcrm/ipcrm.cc:46
 msgid "Remove shared memory identifier shmid from system"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:45
+#: ipcrm/ipcrm.cc:48
 msgid "Remove semaphore identifier semid from system"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:47
+#: ipcrm/ipcrm.cc:50
 msgid "Remove message queue identifier, created with key msgkey, from system"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:49
+#: ipcrm/ipcrm.cc:52
 msgid "Remove shared memory identifier, created with key shmkey, from system"
 msgstr ""
 
-#: ipcrm/ipcrm.cc:51
+#: ipcrm/ipcrm.cc:54
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 

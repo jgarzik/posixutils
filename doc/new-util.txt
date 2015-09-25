@@ -3,22 +3,17 @@ This is a checklist to follow when adding a utility:
 
 *) .gitignore
 
-*) Makefile.am: bin_PROGRAMS and foo_LDADD
+*) Makefile.am
 
-*) remove from doc/status/UNIMPLEMENTED
-
-*) create doc/status/foo.status (and add to doc/status/Makefile.am)
+*) update roadmap.txt
 
 *) if it has (or will have) translations, add to po/POTFILES.in
 
-*) add man page (and add to doc/man/Makefile.am)
+*) man page
 
-*) add at least a simple "it works" test to tests/ and modify
-   doc/tests/Makefile.am accordingly
+*) add at least a simple "it works" test
 
 *) make distcheck
 
 *) make update-po
-
-*) mention in NEWS document
 

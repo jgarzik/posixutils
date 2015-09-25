@@ -23,7 +23,7 @@ file stat: chown? chgrp chmod touch?
 
 i18n: gencat iconv locale localedef
 
-ipc: ipcrm? ipcs?
+ipc: ipcrm* ipcs?
 
 patch: diff? patch
 

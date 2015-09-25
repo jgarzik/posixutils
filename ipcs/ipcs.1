@@ -1,12 +1,17 @@
-NAME
+.Dd December 2008
+.Dt IPCS 1
 
-    ipcs - report XSI interprocess communication facilities status
+.Sh NAME
 
-SYNOPSIS
+.Nm ipcs
+.Nd report XSI interprocess communication facilities status
 
-    [XSI] [Option Start] ipcs [-qms][-a | -bcopt][Option End]
+.Sh SYNOPSIS
 
-DESCRIPTION
+.Nm ipcs
+.Ar [-qms][-a | -bcopt]
+
+.Sh DESCRIPTION
 
     The ipcs utility shall write information about active interprocess
 communication facilities.
@@ -16,7 +21,7 @@ queues, shared memory segments, and semaphore sets that are currently active
 in the system. Otherwise, the information that is displayed is controlled by
 the options specified.
 
-OPTIONS
+.Sh OPTIONS
 
     The ipcs facility supports the Base Definitions volume of IEEE Std
 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
@@ -59,21 +64,21 @@ and msgrcv() operations on message queues, time of the last shmat() and
 shmdt() operations on shared memory, and time of the last semop() operation
 on semaphores.)
 
-OPERANDS
+.Sh OPERANDS
 
     None.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
         The group database
 
         The user database
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of ipcs:
 
@@ -100,11 +105,11 @@ LC_MESSAGES .
         Determine the timezone for the date and time strings written by ipcs.
 If TZ is unset or null, an unspecified default timezone shall be used.
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     An introductory line shall be written with the format:
 
@@ -351,19 +356,19 @@ requested:
 minute, and second of the time when the associated entry was created shall be
 written using the format %d : %2.2d : %2.2d.
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -372,29 +377,29 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     Things can change while ipcs is running; the information it gives is
 guaranteed to be accurate only when it was retrieved.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     None.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     The System Interfaces volume of IEEE Std 1003.1-2001, msgrcv(), msgsnd(),
 semget(), semop(), shmat(), shmdt(), shmget()

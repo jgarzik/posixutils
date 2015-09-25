@@ -29,12 +29,15 @@
 #include <sys/msg.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
+#include <vector>
 #include <argp.h>
 #include <libpu.h>
 
+using namespace std;
+
 
 static const char doc[] =
-N_("ipcrm - remove a message queue, semaphore set or shared memory id");
+N_("ipcrm - remove an XSI message queue, semaphore set, or shared memory segment identifier");
 
 static struct argp_option options[] = {
 	{ NULL, 'q', "msgid", 0,
@@ -62,10 +65,13 @@ enum parse_options_bits {
 	OPT_KEY			= (1 << 3),
 };
 
-struct arglist {
-	struct arglist		*next;
+class argent {
+public:
 	int			mask;
 	unsigned long		arg;
+
+	argent(int mask_, unsigned long arg_) : mask(mask_), arg(arg_) {
+	}
 };
 
 #ifdef _SEM_SEMUN_UNDEFINED
@@ -79,7 +85,7 @@ struct arglist {
 #endif
 
 static int exit_status = EXIT_SUCCESS;
-static struct arglist *arglist;
+static vector<argent> arglist;
 
 
 static const char *arg_name(int mask)
@@ -92,19 +98,8 @@ static const char *arg_name(int mask)
 
 static void push_opt(int mask, unsigned long arg)
 {
-	struct arglist *tmp, *node = (struct arglist *) xcalloc(1, sizeof(struct arglist));
-
-	node->mask = mask;
-	node->arg = arg;
-
-	tmp = arglist;
-	if (!tmp) {
-		arglist = node;
-	} else {
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = node;
-	}
+	argent ae(mask, arg);
+	arglist.push_back(ae);
 }
 
 static void push_arg_opt(int mask, const char *arg)
@@ -148,40 +143,40 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 static void pinterr(const char *msg, long l)
 {
 	fprintf(stderr, msg, l, strerror(errno));
-	exit_status = 1;
+	exit_status = EXIT_FAILURE;
 }
 
-static void remove_one(int mask, unsigned long arg)
+static void remove_one(const argent& ae)
 {
 	int rc;
-	int id = (int) arg;
+	int id = (int) ae.arg;
 	const char *errmsg = NULL;
 
-	if (mask & OPT_KEY) {
-		if (mask & OPT_MSG)
-			id = msgget(arg, 0);
-		else if (mask & OPT_SHM)
-			id = shmget(arg, 0, 0);
-		else if (mask & OPT_SEM)
-			id = semget(arg, 0, 0);
+	if (ae.mask & OPT_KEY) {
+		if (ae.mask & OPT_MSG)
+			id = msgget(ae.arg, 0);
+		else if (ae.mask & OPT_SHM)
+			id = shmget(ae.arg, 0, 0);
+		else if (ae.mask & OPT_SEM)
+			id = semget(ae.arg, 0, 0);
 		else
 			abort();	/* should never happen */
 	}
 
 	if (id < 0) {
-		pinterr("key 0x%lx lookup failed: %s\n", arg);
+		pinterr("key 0x%lx lookup failed: %s\n", ae.arg);
 		return;
 	}
 
-	if (mask & OPT_MSG) {
+	if (ae.mask & OPT_MSG) {
 		rc = msgctl(id, IPC_RMID, NULL);
 		errmsg = "msgctl(0x%x): %s\n";
 	}
-	else if (mask & OPT_SHM) {
+	else if (ae.mask & OPT_SHM) {
 		rc = shmctl(id, IPC_RMID, NULL);
 		errmsg = "shmctl(0x%x): %s\n";
 	}
-	else if (mask & OPT_SEM) {
+	else if (ae.mask & OPT_SEM) {
 		union semun dummy;
 		dummy.val = 0;
 
@@ -194,17 +189,7 @@ static void remove_one(int mask, unsigned long arg)
 
 	if (rc < 0) {
 		fprintf(stderr, errmsg, id, strerror(errno));
-		exit_status = 1;
-	}
-}
-
-static void remove_stuff(void)
-{
-	struct arglist *tmp = arglist;
-
-	while (tmp) {
-		remove_one(tmp->mask, tmp->arg);
-		tmp = tmp->next;
+		exit_status = EXIT_FAILURE;
 	}
 }
 
@@ -214,13 +199,17 @@ int main (int argc, char *argv[])
 
 	pu_init();
 
+	// parse command line
 	rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
 	if (rc) {
 		fprintf(stderr, "argp_parse failed: %s\n", strerror(rc));
 		return 1;
 	}
 
-	remove_stuff();
+	// remove entities as requested via CLI options
+	for (vector<argent>::iterator it = arglist.begin();
+	     it != arglist.end(); ++it)
+		remove_one(*it);
 
 	return exit_status;
 }
