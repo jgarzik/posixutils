@@ -146,7 +146,7 @@ static int do_env(void)
 	msg = (char *) xmalloc(strlen(arg[0]) + 16);
 	sprintf(msg, _("execv(%s)"), arg[0]);
 	perror(msg);
-	return 1;
+	return 127;
 }
 
 int main (int argc, char *argv[])
