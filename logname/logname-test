@@ -1,4 +1,14 @@
 #!/bin/sh
 
-# TODO
-exit 77
+EXPECTED=`logname`
+OUT=`./logname`
+if [ $? -ne 0 ]
+then
+	echo T1 failed
+	exit 1
+fi
+if [ "X$OUT" != "X$EXPECTED" ]
+then
+	echo T2 failed
+	exit 1
+fi

@@ -1,12 +1,16 @@
-NAME
+.Dd December 2008
+.Dt LOGNAME 1
 
-    logname - return the user's login name
+.Sh NAME
 
-SYNOPSIS
+.Nm logname
+.Nd return the user's login name
 
-    logname
+.Sh SYNOPSIS
 
-DESCRIPTION
+.Nm logname
+
+.Sh DESCRIPTION
 
     The logname utility shall write the user's login name to standard output.
 The login name shall be the string that would be returned by the getlogin()
@@ -15,23 +19,23 @@ Under the conditions where the getlogin() function would fail, the logname
 utility shall write a diagnostic message to standard error and exit with a
 non-zero exit status.
 
-OPTIONS
+.Sh OPTIONS
 
     None.
 
-OPERANDS
+.Sh OPERANDS
 
     None.
 
-STDIN
+.Sh STDIN
 
     Not used.
 
-INPUT FILES
+.Sh INPUT FILES
 
     None.
 
-ENVIRONMENT VARIABLES
+.Sh ENVIRONMENT VARIABLES
 
     The following environment variables shall affect the execution of
 logname:
@@ -56,30 +60,30 @@ contents of diagnostic messages written to standard error.
         [XSI] [Option Start] Determine the location of message catalogs for
 the processing of LC_MESSAGES . [Option End]
 
-ASYNCHRONOUS EVENTS
+.Sh ASYNCHRONOUS EVENTS
 
     Default.
 
-STDOUT
+.Sh STDOUT
 
     The logname utility output shall be a single line consisting of the
 user's login name:
 
     "%s\n", <login name>
 
-STDERR
+.Sh STDERR
 
     The standard error shall be used only for diagnostic messages.
 
-OUTPUT FILES
+.Sh OUTPUT FILES
 
     None.
 
-EXTENDED DESCRIPTION
+.Sh EXTENDED DESCRIPTION
 
     None.
 
-EXIT STATUS
+.Sh EXIT STATUS
 
     The following exit values shall be returned:
 
@@ -88,30 +92,30 @@ EXIT STATUS
     >0
         An error occurred.
 
-CONSEQUENCES OF ERRORS
+.Sh CONSEQUENCES OF ERRORS
 
     Default.
 
 The following sections are informative.
-APPLICATION USAGE
+.Sh APPLICATION USAGE
 
     The logname utility explicitly ignores the LOGNAME environment variable
 because environment changes could produce erroneous results.
 
-EXAMPLES
+.Sh EXAMPLES
 
     None.
 
-RATIONALE
+.Sh RATIONALE
 
     The passwd file is not listed as required because the implementation may
 have other means of mapping login names.
 
-FUTURE DIRECTIONS
+.Sh FUTURE DIRECTIONS
 
     None.
 
-SEE ALSO
+.Sh SEE ALSO
 
     id, who, the System Interfaces volume of IEEE Std 1003.1-2001, getlogin()
 

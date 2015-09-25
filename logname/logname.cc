@@ -22,17 +22,39 @@
 #endif
 #include "posixutils-config.h"
 
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <argp.h>
 #include <libpu.h>
 
 
-int main (void)
-{
-	int rc;
+static const char doc[] =
+N_("logname - return the user's login name");
 
+static error_t parse_opt (int key, char *arg, struct argp_state *state)
+{
+	switch (key) {
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
+
+static const struct argp argp = { NULL, parse_opt, NULL, doc };
+
+int main (int argc, char *argv[])
+{
 	pu_init();
+
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, "%s: argp_parse failed: %s\n",
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
+	}
 
 	char *s = getlogin();
 	if (!s) {
@@ -40,9 +62,6 @@ int main (void)
 		return 1;
 	}
 
-	rc = write_buf(s, strlen(s));
-	rc |= write_buf("\n", 1);
-
-	return rc;
+	return (printf("%s\n", s) < 0) ? EXIT_FAILURE : EXIT_SUCCESS;
 }
 
