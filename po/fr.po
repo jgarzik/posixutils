@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 09:03-0400\n"
+"POT-Creation-Date: 2015-09-25 09:22-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -123,7 +123,7 @@ msgstr ""
 msgid "comm - compare two sorted files line by line"
 msgstr "comm - comparez la ligne de deux dossiers assortis par la ligne"
 
-#: comm/comm.cc:41 diff/diff.cc:46 link/link.cc:35
+#: comm/comm.cc:41 diff/diff.cc:46 link/link.cc:36
 msgid "file1 file2"
 msgstr "file1 file2"
 
@@ -216,19 +216,19 @@ msgstr ""
 msgid "Apply diff recursively to directories"
 msgstr ""
 
-#: env/env.cc:35
+#: env/env.cc:36
 msgid "env - set the environment for command invocation"
 msgstr ""
 
-#: env/env.cc:37
+#: env/env.cc:38
 msgid "[name=value]... utility [args]..."
 msgstr ""
 
-#: env/env.cc:41
+#: env/env.cc:42
 msgid "Invoke utility with exactly the environment specified by the arguments"
 msgstr ""
 
-#: env/env.cc:147
+#: env/env.cc:148
 #, c-format
 msgid "execv(%s)"
 msgstr ""
@@ -266,12 +266,6 @@ msgstr ""
 #: getconf/getconf.cc:107
 #, c-format
 msgid "invalid confstr variable %s\n"
-msgstr ""
-
-#: getconf/getconf.cc:163 ipcs/ipcs.cc:373 nice/nice.cc:91 pwd/pwd.cc:110
-#: split/split.cc:370
-#, c-format
-msgid "argp_parse failed: %s\n"
 msgstr ""
 
 #: grep/grep.cc:45
@@ -357,31 +351,31 @@ msgstr ""
 msgid "first number lines of each input file to copy to stdout"
 msgstr ""
 
-#: id/id.cc:37
+#: id/id.cc:38
 msgid "id - return user identity"
 msgstr ""
 
-#: id/id.cc:39
+#: id/id.cc:40
 msgid "[user]"
 msgstr ""
 
-#: id/id.cc:42
+#: id/id.cc:43
 msgid "Output only the effective group ID"
 msgstr ""
 
-#: id/id.cc:44
+#: id/id.cc:45
 msgid "Output all different group IDs"
 msgstr ""
 
-#: id/id.cc:46
+#: id/id.cc:47
 msgid "Output the name instead of the numeric ID"
 msgstr ""
 
-#: id/id.cc:48
+#: id/id.cc:49
 msgid "Output the real ID instead of the effective ID"
 msgstr ""
 
-#: id/id.cc:50
+#: id/id.cc:51
 msgid "Output only the effective user ID"
 msgstr ""
 
@@ -482,7 +476,7 @@ msgstr ""
 msgid "Remove semaphore identifier, created with key semkey, from system"
 msgstr ""
 
-#: link/link.cc:33
+#: link/link.cc:34
 msgid "link - call link function"
 msgstr ""
 
@@ -602,6 +596,11 @@ msgstr ""
 
 #: nice/nice.cc:41
 msgid "Positive or negative integer indicating desired priority adjustment"
+msgstr ""
+
+#: nice/nice.cc:91
+#, c-format
+msgid "argp_parse failed: %s\n"
 msgstr ""
 
 #: nice/nice.cc:96

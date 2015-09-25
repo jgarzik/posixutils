@@ -100,15 +100,15 @@ out:
 
 int main (int argc, char *argv[])
 {
-	error_t rc;
 	const char *pwd;
 
 	pu_init();
 
-	rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
-	if (rc) {
-		fprintf(stderr, _("argp_parse failed: %s\n"), strerror(rc));
-		return 1;
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
 	}
 
 	if ((opt_mode == MODE_ENV) && ((pwd = getenv("PWD")) != NULL) &&

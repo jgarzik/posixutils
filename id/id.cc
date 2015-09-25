@@ -24,6 +24,7 @@
 #include "posixutils-config.h"
 
 #include <sys/types.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -360,14 +361,13 @@ static int do_id(void)
 
 int main (int argc, char *argv[])
 {
-	error_t rc;
-
 	pu_init();
 
-	rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
-	if (rc) {
-		fprintf(stderr, "argp_parse failed: %s\n", strerror(rc));
-		return 1;
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
 	}
 
 	return do_id();

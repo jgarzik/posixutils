@@ -167,16 +167,16 @@ static int input_date(const char *date_str)
 
 int main (int argc, char *argv[])
 {
-	error_t arc;
 	int rc, idx = -1;
 	char *old_tz = NULL;
 
 	pu_init();
 
-	arc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
-	if (arc) {
-		fprintf(stderr, "argp_parse failed: %s\n", strerror(arc));
-		return 1;
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
 	}
 
 	if (opt_utc) {

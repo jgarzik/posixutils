@@ -61,7 +61,7 @@ int main (int argc, char *argv[])
 
 	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
 	if (argp_rc) {
-		fprintf(stderr, "%s: argp_parse failed: %s\n",
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
 			argv[0], strerror(argp_rc));
 		return EXIT_FAILURE;
 	}

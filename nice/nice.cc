@@ -82,14 +82,14 @@ int main (int argc, char *argv[])
 {
 	char **nice_args;
 	int n_args, i, idx;
-	error_t arc;
 
 	pu_init();
 
-	arc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
-	if (arc) {
-		fprintf(stderr, _("argp_parse failed: %s\n"), strerror(arc));
-		return 1;
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
 	}
 
 	if (nice(nice_inc) < 0) {

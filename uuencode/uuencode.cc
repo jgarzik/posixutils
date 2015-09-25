@@ -305,13 +305,15 @@ int main (int argc, char *argv[])
 	char *input_fn = NULL, *fn_name;
 	int fd, rc;
 	int idx = -1;
-	error_t arc;
 
 	pu_init();
 
-	arc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
-	if ((arc != 0) || (idx < 0))
-		return 1;
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, &idx, NULL);
+	if (argp_rc || (idx < 0)) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
+	}
 
 	if ((argc - idx) == 1)
 		fn_name = argv[idx];
