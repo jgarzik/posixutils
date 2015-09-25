@@ -25,26 +25,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <syslog.h>
+#include <string.h>
 #include <string>
 #include <libpu.h>
 
+
+static const char doc[] =
+N_("logger - log messages");
+
+static const char args_doc[] = N_("string ...");
+
+static std::string log_message;
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state)
+{
+	switch (key) {
+	case ARGP_KEY_ARG:
+		if (log_message.size() > 0)
+			log_message.append(" ");
+		log_message.append(arg);
+		break;
+
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
+
+static const struct argp argp = { NULL, parse_opt, args_doc, doc };
 
 int main (int argc, char *argv[])
 {
 	pu_init();
 
-	if (argc < 2) {
-		fprintf(stderr, _("%s: no arguments\n"), argv[0]);
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, "%s: argp_parse failed: %s\n",
+			argv[0], strerror(argp_rc));
 		return EXIT_FAILURE;
 	}
 
-	std::string s(argv[1]);
-	for (int i = 2; i < argc; i++) {
-		s.append(" ");
-		s.append(argv[i]);
-	}
-
-	syslog(LOG_USER | LOG_NOTICE, "%s", s.c_str());
+	syslog(LOG_USER | LOG_NOTICE, "%s", log_message.c_str());
 
 	return EXIT_SUCCESS;
 }
