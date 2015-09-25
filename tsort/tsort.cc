@@ -48,6 +48,32 @@ static unsigned int dict_size, dict_alloc;
 struct order *order;
 static unsigned int order_size, order_alloc;
 
+static const char doc[] =
+N_("tsort - topological sort");
+
+static const char args_doc[] = N_("file");
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state);
+static const struct argp argp = { NULL, parse_opt, args_doc, doc };
+static char *opt_filename = NULL;
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state)
+{
+	switch (key) {
+	case ARGP_KEY_ARG:
+		if (state->arg_num == 0)
+			opt_filename = arg;
+		else
+			argp_usage(state);
+		break;
+
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
+
 static char *add_token(const char *buf, size_t buflen, bool ok_add)
 {
 	unsigned int i;
@@ -214,41 +240,41 @@ static void write_vals(void)
 int main (int argc, char *argv[])
 {
 	FILE *f = NULL;
-	const char *fn;
 
 	pu_init();
 
 	if (init_arrays())
 		return 1;
 
-	if (argc > 2) {
-		fprintf(stderr, _("usage: tsort FILE\n"));
-		return 1;
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
 	}
 
-	if (argc == 1)
+	if (opt_filename == NULL)
 		f = stdin;
 	else {
-		fn = argv[1];
-		if (ro_file_open(&f, fn)) {
-			perror(fn);
-			return 1;
+		if (ro_file_open(&f, opt_filename)) {
+			perror(opt_filename);
+			return EXIT_FAILURE;
 		}
 	}
 
 	while (fgets_unlocked(linebuf, sizeof(linebuf), f)) {
 		if (process_line())
-			return 1;
+			return EXIT_FAILURE;
 	}
 
 	if (f != stdin)
 		fclose(f);
 
 	if (do_sort())
-		return 1;
+		return EXIT_FAILURE;
 
 	write_vals();
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 

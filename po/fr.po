@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 10:12-0400\n"
+"POT-Creation-Date: 2015-09-25 12:42-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:47 dirname/dirname.cc:36 unlink/unlink.cc:36
+#: basename/basename.cc:47 dirname/dirname.cc:36
 #, c-format
 msgid "invalid number of arguments\n"
 msgstr "nombre inadmissible des arguments\n"
@@ -142,8 +142,9 @@ msgstr ""
 
 #: comm/comm.cc:210 date/date.cc:177 diff/diff.cc:214 env/env.cc:159
 #: getconf/getconf.cc:162 id/id.cc:368 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
-#: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 nice/nice.cc:90
-#: pwd/pwd.cc:109 split/split.cc:369 uname/uname.cc:95
+#: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 mesg/mesg.cc:84
+#: nice/nice.cc:90 pwd/pwd.cc:109 sleep/sleep.cc:78 split/split.cc:369
+#: tsort/tsort.cc:251 tty/tty.cc:54 uname/uname.cc:95 unlink/unlink.cc:71
 #: uuencode/uuencode.cc:313
 #, c-format
 msgid "%s: argp_parse failed: %s\n"
@@ -531,22 +532,25 @@ msgstr ""
 msgid "getlogin(3)"
 msgstr ""
 
-#: mesg/mesg.cc:55 sleep/sleep.cc:50
-#, c-format
-msgid "invalid arguments\n"
-msgstr "arguments inadmissibles\n"
+#: mesg/mesg.cc:45
+msgid "mesg - permit or deny messages"
+msgstr ""
 
-#: mesg/mesg.cc:68
+#: mesg/mesg.cc:47
+msgid "[y|n]"
+msgstr ""
+
+#: mesg/mesg.cc:98
 #, c-format
 msgid "no terminal device found\n"
 msgstr ""
 
-#: mesg/mesg.cc:80
+#: mesg/mesg.cc:110
 #, c-format
 msgid "is y\n"
 msgstr ""
 
-#: mesg/mesg.cc:83
+#: mesg/mesg.cc:113
 #, c-format
 msgid "is n\n"
 msgstr ""
@@ -728,14 +732,22 @@ msgstr ""
 msgid "Remove all directories in a pathname."
 msgstr ""
 
-#: sleep/sleep.cc:45
-#, c-format
-msgid "cannot install SIGALARM handler\n"
+#: sleep/sleep.cc:35
+msgid "sleep - suspend execution for an interval"
+msgstr ""
+
+#: sleep/sleep.cc:37
+msgid "time"
+msgstr ""
+
+#: sleep/sleep.cc:84
+#, fuzzy, c-format
+msgid "cannot install SIGALRM handler\n"
 msgstr "ne peut pas installer le traiteur de SIGALARM\n"
 
-#: sleep/sleep.cc:56
-#, c-format
-msgid "invalid sleep argument\n"
+#: sleep/sleep.cc:90
+#, fuzzy, c-format
+msgid "invalid sleep time argument\n"
 msgstr "argument inadmissible de sommeil\n"
 
 #: sort/sort.cc:36
@@ -978,17 +990,24 @@ msgstr "Indiquer le type de terminal."
 msgid "tput: setupterm failed\n"
 msgstr "tput: setupterm pas\n"
 
-#: tsort/tsort.cc:148
+#: tsort/tsort.cc:52
+msgid "tsort - topological sort"
+msgstr ""
+
+#: tsort/tsort.cc:54 unlink/unlink.cc:37
+msgid "file"
+msgstr ""
+
+#: tsort/tsort.cc:174
 #, c-format
 msgid "tsort: max recursion limit reached\n"
 msgstr ""
 
-#: tsort/tsort.cc:225
-#, c-format
-msgid "usage: tsort FILE\n"
+#: tty/tty.cc:34
+msgid "tty - return user's terminal name"
 msgstr ""
 
-#: tty/tty.cc:35
+#: tty/tty.cc:60
 #, c-format
 msgid "not a tty\n"
 msgstr "pas un tty\n"
@@ -1041,6 +1060,10 @@ msgstr ""
 #, fuzzy, c-format
 msgid "uniq: missing source file\n"
 msgstr "source/target manquant\n"
+
+#: unlink/unlink.cc:35
+msgid "unlink - call the unlink function"
+msgstr ""
 
 #: uuencode/uuencode.cc:39
 msgid "uuencode - encode a binary file"
@@ -1099,6 +1122,9 @@ msgstr ""
 #: libpu/lib.cc:145
 msgid "getcwd(3) failed"
 msgstr ""
+
+#~ msgid "invalid arguments\n"
+#~ msgstr "arguments inadmissibles\n"
 
 #, fuzzy
 #~ msgid "%s: no arguments\n"

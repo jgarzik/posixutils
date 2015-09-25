@@ -41,6 +41,35 @@ static struct {
 	{ STDERR_FILENO, STDERR_NAME }
 };
 
+static const char doc[] =
+N_("mesg - permit or deny messages");
+
+static const char args_doc[] = N_("[y|n]");
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state);
+static const struct argp argp = { NULL, parse_opt, args_doc, doc };
+static char *opt_yn = NULL;
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state)
+{
+	switch (key) {
+	case ARGP_KEY_ARG:
+		if (state->arg_num == 0) {
+			if (strcmp(arg, "y") && strcmp(arg, "n"))
+				argp_usage(state);
+			else
+				opt_yn = arg;
+		} else
+			argp_usage(state);
+		break;
+
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
+
 int main (int argc, char *argv[])
 {
 	unsigned int i;
@@ -50,9 +79,10 @@ int main (int argc, char *argv[])
 
 	pu_init();
 
-	if ((argc > 2) ||
-	    ((argc == 2) && (!strcmp(argv[1], "y")) && (!strcmp(argv[1], "n")))) {
-		fprintf(stderr, _("invalid arguments\n"));
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
 		return 2;
 	}
 
@@ -75,7 +105,7 @@ int main (int argc, char *argv[])
 	}
 
 	/* no arguments, just print out current tty perm state */
-	if (argc == 1) {
+	if (!opt_yn) {
 		if (st.st_mode & (S_IWGRP | S_IWOTH)) {
 			printf(_("is y\n"));
 			i = 0;
@@ -87,7 +117,7 @@ int main (int argc, char *argv[])
 	}
 
 	/* mesg = y */
-	if (!strcmp(argv[1], "y")) {
+	if (!strcmp(opt_yn, "y")) {
 		if (st.st_mode & (S_IWGRP | S_IWOTH))
 			return 0;
 

@@ -1,4 +1,29 @@
 #!/bin/sh
 
-# TODO
-exit 77
+TESTFN="unlink.$$"
+
+touch $TESTFN
+if [ ! -f $TESTFN ]
+then
+	echo T1 failed
+	exit 1
+fi
+
+./unlink $TESTFN
+if [ $? -ne 0 ]
+then
+	echo T1.1 failed
+	exit 1
+fi
+if [ -f $TESTFN ]
+then
+	echo T1.2 failed
+	exit 1
+fi
+
+./unlink test.does-not-exist
+if [ $? -ne 1 ]
+then
+	echo T2 failed
+	exit 1
+fi

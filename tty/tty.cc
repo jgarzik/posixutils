@@ -22,21 +22,46 @@
 #endif
 #include "posixutils-config.h"
 
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <argp.h>
 #include <libpu.h>
 
+
+static const char doc[] =
+N_("tty - return user's terminal name");
+
+static error_t parse_opt (int key, char *arg, struct argp_state *state)
+{
+	switch (key) {
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
+
+static const struct argp argp = { NULL, parse_opt, NULL, doc };
 
 int main (int argc, char *argv[])
 {
 	pu_init();
 
+	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
+	if (argp_rc) {
+		fprintf(stderr, _("%s: argp_parse failed: %s\n"),
+			argv[0], strerror(argp_rc));
+		return EXIT_FAILURE;
+	}
+
 	if (!isatty(STDIN_FILENO)) {
 		printf(_("not a tty\n"));
-		return 1;
+		return EXIT_FAILURE;
 	}
 
 	printf("%s\n", ttyname(STDIN_FILENO));
 
-	return 0;
+	return EXIT_SUCCESS;
 }
