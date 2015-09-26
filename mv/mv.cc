@@ -31,6 +31,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,6 +40,7 @@
 #include <utime.h>
 #include <libpu.h>
 
+using namespace std;
 
 #define PFX "mv: "
 
@@ -274,23 +276,21 @@ static int move_file(const char *fn, const char *target)
 static int mv_fn_actor(struct cmdline_walker *cw, const char *fn)
 {
 	struct pathelem *pe;
-	char *new_fn;
 	int rc;
 
 	pe = path_split(fn);
-	new_fn = strpathcat(target_dir, pe->basen);
+	string new_fn(strpathcat(target_dir, pe->basen));
 
-	rc = move_file(fn, new_fn);
+	rc = move_file(fn, new_fn.c_str());
 	if (rc != 2)
 		goto out;
 
 	open_target_curdir();
 
-	rc = copy_file(fn, target_dir, pe->basen, new_fn, 1);
+	rc = copy_file(fn, target_dir, pe->basen, new_fn.c_str(), 1);
 
 out:
 	path_free(pe);
-	free(new_fn);
 	return rc;
 }
 

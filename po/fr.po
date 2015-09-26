@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-26 15:03-0400\n"
+"POT-Creation-Date: 2015-09-26 16:32-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -572,19 +572,19 @@ msgstr ""
 msgid "mkfifo - make FIFOs (named pipes)"
 msgstr ""
 
-#: mv/mv.cc:46
+#: mv/mv.cc:48
 msgid "mv - move (rename) files"
 msgstr ""
 
-#: mv/mv.cc:50
+#: mv/mv.cc:52
 msgid "Do not prompt for confirmation if the destination path exists."
 msgstr ""
 
-#: mv/mv.cc:52
+#: mv/mv.cc:54
 msgid "Prompt for confirmation if the destination path exists"
 msgstr ""
 
-#: mv/mv.cc:266
+#: mv/mv.cc:268
 #, c-format
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
@@ -706,21 +706,21 @@ msgid ""
 "adjusted"
 msgstr ""
 
-#: rm/rm.cc:84
+#: rm/rm.cc:86
 msgid "rm - remove files or directories"
 msgstr ""
 
-#: rm/rm.cc:90
+#: rm/rm.cc:92
 msgid ""
 "Do not prompt for confirmation. Do not write diagnostic messages or modify "
 "the exit status in the case of nonexistent operands."
 msgstr ""
 
-#: rm/rm.cc:92
+#: rm/rm.cc:94
 msgid "Prompt for confirmation"
 msgstr ""
 
-#: rm/rm.cc:94
+#: rm/rm.cc:96
 msgid "Remove file hierarchies"
 msgstr ""
 

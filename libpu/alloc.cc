@@ -58,10 +58,3 @@ char *xstrdup(const char *s)
 	return ret;
 }
 
-char *strpathcat(const char *dirn, const char *basen)
-{
-	char *s = (char *) xmalloc(strlen(dirn) + strlen(basen) + 2);
-	sprintf(s, "%s/%s", dirn, basen);
-	return s;
-}
-

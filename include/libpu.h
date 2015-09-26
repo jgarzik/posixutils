@@ -125,11 +125,6 @@ struct strmap {
 	int		val;
 };
 
-struct strent {
-	const char		*s;
-	bool			alloced;
-};
-
 class Regex {
 private:
 	regex_t reg;
@@ -246,7 +241,6 @@ extern void *xrealloc(void *ptr, size_t size);
 extern void *xcalloc(size_t nmemb, size_t size);
 extern char *xstrdup(const char *s);
 extern char *xgetcwd(void);
-extern char *strpathcat(const char *dirn, const char *basen);
 extern struct pathelem *path_split(const char *pathname);
 extern void path_free(struct pathelem *pe);
 extern int have_dots(const char *fn);
@@ -256,6 +250,11 @@ extern void strsplit(const std::string& s, int delim,
 			   std::vector<std::string>& sv);
 extern void strsplit(const std::string& s, const std::string& regex,
 			   std::vector<std::string>& sv);
+
+static inline std::string strpathcat(const std::string& dn, const std::string& bn)
+{
+	return dn + "/" + bn;
+}
 
 extern char *get_terminal(void);
 extern char *xtigetstr(const char *capname);

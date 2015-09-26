@@ -69,6 +69,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -77,6 +78,7 @@
 #include <fcntl.h>
 #include <libpu.h>
 
+using namespace std;
 
 #define PFX "rm: "
 
@@ -142,30 +144,27 @@ static int rm(int dirfd, const char *dirn, const char *basen)
 {
 	struct stat st;
 	int rc = 0, isdir;
-	char *fn;
 
 	if (have_dots(basen))
 		return 0;
 
-	fn = strpathcat(dirn, basen);
+	string fn(strpathcat(dirn, basen));
 
 	if (lstat(basen, &st) < 0) {
 		if (!opt_force)
-			perror(fn);
-		rc = 1;
-		goto out;
+			perror(fn.c_str());
+		return 1;
 	}
 
 	isdir = S_ISDIR(st.st_mode);
 	if (isdir) {
 		if (!opt_recurse) {
-			fprintf(stderr, PFX "ignoring directory '%s'\n", fn);
-			rc = 1;
-			goto out;
+			fprintf(stderr, PFX "ignoring directory '%s'\n", fn.c_str());
+			return 1;
 		}
 
 		if ((!opt_force) && should_prompt(&st)) {
-			int i = ask_question(PFX, "%srecurse into '%s'?  ", fn);
+			int i = ask_question(PFX, "%srecurse into '%s'?  ", fn.c_str());
 			if (!i)
 				goto out;
 		}
@@ -173,24 +172,23 @@ static int rm(int dirfd, const char *dirn, const char *basen)
 		rc = iterate_directory(dirfd, dirn, basen, opt_force, rm);
 
 		if (rmdir(basen) < 0) {
-			perror(fn);
+			perror(fn.c_str());
 			rc = 1;
 		}
 	} else {
 		if ((!opt_force) && should_prompt(&st)) {
-			int i = ask_question(PFX, "%sremove '%s'?  ", fn);
+			int i = ask_question(PFX, "%sremove '%s'?  ", fn.c_str());
 			if (!i)
 				goto out;
 		}
 
 		if (unlink(basen) < 0) {
-			perror(fn);
+			perror(fn.c_str());
 			rc = 1;
 		}
 	}
 
 out:
-	free(fn);
 	return rc;
 }
 

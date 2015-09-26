@@ -175,10 +175,10 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 static void perror_fn(const char *dir, const char *base)
 {
 	int saved_errno = errno;
-	char *fn = strpathcat(dir, base);
+	string fn(strpathcat(dir, base));
 	errno = saved_errno;
-	perror(fn);
-	free(fn);
+
+	perror(fn.c_str());
 }
 
 static int need_chown (const struct stat *st)

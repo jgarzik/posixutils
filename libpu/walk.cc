@@ -32,12 +32,15 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string>
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <dirent.h>
 #include <assert.h>
 #include <libpu.h>
+
+using namespace std;
 
 
 static int walk_dirent(struct walker *w, int dirfd,
@@ -107,8 +110,7 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 			const char *dirn, const char *basen)
 {
 	DIR *dir;
-	char *alloc_fn = NULL;
-	const char *fn;
+	string fn;
 	int dirfd, flags, rc = 0;
 	unsigned int testbits;
 	struct dirent *de, *entry;
@@ -116,10 +118,8 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 
 	if (have_path)
 		fn = basen;
-	else {
-		alloc_fn = strpathcat(dirn, basen);
-		fn = alloc_fn;
-	}
+	else
+		fn = strpathcat(dirn, basen);
 
 	entry = (struct dirent *) xmalloc(sizeof(struct dirent) + NAME_MAX + 1);
 
@@ -133,18 +133,18 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 
 	dirfd = open(basen, flags);
 	if (dirfd < 0) {
-		perror(fn);
+		perror(fn.c_str());
 		goto out;
 	}
 
 	if (fchdir(dirfd) < 0) {
-		perror(fn);
+		perror(fn.c_str());
 		goto out_fd;
 	}
 
 	dir = opendir(".");
 	if (!dir) {
-		perror(fn);
+		perror(fn.c_str());
 		goto out_chdir;
 	}
 
@@ -153,13 +153,13 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 
 		de = NULL;
 		if (readdir_r(dir, entry, &de)) {
-			perror(fn);
+			perror(fn.c_str());
 			break;
 		}
 		if (de != entry)
 			break;
 
-		drc = walk_dirent(w, dirfd, fn, de->d_name);
+		drc = walk_dirent(w, dirfd, fn.c_str(), de->d_name);
 		if (drc) {
 			rc = drc;
 			break;
@@ -167,18 +167,16 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 	}
 
 	if (closedir(dir) < 0)
-		perror(fn);
+		perror(fn.c_str());
 
 out_chdir:
 	if (fchdir(old_dirfd) < 0)
 		perror(have_path ? "." : dirn);
 out_fd:
 	if (close(dirfd) < 0)
-		perror(fn);
+		perror(fn.c_str());
 out:
 	free(entry);
-	if (!have_path)
-		free(alloc_fn);
 	return rc;
 }
 

@@ -194,7 +194,7 @@ static int ustar_hdr_record(struct ustar_state *state, const char *buf)
 	}
 
 	if (dirname && basename) {
-		fi->pathname = strpathcat(dirname, basename);
+		fi->pathname = xstrdup(strpathcat(dirname, basename).c_str());
 		free(dirname);
 		free(basename);
 	} else if (basename)
