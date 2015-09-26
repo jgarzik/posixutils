@@ -28,10 +28,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdint.h>
-#include <stdbool.h>
+#include <string>
 #include <stdio.h>
 #include <argp.h>
 #include <dirent.h>
+#include <regex.h>
 
 #if ENABLE_NLS
 # include <libintl.h>
@@ -137,6 +138,55 @@ struct strlist {
 	struct strent		*list;
 	unsigned int		alloc_len;
 	unsigned int		len;
+};
+
+class Regex {
+private:
+	regex_t reg;
+	std::string regex;
+	int cflags;
+	bool initd;
+
+public:
+	Regex() {}
+	Regex(const std::string& regex_, int cflags_ = 0) {
+		compile(regex_, cflags_);
+	}
+	Regex(const Regex& obj_copy) {
+		compile(obj_copy.regex, obj_copy.cflags);
+	}
+	~Regex() {
+		clear();
+	}
+
+	bool ok() { return initd; }
+	void clear() {
+		if (initd) {
+			regfree(&reg);
+			initd = false;
+		}
+	}
+
+	bool compile(const std::string& regex_, int cflags_ = 0) {
+		clear();
+
+		int rc = regcomp(&reg, regex_.c_str(), cflags_);
+		if (rc)
+			return false;
+
+		regex = regex_;
+		cflags = cflags_;
+		initd = true;
+		return true;
+	}
+	bool match(const std::string& haystack, int eflags = 0) {
+		return (regexec(&reg, haystack.c_str(), 0, NULL, eflags) == 0);
+	}
+	bool match1(const std::string& haystack, std::string& out1, int eflags = 0);
+	bool match2(const std::string& haystack, std::string& out1, std::string& out2,
+		    int eflags = 0);
+	bool match3(const std::string& haystack,
+		    std::string& out1, std::string& out2, std::string& out3, int eflags = 0);
 };
 
 enum walker_flags {
