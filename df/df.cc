@@ -31,7 +31,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
-#include <stdbool.h>
 #include <mntent.h>
 #include <sys/vfs.h>
 #include <paths.h>

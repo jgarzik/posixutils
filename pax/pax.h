@@ -2,7 +2,6 @@
 #define __PAX_INTERNAL_H__
 
 #include <stdint.h>
-#include <stdbool.h>
 
 enum pax_error_codes {
 	PXE_NONE		= 0,

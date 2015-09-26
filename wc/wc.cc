@@ -25,7 +25,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <wchar.h>
