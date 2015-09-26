@@ -28,8 +28,11 @@
 
 using namespace std;
 
-bool Regex::match1(const string& haystack, string& out1, int eflags)
+bool Regex::match(const string& haystack, string& out1, int eflags)
 {
+	if (!initd)
+		return false;
+
 	static const unsigned int max_match = 1 + 1;
 	regmatch_t matchv[max_match];
 
@@ -38,13 +41,17 @@ bool Regex::match1(const string& haystack, string& out1, int eflags)
 	if (rc || (matchv[1].rm_so == -1))
 		return false;
 
-	out1 = haystack.substr(matchv[1].rm_so, matchv[1].rm_eo);
+	out1 = haystack.substr(matchv[1].rm_so,
+			       matchv[1].rm_eo - matchv[1].rm_so);
 
 	return true;
 }
 
-bool Regex::match2(const string& haystack, string& out1, string& out2, int eflags)
+bool Regex::match(const string& haystack, string& out1, string& out2, int eflags)
 {
+	if (!initd)
+		return false;
+
 	static const unsigned int max_match = 2 + 1;
 	regmatch_t matchv[max_match];
 
@@ -53,14 +60,19 @@ bool Regex::match2(const string& haystack, string& out1, string& out2, int eflag
 	if (rc || (matchv[2].rm_so == -1))
 		return false;
 
-	out1 = haystack.substr(matchv[1].rm_so, matchv[1].rm_eo);
-	out2 = haystack.substr(matchv[2].rm_so, matchv[2].rm_eo);
+	out1 = haystack.substr(matchv[1].rm_so,
+			       matchv[1].rm_eo - matchv[1].rm_so);
+	out2 = haystack.substr(matchv[2].rm_so,
+			       matchv[2].rm_eo - matchv[2].rm_so);
 
 	return true;
 }
 
-bool Regex::match3(const string& haystack, string& out1, string& out2, string& out3, int eflags)
+bool Regex::match(const string& haystack, string& out1, string& out2, string& out3, int eflags)
 {
+	if (!initd)
+		return false;
+
 	static const unsigned int max_match = 3 + 1;
 	regmatch_t matchv[max_match];
 
@@ -69,9 +81,12 @@ bool Regex::match3(const string& haystack, string& out1, string& out2, string& o
 	if (rc || (matchv[3].rm_so == -1))
 		return false;
 
-	out1 = haystack.substr(matchv[1].rm_so, matchv[1].rm_eo);
-	out2 = haystack.substr(matchv[2].rm_so, matchv[2].rm_eo);
-	out3 = haystack.substr(matchv[3].rm_so, matchv[3].rm_eo);
+	out1 = haystack.substr(matchv[1].rm_so,
+			       matchv[1].rm_eo - matchv[1].rm_so);
+	out2 = haystack.substr(matchv[2].rm_so,
+			       matchv[2].rm_eo - matchv[2].rm_so);
+	out3 = haystack.substr(matchv[3].rm_so,
+			       matchv[3].rm_eo - matchv[3].rm_so);
 
 	return true;
 }

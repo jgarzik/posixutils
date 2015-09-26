@@ -1,1 +1,6 @@
+libpu-tests
 libpu.a
+
+*.trs
+*.log
+

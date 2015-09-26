@@ -29,6 +29,7 @@
 #include <sys/stat.h>
 #include <stdint.h>
 #include <string>
+#include <vector>
 #include <stdio.h>
 #include <argp.h>
 #include <dirent.h>
@@ -148,11 +149,11 @@ private:
 	bool initd;
 
 public:
-	Regex() {}
-	Regex(const std::string& regex_, int cflags_ = 0) {
+	Regex() : initd(false) {}
+	Regex(const std::string& regex_, int cflags_ = 0) : initd(false) {
 		compile(regex_, cflags_);
 	}
-	Regex(const Regex& obj_copy) {
+	Regex(const Regex& obj_copy) : initd(false) {
 		compile(obj_copy.regex, obj_copy.cflags);
 	}
 	~Regex() {
@@ -180,13 +181,20 @@ public:
 		return true;
 	}
 	bool match(const std::string& haystack, int eflags = 0) {
+		if (!initd)
+			return false;
 		return (regexec(&reg, haystack.c_str(), 0, NULL, eflags) == 0);
 	}
-	bool match1(const std::string& haystack, std::string& out1, int eflags = 0);
-	bool match2(const std::string& haystack, std::string& out1, std::string& out2,
-		    int eflags = 0);
-	bool match3(const std::string& haystack,
-		    std::string& out1, std::string& out2, std::string& out3, int eflags = 0);
+	bool match(const std::string& haystack, size_t nmatch, regmatch_t *matches, int eflags = 0) {
+		if (!initd)
+			return false;
+		return (regexec(&reg, haystack.c_str(), nmatch, matches, eflags) == 0);
+	}
+	bool match(const std::string& haystack, std::string& out1, int eflags = 0);
+	bool match(const std::string& haystack, std::string& out1, std::string& out2,
+		   int eflags = 0);
+	bool match(const std::string& haystack,
+		   std::string& out1, std::string& out2, std::string& out3, int eflags = 0);
 };
 
 enum walker_flags {
@@ -253,6 +261,12 @@ extern char *strpathcat(const char *dirn, const char *basen);
 extern struct pathelem *path_split(const char *pathname);
 extern void path_free(struct pathelem *pe);
 extern int have_dots(const char *fn);
+extern void strsplit(const std::string& s,
+			   std::vector<std::string>& sv);
+extern void strsplit(const std::string& s, int delim,
+			   std::vector<std::string>& sv);
+extern void strsplit(const std::string& s, const std::string& regex,
+			   std::vector<std::string>& sv);
 
 extern char *get_terminal(void);
 extern char *xtigetstr(const char *capname);
