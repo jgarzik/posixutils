@@ -23,6 +23,7 @@
 #include "posixutils-config.h"
 
 #include <limits.h>
+#include <string>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -33,6 +34,8 @@
 #include <string.h>
 #include <libgen.h>
 #include <libpu.h>
+
+using namespace std;
 
 #define PFX "ln: "
 
@@ -60,7 +63,7 @@ static struct walker walker;
 static char pathbuf[PATH_MAX + 2];
 static char basenamebuf[PATH_MAX + 2];
 static char linkbuf[PATH_MAX + 1];
-static const char *target;
+static string target;
 static bool opt_force;
 static bool opt_symlink;
 static bool have_2arg_form = true;
@@ -124,7 +127,7 @@ static int ln_fn_actor(struct walker *w, const char *fn, const struct stat *lst)
 	basenamebuf[sizeof(basenamebuf) - 1] = 0;
 	base = basename(basenamebuf);
 
-	slen = snprintf(pathbuf, sizeof(pathbuf), "%s/%s", target, base);
+	slen = snprintf(pathbuf, sizeof(pathbuf), "%s/%s", target.c_str(), base);
 	if (slen > PATH_MAX) {
 		fprintf(stderr, PFX "link target too long, skipping\n");
 		return 1;
@@ -155,13 +158,15 @@ static int ln_pre_walk(struct walker *w)
 	struct stat st;
 	int rc;
 
-	if (w->strlist.len < 2) {
+	if (w->arglist.size() < 2) {
 		fprintf(stderr, _("ln: missing link source/target\n"));
 		return 1;
 	}
 
-	target = slist_pop(&w->strlist);
-	rc = stat(target, &st);
+	target = w->arglist.back();
+	w->arglist.pop_back();
+
+	rc = stat(target.c_str(), &st);
 	if ((rc == 0) && (S_ISDIR(st.st_mode)))
 		have_2arg_form = false;
 
@@ -171,13 +176,13 @@ static int ln_pre_walk(struct walker *w)
 static int ln_post_walk(struct walker *w)
 {
 	if (have_2arg_form) {
-		if (w->strlist.len != 1) {
+		if (w->arglist.size() != 1) {
 			fprintf(stderr, _("ln: too many arguments, when "
 					"target is not directory\n"));
 			return 1;
 		}
 
-		return do_link(w, slist_ref(&w->strlist, 0), target);
+		return do_link(w, w->arglist[0].c_str(), target.c_str());
 	}
 
 	return w->exit_status;

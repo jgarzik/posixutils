@@ -76,7 +76,7 @@
 #define PU_OPT_IGNORE(char) \
 	case (char):	/* do nothing */ break;
 #define PU_OPT_ARG \
-	case ARGP_KEY_ARG:	slist_push(&walker.strlist, arg, false); break;
+	case ARGP_KEY_ARG:	walker.arglist.push_back(arg); break;
 #define PU_OPT_DEFAULT \
 	default:	return ARGP_ERR_UNKNOWN;
 #define PU_OPT_SET(char,var) \
@@ -128,17 +128,6 @@ struct strmap {
 struct strent {
 	const char		*s;
 	bool			alloced;
-};
-
-enum random_strlist_constants {
-	STRLIST_STATIC		= 1024,
-};
-
-struct strlist {
-	struct strent		buf[STRLIST_STATIC];
-	struct strent		*list;
-	unsigned int		alloc_len;
-	unsigned int		len;
 };
 
 class Regex {
@@ -234,7 +223,7 @@ struct walker {
 	void			*priv;
 
 	int			curdir_fd;
-	struct strlist		strlist;
+	std::vector<std::string> arglist;
 };
 
 typedef int (*idir_actor_t)(int fd, const char *dirn, const char *basen);
@@ -277,10 +266,6 @@ extern int iterate_directory(int old_dirfd, const char *dirfn, const char *basen
 			      int opt_force, idir_actor_t actor);
 extern int is_portable_char(int ch);
 extern int map_lookup(const struct strmap *map, const char *key);
-extern void slist_push(struct strlist *slist, const char *s, bool alloced);
-extern void slist_free(struct strlist *slist);
-extern char *slist_shift(struct strlist *slist);
-extern char *slist_pop(struct strlist *slist);
 extern int walk(struct walker *w, int argc, char **argv);
 
 
@@ -306,11 +291,6 @@ static inline uint16_t swab16(uint16_t val)
 #define from_le32(x) (x)
 #define from_le16(x) (x)
 #endif
-
-static inline const char *slist_ref(struct strlist *slist, unsigned int idx)
-{
-	return slist->list[idx].s;
-}
 
 #ifdef HAVE___FSETLOCKING
 #include <stdio_ext.h>

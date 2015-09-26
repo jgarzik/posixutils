@@ -127,7 +127,7 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int head_pre_walk(struct walker *w)
 {
-	if (w->strlist.len > 1)
+	if (w->arglist.size() > 1)
 		print_header = 1;
 
 	return 0;

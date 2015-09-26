@@ -26,11 +26,14 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <libpu.h>
+
+using namespace std;
 
 static const char doc[] =
 N_("cmp - compare two files");
@@ -69,7 +72,7 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int cmp_pre_walk(struct walker *w)
 {
-	if (w->strlist.len != 2) {
+	if (w->arglist.size() != 2) {
 		fprintf(stderr, _("cmp: two pathnames required for comparison\n"));
 		return 2;
 	}
@@ -87,8 +90,8 @@ static int cmp_post_walk(struct walker *w)
 	unsigned long long lines = 1;
 	unsigned long long bytes = 0;
 
-	file1 = slist_ref(&w->strlist, 0);
-	file2 = slist_ref(&w->strlist, 1);
+	file1 = w->arglist[0].c_str();
+	file2 = w->arglist[1].c_str();
 
 	f1 = fopen(file1, "r");
 	if (!f1) {

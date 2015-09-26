@@ -173,7 +173,7 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int uniq_pre_walk(struct walker *w)
 {
-	if (w->strlist.len < 1) {
+	if (w->arglist.size() < 1) {
 		fprintf(stderr, _("uniq: missing source file\n"));
 		return 1;
 	}
@@ -183,8 +183,9 @@ static int uniq_pre_walk(struct walker *w)
 
 static int uniq_post_walk(struct walker *w)
 {
-	return do_uniq(slist_ref(&w->strlist, 0),
-		       w->strlist.len == 1 ? NULL : slist_ref(&w->strlist, 1));
+	return do_uniq(w->arglist[0].c_str(),
+		       w->arglist.size() == 1 ? NULL :
+		         w->arglist[1].c_str());
 }
 
 int main (int argc, char *argv[])

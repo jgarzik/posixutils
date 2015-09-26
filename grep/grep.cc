@@ -34,6 +34,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,6 +44,7 @@
 #include <regex.h>
 #include <libpu.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("grep - print lines matching a pattern");
@@ -464,9 +466,12 @@ static int grep_init(struct walker *w, int argc, char **argv)
 static int grep_pre_walk(struct walker *w)
 {
 	if (!n_patterns) {
-		char *s = slist_shift(&w->strlist);
-		if (s)
-			add_pattern(s);
+		if (w->arglist.size() > 0) {
+			string s = w->arglist.front();
+			w->arglist.erase(w->arglist.begin());
+
+			add_pattern(s.c_str());
+		}
 	}
 
 	if (!n_patterns) {
@@ -477,7 +482,7 @@ static int grep_pre_walk(struct walker *w)
 	if (opt_match != MATCH_STRING)
 		compile_patterns();
 
-	n_files = w->strlist.len;
+	n_files = w->arglist.size();
 
 	return 0;
 }

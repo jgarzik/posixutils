@@ -244,14 +244,14 @@ static void walk_strlist(struct walker *w)
 {
 	unsigned int i;
 
-	if (w->strlist.len == 0) {
+	if (w->arglist.size() == 0) {
 		if (w->flags & WF_NO_FILES_STDIN)
 			walk_entry(w, NULL);
 		return;
 	}
 
-	for (i = 0; i < w->strlist.len; i++) {
-		int rc = walk_entry(w, w->strlist.list[i].s);
+	for (i = 0; i < w->arglist.size(); i++) {
+		int rc = walk_entry(w, w->arglist[i].c_str());
 		if (rc)
 			return;
 	}

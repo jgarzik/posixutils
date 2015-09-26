@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-25 12:42-0400\n"
+"POT-Creation-Date: 2015-09-26 15:03-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -39,48 +39,48 @@ msgstr "cat - enchainez les dossiers et imprimez sur le rendement standard"
 msgid "(ignored)"
 msgstr ""
 
-#: chown/chown.cc:46
+#: chown/chown.cc:47
 msgid "chown - change file owner and group"
 msgstr ""
 
-#: chown/chown.cc:48
+#: chown/chown.cc:49
 msgid "owner[:group] file ..."
 msgstr ""
 
-#: chown/chown.cc:52
+#: chown/chown.cc:53
 msgid "Set uid/gid of symlink, if file is a symlink."
 msgstr "Placez uid/gid de symlink, si le dossier est un symlink."
 
-#: chown/chown.cc:54
+#: chown/chown.cc:55
 msgid "Recurse into symlinked dirs on the command line."
 msgstr "Recurse dans symlinked des dirs sur la ligne de commande."
 
-#: chown/chown.cc:56
+#: chown/chown.cc:57
 msgid ""
 "Recurse into symlinked dirs on the command line or found during traversal."
 msgstr ""
 "Recurse dans symlinked des dirs sur la ligne de commande ou a trouve pendant "
 "le traversal."
 
-#: chown/chown.cc:58
+#: chown/chown.cc:59
 msgid "Do not follow symlinks."
 msgstr "Ne suivez pas les symlinks."
 
-#: chown/chown.cc:60
+#: chown/chown.cc:61
 msgid "Recursively change file user and group IDs."
 msgstr ""
 
-#: chown/chown.cc:91
+#: chown/chown.cc:92
 #, fuzzy, c-format
 msgid "invalid group '%s'\n"
 msgstr "nom inadmissible\n"
 
-#: chown/chown.cc:117
+#: chown/chown.cc:118
 #, c-format
 msgid "owner[:group] not provided\n"
 msgstr ""
 
-#: chown/chown.cc:124
+#: chown/chown.cc:125
 #, fuzzy, c-format
 msgid "invalid owner '%s'\n"
 msgstr "nom inadmissible\n"
@@ -89,32 +89,32 @@ msgstr "nom inadmissible\n"
 msgid "cksum - checksum and count the bytes in a file"
 msgstr "cksum - somme et comptent les bytes dans un dossier"
 
-#: cmp/cmp.cc:36
+#: cmp/cmp.cc:39
 #, fuzzy
 msgid "cmp - compare two files"
 msgstr "cmp - comparer deux fichiers"
 
-#: cmp/cmp.cc:42
+#: cmp/cmp.cc:45
 msgid ""
 "Write the byte number (decimal) and the differing bytes (octal) for each "
 "difference."
 msgstr ""
 
-#: cmp/cmp.cc:44
+#: cmp/cmp.cc:47
 msgid "Write nothing for differing files; return exit status only."
 msgstr ""
 
-#: cmp/cmp.cc:73
+#: cmp/cmp.cc:76
 #, c-format
 msgid "cmp: two pathnames required for comparison\n"
 msgstr ""
 
-#: cmp/cmp.cc:117
+#: cmp/cmp.cc:120
 #, c-format
 msgid "cmp: EOF on %s\n"
 msgstr "cmp: EOF sur %s\n"
 
-#: cmp/cmp.cc:139
+#: cmp/cmp.cc:142
 #, c-format
 msgid "%s %s differ: char %llu, line %llu\n"
 msgstr ""
@@ -160,39 +160,39 @@ msgid ""
 "\"UTC0\""
 msgstr ""
 
-#: df/df.cc:42
+#: df/df.cc:41
 msgid "df - report filesystem disk space usage"
 msgstr ""
 
-#: df/df.cc:48
+#: df/df.cc:47
 msgid "Use 1024-byte units, instead of the default 512-byte units"
 msgstr ""
 
-#: df/df.cc:50
+#: df/df.cc:49
 msgid "Use POSIX-defined output format"
 msgstr ""
 
-#: df/df.cc:52
+#: df/df.cc:51
 msgid "Include total allocated-space figures in the output."
 msgstr ""
 
-#: df/df.cc:195
+#: df/df.cc:194
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df/df.cc:197
+#: df/df.cc:196
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df/df.cc:216
+#: df/df.cc:215
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df/df.cc:219
+#: df/df.cc:218
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
@@ -278,77 +278,77 @@ msgstr ""
 msgid "invalid confstr variable %s\n"
 msgstr ""
 
-#: grep/grep.cc:48
+#: grep/grep.cc:50
 msgid "grep - print lines matching a pattern"
 msgstr ""
 
-#: grep/grep.cc:50
+#: grep/grep.cc:52
 msgid "[pattern_list] [file...]"
 msgstr ""
 
-#: grep/grep.cc:54
+#: grep/grep.cc:56
 msgid "Match using extended regular expressions"
 msgstr ""
 
-#: grep/grep.cc:56
+#: grep/grep.cc:58
 msgid "Match using fixed strings"
 msgstr ""
 
-#: grep/grep.cc:58
+#: grep/grep.cc:60
 msgid "Write only a count of selected lines to standard output"
 msgstr ""
 
-#: grep/grep.cc:60
+#: grep/grep.cc:62
 msgid "Specify one or more patterns to be used during the search for input"
 msgstr ""
 
-#: grep/grep.cc:62
+#: grep/grep.cc:64
 msgid ""
 "Read one or more patterns from the file named by the pathname pattern_file"
 msgstr ""
 
-#: grep/grep.cc:64
+#: grep/grep.cc:66
 msgid "Perform pattern matching in searches without regard to case"
 msgstr ""
 
-#: grep/grep.cc:66
+#: grep/grep.cc:68
 msgid ""
 "Write only the names of files containing selected lines to standard output"
 msgstr ""
 
-#: grep/grep.cc:68
+#: grep/grep.cc:70
 msgid "Precede each output line by its relative line number in the file"
 msgstr ""
 
-#: grep/grep.cc:70
+#: grep/grep.cc:72
 msgid ""
 "Quiet. Nothing shall be written to the standard output, regardless of "
 "matching lines. Exit with zero status if an input line is selected."
 msgstr ""
 
-#: grep/grep.cc:73
+#: grep/grep.cc:75
 msgid ""
 "Suppress the error messages ordinarily written for nonexistent or unreadable "
 "files"
 msgstr ""
 
-#: grep/grep.cc:75
+#: grep/grep.cc:77
 msgid "Select lines not matching any of the specified patterns"
 msgstr ""
 
-#: grep/grep.cc:77
+#: grep/grep.cc:79
 msgid ""
 "Consider only input lines that use all characters in the line, excluding the "
 "terminating <newline>, to match an entire fixed string or regular expression "
 "to be matching lines"
 msgstr ""
 
-#: grep/grep.cc:186
+#: grep/grep.cc:188
 #, fuzzy, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr "nom inadmissible\n"
 
-#: grep/grep.cc:473
+#: grep/grep.cc:478
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -490,28 +490,28 @@ msgstr ""
 msgid "link - call link function"
 msgstr ""
 
-#: ln/ln.cc:41
+#: ln/ln.cc:43
 msgid "ln - make links between files"
 msgstr ""
 
-#: ln/ln.cc:43
+#: ln/ln.cc:45
 msgid "file... TARGET"
 msgstr ""
 
-#: ln/ln.cc:47
+#: ln/ln.cc:49
 msgid "Force existing dest. pathnames to be removed to allow the link"
 msgstr ""
 
-#: ln/ln.cc:49
+#: ln/ln.cc:51
 msgid "Create symbolic links instead of hard links"
 msgstr ""
 
-#: ln/ln.cc:160
+#: ln/ln.cc:162
 #, fuzzy, c-format
 msgid "ln: missing link source/target\n"
 msgstr "source/target manquant\n"
 
-#: ln/ln.cc:176
+#: ln/ln.cc:180
 #, c-format
 msgid "ln: too many arguments, when target is not directory\n"
 msgstr ""
@@ -1077,29 +1077,29 @@ msgstr ""
 msgid "Encode the output using the MIME Base64 algorithm"
 msgstr ""
 
-#: wc/wc.cc:37
+#: wc/wc.cc:36
 msgid "wc - print the number of newlines, words, and bytes in files"
 msgstr ""
 
-#: wc/wc.cc:43
+#: wc/wc.cc:42
 msgid "Write to the standard output the number of bytes in each input file"
 msgstr ""
 
-#: wc/wc.cc:45
+#: wc/wc.cc:44
 msgid ""
 "Write to the standard output the number of <newline>s in each input file"
 msgstr ""
 
-#: wc/wc.cc:47
+#: wc/wc.cc:46
 msgid "Write to the standard output the number of words in each input file"
 msgstr ""
 
-#: wc/wc.cc:49
+#: wc/wc.cc:48
 msgid ""
 "Write to the standard output the number of characters in each input file"
 msgstr ""
 
-#: wc/wc.cc:282
+#: wc/wc.cc:281
 msgid "total"
 msgstr "total"
 

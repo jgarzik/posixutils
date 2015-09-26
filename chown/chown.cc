@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,6 +41,7 @@
 #include <grp.h>
 #include <libpu.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("chown - change file owner and group");
@@ -294,14 +296,13 @@ static int chown_init(struct walker *w, int argc, char **argv)
 
 static int chown_pre_walk(struct walker *w)
 {
-	char *arg = slist_shift(&w->strlist);
+	string arg = w->arglist.front();
+	w->arglist.erase(w->arglist.begin());
 
 	if (opt_chgrp)
-		set_group(arg);
+		set_group(arg.c_str());
 	else
-		set_owner_group(arg);
-
-	free(arg);
+		set_owner_group(arg.c_str());
 
 	if (!opt_recurse) {
 		opt_set_link_attr_recur = false;
