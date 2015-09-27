@@ -240,7 +240,6 @@ extern void *xmalloc(size_t size);
 extern void *xrealloc(void *ptr, size_t size);
 extern void *xcalloc(size_t nmemb, size_t size);
 extern char *xstrdup(const char *s);
-extern char *xgetcwd(void);
 extern struct pathelem *path_split(const char *pathname);
 extern void path_free(struct pathelem *pe);
 extern int have_dots(const char *fn);

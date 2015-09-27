@@ -130,26 +130,6 @@ int ask_question(const char *prefix, const char *msg,
 	return 1;
 }
 
-char *xgetcwd(void)
-{
-	int len = 128;
-	char *cwd = NULL;
-	char *cwd_ret = NULL;
-
-	while (cwd_ret == NULL) {
-		len <<= 1;
-		cwd = (char *) xrealloc(cwd, len);
-
-		cwd_ret = getcwd(cwd, len);
-		if ((cwd_ret == NULL) && (errno != ERANGE)) {
-			perror(_("getcwd(3) failed"));
-			exit(1);
-		}
-	}
-
-	return cwd;
-}
-
 int have_dots(const char *fn)
 {
 	return (!strcmp(fn, ".")) || (!strcmp(fn, ".."));
