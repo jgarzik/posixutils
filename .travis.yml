@@ -17,14 +17,6 @@ env:
     - RUN_TESTS=true
     - BASE_OUTDIR=$TRAVIS_BUILD_DIR/out
 
-cache:
-  apt: true
-
-addons:
-  apt:
-    packages:
-      - pkg-config
-
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
 
