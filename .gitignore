@@ -20,6 +20,7 @@ test-driver
 *.tar.gz
 ylwrap
 posixutils-config.h*
+test-suite.log
 
 .dotest
 autom4te.cache
