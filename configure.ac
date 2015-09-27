@@ -3,10 +3,11 @@ AC_INIT(posixutils, 5git, [http://sourceforge.net/projects/nix-utils  ..])
 AC_PREREQ(2.60)
 AC_CONFIG_SRCDIR([true/true.c])
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([gnu])
+AM_INIT_AUTOMAKE([gnu subdir-objects])
 AC_CONFIG_HEADERS([posixutils-config.h])
 
 AM_MAINTAINER_MODE
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 dnl Checks for programs.
 AC_PROG_CC
