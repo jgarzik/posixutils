@@ -12,5 +12,5 @@ grep_LDADD = $(LIBPU)
 
 TESTS = grep-test
 
-EXTRA_DIST = grep-test
+EXTRA_DIST = grep-test test1.out
 

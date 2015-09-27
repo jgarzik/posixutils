@@ -1,4 +1,41 @@
 #!/bin/sh
 
-# TODO
-exit 77
+OUTFN="grep-test.out.$$"
+
+./grep shall $srcdir/grep.1 > $OUTFN
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN
+	echo T1 failed
+	exit 1
+fi
+
+cmp -s $srcdir/test1.out $OUTFN
+retval=$?
+rm -f $OUTFN
+if [ $retval -ne 0 ]
+then
+        echo T2 failed
+        exit 1
+fi
+
+./grep dummynotfound $srcdir/grep.1
+if [ $? -ne 1 ]
+then
+	echo T3 failed
+	exit 1
+fi
+
+COUNT=`./grep -c shall $srcdir/grep.1`
+if [ $? -ne 0 ]
+then
+	echo T4 failed
+	exit 1
+fi
+if [ $COUNT -ne 40 ]
+then
+	echo T5 failed
+	exit 1
+fi
+
+exit 0

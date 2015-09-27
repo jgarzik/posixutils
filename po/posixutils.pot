@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-26 16:32-0400\n"
+"POT-Creation-Date: 2015-09-26 20:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,7 +139,7 @@ msgstr ""
 #: comm/comm.cc:210 date/date.cc:177 diff/diff.cc:214 env/env.cc:159
 #: getconf/getconf.cc:162 id/id.cc:368 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
 #: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 mesg/mesg.cc:84
-#: nice/nice.cc:90 pwd/pwd.cc:109 sleep/sleep.cc:78 split/split.cc:369
+#: nice/nice.cc:90 pwd/pwd.cc:129 sleep/sleep.cc:78 split/split.cc:369
 #: tsort/tsort.cc:251 tty/tty.cc:54 uname/uname.cc:95 unlink/unlink.cc:71
 #: uuencode/uuencode.cc:313
 #, c-format
@@ -338,12 +338,12 @@ msgid ""
 "to be matching lines"
 msgstr ""
 
-#: grep/grep.cc:188
+#: grep/grep.cc:182
 #, c-format
 msgid "invalid pattern '%s': %s\n"
 msgstr ""
 
-#: grep/grep.cc:478
+#: grep/grep.cc:454
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -671,6 +671,10 @@ msgstr ""
 msgid ""
 "The absolute pathname written shall not contain filenames that, in the "
 "context of the pathname, refer to files of type symbolic link."
+msgstr ""
+
+#: pwd/pwd.cc:113
+msgid "getcwd(3) failed"
 msgstr ""
 
 #: renice/renice.cc:40
@@ -1111,8 +1115,4 @@ msgstr ""
 
 #: libpu/lib.cc:44
 msgid "file..."
-msgstr ""
-
-#: libpu/lib.cc:145
-msgid "getcwd(3) failed"
 msgstr ""

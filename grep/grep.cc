@@ -113,9 +113,12 @@ enum {
 	STOP_LOOP		= (1 << 30),
 };
 
-struct pattern {
+class Pattern {
+public:
 	regex_t			rx;
-	const char		*pat_str;
+	string			pat_str;
+
+	Pattern(const string& pat_str_) : pat_str(pat_str_) {}
 };
 
 
@@ -128,9 +131,7 @@ static bool opt_match_invert;
 static bool opt_match_line;
 
 /* pattern array */
-static struct pattern *patterns;
-static int n_patterns;
-static int alloc_patterns;
+static vector<Pattern> patterns;
 
 /* input buffer */
 static char linebuf[LINE_MAX + 1];
@@ -144,8 +145,8 @@ static int n_files;
 
 static void compile_patterns(void)
 {
-	struct pattern *pat;
-	int rc, i, flags;
+	int rc, flags;
+	unsigned int i;
 
 	flags = REG_NOSUB;
 	if (opt_ignore_case)
@@ -153,65 +154,42 @@ static void compile_patterns(void)
 	if (opt_match == MATCH_ERE)
 		flags |= REG_EXTENDED;
 
-	for (i = 0; i < n_patterns; i++) {
-		const char *pat_str;
-
-		pat = &patterns[i];
-		pat_str = pat->pat_str;
+	for (i = 0; i < patterns.size(); i++) {
+		Pattern& pat = patterns[i];
 
 		/* if match-full-line, add ^ and $ to string */
 		if (opt_match_line) {
 			int need_pre, need_suff;
-			size_t len = strlen(pat_str);
+			size_t len = pat.pat_str.size();
 
-			need_pre = (pat_str[0] != '^');
+			need_pre = (pat.pat_str[0] != '^');
 			if (!len)
 				need_suff = 1;
 			else
-				need_suff = (pat_str[len - 1] != '$');
+				need_suff = (pat.pat_str[len - 1] != '$');
 
 			/* replace pattern with new string */
-			if (need_pre || need_suff) {
-				char *s = (char *) xmalloc(len + 3);
-				sprintf(s, "%s%s%s",
-					need_pre ? "^" : "",
-					pat_str,
-					need_suff ? "$" : "");
-				pat_str = pat->pat_str = s;
-			}
+			if (need_pre)
+				pat.pat_str.insert(0, "^");
+			if (need_suff)
+				pat.pat_str.append("$");
 		}
 
 		/* compile pattern */
-		rc = regcomp(&pat->rx, pat_str, flags);
+		rc = regcomp(&pat.rx, pat.pat_str.c_str(), flags);
 		if (rc) {
-			regerror(rc, &pat->rx, linebuf, sizeof(linebuf));
+			regerror(rc, &pat.rx, linebuf, sizeof(linebuf));
 			fprintf(stderr, _("invalid pattern '%s': %s\n"),
-				pat_str, linebuf);
+				pat.pat_str.c_str(), linebuf);
 			exit(2);
 		}
 	}
 }
 
-static void add_pattern(const char *pat_str)
+static void add_pattern(const string& pat_str)
 {
-	struct pattern *pat;
-
-	/* grow pattern array if necessary */
-	if (alloc_patterns == n_patterns) {
-		if (alloc_patterns == 0)
-			alloc_patterns = INIT_PATTERNS;
-		else
-			alloc_patterns <<= 1;
-
-		patterns = (struct pattern *) xrealloc(patterns,
-				    alloc_patterns * sizeof(struct pattern));
-	}
-
-	/* add pattern to array */
-	pat = &patterns[n_patterns];
-	pat->pat_str = pat_str;
-
-	n_patterns++;
+	Pattern pat(pat_str);
+	patterns.push_back(pat);
 }
 
 static void add_patterns(const char *pattern_list_in)
@@ -262,7 +240,7 @@ static void add_pattern_file(const char *fn)
 			s[len] = 0;
 		}
 
-		add_pattern(xstrdup(s));
+		add_pattern(s);
 	}
 
 	if (ferror(f))
@@ -321,28 +299,28 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int match_string(const char *line)
 {
-	int i;
+	unsigned int i;
 
 	/* attempt to match entire line */
 	if (opt_match_line)
-		for (i = 0; i < n_patterns; i++) {
+		for (i = 0; i < patterns.size(); i++) {
 			int rc;
 			if (opt_ignore_case)
-				rc = strcasecmp(line, patterns[i].pat_str);
+				rc = strcasecmp(line, patterns[i].pat_str.c_str());
 			else
-				rc = strcmp(line, patterns[i].pat_str);
+				rc = strcmp(line, patterns[i].pat_str.c_str());
 			if (rc == 0)
 				return 1;
 		}
 
 	/* attach to match substring within line */
 	else
-		for (i = 0; i < n_patterns; i++) {
+		for (i = 0; i < patterns.size(); i++) {
 			const char *s;
 			if (opt_ignore_case)
-				 s = strcasestr(line, patterns[i].pat_str);
+				 s = strcasestr(line, patterns[i].pat_str.c_str());
 			else
-				 s = strstr(line, patterns[i].pat_str);
+				 s = strstr(line, patterns[i].pat_str.c_str());
 			if (s)
 				return 1;
 		}
@@ -352,9 +330,7 @@ static int match_string(const char *line)
 
 static int match_regex(const char *line)
 {
-	int i;
-
-	for (i = 0; i < n_patterns; i++)
+	for (unsigned int i = 0; i < patterns.size(); i++)
 		if (regexec(&patterns[i].rx, line, 0, NULL, 0) == 0)
 			return 1;
 
@@ -465,16 +441,16 @@ static int grep_init(struct walker *w, int argc, char **argv)
 
 static int grep_pre_walk(struct walker *w)
 {
-	if (!n_patterns) {
+	if (!patterns.size()) {
 		if (w->arglist.size() > 0) {
 			string s = w->arglist.front();
 			w->arglist.erase(w->arglist.begin());
 
-			add_pattern(s.c_str());
+			add_pattern(s);
 		}
 	}
 
-	if (!n_patterns) {
+	if (!patterns.size()) {
 		fprintf(stderr, _("no patterns specified"));
 		return 2;
 	}
