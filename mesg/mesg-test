@@ -1,6 +1,12 @@
 #!/bin/sh
 
 EXPECTED=`mesg`
+if [ $? -ne 0 ]
+then
+	echo system mesg failed - possibly in no-tty parallel test mode
+	exit 77
+fi
+
 OUT=`mesg/mesg`
 if [ $? -ne 0 ]
 then

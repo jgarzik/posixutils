@@ -1,6 +1,12 @@
 #!/bin/sh
 
 EXPECTED=`tty`
+if [ $? -ne 0 ]
+then
+	echo system tty failed - possibly in no-tty parallel test mode
+	exit 77
+fi
+
 OUT=`tty/tty`
 if [ $? -ne 0 ]
 then

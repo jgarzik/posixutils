@@ -1,6 +1,12 @@
 #!/bin/sh
 
 EXPECTED=`logname`
+if [ $? -ne 0 ]
+then
+	echo system logname failed - possibly in no-tty parallel test mode
+	exit 77
+fi
+
 OUT=`logname/logname`
 if [ $? -ne 0 ]
 then
