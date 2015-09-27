@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2006 Jeff Garzik <jgarzik@pobox.com>
+ * Copyright 2015 Jeff Garzik <jgarzik@pobox.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,28 +27,19 @@
 #include <libgen.h>
 #include <libpu.h>
 
-static void componentize(const char *path, char **dirc, char **dirn,
-		  char **basec, char **basen)
+using namespace std;
+
+static bool componentize(const string& path, string& dirn, string& basen)
 {
-	*dirc = xstrdup(path);
-	*basec = xstrdup(path);
-	*dirn = dirname(*dirc);
-	*basen = basename(*basec);
+	string dirc(path);
+	string basec(path);
+	dirn = dirname(&dirc[0]);
+	basen = basename(&basec[0]);
+	return true;
 }
 
-struct pathelem *path_split(const char *pathname)
+bool path_split(const string& pathname, pathelem& pe)
 {
-	struct pathelem *pe = (struct pathelem *) xmalloc(sizeof(struct pathelem));
-
-	componentize(pathname, &pe->dirc, &pe->dirn, &pe->basec, &pe->basen);
-
-	return pe;
-}
-
-void path_free(struct pathelem *pe)
-{
-	free(pe->dirc);
-	free(pe->basec);
-	free(pe);
+	return componentize(pathname, pe.dirn, pe.basen);
 }
 

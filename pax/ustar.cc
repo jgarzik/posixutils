@@ -37,6 +37,7 @@
 #include <libpu.h>
 #include "pax.h"
 
+using namespace std;
 
 enum random_ustar_constants {
 	REC_SZ			= 512,
@@ -119,22 +120,14 @@ static int ustar_hdr_cksum(const struct hdr_ustar *hdr)
 	return (cksum == sum);
 }
 
-static void ustar_hdr_str(const char *s_in, size_t maxlen, char **s_out)
+static void ustar_hdr_str(const char *s_in, size_t maxlen, string& s_out)
 {
-	size_t len;
-	char *s;
-
-	len = strnlen(s_in, maxlen);
-	s = (char *) xmalloc(len + 1);
-
-	memcpy(s, s_in, len);
-	s[len] = 0;
-
-	*s_out = s;
+	size_t len = strnlen(s_in, maxlen);
+	s_out.assign(s_in, len);
 }
 
 #define COPYSTR(hdrname,finame) do {					\
-	ustar_hdr_str(hdr->hdrname, sizeof(hdr->hdrname), &fi->finame);	\
+	ustar_hdr_str(hdr->hdrname, sizeof(hdr->hdrname), fi->finame);	\
 	} while (0)
 #define COPYOCTAL(hdrname,finame) do {					\
 	if ((fi->finame = octal_str(hdr->hdrname, sizeof(hdr->hdrname))) < 0) \
@@ -145,7 +138,7 @@ static int ustar_hdr_record(struct ustar_state *state, const char *buf)
 {
 	const struct hdr_ustar *hdr = (const struct hdr_ustar *) buf;
 	struct pax_file_info *fi;
-	char *basename = NULL, *dirname = NULL;
+	string basename, dirname;
 
 	if (!ustar_hdr_cksum(hdr))
 		return PXE_GARBAGE;
@@ -153,7 +146,7 @@ static int ustar_hdr_record(struct ustar_state *state, const char *buf)
 	fi = &state->curfile;
 	pax_fi_clear(fi);
 
-	ustar_hdr_str(hdr->us_name, sizeof(hdr->us_name), &basename);
+	ustar_hdr_str(hdr->us_name, sizeof(hdr->us_name), basename);
 	COPYOCTAL(us_mode, mode);
 	fi->mode &= ACCESSPERMS;
 	COPYOCTAL(us_uid, uid);
@@ -180,27 +173,23 @@ static int ustar_hdr_record(struct ustar_state *state, const char *buf)
 		COPYSTR(us_gname, groupname);
 		COPYOCTAL(us_devmajor, dev_major);
 		COPYOCTAL(us_devminor, dev_minor);
-		ustar_hdr_str(hdr->us_prefix, sizeof(hdr->us_prefix), &dirname);
+		ustar_hdr_str(hdr->us_prefix, sizeof(hdr->us_prefix), dirname);
 	} else {
 		/* old Unix tar format */
-		if (*basename) {
-			size_t len = strlen(basename);
+		if (!basename.empty()) {
+			size_t len = basename.size();
 			if (basename[len - 1] == '/') {
-				basename[len - 1] = 0;
+				basename.resize(len - 1);
 				fi->mode &= ~S_IFREG;
 				fi->mode |= S_IFDIR;
 			}
 		}
 	}
 
-	if (dirname && basename) {
-		fi->pathname = xstrdup(strpathcat(dirname, basename).c_str());
-		free(dirname);
-		free(basename);
-	} else if (basename)
+	if (!dirname.empty() && !basename.empty())
+		fi->pathname = strpathcat(dirname, basename);
+	else if (!basename.empty())
 		fi->pathname = basename;
-	else if (dirname)
-		free(dirname);
 
 	if (S_ISREG(fi->mode)) {
 		state->data_bytes = fi->size;

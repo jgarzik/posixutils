@@ -40,6 +40,7 @@
 #include <libpu.h>
 #include "pax.h"
 
+using namespace std;
 
 static const char doc[] =
 N_("pax - read and write file archives and copy directory hierarchies");
@@ -169,10 +170,10 @@ long octal_str(const char *s, int len)
 
 void pax_fi_clear(struct pax_file_info *fi)
 {
-	free(fi->pathname);
-	free(fi->username);
-	free(fi->groupname);
-	free(fi->linkname);
+	fi->pathname.clear();
+	fi->username.clear();
+	fi->groupname.clear();
+	fi->linkname.clear();
 	memset(fi, 0, sizeof(*fi));
 }
 
@@ -355,15 +356,15 @@ size_t my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
 
 static int pax_list(struct pax_file_info *fi)
 {
-	const char *fn;
+	string fn;
 
-	if (fi->pathname && (*fi->pathname))
+	if (!fi->pathname.empty())
 		fn = fi->pathname;
 	else
 		fn = _("(pathname missing)");
 
 	if (!opt_verbose)
-		printf("%s\n", fn);
+		printf("%s\n", fn.c_str());
 	else {
 		struct tm *tm;
 		time_t t;
@@ -391,7 +392,7 @@ static int pax_list(struct pax_file_info *fi)
 		       (unsigned int) fi->gid,
 		       fi->size,
 		       datebuf,
-		       fn);
+		       fn.c_str());
 	}
 
 	return 0;
@@ -465,7 +466,7 @@ static int pax_file_arg(struct walker *w, const char *fn, const struct stat *lst
 	int rc = 0;
 
 	memset(&fi, 0, sizeof(fi));
-	fi.pathname	= xstrdup(fn);
+	fi.pathname	= fn;
 	fi.dev		= lst->st_dev;
 	fi.inode	= lst->st_ino;
 	COPY(mode);
@@ -486,7 +487,7 @@ static int pax_file_arg(struct walker *w, const char *fn, const struct stat *lst
 			goto out;
 		}
 
-		fi.linkname = xstrdup(pathbuf);
+		fi.linkname = pathbuf;
 	}
 
 	rc = pax_ops.file_start(&fi);

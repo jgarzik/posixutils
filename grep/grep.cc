@@ -411,12 +411,12 @@ static int grep_init(struct walker *w, int argc, char **argv)
 	/*
 	 * support 'fgrep', 'egrep' program names
 	 */
-	struct pathelem *pe = path_split(argv[0]);
-	if (!strcmp(pe->basen, "egrep"))
+	pathelem pe;
+	path_split(argv[0], pe);
+	if (pe.basen == "egrep")
 		opt_match = MATCH_ERE;
-	else if (!strcmp(pe->basen, "fgrep"))
+	else if (pe.basen == "fgrep")
 		opt_match = MATCH_STRING;
-	path_free(pe);
 
 	return 0;
 }

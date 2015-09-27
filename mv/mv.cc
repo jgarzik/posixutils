@@ -275,11 +275,11 @@ static int move_file(const char *fn, const char *target)
 
 static int mv_fn_actor(struct cmdline_walker *cw, const char *fn)
 {
-	struct pathelem *pe;
 	int rc;
 
-	pe = path_split(fn);
-	string new_fn(strpathcat(target_dir, pe->basen));
+	pathelem pe;
+	path_split(fn, pe);
+	string new_fn(strpathcat(target_dir, pe.basen));
 
 	rc = move_file(fn, new_fn.c_str());
 	if (rc != 2)
@@ -287,16 +287,14 @@ static int mv_fn_actor(struct cmdline_walker *cw, const char *fn)
 
 	open_target_curdir();
 
-	rc = copy_file(fn, target_dir, pe->basen, new_fn.c_str(), 1);
+	rc = copy_file(fn, target_dir, pe.basen.c_str(), new_fn.c_str(), 1);
 
 out:
-	path_free(pe);
 	return rc;
 }
 
 static int do_2arg_form(int argc, char **argv, int idx)
 {
-	struct pathelem *pe;
 	char *fn;
 	int rc;
 
@@ -312,11 +310,10 @@ static int do_2arg_form(int argc, char **argv, int idx)
 	if (rc != 2)	/* moved successfully, or error */
 		return rc;
 
-	pe = path_split(target_dir);
+	pathelem pe;
+	path_split(target_dir, pe);
 
-	rc = copy_file(fn, pe->dirn, pe->basen, target_dir, 0);
-
-	path_free(pe);
+	rc = copy_file(fn, pe.dirn.c_str(), pe.basen.c_str(), target_dir, 0);
 
 	return rc;
 }

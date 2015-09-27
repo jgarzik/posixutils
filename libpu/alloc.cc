@@ -50,11 +50,3 @@ void *xcalloc(size_t nmemb, size_t size)
 	return mem;
 }
 
-char *xstrdup(const char *s)
-{
-	char *ret = strdup(s);
-	if (!ret)
-		die(_("out of memory"));
-	return ret;
-}
-

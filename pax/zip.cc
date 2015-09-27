@@ -30,6 +30,7 @@
 #include <assert.h>
 #include <libpu.h>
 #include <zlib.h>
+#include <assert.h>
 #include "pax.h"
 
 
@@ -316,10 +317,8 @@ static int zip_file_hdr_end(struct zip_state *state)
 	fi->size		= hdr->size_u;
 	fi->mtime		= dos_time_xlat(hdr->mdate, hdr->mtime);
 	fi->compressed_size	= hdr->size_c;
-	if (hdr->name_len > 0) {
-		fi->pathname	= (char *) xmalloc(hdr->name_len + 1);
-		memset(fi->pathname, 0, hdr->name_len + 1);
-	}
+	if (hdr->name_len > 0)
+		fi->pathname.assign(hdr->name_len, 0);
 	if (hdr->extra_len > 0)
 		state->extra	= (char *) xmalloc(hdr->extra_len);
 
@@ -590,10 +589,12 @@ static int zip_input(const char *buf_in, size_t *buflen_io)
 			break;
 
 		case ZS_FILE_NAME:
-			if (!state->sch_buf)
-				zip_sched_buf(state, state->curfile.pathname,
+			if (!state->sch_buf) {
+				assert(state->curfile.pathname.size() >= state->input_hdr.name_len);
+				zip_sched_buf(state, &state->curfile.pathname[0],
 					      state->input_hdr.name_len,
 					      ZS_EXTRA);
+			}
 			count = zip_sched_do(state, buf_in, buflen);
 			SWALLOW(count);
 			break;

@@ -2,6 +2,7 @@
 #define __PAX_INTERNAL_H__
 
 #include <stdint.h>
+#include <string>
 
 enum pax_error_codes {
 	PXE_NONE		= 0,
@@ -12,12 +13,12 @@ enum pax_error_codes {
 };
 
 struct pax_file_info {
-	char			*pathname;
+	std::string		pathname;
 
-	char			*username;
-	char			*groupname;
+	std::string		username;
+	std::string		groupname;
 
-	char			*linkname;
+	std::string		linkname;
 
 	int			dev_major;
 	int			dev_minor;

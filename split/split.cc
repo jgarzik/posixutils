@@ -357,8 +357,6 @@ static int execute_split(void)
 
 int main (int argc, char *argv[])
 {
-	struct pathelem *pe;
-
 	pu_init();
 
 	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
@@ -368,12 +366,12 @@ int main (int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	pe = path_split(opt_prefix.c_str());
-	if ((strlen(pe->basen) + opt_suffix_len) > NAME_MAX) {
+	pathelem pe;
+	path_split(opt_prefix, pe);
+	if ((pe.basen.size() + opt_suffix_len) > NAME_MAX) {
 		fprintf(stderr, _("prefix + suffix too large\n"));
 		return 1;
 	}
-	path_free(pe);
 
 	return execute_split();
 }

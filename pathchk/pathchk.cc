@@ -77,18 +77,16 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static string find_fshandle(const string& path)
 {
-	struct pathelem *pe;
 	struct stat st;
 
 	if ((lstat(path.c_str(), &st) == 0) ||
 	    (path == "/") || (path == "."))
 		return path;
 
-	pe = path_split(path.c_str());
+	pathelem pe;
+	path_split(path, pe);
 
-	string ret_fshandle = find_fshandle(pe->dirn);
-
-	path_free(pe);
+	string ret_fshandle = find_fshandle(pe.dirn);
 
 	return ret_fshandle;
 }
@@ -117,17 +115,15 @@ static int check_component(const char *basen)
 
 static int check_path(const char *path)
 {
-	struct pathelem *pe;
 	int rc;
 
-	pe = path_split(path);
+	pathelem pe;
+	path_split(path, pe);
 
-	rc = check_component(pe->basen);
+	rc = check_component(pe.basen.c_str());
 
-	if ((rc == 0) && strcmp(pe->dirn, "/") && strcmp(pe->dirn, "."))
-		rc |= check_path(pe->dirn);
-
-	path_free(pe);
+	if ((rc == 0) && (pe.dirn != "/") && (pe.dirn != "."))
+		rc |= check_path(pe.dirn.c_str());
 
 	return rc;
 }

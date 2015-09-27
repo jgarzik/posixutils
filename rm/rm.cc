@@ -194,12 +194,12 @@ out:
 
 static int rm_fn_actor(struct cmdline_walker *cw, const char *fn)
 {
-	struct pathelem *pe;
 	int rc = 0, old_dirfd, dirfd;
 
-	pe = path_split(fn);
+	pathelem pe;
+	path_split(fn, pe);
 
-	if (have_dots(pe->basen)) {
+	if (have_dots(pe.basen.c_str())) {
 		rc = 1;
 		goto out;
 	}
@@ -213,23 +213,23 @@ static int rm_fn_actor(struct cmdline_walker *cw, const char *fn)
 	}
 
 	/* get ref to destination dir */
-	dirfd = open(pe->dirn, O_DIRECTORY);
+	dirfd = open(pe.dirn.c_str(), O_DIRECTORY);
 	if (dirfd < 0) {
 		if (!opt_force)
-			perror(pe->dirn);
+			perror(pe.dirn.c_str());
 		rc = 1;
 		goto out_old;
 	}
 
 	/* change to dest dir */
 	if (fchdir(dirfd) < 0) {
-		perror(pe->dirn);
+		perror(pe.dirn.c_str());
 		rc = 1;
 		goto out_fd;
 	}
 
 	/* remove file */
-	rc = rm(dirfd, pe->dirn, pe->basen);
+	rc = rm(dirfd, pe.dirn.c_str(), pe.basen.c_str());
 
 	/* change back to original dir */
 	if (fchdir(old_dirfd) < 0) {
@@ -239,12 +239,11 @@ static int rm_fn_actor(struct cmdline_walker *cw, const char *fn)
 
 out_fd:
 	if (close(dirfd) < 0)
-		perror(pe->dirn);
+		perror(pe.dirn.c_str());
 out_old:
 	if (close(old_dirfd) < 0)
 		perror(".");
 out:
-	path_free(pe);
 	return rc;
 }
 

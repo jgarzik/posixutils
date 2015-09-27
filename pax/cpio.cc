@@ -27,6 +27,7 @@
 #include <string.h>
 #include <limits.h>
 #include <libpu.h>
+#include <assert.h>
 #include "pax.h"
 
 
@@ -117,8 +118,7 @@ static int cpio_hdr(struct cpio_state *state)
 		return PXE_GARBAGE;
 	state->name_len = l;
 
-	fi->pathname = (char *) xmalloc(state->name_len + 1);
-	memset(fi->pathname, 0, state->name_len + 1);
+	fi->pathname.assign(state->name_len, 0);
 
 	COPYOCTAL(c_filesize, size);
 	state->file_bytes = fi->size;
@@ -132,7 +132,7 @@ static int cpio_hdr_name(struct cpio_state *state)
 {
 	struct pax_file_info *fi = &state->curfile;
 
-	if (!strncmp(fi->pathname, "TRAILER!!!", state->name_len)) {
+	if (fi->pathname == "TRAILER!!!") {
 		state->input_state = CS_EOA;
 		return 0;
 	}
@@ -177,7 +177,8 @@ static int cpio_input(const char *buf_in, size_t *buflen_io)
 		}
 
 		case CS_NAME: {
-			char *buf = state->curfile.pathname;
+			assert(state->curfile.pathname.size() >= state->name_len);
+			char *buf = &state->curfile.pathname[0];
 			unsigned int i = state->name_len - state->name_pos;
 			if (buflen < i)
 				i = buflen;

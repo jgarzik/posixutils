@@ -113,11 +113,10 @@ struct cmdline_walker {
 	int (*fd_actor)(struct cmdline_walker *cw, const char *fn, int fd);
 };
 
-struct pathelem {
-	char		*dirc;
-	char		*dirn;
-	char		*basec;
-	char		*basen;
+class pathelem {
+public:
+	std::string	dirn;
+	std::string	basen;
 };
 
 struct strmap {
@@ -239,9 +238,7 @@ extern struct argp_option no_options[];
 extern void *xmalloc(size_t size);
 extern void *xrealloc(void *ptr, size_t size);
 extern void *xcalloc(size_t nmemb, size_t size);
-extern char *xstrdup(const char *s);
-extern struct pathelem *path_split(const char *pathname);
-extern void path_free(struct pathelem *pe);
+extern bool path_split(const std::string& pathname, pathelem& pe);
 extern int have_dots(const char *fn);
 extern void strsplit(const std::string& s,
 			   std::vector<std::string>& sv);

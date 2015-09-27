@@ -70,31 +70,29 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 static int mkdir_arg(struct walker *w, const char *fn, const struct stat *lst)
 {
 	struct stat st;
-	struct pathelem *pe;
 
 	if ((!strcmp(fn, ".")) || (!strcmp(fn, "/")))
 		return 0;
 
-	pe = path_split(fn);
+	pathelem pe;
+	path_split(fn, pe);
 
-	if (stat(pe->dirn, &st) < 0) {
+	if (stat(pe.dirn.c_str(), &st) < 0) {
 		if ((!opt_recurse) || (errno != ENOENT)) {
-			perror(pe->dirn);
+			perror(pe.dirn.c_str());
 			w->exit_status = EXIT_FAILURE;
 			return 0;
 		}
 
 		if (opt_recurse)
-			mkdir_arg(w, pe->dirn, NULL);
+			mkdir_arg(w, pe.dirn.c_str(), NULL);
 	}
 	if (!S_ISDIR(st.st_mode)) {
 		fprintf(stderr, _("parent '%s' is not a directory\n"),
-			pe->dirn);
+			pe.dirn.c_str());
 		w->exit_status = EXIT_FAILURE;
 		return 0;
 	}
-
-	path_free(pe);
 
 	/* TODO: handle -m mode argument, using chmod(1)-like mode parser */
 	if (mkdir(fn, 0777) < 0) {

@@ -77,7 +77,6 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int pwd_valid(const char *path)
 {
-	struct pathelem *pe;
 	int rc;
 
 	if (!strcmp(path, "/"))
@@ -85,16 +84,16 @@ static int pwd_valid(const char *path)
 	if (have_dots(path))
 		return 0;
 
-	pe = path_split(path);
-	if (have_dots(pe->basen)) {
+	pathelem pe;
+	path_split(path, pe);
+	if (have_dots(pe.basen.c_str())) {
 		rc = 0;
 		goto out;
 	}
 
-	rc = pwd_valid(pe->dirn);
+	rc = pwd_valid(pe.dirn.c_str());
 
 out:
-	path_free(pe);
 	return rc;
 }
 

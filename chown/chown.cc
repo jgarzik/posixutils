@@ -286,10 +286,10 @@ static int chown_init(struct walker *w, int argc, char **argv)
 {
 	pu_init();
 
-	struct pathelem *pe = path_split(argv[0]);
-	if (!strcmp(pe->basen, "chgrp"))
+	pathelem pe;
+	path_split(argv[0], pe);
+	if (pe.basen == "chgrp")
 		opt_chgrp = true;
-	path_free(pe);
 
 	return 0;
 }

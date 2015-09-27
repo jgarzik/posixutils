@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-27 11:33-0400\n"
+"POT-Creation-Date: 2015-09-27 12:21-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -143,7 +143,7 @@ msgstr ""
 #: comm/comm.cc:210 date/date.cc:179 diff/diff.cc:214 env/env.cc:159
 #: getconf/getconf.cc:162 id/id.cc:355 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
 #: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 mesg/mesg.cc:84
-#: nice/nice.cc:90 pwd/pwd.cc:129 sleep/sleep.cc:78 split/split.cc:366
+#: nice/nice.cc:90 pwd/pwd.cc:128 sleep/sleep.cc:78 split/split.cc:364
 #: tsort/tsort.cc:251 tty/tty.cc:54 uname/uname.cc:95 unlink/unlink.cc:71
 #: uuencode/uuencode.cc:313
 #, c-format
@@ -589,12 +589,12 @@ msgstr ""
 msgid "rename '%s' to '%s': %s\n"
 msgstr ""
 
-#: mv/mv.cc:304
+#: mv/mv.cc:302
 #, c-format
 msgid "mv: too many arguments, when target is not directory\n"
 msgstr ""
 
-#: mv/mv.cc:343
+#: mv/mv.cc:340
 #, c-format
 msgid "missing source/target\n"
 msgstr "source/target manquant\n"
@@ -645,12 +645,12 @@ msgstr ""
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
-#: pathchk/pathchk.cc:99
+#: pathchk/pathchk.cc:97
 #, c-format
 msgid "component %s: length %zu exceeds limit %zu\n"
 msgstr ""
 
-#: pathchk/pathchk.cc:109
+#: pathchk/pathchk.cc:107
 #, c-format
 msgid "component %s contains non-portable char\n"
 msgstr ""
@@ -673,7 +673,7 @@ msgid ""
 "context of the pathname, refer to files of type symbolic link."
 msgstr ""
 
-#: pwd/pwd.cc:113
+#: pwd/pwd.cc:112
 msgid "getcwd(3) failed"
 msgstr ""
 
@@ -836,7 +836,7 @@ msgstr ""
 msgid "(standard input)"
 msgstr ""
 
-#: split/split.cc:373
+#: split/split.cc:372
 #, c-format
 msgid "prefix + suffix too large\n"
 msgstr ""
@@ -1110,7 +1110,7 @@ msgstr ""
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 
-#: libpu/alloc.cc:33 libpu/alloc.cc:41 libpu/alloc.cc:49 libpu/alloc.cc:57
+#: libpu/alloc.cc:33 libpu/alloc.cc:41 libpu/alloc.cc:49
 msgid "out of memory"
 msgstr "hors de la memoire"
 
