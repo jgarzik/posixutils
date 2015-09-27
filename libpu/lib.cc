@@ -52,8 +52,8 @@ struct argp_option no_options[] = { { } };
 
 static char buf[COPY_BUF_SZ];
 
-ssize_t copy_fd(const char *dest_fn, int dest_fd,
-		const char *src_fn, int src_fd)
+ssize_t copy_fd(const std::string& dest_fn, int dest_fd,
+		const std::string& src_fn, int src_fd)
 {
 	char *s;
 	ssize_t rc, wrc;
@@ -62,7 +62,7 @@ ssize_t copy_fd(const char *dest_fn, int dest_fd,
 	while (1) {
 		rc = read(src_fd, buf, sizeof(buf));
 		if (rc < 0) {
-			perror(src_fn);
+			perror(src_fn.c_str());
 			return -1;
 		}
 		if (rc == 0)
@@ -72,7 +72,7 @@ ssize_t copy_fd(const char *dest_fn, int dest_fd,
 		while (rc > 0) {
 			wrc = write(dest_fd, s, rc);
 			if (wrc < 0) {
-				perror(dest_fn);
+				perror(dest_fn.c_str());
 				return -1;
 			}
 
@@ -85,14 +85,14 @@ ssize_t copy_fd(const char *dest_fn, int dest_fd,
 	return bytes;
 }
 
-int write_fd(int fd, const void *buf_, size_t count, const char *fn)
+int write_fd(int fd, const void *buf_, size_t count, const std::string& fn)
 {
 	const char *buf = (const char *) buf_;
 
 	while (count > 0) {
 		ssize_t wrc = write(fd, buf, count);
 		if (wrc < 0) {
-			perror(fn);
+			perror(fn.c_str());
 			return 1;
 		}
 
@@ -113,23 +113,22 @@ error_t noopts_parse_opt (int key, char *arg, struct argp_state *state)
 	return ARGP_ERR_UNKNOWN;
 }
 
-int ask_question(const char *prefix, const char *msg,
-			const char *fn)
+bool ask_question(const string& prefix, const string& msg, const string& fn)
 {
 	char s[32], *src;
 
-	fprintf(stderr, msg, prefix, fn);
+	fprintf(stderr, msg.c_str(), prefix.c_str(), fn.c_str());
 
 	src = fgets_unlocked(s, sizeof(s), stdin);
 	if ((!src) || (toupper(s[0]) != 'Y'))
-		return 0;
+		return false;
 
-	return 1;
+	return true;
 }
 
-int have_dots(const char *fn)
+bool have_dots(const std::string& fn)
 {
-	return (!strcmp(fn, ".")) || (!strcmp(fn, ".."));
+	return ((fn == ".") || (fn == ".."));
 }
 
 void pu_init(void)

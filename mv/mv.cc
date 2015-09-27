@@ -256,8 +256,8 @@ static int move_file(const char *fn, const char *target)
 	if ((!opt_force) &&
 	    (access(target, F_OK) == 0) &&
 	    ((opt_interactive) || should_ask(target))) {
-		rc = ask_question(PFX, "%soverwrite '%s'? ", fn);
-		if (!rc)
+		bool arc = ask_question(PFX, "%soverwrite '%s'? ", fn);
+		if (!arc)
 			return 1;
 	}
 

@@ -220,20 +220,20 @@ struct walker {
 
 typedef int (*idir_actor_t)(int fd, const char *dirn, const char *basen);
 
-extern ssize_t copy_fd(const char *dest_fn, int dest_fd,
-		   const char *src_fn, int src_fd);
+extern ssize_t copy_fd(const std::string& dest_fn, int dest_fd,
+		const std::string& src_fn, int src_fd);
 extern int __walk_cmdline(struct cmdline_walker *cw, int idx);
 extern int walk_cmdline(struct cmdline_walker *cw);
 extern int parse_cmdline(struct cmdline_walker *cw);
 extern int write_buf(const void *, size_t);
-extern int write_fd(int fd, const void *buf, size_t count, const char *fn);
+extern int write_fd(int fd, const void *buf_, size_t count, const std::string& fn);
 extern error_t noopts_parse_opt (int key, char *arg, struct argp_state *state);
-extern int ask_question(const char *prefix, const char *msg, const char *fn);
+extern bool ask_question(const std::string& prefix, const std::string& msg, const std::string& fn);
 
 extern const char file_args_doc[];
 extern struct argp_option no_options[];
 extern bool path_split(const std::string& pathname, pathelem& pe);
-extern int have_dots(const char *fn);
+extern bool have_dots(const std::string& fn);
 extern void strsplit(const std::string& s,
 			   std::vector<std::string>& sv);
 extern void strsplit(const std::string& s, int delim,

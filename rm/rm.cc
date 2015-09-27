@@ -164,8 +164,8 @@ static int rm(int dirfd, const char *dirn, const char *basen)
 		}
 
 		if ((!opt_force) && should_prompt(&st)) {
-			int i = ask_question(PFX, "%srecurse into '%s'?  ", fn.c_str());
-			if (!i)
+			bool b = ask_question(PFX, "%srecurse into '%s'?  ", fn.c_str());
+			if (!b)
 				goto out;
 		}
 
@@ -177,8 +177,8 @@ static int rm(int dirfd, const char *dirn, const char *basen)
 		}
 	} else {
 		if ((!opt_force) && should_prompt(&st)) {
-			int i = ask_question(PFX, "%sremove '%s'?  ", fn.c_str());
-			if (!i)
+			bool b = ask_question(PFX, "%sremove '%s'?  ", fn.c_str());
+			if (!b)
 				goto out;
 		}
 

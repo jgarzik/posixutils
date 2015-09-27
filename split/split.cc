@@ -246,7 +246,7 @@ static int output_bytes(const char *buf, size_t len)
 		else
 			wlen = len;
 
-		rc = write_fd(output_fd, buf, wlen, output_fn.c_str());
+		rc = write_fd(output_fd, buf, wlen, output_fn);
 		if (rc)
 			return rc;
 
@@ -268,7 +268,7 @@ static int output_line(const char *s)
 	if (rc)
 		return rc;
 
-	rc = write_fd(output_fd, s, strlen(s), output_fn.c_str());
+	rc = write_fd(output_fd, s, strlen(s), output_fn);
 	if (rc)
 		return rc;
 
