@@ -25,6 +25,8 @@
 
 #include <sys/types.h>
 #include <stdlib.h>
+#include <string>
+#include <vector>
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -33,6 +35,8 @@
 #include <grp.h>
 #include <argp.h>
 #include <libpu.h>
+
+using namespace std;
 
 static const char doc[] =
 N_("id - return user identity");
@@ -62,7 +66,7 @@ static enum opt_mode {
 	ID_EGID,
 	ID_EUID,
 } opt_mode;
-static char *opt_user;
+static string opt_user;
 
 static const struct argp argp = { options, parse_opt, args_doc, doc };
 
@@ -103,44 +107,30 @@ static int user_in_group (const struct group *gr)
 	unsigned int i = 0;
 	char *s;
 
-	if (!opt_user)
+	if (opt_user.empty())
 		return 0;
 
 	while ((s = gr->gr_mem[i++]) != NULL)
-		if (!strcmp(s, opt_user))
+		if (!strcmp(s, opt_user.c_str()))
 			return 1;
 
 	return 0;
 }
 
-struct grpent;
-struct grpent {
+class grpent {
+public:
 	gid_t		gid;
-	struct grpent	*next;
-	char		name[0];
+	string		name;
+
+	grpent(gid_t gid_, const string& name_) : gid(gid_), name(name_) {}
 };
 
-static void add_grpent(struct grpent **head, struct grpent **tail_io,
-		      const struct group *gr)
+static bool match_groups(gid_t gid, gid_t egid, vector<grpent>& rv)
 {
-	struct grpent *ent, *tail = *tail_io;
+	bool rc = true;
+	rv.clear();
 
-	ent = (struct grpent *) xmalloc(sizeof(struct grpent) + strlen(gr->gr_name) + 1);
-	ent->gid = gr->gr_gid;
-	ent->next = NULL;
-	strcpy(ent->name, gr->gr_name);
-
-	if (!*head)
-		*head = ent;
-	if (tail)
-		tail->next = ent;
-	*tail_io = ent;
-}
-
-static struct grpent *match_groups(gid_t gid, gid_t egid)
-{
 	struct group *gr;
-	struct grpent *rc = NULL, *head = NULL, *tail = NULL;
 
 	setgrent();
 
@@ -150,20 +140,18 @@ static struct grpent *match_groups(gid_t gid, gid_t egid)
 		if (!gr) {
 			if (errno) {
 				perror("getgrent");
-				goto out;
+				rc = false;
 			}
 			break;
 		}
 
 		if (gr->gr_gid == gid || gr->gr_gid == egid ||
 		    user_in_group(gr)) {
-			add_grpent(&head, &tail, gr);
+			grpent ge(gr->gr_gid, gr->gr_name);
+			rv.push_back(ge);
 		}
 	}
 
-	rc = head;
-
-out:
 	endgrent();
 	return rc;
 }
@@ -222,43 +210,43 @@ static void pr_gid(gid_t gid, bool space, bool newline)
 	       newline ? "\n" : "");
 }
 
-static int id_grp_all(struct grpent *grp, gid_t gid, gid_t egid)
+static int id_grp_all(vector<grpent>& grp, gid_t gid, gid_t egid)
 {
-	struct grpent *tmp;
-	char *s, s1[64];
+	const char *s;
+	char s1[64];
 
-	tmp = grp;
-	while (tmp) {
+	for (unsigned int i = 0; i < grp.size(); i++) {
+		grpent& tmp = grp[i];
+
 		if (opt_name)
-			s = tmp->name;
+			s = tmp.name.c_str();
 		else {
 			snprintf(s1, sizeof(s1), "%Lu",
-				 (unsigned long long) tmp->gid);
+				 (unsigned long long) tmp.gid);
 			s = s1;
 		}
 
 		printf("%s%s%s",
-		       (tmp == grp) ? "" : " ",
+		       (i == 0) ? "" : " ",
 		       s,
-		       (!tmp->next) ? "\n" : "");
-
-		tmp = tmp->next;
+		       (i == (grp.size() - 1)) ? "\n" : "");
 	}
 
 	return 0;
 }
 
 static int id_def(uid_t uid, uid_t euid, gid_t gid, gid_t egid,
-		  struct grpent *grp)
+		  vector<grpent>& grp)
 {
 	struct passwd *pw;
 	struct group *gr;
 
+	bool have_opt_user = !opt_user.empty();
 	printf("uid=%Lu%s%s%s",
 	       (unsigned long long) uid,
-	       opt_user ? "(" : "",
-	       opt_user ? opt_user : "",
-	       opt_user ? ")" : "");
+	       have_opt_user ? "(" : "",
+	       have_opt_user ? opt_user.c_str() : "",
+	       have_opt_user ? ")" : "");
 
 	if (uid != euid) {
 		pw = getpwuid(euid);
@@ -285,16 +273,16 @@ static int id_def(uid_t uid, uid_t euid, gid_t gid, gid_t egid,
 		       gr ? ")" : "");
 	}
 
-	if (grp) {
-		struct grpent *tmp = grp;
+	if (!grp.empty()) {
 		printf(" groups=");
 
-		while (tmp) {
+		for (unsigned int i = 0; i < grp.size(); i++) {
+			grpent& tmp = grp[i];
+
 			printf("%s%Lu(%s)",
-			       (tmp == grp) ? "" : ",",
-			       (unsigned long long) tmp->gid,
-			       tmp->name);
-			tmp = tmp->next;
+			       (i == 0) ? "" : ",",
+			       (unsigned long long) tmp.gid,
+			       tmp.name.c_str());
 		}
 	}
 
@@ -308,17 +296,16 @@ static int do_id(void)
 	uid_t uid, euid;
 	gid_t gid, egid;
 	struct passwd *pw;
-	struct grpent *grp;
 
-	if (opt_user) {
+	if (!opt_user.empty()) {
 		errno = 0;
-		pw = getpwnam(opt_user);
+		pw = getpwnam(opt_user.c_str());
 		if (!pw) {
 			if (errno)
-				perror(opt_user);
+				perror(opt_user.c_str());
 			else
 				fprintf(stderr, "user '%s' not found\n",
-					opt_user);
+					opt_user.c_str());
 			return 1;
 		}
 
@@ -338,7 +325,7 @@ static int do_id(void)
 		if (opt_mode == ID_GRP_ALL || opt_mode == ID_DEF) {
 			pw = getpwuid(uid);
 			if (pw)
-				opt_user = xstrdup(pw->pw_name);
+				opt_user.assign(pw->pw_name);
 		}
 	}
 
@@ -348,8 +335,8 @@ static int do_id(void)
 	default:	break;
 	}
 
-	grp = match_groups(gid, egid);
-	if (!grp)
+	vector<grpent> grp;
+	if (!match_groups(gid, egid, grp))
 		return 1;
 
 	switch (opt_mode) {

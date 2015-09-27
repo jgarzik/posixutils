@@ -35,12 +35,14 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <libpu.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("pathchk - check whether file names are valid or portable");
@@ -73,20 +75,18 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 	PU_OPT_END
 }
 
-static char *find_fshandle(const char *path)
+static string find_fshandle(const string& path)
 {
 	struct pathelem *pe;
 	struct stat st;
-	char *ret_fshandle;
 
-	if ((lstat(path, &st) == 0) ||
-	    (!strcmp(path, "/")) ||
-	    (!strcmp(path, ".")))
-		return xstrdup(path);
+	if ((lstat(path.c_str(), &st) == 0) ||
+	    (path == "/") || (path == "."))
+		return path;
 
-	pe = path_split(path);
+	pe = path_split(path.c_str());
 
-	ret_fshandle = find_fshandle(pe->dirn);
+	string ret_fshandle = find_fshandle(pe->dirn);
 
 	path_free(pe);
 
@@ -138,26 +138,22 @@ static int pathchk_fn_actor(struct walker *w, const char *fn, const struct stat 
 		path_max = _POSIX_PATH_MAX;
 		name_max = _POSIX_NAME_MAX;
 	} else {
-		char *fshandle = find_fshandle(fn);
+		string fshandle = find_fshandle(fn);
 		long l;
 
-		l = pathconf(fshandle, _PC_PATH_MAX);
+		l = pathconf(fshandle.c_str(), _PC_PATH_MAX);
 		if (l < 0) {
-			perror(fshandle);
-			free(fshandle);
+			perror(fshandle.c_str());
 			return 1;
 		}
 		path_max = (size_t) l;
 
-		l = pathconf(fshandle, _PC_NAME_MAX);
+		l = pathconf(fshandle.c_str(), _PC_NAME_MAX);
 		if (l < 0) {
-			perror(fshandle);
-			free(fshandle);
+			perror(fshandle.c_str());
 			return 1;
 		}
 		name_max = (size_t) l;
-
-		free(fshandle);
 	}
 
 	if (strlen(fn) > path_max) {

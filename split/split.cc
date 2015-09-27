@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,6 +42,7 @@
 #include <libpu.h>
 #include <assert.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("split - split a file into pieces");
@@ -68,18 +70,17 @@ enum piece_mode_t {
 
 
 static char			inbuf[8192];
-static const char		*err_fn;
-static char			*suffix;
+static string			suffix;
 
 static uintmax_t		output_count;
 static int			output_fd = -1;
-static char			*output_fn;
+static string			output_fn;
 
 static int			opt_suffix_len	= 2;
 static uintmax_t		opt_piece_size	= 1000;
 static enum piece_mode_t	opt_piece_mode	= MODE_LINE;
-static const char		*opt_prefix	= "x";
-static const char		*opt_input_fn;
+static string			opt_prefix("x");
+static string			opt_input_fn;
 
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
@@ -154,11 +155,8 @@ static int incr_suffix(void)
 {
 	int i;
 
-	if (!suffix) {
-		suffix = (char *) xmalloc(opt_suffix_len + 1);
-		for (i = 0; i < opt_suffix_len; i++)
-			suffix[i] = 'a';
-		suffix[opt_suffix_len] = 0;
+	if (suffix.empty()) {
+		suffix.assign(opt_suffix_len, 'a');
 		return 0;
 	}
 
@@ -183,13 +181,12 @@ static int open_output(void)
 		if (rc)
 			return rc;
 
-		assert(output_fn == NULL);
-		output_fn = (char *) xmalloc(opt_suffix_len + strlen(opt_prefix) + 1);
-		sprintf(output_fn, "%s%s", opt_prefix, suffix);
+		assert(output_fn.size() == 0);
+		output_fn = opt_prefix + suffix;
 
-		output_fd = open(output_fn, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+		output_fd = open(output_fn.c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0666);
 		if (output_fd < 0) {
-			perror(output_fn);
+			perror(output_fn.c_str());
 			return 1;
 		}
 
@@ -208,13 +205,12 @@ static int close_output(void)
 		return 0;
 
 	if (close(output_fd) < 0) {
-		perror(output_fn);
+		perror(output_fn.c_str());
 		rc = 1;
 	}
-	free(output_fn);
 
 	output_fd = -1;
-	output_fn = NULL;
+	output_fn.clear();
 	output_count = 0;
 
 	return rc;
@@ -250,7 +246,7 @@ static int output_bytes(const char *buf, size_t len)
 		else
 			wlen = len;
 
-		rc = write_fd(output_fd, buf, wlen, output_fn);
+		rc = write_fd(output_fd, buf, wlen, output_fn.c_str());
 		if (rc)
 			return rc;
 
@@ -272,7 +268,7 @@ static int output_line(const char *s)
 	if (rc)
 		return rc;
 
-	rc = write_fd(output_fd, s, strlen(s), output_fn);
+	rc = write_fd(output_fd, s, strlen(s), output_fn.c_str());
 	if (rc)
 		return rc;
 
@@ -325,13 +321,14 @@ static int execute_split(void)
 {
 	FILE *f;
 	int rc = 0;
+	string err_fn;
 
-	if ((opt_input_fn == NULL) || (!strcmp(opt_input_fn, "-"))) {
+	if ((opt_input_fn.empty()) || (opt_input_fn == "-")) {
 		f = stdin;
 		err_fn = _("(standard input)");
 	} else {
 		err_fn = opt_input_fn;
-		if (ro_file_open(&f, opt_input_fn))
+		if (ro_file_open(&f, opt_input_fn.c_str()))
 			return 1;
 	}
 
@@ -345,15 +342,15 @@ static int execute_split(void)
 	}
 
 	if (ferror(f)) {
-		perror(err_fn);
+		perror(err_fn.c_str());
 		rc = 1;
 	}
 
 	rc |= close_output();
 
-	if (opt_input_fn != NULL)
+	if (!opt_input_fn.empty())
 		if (fclose(f))
-			perror(opt_input_fn);
+			perror(opt_input_fn.c_str());
 
 	return EXIT_FAILURE;
 }
@@ -371,7 +368,7 @@ int main (int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	pe = path_split(opt_prefix);
+	pe = path_split(opt_prefix.c_str());
 	if ((strlen(pe->basen) + opt_suffix_len) > NAME_MAX) {
 		fprintf(stderr, _("prefix + suffix too large\n"));
 		return 1;

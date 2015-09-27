@@ -27,6 +27,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <string>
+#include <vector>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -36,6 +38,7 @@
 #include <paths.h>
 #include <libpu.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("df - report filesystem disk space usage");
@@ -61,12 +64,12 @@ static const struct argp argp = { options, parse_opt, args_doc, doc };
 
 static struct walker walker;
 
-struct fslist {
-	char			*devname;
-	char			*dir;
+class FSListEnt {
+public:
+	string			devname;
+	string			dir;
 	dev_t			dev;
 	bool			masked;
-	struct fslist		*next;
 };
 
 static uintmax_t opt_block_size = 512;
@@ -74,7 +77,7 @@ static bool opt_portable;
 static bool opt_total_alloc;
 static bool fslist_masked;
 
-static struct fslist *fslist, *fslist_last;
+static vector<FSListEnt> fslist;
 
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
@@ -96,24 +99,18 @@ static void push_mntent(struct mntent *me)
 {
 	struct stat st;
 
-	struct fslist *fl = (struct fslist *) xcalloc(1, sizeof(struct fslist));
-	fl->devname = xstrdup(me->mnt_fsname);
-	fl->dir = xstrdup(me->mnt_dir);
+	FSListEnt fl;
+	fl.devname.assign(me->mnt_fsname);
+	fl.dir.assign(me->mnt_dir);
 
-	if (stat(fl->devname, &st) == 0)
-		fl->dev = st.st_rdev;
-	else if (stat(fl->dir, &st) == 0)
-		fl->dev = st.st_dev;
+	if (stat(fl.devname.c_str(), &st) == 0)
+		fl.dev = st.st_rdev;
+	else if (stat(fl.dir.c_str(), &st) == 0)
+		fl.dev = st.st_dev;
 	else
-		fl->dev = (dev_t) -1;
+		fl.dev = (dev_t) -1;
 
-	if (!fslist) {
-		fslist = fl;
-		fslist_last = fl;
-	} else {
-		fslist_last->next = fl;
-		fslist_last = fl;
-	}
+	fslist.push_back(fl);
 }
 
 static int read_mntlist(void)
@@ -136,14 +133,13 @@ static int read_mntlist(void)
 
 static int df_arg(struct walker *w, const char *fn, const struct stat *st)
 {
-	struct fslist *tmp = fslist;
-
 	fslist_masked = true;
 
-	while (tmp) {
-		if (tmp->dev == st->st_dev)
-			tmp->masked = true;
-		tmp = tmp->next;
+	for (unsigned int i = 0; i < fslist.size(); i++) {
+		FSListEnt& tmp = fslist[i];
+
+		if (tmp.dev == st->st_dev)
+			tmp.masked = true;
 	}
 
 	return 0;
@@ -151,21 +147,18 @@ static int df_arg(struct walker *w, const char *fn, const struct stat *st)
 
 static void df_mask_all(void)
 {
-	struct fslist *tmp = fslist;
-	while (tmp) {
-		tmp->masked = true;
-		tmp = tmp->next;
-	}
+	for (unsigned int i = 0; i < fslist.size(); i++)
+		fslist[i].masked = true;
 }
 
-static int df_output(struct fslist *fl)
+static int df_output(FSListEnt& fl)
 {
 	struct statfs sf;
 	uintmax_t blksz, total, used, avail, free, pct;
 	const char *fmt;
 
-	if (statfs(fl->dir, &sf) < 0) {
-		perror(fl->dir);
+	if (statfs(fl.dir.c_str(), &sf) < 0) {
+		perror(fl.dir.c_str());
 		return 1;
 	}
 
@@ -196,19 +189,18 @@ static int df_output(struct fslist *fl)
 		fmt = _("%-20s %9" PRIuMAX " %9" PRIuMAX " %9" PRIuMAX " %3" PRIuMAX "%% %s\n");
 
 	printf(fmt,
-	       fl->devname,
+	       fl.devname.c_str(),
 	       total,
 	       used,
 	       avail,
 	       pct,
-	       fl->dir);
+	       fl.dir.c_str());
 
 	return 0;
 }
 
 static int df_output_fslist(void)
 {
-	struct fslist *tmp = fslist;
 	int rc = 0;
 
 	if (opt_portable)
@@ -218,10 +210,11 @@ static int df_output_fslist(void)
 		printf(_("Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"),
 	       		opt_block_size);
 
-	while (tmp) {
-		if (tmp->masked)
+	for (unsigned int i = 0; i < fslist.size(); i++) {
+		FSListEnt& tmp = fslist[i];
+
+		if (tmp.masked)
 			rc |= df_output(tmp);
-		tmp = tmp->next;
 	}
 
 	return rc;
@@ -249,3 +242,4 @@ int main (int argc, char *argv[])
 	walker.cmdline_arg		= df_arg;
 	return walk(&walker, argc, argv);
 }
+

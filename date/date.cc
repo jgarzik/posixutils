@@ -25,12 +25,14 @@
 #define _BSD_SOURCE
 
 #include <stdlib.h>
+#include <string>
 #include <string.h>
 #include <time.h>
 #include <sys/time.h>
 #include <argp.h>
 #include <libpu.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("date - print or set the system date and time");
@@ -168,7 +170,7 @@ static int input_date(const char *date_str)
 int main (int argc, char *argv[])
 {
 	int rc, idx = -1;
-	char *old_tz = NULL;
+	string old_tz;
 
 	pu_init();
 
@@ -182,7 +184,7 @@ int main (int argc, char *argv[])
 	if (opt_utc) {
 		char *s = getenv("TZ");
 		if (s)
-			old_tz = xstrdup(s);
+			old_tz.assign(s);
 		rc = setenv("TZ", "UTC0", 1);
 		if (rc < 0) {
 			perror("setenv");
@@ -197,8 +199,8 @@ int main (int argc, char *argv[])
 	else
 		rc = input_date(argv[idx]);
 
-	if (old_tz)
-		setenv("TZ", old_tz, 1);
+	if (!old_tz.empty())
+		setenv("TZ", old_tz.c_str(), 1);
 
 	return rc;
 }

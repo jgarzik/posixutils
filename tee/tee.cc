@@ -25,6 +25,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/select.h>
+#include <vector>
+#include <string>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -33,6 +35,8 @@
 #include <signal.h>
 #include <string.h>
 #include <libpu.h>
+
+using namespace std;
 
 #define PFX "tee: "
 
@@ -53,76 +57,68 @@ static int build_flist_actor(struct walker *w, const char *fn, const struct stat
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
 static const struct argp argp = { options, parse_opt, file_args_doc, doc };
 
-static struct walker walker;
-
-#define ERRSTR_NOMEM PFX "out of memory\n"
-#define REALLY_FREE
-#define TEE_BUF_SZ 8192
-
-static char buf[TEE_BUF_SZ];
 static bool opt_append;
 static bool opt_sigint;
 
-struct tee_flist {
-	const char *fn;
-	int fd;
-	struct tee_flist *next;
-	unsigned int skip;
+static struct walker walker;
+
+enum {
+	TEE_BUF_SZ = 8192,
 };
 
-static struct tee_flist *flist_root;
+class FileEnt {
+public:
+	const char *fn;
+	int fd;
+	bool skip;
+
+	FileEnt() : fn(NULL), fd(-1), skip(false) {}
+};
+
+static vector<FileEnt> files;
 
 static int free_flist(void)
 {
-	struct tee_flist *tmp;
 	int err = 0;
 
-	while (flist_root) {
-		tmp = flist_root;
-		flist_root = flist_root->next;
+	for (unsigned int fidx = 0; fidx < files.size(); fidx++) {
+		FileEnt& tmp = files[fidx];
 
-		if (close(tmp->fd) < 0) {
-			perror(tmp->fn);
-			err |= 1;
+		if (close(tmp.fd) < 0) {
+			perror(tmp.fn);
+			err = 1;
 		}
-
-#ifdef REALLY_FREE
-		free(tmp);
-#endif
 	}
-
-	flist_root = NULL;
 
 	return err;
 }
 
 static int tee_output_bytes(const char *buf, ssize_t buflen)
 {
-	struct tee_flist *tmp = flist_root;
 	ssize_t wrc, to_write;
 	const char *s;
 	int err = 0;
 
-	while (tmp) {
-		if (!tmp->skip) {
-			s = buf;
-			to_write = buflen;
+	for (unsigned int fidx = 0; fidx < files.size(); fidx++) {
+		FileEnt& tmp = files[fidx];
+		if (tmp.skip)
+			continue;
 
-			while (to_write > 0) {
-				wrc = write(tmp->fd, s, to_write);
-				if (wrc < 1) {
-					perror(tmp->fn);
-					tmp->skip = 1;
-					err = 1;
-					break;
-				}
+		s = buf;
+		to_write = buflen;
 
-				s += wrc;
-				to_write -= wrc;
+		while (to_write > 0) {
+			wrc = write(tmp.fd, s, to_write);
+			if (wrc < 1) {
+				perror(tmp.fn);
+				tmp.skip = true;
+				err = 1;
+				break;
 			}
-		}
 
-		tmp = tmp->next;
+			s += wrc;
+			to_write -= wrc;
+		}
 	}
 
 	return err;
@@ -144,6 +140,8 @@ static int tee_output(void)
 	FD_ZERO(&rd_set);
 	FD_ZERO(&err_set);
 	while (1) {
+		char buf[TEE_BUF_SZ];
+
 		FD_SET(STDIN_FILENO, &rd_set);
 		FD_SET(STDIN_FILENO, &err_set);
 
@@ -173,30 +171,24 @@ out:
 
 static int build_flist_actor(struct walker *w, const char *fn, const struct stat *lst)
 {
-	struct tee_flist *new_ent, *tmp;
 	int open_flags;
-	int fd;
 
 	if (opt_append)
 		open_flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
 		open_flags = O_WRONLY | O_CREAT | O_TRUNC;
 
-	fd = open(fn, open_flags, 0666);
+	int fd = open(fn, open_flags, 0666);
 	if (fd < 0) {
 		perror(fn);
 		return 1;
 	}
 
-	new_ent = (struct tee_flist *) xmalloc(sizeof(*new_ent));
-	new_ent->fn = fn;
-	new_ent->fd = fd;
-	new_ent->next = NULL;
+	FileEnt new_ent;
+	new_ent.fn = fn;
+	new_ent.fd = fd;
 
-	tmp = flist_root;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new_ent;
+	files.push_back(new_ent);
 
 	return 0;
 }
@@ -213,15 +205,13 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 static int tee_init(struct walker *w, int argc, char **argv)
 {
-	struct tee_flist *new_ent;
-
 	pu_init();
 
-	new_ent = (struct tee_flist *) xmalloc(sizeof(*new_ent));
-	new_ent->fn = STDOUT_NAME;
-	new_ent->fd = STDOUT_FILENO;
-	new_ent->next = NULL;
-	flist_root = new_ent;
+	FileEnt new_ent;
+	new_ent.fn = STDOUT_NAME;
+	new_ent.fd = STDOUT_FILENO;
+
+	files.push_back(new_ent);
 
 	return 0;
 }

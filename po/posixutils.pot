@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-26 20:43-0400\n"
+"POT-Creation-Date: 2015-09-27 11:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,59 +136,59 @@ msgstr ""
 msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 
-#: comm/comm.cc:210 date/date.cc:177 diff/diff.cc:214 env/env.cc:159
-#: getconf/getconf.cc:162 id/id.cc:368 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
+#: comm/comm.cc:210 date/date.cc:179 diff/diff.cc:214 env/env.cc:159
+#: getconf/getconf.cc:162 id/id.cc:355 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
 #: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 mesg/mesg.cc:84
-#: nice/nice.cc:90 pwd/pwd.cc:129 sleep/sleep.cc:78 split/split.cc:369
+#: nice/nice.cc:90 pwd/pwd.cc:129 sleep/sleep.cc:78 split/split.cc:366
 #: tsort/tsort.cc:251 tty/tty.cc:54 uname/uname.cc:95 unlink/unlink.cc:71
 #: uuencode/uuencode.cc:313
 #, c-format
 msgid "%s: argp_parse failed: %s\n"
 msgstr ""
 
-#: date/date.cc:36
+#: date/date.cc:38
 msgid "date - print or set the system date and time"
 msgstr ""
 
-#: date/date.cc:42
+#: date/date.cc:44
 msgid ""
 "Perform operations as if the TZ environment variable was set to the string "
 "\"UTC0\""
 msgstr ""
 
-#: df/df.cc:41
+#: df/df.cc:44
 msgid "df - report filesystem disk space usage"
 msgstr ""
 
-#: df/df.cc:47
+#: df/df.cc:50
 msgid "Use 1024-byte units, instead of the default 512-byte units"
 msgstr ""
 
-#: df/df.cc:49
+#: df/df.cc:52
 msgid "Use POSIX-defined output format"
 msgstr ""
 
-#: df/df.cc:51
+#: df/df.cc:54
 msgid "Include total allocated-space figures in the output."
 msgstr ""
 
-#: df/df.cc:194
+#: df/df.cc:187
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %7<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df/df.cc:196
+#: df/df.cc:189
 #, c-format
 msgid "%-20s %9<PRIuMAX> %9<PRIuMAX> %9<PRIuMAX> %3<PRIuMAX>%% %s\n"
 msgstr ""
 
-#: df/df.cc:215
+#: df/df.cc:207
 #, c-format
 msgid ""
 "Filesystem         %4ju-blocks      Used Available Capacity Mounted on\n"
 msgstr ""
 
-#: df/df.cc:218
+#: df/df.cc:210
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
 msgstr ""
@@ -343,7 +343,7 @@ msgstr ""
 msgid "invalid pattern '%s': %s\n"
 msgstr ""
 
-#: grep/grep.cc:454
+#: grep/grep.cc:436
 #, c-format
 msgid "no patterns specified"
 msgstr ""
@@ -356,31 +356,31 @@ msgstr ""
 msgid "first number lines of each input file to copy to stdout"
 msgstr ""
 
-#: id/id.cc:38
+#: id/id.cc:42
 msgid "id - return user identity"
 msgstr ""
 
-#: id/id.cc:40
+#: id/id.cc:44
 msgid "[user]"
 msgstr ""
 
-#: id/id.cc:43
+#: id/id.cc:47
 msgid "Output only the effective group ID"
 msgstr ""
 
-#: id/id.cc:45
+#: id/id.cc:49
 msgid "Output all different group IDs"
 msgstr ""
 
-#: id/id.cc:47
+#: id/id.cc:51
 msgid "Output the name instead of the numeric ID"
 msgstr ""
 
-#: id/id.cc:49
+#: id/id.cc:53
 msgid "Output the real ID instead of the effective ID"
 msgstr ""
 
-#: id/id.cc:51
+#: id/id.cc:55
 msgid "Output only the effective user ID"
 msgstr ""
 
@@ -614,16 +614,11 @@ msgstr ""
 msgid "execvp(3)"
 msgstr ""
 
-#: nohup/nohup.cc:50 nohup/nohup.cc:53
-#, c-format
-msgid "nohup.out"
-msgstr ""
-
-#: nohup/nohup.cc:62
+#: nohup/nohup.cc:64
 msgid "stdout redirect failed"
 msgstr ""
 
-#: nohup/nohup.cc:66
+#: nohup/nohup.cc:68
 #, c-format
 msgid "nohup: appending output to '%s'\n"
 msgstr ""
@@ -637,11 +632,11 @@ msgstr ""
 msgid "nohup: no arguments\n"
 msgstr ""
 
-#: pathchk/pathchk.cc:46
+#: pathchk/pathchk.cc:48
 msgid "pathchk - check whether file names are valid or portable"
 msgstr ""
 
-#: pathchk/pathchk.cc:52
+#: pathchk/pathchk.cc:54
 msgid "Base checks on universal POSIX limits, not path-specific limits"
 msgstr ""
 
@@ -806,36 +801,36 @@ msgstr ""
 msgid "The keydef argument is a restricted sort key field definition"
 msgstr ""
 
-#: split/split.cc:46
+#: split/split.cc:48
 msgid "split - split a file into pieces"
 msgstr ""
 
-#: split/split.cc:48
+#: split/split.cc:50
 msgid "[file [prefix]]"
 msgstr ""
 
-#: split/split.cc:52
+#: split/split.cc:54
 msgid ""
 "Use N letters to form the suffix portion of the filenames of the split file"
 msgstr ""
 
-#: split/split.cc:54
+#: split/split.cc:56
 msgid "Split a file into pieces n bytes in size"
 msgstr ""
 
-#: split/split.cc:56
+#: split/split.cc:58
 msgid "Specify the number of lines in each resulting file piece"
 msgstr ""
 
-#: split/split.cc:287
+#: split/split.cc:283
 msgid "setvbuf(3) failed"
 msgstr ""
 
-#: split/split.cc:331
+#: split/split.cc:328
 msgid "(standard input)"
 msgstr ""
 
-#: split/split.cc:376
+#: split/split.cc:373
 #, c-format
 msgid "prefix + suffix too large\n"
 msgstr ""
@@ -901,15 +896,15 @@ msgstr ""
 msgid "tabs: buffer overflow\n"
 msgstr ""
 
-#: tee/tee.cc:40
+#: tee/tee.cc:44
 msgid "tee - read from standard input and write to standard output and files"
 msgstr ""
 
-#: tee/tee.cc:44
+#: tee/tee.cc:48
 msgid "Append the output to the files"
 msgstr ""
 
-#: tee/tee.cc:46
+#: tee/tee.cc:50
 msgid "Ignore the SIGINT signal"
 msgstr ""
 
@@ -1113,6 +1108,6 @@ msgstr ""
 msgid "out of memory"
 msgstr ""
 
-#: libpu/lib.cc:44
+#: libpu/lib.cc:47
 msgid "file..."
 msgstr ""

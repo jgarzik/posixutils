@@ -1,14 +1,23 @@
 #!/bin/sh
 
 TEST_UID=`./id -ur`
-TEST_EUID=`./id -u`
-
+if [ $? -ne 0 ]
+then
+	echo T1 failed
+	exit 1
+fi
 if [ $UID -ne $TEST_UID ]
 then
 	echo "basic-id: uid $UID != test uid $TEST_UID"
 	exit 1
 fi
 
+TEST_EUID=`./id -u`
+if [ $? -ne 0 ]
+then
+	echo T3 failed
+	exit 1
+fi
 if [ $EUID -ne $TEST_EUID ]
 then
 	echo "basic-id: uid $EUID != test uid $TEST_EUID"

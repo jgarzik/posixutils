@@ -1,4 +1,11 @@
 #!/bin/sh
 
-# TODO
-exit 77
+./date
+if [ $? -ne 0 ]
+then
+	echo T1 failed
+	exit 1
+fi
+
+exit 0
+

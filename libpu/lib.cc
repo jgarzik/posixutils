@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <string>
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -40,6 +41,8 @@
 #include <ctype.h>
 #include <locale.h>
 #include <libpu.h>
+
+using namespace std;
 
 const char file_args_doc[] = N_("file...");
 
@@ -172,40 +175,38 @@ int iterate_directory(int old_dirfd, const char *dirfn, const char *basen,
 		      int opt_force, idir_actor_t actor)
 {
 	DIR *dir;
-	char *fn;
 	int dirfd, rc = 0;
 	struct dirent *de;
 
-	fn = (char *) xmalloc(strlen(dirfn) + strlen(basen) + 2);
-	sprintf(fn, "%s/%s", dirfn, basen);
+	string fn = dirfn + string("/") + basen;
 
 	dirfd = open(basen, O_DIRECTORY);
 	if (dirfd < 0) {
 		if (!opt_force) {
-			perror(fn);
+			perror(fn.c_str());
 			rc = 1;
 			goto out;
 		}
 	}
 
 	if (fchdir(dirfd) < 0) {
-		perror(fn);
+		perror(fn.c_str());
 		rc = 1;
 		goto out_fd;
 	}
 
 	dir = opendir(".");
 	if (!dir) {
-		perror(fn);
+		perror(fn.c_str());
 		rc = 1;
 		goto out_chdir;
 	}
 
 	while ((de = readdir(dir)) != NULL)
-		rc |= actor(dirfd, fn, de->d_name);
+		rc |= actor(dirfd, fn.c_str(), de->d_name);
 
 	if (closedir(dir) < 0) {
-		perror(fn);
+		perror(fn.c_str());
 		rc = 1;
 	}
 
@@ -216,11 +217,10 @@ out_chdir:
 	}
 out_fd:
 	if (close(dirfd) < 0) {
-		perror(fn);
+		perror(fn.c_str());
 		rc = 1;
 	}
 out:
-	free(fn);
 	return rc;
 }
 

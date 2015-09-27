@@ -29,14 +29,18 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
 #include <string.h>
 #include <signal.h>
 #include <libpu.h>
 
+using namespace std;
 
 enum {
 	NOHUP_ERR		= 127,
 };
+
+#define OUTPUT_FN "nohup.out"
 
 static int redirect_fd = STDOUT_FILENO;
 
@@ -44,17 +48,15 @@ static int redirect_fd = STDOUT_FILENO;
 static void redirect_stdout(void)
 {
 	const char *home_env = getenv("HOME");
-	char *fn = (char *) xmalloc((home_env ? strlen(home_env) : 0) + 10);
-	int fd;
+	string fn = OUTPUT_FN;
 
-	sprintf(fn, _("nohup.out"));
-	fd = open(fn, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+	int fd = open(fn.c_str(), O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
 	if ((fd < 0) && home_env) {
-		sprintf(fn, "%s/%s", home_env, _("nohup.out"));
-		fd = open(fn, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+		fn = home_env + string("/") + fn;
+		fd = open(fn.c_str(), O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
 	}
 	if (fd < 0) {
-		perror(fn);
+		perror(fn.c_str());
 		exit(NOHUP_ERR);
 	}
 
@@ -63,9 +65,7 @@ static void redirect_stdout(void)
 		exit(NOHUP_ERR);
 	}
 
-	fprintf(stderr, _("nohup: appending output to '%s'\n"), fn);
-
-	free(fn);
+	fprintf(stderr, _("nohup: appending output to '%s'\n"), fn.c_str());
 
 	redirect_fd = fd;
 }

@@ -192,34 +192,16 @@ static void add_pattern(const string& pat_str)
 	patterns.push_back(pat);
 }
 
-static void add_patterns(const char *pattern_list_in)
+static void add_patterns(const string& pattern_list_)
 {
-	char *pattern_list = xstrdup(pattern_list_in);
-	size_t len = strlen(pattern_list_in);
+	string pattern_list(pattern_list_);
 
-	while (len > 0) {
-		char *nl;
-		int i;
+	vector<string> sv;
+	strsplit(pattern_list, '\n', sv);
 
-		/* search for newline */
-		nl = (char *) memchr(pattern_list, '\n', len);
-
-		/* if no newline, this is last pattern in list */
-		if (!nl) {
-			add_pattern(pattern_list);
-			break;
-		}
-
-		/* null-terminate string at newline, add as pattern */
-		*nl = 0;
-		i = nl - pattern_list;
-		add_pattern(pattern_list);
-
-		/* advance to next pattern, if any */
-		i++;	/* include newline now */
-		pattern_list += i;
-		len -= i;
-	}
+	for (unsigned int i = 0; i < sv.size(); i++)
+		if (!sv[i].empty())
+			add_pattern(sv[i]);
 }
 
 static void add_pattern_file(const char *fn)
