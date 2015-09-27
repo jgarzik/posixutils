@@ -163,7 +163,7 @@ long octal_str(const char *s, int len)
 	sprintf(fmt, "%%%dlo", len);
 	if (sscanf(octal, fmt, &l) != 1)
 		return -1;
-	
+
 	return l;
 }
 

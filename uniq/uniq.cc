@@ -78,7 +78,7 @@ static int write_last_line(void)
 		rc = fprintf(outf, "%lu %s", last_line_dups, last_line);
 	else
 		rc = fprintf(outf, "%s", last_line);
-	
+
 	return (rc < 0);
 }
 
@@ -105,7 +105,7 @@ static int process_line(const char *line)
 
 	if (have_last_line && write_last_line())
 		return 1;
-	
+
 	memcpy(last_line, line, line_len + 1);
 	last_line_len = line_len;
 	last_line_dups = 1;

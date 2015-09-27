@@ -82,7 +82,7 @@ static char *add_token(const char *buf, size_t buflen, bool ok_add)
 	/* TODO: use a hash table or tree */
 	for (i = 0; i < dict_size; i++) {
 		size_t slen;
-		
+
 		slen = strlen(dict[i]);
 		if (slen == buflen && !memcmp(buf, dict[i], slen))
 			return dict[i];
@@ -197,11 +197,11 @@ static int compare_items(const void *_a, const void *_b)
 
 	if (a == b)
 		return 0;
-	
+
 	max_recurse = 4000000;		/* crude hack! */
 	if (item_precedes(a, b))
 		return -1;
-	
+
 	return 1;
 }
 
@@ -214,7 +214,7 @@ static int do_sort(void)
 	memcpy(out_vals, dict, sizeof(char *) * dict_size);
 
 	qsort(out_vals, dict_size, sizeof(char *), compare_items);
-	
+
 	return 0;
 }
 

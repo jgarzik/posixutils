@@ -43,7 +43,7 @@ char *xtigetstr(const char *capname)
 	char *s = tigetstr(capname);
 	if (s == (char *)-1)
 		s = NULL;
-	
+
 	return s;
 }
 

@@ -236,7 +236,7 @@ static bool push_str(const char *val)
 	val_len = strlen(val);
 	if (outbuf_avail < val_len)
 		return false;
-	
+
 	strcat(outbuf, val);
 	outbuf_avail -= val_len;
 

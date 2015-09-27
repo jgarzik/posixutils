@@ -145,7 +145,7 @@ static int cpio_hdr_name(struct cpio_state *state)
 	buflen -= (bytes);				\
 	state->input_bytes += (bytes);			\
 	} while (0)
-	
+
 static int cpio_input(const char *buf_in, size_t *buflen_io)
 {
 	struct cpio_state *state = &global_state;

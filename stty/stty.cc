@@ -341,10 +341,10 @@ static int param_speed(unsigned int speed, bool is_input)
 		rc = cfsetispeed(&ti, bits);
 	else
 		rc = cfsetospeed(&ti, bits);
-	
+
 	if (rc < 0)
 		return 1;
-	
+
 	return 0;
 }
 

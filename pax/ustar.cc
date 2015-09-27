@@ -249,7 +249,7 @@ static int ustar_input_record(struct ustar_state *state, const char *buf)
 	if (state->data_blocks)
 		return ustar_data_record(state, buf);
 
-	/* otherwise, we're at a header or EOF record.  end the 
+	/* otherwise, we're at a header or EOF record.  end the
 	 * previous file
 	 */
 	if (state->seen_first_block) {
