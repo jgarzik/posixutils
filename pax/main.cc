@@ -29,6 +29,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <vector>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -404,7 +405,6 @@ static int pax_read_archive(void)
 	int fd = STDIN_FILENO;
 	int have_stdin = 1;
 	int rc = 0;
-	char *buf;
 
 	if (opt_mode == PM_LIST) {
 		pax_ops.file_start = pax_list;
@@ -423,7 +423,7 @@ static int pax_read_archive(void)
 	}
 
 	assert(block_size > 0);
-	buf = (char *) xmalloc(block_size);
+	vector<char> buf(block_size);
 
 	pax_ops.input_init();
 
@@ -431,7 +431,7 @@ static int pax_read_archive(void)
 		ssize_t rrc;
 		int prc;
 
-		rrc = read(fd, buf, block_size);
+		rrc = read(fd, &buf[0], block_size);
 		if (rrc == 0)
 			break;
 		if (rrc < 0) {
@@ -441,7 +441,7 @@ static int pax_read_archive(void)
 		}
 
 		size_t buflen = rrc;
-		prc = pax_ops.input(buf, &buflen);
+		prc = pax_ops.input(&buf[0], &buflen);
 		if (prc < 0) {
 			fprintf(stderr, "input failed: err %d\n", prc);
 			rc = 1;
@@ -452,7 +452,6 @@ static int pax_read_archive(void)
 	pax_ops.input_fini();
 
 out:
-	free(buf);
 	if ((!have_stdin) && (close(fd) < 0))
 		perror(pr_fn);
 	return rc;

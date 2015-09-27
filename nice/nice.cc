@@ -80,8 +80,8 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 
 int main (int argc, char *argv[])
 {
-	char **nice_args;
-	int n_args, i, idx;
+	int idx;
+	unsigned int n_args, i;
 
 	pu_init();
 
@@ -100,7 +100,7 @@ int main (int argc, char *argv[])
 	n_args = argc - idx;
 	assert(n_args >= 1);
 
-	nice_args = (char **) xmalloc((n_args + 1) * sizeof(char *));
+	char *nice_args[n_args + 1];
 
 	for (i = 0; i < n_args; i++)
 		nice_args[i] = argv[idx + i];

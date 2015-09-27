@@ -6,7 +6,7 @@ noinst_LIBRARIES = libpu.a
 noinst_PROGRAMS = libpu-tests
 
 libpu_a_SOURCES = \
-	alloc.cc cmdline.cc lib.cc path.cc regex.cc \
+	cmdline.cc lib.cc path.cc regex.cc \
 	strsplit.cc term.cc walk.cc
 
 libpu_tests_SOURCES = libpu-tests.cc

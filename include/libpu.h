@@ -229,13 +229,11 @@ extern int walk_cmdline(struct cmdline_walker *cw);
 extern int parse_cmdline(struct cmdline_walker *cw);
 extern int write_buf(const void *, size_t);
 extern int write_fd(int fd, const void *buf, size_t count, const char *fn);
-extern void die(const char *msg);
 extern error_t noopts_parse_opt (int key, char *arg, struct argp_state *state);
 extern int ask_question(const char *prefix, const char *msg, const char *fn);
 
 extern const char file_args_doc[];
 extern struct argp_option no_options[];
-extern void *xmalloc(size_t size);
 extern bool path_split(const std::string& pathname, pathelem& pe);
 extern int have_dots(const char *fn);
 extern void strsplit(const std::string& s,

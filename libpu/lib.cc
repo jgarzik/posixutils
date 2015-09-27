@@ -108,12 +108,6 @@ int write_buf(const void *buf, size_t len)
 	return write_fd(STDOUT_FILENO, buf, len, STDOUT_NAME);
 }
 
-void die(const char *msg)
-{
-	fprintf(stderr, "%s\n", msg);
-	exit(1);
-}
-
 error_t noopts_parse_opt (int key, char *arg, struct argp_state *state)
 {
 	return ARGP_ERR_UNKNOWN;

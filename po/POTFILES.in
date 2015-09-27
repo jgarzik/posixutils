@@ -51,5 +51,4 @@ uuencode/uuencode.cc
 wc/wc.cc
 what/what.cc
 
-libpu/alloc.cc
 libpu/lib.cc

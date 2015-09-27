@@ -43,6 +43,20 @@
 using namespace std;
 
 
+static void die(const char *msg)
+{
+	fprintf(stderr, "%s\n", msg);
+	exit(1);
+}
+
+static void *xmalloc(size_t size)
+{
+	void *mem = malloc(size);
+	if (!mem)
+		die(_("out of memory"));
+	return mem;
+}
+
 static int walk_dirent(struct walker *w, int dirfd,
 		       const char *dirn, const char *basen);
 

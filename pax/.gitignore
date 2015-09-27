@@ -1,2 +1,6 @@
 pax
 pax-options.h
+
+*.log
+*.trs
+

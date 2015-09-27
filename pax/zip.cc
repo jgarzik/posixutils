@@ -36,6 +36,7 @@
 
 enum random_zip_constants {
 	OUTBUF_SZ			= (128 * 1024),
+	MAX_EXTRA			= (64 * 1024),
 
 	ZFL_DATA_DESC			= (1 << 3), /* data desc. present */
 };
@@ -157,14 +158,11 @@ struct zip_state {
 
 	struct zip_local_file_hdr	input_hdr;
 	struct zip_data_desc		input_data_desc;
-	char				*extra;
 
 	unsigned long			crc;
 
 	struct zip_central_dir_hdr	central_dir_hdr;
 	struct zip_end_central_dir_hdr	end_central_dir_hdr;
-
-	char				*outbuf;
 
 	unsigned int			data_bytes;
 
@@ -174,6 +172,9 @@ struct zip_state {
 	enum zip_input_state		sch_next_state;
 
 	z_stream			zs;
+
+	char				extra[MAX_EXTRA];
+	char				outbuf[OUTBUF_SZ];
 };
 
 static struct zip_state global_state;
@@ -215,15 +216,15 @@ static void zip_input_init(void)
 	memset(state, 0, sizeof(*state));
 
 	state->input_state = ZS_BEGIN_REC;
-
-	state->outbuf = (char *) xmalloc(OUTBUF_SZ);
 }
 
 static void zip_input_fini(void)
 {
 	struct zip_state *state = &global_state;
 
-	free(state->outbuf);
+	// do nothing
+
+	(void) state;
 }
 
 #undef X2
@@ -308,8 +309,6 @@ static int zip_file_hdr_end(struct zip_state *state)
 	struct zip_local_file_hdr *hdr = &state->input_hdr;
 	struct pax_file_info *fi = &state->curfile;
 
-	free(state->extra);
-
 	pax_fi_clear(fi);
 
 	zip_swap_lfh(hdr);
@@ -319,8 +318,6 @@ static int zip_file_hdr_end(struct zip_state *state)
 	fi->compressed_size	= hdr->size_c;
 	if (hdr->name_len > 0)
 		fi->pathname.assign(hdr->name_len, 0);
-	if (hdr->extra_len > 0)
-		state->extra	= (char *) xmalloc(hdr->extra_len);
 
 	state->data_bytes = fi->compressed_size;
 

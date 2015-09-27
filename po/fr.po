@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-27 12:59-0400\n"
+"POT-Creation-Date: 2015-09-27 14:00-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -140,7 +140,7 @@ msgid "Suppress the output column of lines duplicated in file1 and file2."
 msgstr ""
 "Supprimez la colonne de rendement des lignes reproduites dans file1 et file2."
 
-#: comm/comm.cc:210 date/date.cc:179 diff/diff.cc:214 env/env.cc:159
+#: comm/comm.cc:210 date/date.cc:179 diff/diff.cc:214 env/env.cc:157
 #: getconf/getconf.cc:162 id/id.cc:355 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
 #: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 mesg/mesg.cc:84
 #: nice/nice.cc:90 pwd/pwd.cc:134 sleep/sleep.cc:78 split/split.cc:364
@@ -236,11 +236,6 @@ msgstr ""
 
 #: env/env.cc:42
 msgid "Invoke utility with exactly the environment specified by the arguments"
-msgstr ""
-
-#: env/env.cc:148
-#, c-format
-msgid "execv(%s)"
 msgstr ""
 
 #: getconf/getconf.cc:37
@@ -1110,13 +1105,12 @@ msgstr ""
 msgid "Quit after finding the first occurrence of the pattern in each file"
 msgstr ""
 
-#: libpu/alloc.cc:33
-msgid "out of memory"
-msgstr "hors de la memoire"
-
 #: libpu/lib.cc:47
 msgid "file..."
 msgstr ""
+
+#~ msgid "out of memory"
+#~ msgstr "hors de la memoire"
 
 #~ msgid "invalid arguments\n"
 #~ msgstr "arguments inadmissibles\n"
