@@ -50,7 +50,6 @@ static char linebuf[LINE_MAX + 1];
 static char *extra_token;
 
 static vector<char *> dict;
-static char **out_vals;
 
 static vector<Order> order;
 
@@ -196,25 +195,16 @@ static int compare_items(const void *_a, const void *_b)
 	return 1;
 }
 
-static int do_sort(void)
+static void sort_and_write_vals()
 {
-	out_vals = (char **) calloc(dict.size(), sizeof(char *));
-	if (!out_vals)
-		return 1;
+	char *out_vals[dict.size() + 1];
 
 	for (unsigned int i = 0; i < dict.size(); i++)
 		out_vals[i] = dict[i];
 
 	qsort(out_vals, dict.size(), sizeof(char *), compare_items);
 
-	return 0;
-}
-
-static void write_vals(void)
-{
-	unsigned int i;
-
-	for (i = 0; i < dict.size(); i++)
+	for (unsigned int i = 0; i < dict.size(); i++)
 		printf("%s\n", out_vals[i]);
 }
 
@@ -248,10 +238,7 @@ int main (int argc, char *argv[])
 	if (f != stdin)
 		fclose(f);
 
-	if (do_sort())
-		return EXIT_FAILURE;
-
-	write_vals();
+	sort_and_write_vals();
 
 	return EXIT_SUCCESS;
 }

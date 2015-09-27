@@ -214,8 +214,6 @@ struct walker {
 
 	int			exit_status;
 
-	void			*priv;
-
 	int			curdir_fd;
 	std::vector<std::string> arglist;
 };

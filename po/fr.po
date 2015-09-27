@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-27 14:00-0400\n"
+"POT-Creation-Date: 2015-09-27 14:13-0400\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -144,7 +144,7 @@ msgstr ""
 #: getconf/getconf.cc:162 id/id.cc:355 ipcs/ipcs.cc:371 ipcrm/ipcrm.cc:203
 #: link/link.cc:70 logger/logger.cc:64 logname/logname.cc:54 mesg/mesg.cc:84
 #: nice/nice.cc:90 pwd/pwd.cc:134 sleep/sleep.cc:78 split/split.cc:364
-#: tsort/tsort.cc:229 tty/tty.cc:54 uname/uname.cc:95 unlink/unlink.cc:71
+#: tsort/tsort.cc:219 tty/tty.cc:54 uname/uname.cc:95 unlink/unlink.cc:71
 #: uuencode/uuencode.cc:313
 #, c-format
 msgid "%s: argp_parse failed: %s\n"
@@ -984,15 +984,15 @@ msgstr "Indiquer le type de terminal."
 msgid "tput: setupterm failed\n"
 msgstr "tput: setupterm pas\n"
 
-#: tsort/tsort.cc:58
+#: tsort/tsort.cc:57
 msgid "tsort - topological sort"
 msgstr ""
 
-#: tsort/tsort.cc:60 unlink/unlink.cc:37
+#: tsort/tsort.cc:59 unlink/unlink.cc:37
 msgid "file"
 msgstr ""
 
-#: tsort/tsort.cc:167
+#: tsort/tsort.cc:166
 #, c-format
 msgid "tsort: max recursion limit reached\n"
 msgstr ""

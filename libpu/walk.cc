@@ -43,20 +43,6 @@
 using namespace std;
 
 
-static void die(const char *msg)
-{
-	fprintf(stderr, "%s\n", msg);
-	exit(1);
-}
-
-static void *xmalloc(size_t size)
-{
-	void *mem = malloc(size);
-	if (!mem)
-		die(_("out of memory"));
-	return mem;
-}
-
 static int walk_dirent(struct walker *w, int dirfd,
 		       const char *dirn, const char *basen);
 
@@ -135,7 +121,8 @@ static int walk_iterate(struct walker *w, int old_dirfd,
 	else
 		fn = strpathcat(dirn, basen);
 
-	entry = (struct dirent *) xmalloc(sizeof(struct dirent) + NAME_MAX + 1);
+	char entry_buf[sizeof(struct dirent) + NAME_MAX + 1];
+	entry = (struct dirent *) &entry_buf[0];
 
 	testbits = WF_FOLLOW_LINK;
 	if (have_path)
@@ -190,7 +177,6 @@ out_fd:
 	if (close(dirfd) < 0)
 		perror(fn.c_str());
 out:
-	free(entry);
 	return rc;
 }
 
