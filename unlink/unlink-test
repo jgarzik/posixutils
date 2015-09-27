@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TESTFN="unlink.$$"
+TESTFN="unlink/unlink.$$"
 
 touch $TESTFN
 if [ ! -f $TESTFN ]
@@ -9,7 +9,7 @@ then
 	exit 1
 fi
 
-./unlink $TESTFN
+unlink/unlink $TESTFN
 if [ $? -ne 0 ]
 then
 	echo T1.1 failed
@@ -21,7 +21,7 @@ then
 	exit 1
 fi
 
-./unlink test.does-not-exist
+unlink/unlink unlink/test.does-not-exist
 if [ $? -ne 1 ]
 then
 	echo T2 failed

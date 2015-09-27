@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += comm/comm
+
+dist_man_MANS += comm/comm.1
+
+comm_comm_SOURCES = comm/comm.cc
+comm_comm_LDADD = $(LIBPU) $(ARGP_LIB)
+comm_comm_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += comm/comm-test
+
+EXTRA_DIST += comm/comm-test
+

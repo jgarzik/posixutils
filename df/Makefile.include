@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += df/df
+
+dist_man_MANS += df/df.1
+
+df_df_SOURCES = df/df.cc
+df_df_LDADD = $(LIBPU) $(ARGP_LIB)
+df_df_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += df/df-test
+
+EXTRA_DIST += df/df-test
+

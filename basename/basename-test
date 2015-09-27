@@ -1,4 +1,3 @@
 #!/bin/sh
-
-$srcdir/../testrunner.py $srcdir/basename-tests.json
+$srcdir/testrunner.py $srcdir/basename/basename-tests.json
 

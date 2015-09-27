@@ -1,0 +1,22 @@
+
+noinst_PROGRAMS += expr/expr
+
+dist_man_MANS += expr/expr.1
+
+expr_expr_SOURCES = expr/expr.cc expr/expr-parse.c
+expr_expr_LDADD = $(LIBPU) $(ARGP_LIB)
+expr_expr_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/expr
+
+expr/expr-parse.h: $(srcdir)/expr/expr-parse.y
+	$(AM_V_GEN)cd $(@D); $(YACC) -d ../$<
+	$(AM_V_at)mv expr/y.tab.h $@
+	$(AM_V_at)mv expr/y.tab.c $(@:.h=.c)
+expr/expr-parse.c: expr/expr-parse.h
+$(srcdir)/expr/expr.cc: expr/expr-parse.c
+
+CLEANFILES += expr/expr-parse.c expr/expr-parse.h
+
+TESTS += expr/expr-test
+
+EXTRA_DIST += expr/expr-parse.y expr/expr-test expr/expr-tests.json
+

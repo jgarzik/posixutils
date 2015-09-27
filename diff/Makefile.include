@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += diff/diff
+
+dist_man_MANS += diff/diff.1
+
+diff_diff_SOURCES = diff/diff.cc
+diff_diff_LDADD = $(LIBPU) $(ARGP_LIB)
+diff_diff_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += diff/diff-test
+
+EXTRA_DIST += diff/diff-test
+

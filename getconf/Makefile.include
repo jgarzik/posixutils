@@ -1,0 +1,25 @@
+
+getconf_string_data = getconf/getconf-path.data getconf/getconf-system.data getconf/getconf-confstr.data
+getconf_generated_headers = $(getconf_string_data:.data=.h)
+
+bin_PROGRAMS += getconf/getconf
+dist_man_MANS += getconf/getconf.1
+
+getconf_getconf_SOURCES = getconf/getconf.cc
+getconf_getconf_LDADD = $(LIBPU) $(ARGP_LIB)
+getconf_getconf_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/getconf
+getconf_getconf_INCLUDES = $(getconf_generated_headers)
+
+getconf/getconf-path.h: getconf/getconf-path.data
+	$(AM_V_GEN)$(PERL) $(srcdir)/gen-strmap.pl $^ >$@
+getconf/getconf-system.h: getconf/getconf-system.data
+	$(AM_V_GEN)$(PERL) $(srcdir)/gen-strmap.pl $^ >$@
+getconf/getconf-confstr.h: getconf/getconf-confstr.data
+	$(AM_V_GEN)$(PERL) $(srcdir)/gen-strmap.pl $^ >$@
+
+$(getconf_getconf_SOURCES): $(getconf_generated_headers)
+
+TESTS += getconf/getconf-test
+
+CLEANFILES += $(getconf_generated_headers)
+EXTRA_DIST += $(getconf_string_data) getconf/getconf-test

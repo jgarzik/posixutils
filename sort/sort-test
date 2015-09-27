@@ -3,7 +3,7 @@
 TMPFILE="sort-test.$$.1"
 TMPFILE2="sort-test.$$.2"
 
-./sort $srcdir/test.data > $TMPFILE
+sort/sort $srcdir/sort/test.data > $TMPFILE
 if [ $? -ne 0 ]
 then
 	echo T1.1 failed
@@ -11,7 +11,7 @@ then
 	exit 1
 fi
 
-cmp -s $TMPFILE $srcdir/test.t1
+cmp -s $TMPFILE $srcdir/sort/test.t1
 retval=$?
 rm -f $TMPFILE
 if [ $retval -ne 0 ]
@@ -20,7 +20,7 @@ then
 	exit 1
 fi
 
-./sort -r $srcdir/test.data > $TMPFILE
+sort/sort -r $srcdir/sort/test.data > $TMPFILE
 if [ $? -ne 0 ]
 then
 	echo T2.1 failed
@@ -28,7 +28,7 @@ then
 	exit 1
 fi
 
-cmp -s $TMPFILE $srcdir/test.t2
+cmp -s $TMPFILE $srcdir/sort/test.t2
 retval=$?
 rm -f $TMPFILE
 if [ $retval -ne 0 ]
@@ -37,35 +37,35 @@ then
 	exit 1
 fi
 
-./sort -c $srcdir/test.t1
+sort/sort -c $srcdir/sort/test.t1
 if [ $? -ne 0 ]
 then
 	echo T3 failed
 	exit 1
 fi
 
-./sort -r -c $srcdir/test.t1
+sort/sort -r -c $srcdir/sort/test.t1
 if [ $? -ne 1 ]
 then
 	echo T3.1 failed
 	exit 1
 fi
 
-./sort -r -c $srcdir/test.t2
+sort/sort -r -c $srcdir/sort/test.t2
 if [ $? -ne 0 ]
 then
 	echo T4 failed
 	exit 1
 fi
 
-./sort -c $srcdir/test.t2
+sort/sort -c $srcdir/sort/test.t2
 if [ $? -ne 1 ]
 then
 	echo T4.1 failed
 	exit 1
 fi
 
-sort -m $srcdir/test.data3-1 $srcdir/test.data3-2 $srcdir/test.data3-3 > $TMPFILE
+sort -m $srcdir/sort/test.data3-1 $srcdir/sort/test.data3-2 $srcdir/sort/test.data3-3 > $TMPFILE
 if [ $? -ne 0 ]
 then
 	echo T5.1 failed
@@ -73,7 +73,7 @@ then
 	exit 1
 fi
 
-./sort -m $srcdir/test.data3-1 $srcdir/test.data3-2 $srcdir/test.data3-3 > $TMPFILE2
+sort/sort -m $srcdir/sort/test.data3-1 $srcdir/sort/test.data3-2 $srcdir/sort/test.data3-3 > $TMPFILE2
 if [ $? -ne 0 ]
 then
 	echo T5.2 failed

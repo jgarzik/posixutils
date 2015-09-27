@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += nohup/nohup
+
+dist_man_MANS += nohup/nohup.1
+
+nohup_nohup_SOURCES = nohup/nohup.cc
+nohup_nohup_LDADD = $(LIBPU) $(ARGP_LIB)
+nohup_nohup_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += nohup/nohup-test
+
+EXTRA_DIST += nohup/nohup-test
+

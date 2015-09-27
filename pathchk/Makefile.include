@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += pathchk/pathchk
+
+dist_man_MANS += pathchk/pathchk.1
+
+pathchk_pathchk_SOURCES = pathchk/pathchk.cc
+pathchk_pathchk_LDADD = $(LIBPU) $(ARGP_LIB)
+pathchk_pathchk_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += pathchk/pathchk-test
+
+EXTRA_DIST += pathchk/pathchk-test
+

@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += date/date
+
+dist_man_MANS += date/date.1
+
+date_date_SOURCES = date/date.cc
+date_date_LDADD = $(LIBPU) $(ARGP_LIB)
+date_date_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += date/date-test
+
+EXTRA_DIST += date/date-test
+

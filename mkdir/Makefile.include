@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += mkdir/mkdir
+
+dist_man_MANS += mkdir/mkdir.1
+
+mkdir_mkdir_SOURCES = mkdir/mkdir.cc
+mkdir_mkdir_LDADD = $(LIBPU) $(ARGP_LIB)
+mkdir_mkdir_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += mkdir/mkdir-test
+
+EXTRA_DIST += mkdir/mkdir-test
+

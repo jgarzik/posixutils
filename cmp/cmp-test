@@ -1,15 +1,15 @@
 #!/bin/sh
 
-FILE1="basic-cmp-$$-1"
-FILE2="basic-cmp-$$-2"
+FILE1="cmp/basic-cmp-$$-1"
+FILE2="cmp/basic-cmp-$$-2"
 
-DATA1="foo"
-DATA2="bar baz"
+DATA1="cmp/foo"
+DATA2="cmp/bar cmp/baz"
 
 echo "$DATA1" > $FILE1
 echo "$DATA1" > $FILE2
 
-if ! ./cmp -s $FILE1 $FILE2
+if ! cmp/cmp -s $FILE1 $FILE2
 then
 	echo "cmp same failed"
 	rm -f $FILE1 $FILE2
@@ -19,7 +19,7 @@ fi
 echo "$DATA1" > $FILE1
 echo "$DATA2" > $FILE2
 
-if ./cmp -s $FILE1 $FILE2
+if cmp/cmp -s $FILE1 $FILE2
 then
 	echo "cmp different failed"
 	rm -f $FILE1 $FILE2

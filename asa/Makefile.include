@@ -1,0 +1,11 @@
+bin_PROGRAMS += asa/asa
+
+dist_man_MANS += asa/asa.1
+
+asa_asa_SOURCES = asa/asa.cc
+asa_asa_CPPFLAGS = -I$(srcdir)/include
+asa_asa_LDADD = $(LIBPU) $(ARGP_LIB)
+
+TESTS += asa/asa-test
+
+EXTRA_DIST += asa/asa-test asa/asa-test.in1 asa/asa-test.out1

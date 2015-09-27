@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += touch/touch
+
+dist_man_MANS += touch/touch.1
+
+touch_touch_SOURCES = touch/touch.cc
+touch_touch_LDADD = $(LIBPU) $(ARGP_LIB)
+touch_touch_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += touch/touch-test
+
+EXTRA_DIST += touch/touch-test
+

@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += uname/uname
+
+dist_man_MANS += uname/uname.1
+
+uname_uname_SOURCES = uname/uname.cc
+uname_uname_LDADD = $(LIBPU) $(ARGP_LIB)
+uname_uname_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += uname/uname-test
+
+EXTRA_DIST += uname/uname-test
+

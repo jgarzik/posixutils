@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += nice/nice
+
+dist_man_MANS += nice/nice.1
+
+nice_nice_SOURCES = nice/nice.cc
+nice_nice_LDADD = $(LIBPU) $(ARGP_LIB)
+nice_nice_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += nice/nice-test
+
+EXTRA_DIST += nice/nice-test
+

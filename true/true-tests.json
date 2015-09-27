@@ -1,5 +1,5 @@
 {
-  "prog": "./true",
+  "prog": "true/true",
   "tests": [
     ["basic1", []]
   ]

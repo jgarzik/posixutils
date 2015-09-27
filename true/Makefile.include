@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += true/true
+
+dist_man_MANS += true/true.1
+
+true_true_SOURCES = true/true.c
+true_true_LDADD = $(LIBPU) $(ARGP_LIB)
+true_true_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += true/true-test
+
+EXTRA_DIST += true/true-test true/true-tests.json
+

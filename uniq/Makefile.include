@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += uniq/uniq
+
+dist_man_MANS += uniq/uniq.1
+
+uniq_uniq_SOURCES = uniq/uniq.cc
+uniq_uniq_LDADD = $(LIBPU) $(ARGP_LIB)
+uniq_uniq_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += uniq/uniq-test
+
+EXTRA_DIST += uniq/uniq-test uniq/uniq.data1 uniq/uniq.data2
+

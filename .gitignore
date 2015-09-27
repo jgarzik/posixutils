@@ -24,6 +24,7 @@ posixutils-config.h*
 .dotest
 autom4te.cache
 .deps
+.dirstamp
 
 signal-copy.h
 

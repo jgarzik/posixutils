@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += echo/echo
+
+dist_man_MANS += echo/echo.1
+
+echo_echo_SOURCES = echo/echo.cc
+echo_echo_LDADD = $(LIBPU) $(ARGP_LIB)
+echo_echo_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += echo/echo-test
+
+EXTRA_DIST += echo/echo-test
+

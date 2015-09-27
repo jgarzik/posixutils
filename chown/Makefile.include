@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += chown/chown
+
+dist_man_MANS += chown/chown.1
+
+chown_chown_SOURCES = chown/chown.cc
+chown_chown_LDADD = $(LIBPU) $(ARGP_LIB)
+chown_chown_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += chown/chown-test
+
+EXTRA_DIST += chown/chown-test
+

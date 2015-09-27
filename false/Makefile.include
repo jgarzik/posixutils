@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += false/false
+
+dist_man_MANS += false/false.1
+
+false_false_SOURCES = false/false.c
+false_false_LDADD = $(LIBPU) $(ARGP_LIB)
+false_false_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += false/false-test
+
+EXTRA_DIST += false/false-test false/false-tests.json
+

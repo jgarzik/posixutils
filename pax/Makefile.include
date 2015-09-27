@@ -1,0 +1,16 @@
+
+noinst_PROGRAMS += pax/pax
+
+pax_pax_SOURCES = pax/main.cc pax/pax.h pax/pax.cc pax/ustar.cc pax/cpio.cc pax/zip.cc
+pax_pax_LDADD = $(LIBPU) $(ARGP_LIB) $(ZLIB_LIB)
+pax_pax_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/pax
+
+pax/pax-options.h: pax/pax-options.data
+	$(AM_V_GEN)$(PERL) $(srcdir)/gen-strmap.pl $^ >$@
+
+pax/main.cc: pax/pax-options.h
+
+TESTS += pax/pax-test
+
+CLEANFILES += pax/pax-options.h
+EXTRA_DIST += pax/pax-test pax/pax-options.data

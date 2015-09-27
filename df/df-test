@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./df
+df/df
 if [ $? -ne 0 ]
 then
 	echo T1 failed

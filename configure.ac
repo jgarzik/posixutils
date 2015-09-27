@@ -18,6 +18,7 @@ AC_ISC_POSIX
 AC_PATH_PROG(PERL, perl)
 
 AM_PATH_PYTHON
+AM_PROG_CC_C_O
 
 dnl Checks for libraries.
 ALL_LINGUAS="fr"
@@ -50,72 +51,7 @@ AC_SUBST(ZLIB_LIB)
 AC_SUBST(CURSES_LIB)
 AC_SUBST(ARGP_LIB)
 
-AC_CONFIG_FILES([Makefile
-		po/Makefile.in
-		doc/Makefile
-		m4/Makefile 
-		libpu/Makefile
-		include/Makefile
-		asa/Makefile
-		basename/Makefile
-		cat/Makefile
-		chown/Makefile
-		cksum/Makefile
-		cmp/Makefile
-		comm/Makefile
-		compress/Makefile
-		date/Makefile
-		df/Makefile
-		diff/Makefile
-		dirname/Makefile
-		echo/Makefile
-		env/Makefile
-		expr/Makefile
-		false/Makefile
-		getconf/Makefile
-		grep/Makefile
-		head/Makefile
-		id/Makefile
-		ipcrm/Makefile
-		ipcs/Makefile
-		kill/Makefile
-		link/Makefile
-		ln/Makefile
-		logger/Makefile
-		logname/Makefile
-		mesg/Makefile
-		mkdir/Makefile
-		mkfifo/Makefile
-		mv/Makefile
-		nice/Makefile
-		nohup/Makefile
-		pax/Makefile
-		pathchk/Makefile
-		pwd/Makefile
-		renice/Makefile
-		rm/Makefile
-		rmdir/Makefile
-		sleep/Makefile
-		sort/Makefile
-		split/Makefile
-		strings/Makefile
-		stty/Makefile
-		tabs/Makefile
-		tee/Makefile
-		time/Makefile
-		touch/Makefile
-		tput/Makefile
-		true/Makefile
-		tsort/Makefile
-		tty/Makefile
-		uname/Makefile
-		uniq/Makefile
-		unlink/Makefile
-		uuencode/Makefile
-		wc/Makefile
-		what/Makefile
-		platform/Makefile
-		platform/signal/Makefile])
+AC_CONFIG_FILES([Makefile po/Makefile.in])
 AC_CONFIG_LINKS(signal-copy.h:platform/signal/$target_cpu-$target_os.h)
 AC_OUTPUT
 

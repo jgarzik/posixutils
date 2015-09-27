@@ -1,5 +1,5 @@
 {
-  "prog": "./false",
+  "prog": "false/false",
   "tests": [
     ["basic1", [], "", "", "", 1]
   ]

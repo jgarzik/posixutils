@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./nice -n 19 true
+nice/nice -n 19 true
 if [ $? -ne 0 ]
 then
 	echo T1 failed

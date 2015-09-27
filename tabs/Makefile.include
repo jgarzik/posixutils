@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += tabs/tabs
+
+dist_man_MANS += tabs/tabs.1
+
+tabs_tabs_SOURCES = tabs/tabs.cc
+tabs_tabs_LDADD = $(LIBPU) $(ARGP_LIB) $(CURSES_LIB)
+tabs_tabs_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += tabs/tabs-test
+
+EXTRA_DIST += tabs/tabs-test
+

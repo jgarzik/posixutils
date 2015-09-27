@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += what/what
+
+dist_man_MANS += what/what.1
+
+what_what_SOURCES = what/what.cc
+what_what_LDADD = $(LIBPU) $(ARGP_LIB)
+what_what_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += what/what-test
+
+EXTRA_DIST += what/what-test
+

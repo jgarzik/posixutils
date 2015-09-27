@@ -1,0 +1,6 @@
+
+bin_PROGRAMS += compress/compress
+
+compress_compress_SOURCES = compress/zopen.cc compress/zopen.h compress/compress.cc
+
+EXTRA_DIST += compress/NOTES compress/README compress/revision.log

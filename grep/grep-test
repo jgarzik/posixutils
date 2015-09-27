@@ -1,8 +1,8 @@
 #!/bin/sh
 
-OUTFN="grep-test.out.$$"
+OUTFN="grep/grep-test.out.$$"
 
-./grep shall $srcdir/grep.1 > $OUTFN
+grep/grep shall $srcdir/grep/grep.1 > $OUTFN
 if [ $? -ne 0 ]
 then
 	rm -f $OUTFN
@@ -10,7 +10,7 @@ then
 	exit 1
 fi
 
-cmp -s $srcdir/test1.out $OUTFN
+cmp -s $srcdir/grep/test1.out $OUTFN
 retval=$?
 rm -f $OUTFN
 if [ $retval -ne 0 ]
@@ -19,14 +19,14 @@ then
         exit 1
 fi
 
-./grep dummynotfound $srcdir/grep.1
+./grep/grep dummynotfound $srcdir/grep/grep.1
 if [ $? -ne 1 ]
 then
 	echo T3 failed
 	exit 1
 fi
 
-COUNT=`./grep -c shall $srcdir/grep.1`
+COUNT=`grep/grep -c shall $srcdir/grep/grep.1`
 if [ $? -ne 0 ]
 then
 	echo T4 failed

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./sleep 1
+sleep/sleep 1
 if [ $? -ne 0 ]
 then
 	echo T1 failed

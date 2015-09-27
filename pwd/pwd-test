@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./pwd
+pwd/pwd
 if [ $? -ne 0 ]
 then
 	echo T1 failed

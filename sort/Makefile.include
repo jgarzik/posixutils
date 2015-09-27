@@ -1,0 +1,14 @@
+
+noinst_PROGRAMS += sort/sort
+
+dist_man_MANS += sort/sort.1
+
+sort_sort_SOURCES = sort/sort.cc
+sort_sort_LDADD = $(LIBPU) $(ARGP_LIB)
+sort_sort_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += sort/sort-test
+
+EXTRA_DIST += sort/sort-test sort/test.data sort/test.t1 sort/test.t2 \
+	sort/test.t3 sort/test.data3-1 sort/test.data3-2 sort/test.data3-3
+

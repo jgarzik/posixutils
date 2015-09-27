@@ -1,5 +1,5 @@
 {
-  "prog": "./dirname",
+  "prog": "dirname/dirname",
   "tests": [
     ["basic1", ["/"], "", "/\n"],
     ["basic2", ["//"], "", "//\n"],

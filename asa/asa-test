@@ -1,15 +1,15 @@
 #!/bin/sh
 
-OUTFN="asa-test.$$"
+OUTFN="asa/asa-test.$$"
 
-./asa $srcdir/asa-test.in1 > $OUTFN
+asa/asa $srcdir/asa/asa-test.in1 > $OUTFN
 if [ $? -ne 0 ]
 then
 	rm -f $OUTFN
 	exit 1
 fi
 
-cmp -s $srcdir/asa-test.out1 $OUTFN
+cmp -s $srcdir/asa/asa-test.out1 $OUTFN
 retval=$?
 rm -f $OUTFN
 

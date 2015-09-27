@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += tput/tput
+
+dist_man_MANS += tput/tput.1
+
+tput_tput_SOURCES = tput/tput.cc
+tput_tput_LDADD = $(LIBPU) $(ARGP_LIB) $(CURSES_LIB)
+tput_tput_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += tput/tput-test
+
+EXTRA_DIST += tput/tput-test
+

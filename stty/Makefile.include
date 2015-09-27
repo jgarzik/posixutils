@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += stty/stty
+
+dist_man_MANS += stty/stty.1
+
+stty_stty_SOURCES = stty/stty.cc
+stty_stty_LDADD = $(LIBPU) $(ARGP_LIB)
+stty_stty_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += stty/stty-test
+
+EXTRA_DIST += stty/stty-test
+

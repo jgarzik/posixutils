@@ -1,5 +1,5 @@
 {
-  "prog": "./basename",
+  "prog": "basename/basename",
   "tests": [
     ["b1", ["test1.cc",".cc"],"","test1\n"],
     ["b2", ["test1.h",".cc"],"","test1.h\n"]

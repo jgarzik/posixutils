@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += mv/mv
+
+dist_man_MANS += mv/mv.1
+
+mv_mv_SOURCES = mv/mv.cc
+mv_mv_LDADD = $(LIBPU) $(ARGP_LIB)
+mv_mv_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += mv/mv-test
+
+EXTRA_DIST += mv/mv-test
+

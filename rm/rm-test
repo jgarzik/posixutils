@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PFX="basic-rm-$$"
+PFX="rm/basic-rm-$$"
 
 rm -f $PFX
 
@@ -11,7 +11,7 @@ then
 	exit 1
 fi
 
-./rm $PFX
+rm/rm $PFX
 
 if [ -f $PFX ]
 then

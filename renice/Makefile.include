@@ -1,0 +1,14 @@
+
+bin_PROGRAMS += renice/renice
+
+dist_man_MANS += renice/renice.1
+
+renice_renice_SOURCES = renice/renice.cc
+renice_renice_LDADD = $(LIBPU) $(ARGP_LIB)
+renice_renice_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += renice/renice-test
+
+EXTRA_DIST += renice/renice-test
+
+

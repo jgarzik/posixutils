@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./date
+date/date
 if [ $? -ne 0 ]
 then
 	echo T1 failed

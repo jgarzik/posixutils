@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += ipcs/ipcs
+
+dist_man_MANS += ipcs/ipcs.1
+
+ipcs_ipcs_SOURCES = ipcs/ipcs.cc
+ipcs_ipcs_LDADD = $(LIBPU) $(ARGP_LIB)
+ipcs_ipcs_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += ipcs/ipcs-test
+
+EXTRA_DIST += ipcs/ipcs-test
+

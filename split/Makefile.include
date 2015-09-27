@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += split/split
+
+dist_man_MANS += split/split.1
+
+split_split_SOURCES = split/split.cc
+split_split_LDADD = $(LIBPU) $(ARGP_LIB)
+split_split_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += split/split-test
+
+EXTRA_DIST += split/split-test
+

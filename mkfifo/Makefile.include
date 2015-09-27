@@ -1,0 +1,14 @@
+
+# noinst=WIP
+noinst_PROGRAMS += mkfifo/mkfifo
+
+dist_man_MANS += mkfifo/mkfifo.1
+
+mkfifo_mkfifo_SOURCES = mkfifo/mkfifo.cc
+mkfifo_mkfifo_LDADD = $(LIBPU) $(ARGP_LIB)
+mkfifo_mkfifo_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += mkfifo/mkfifo-test
+
+EXTRA_DIST += mkfifo/mkfifo-test
+

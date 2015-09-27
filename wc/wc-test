@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TEST_DATA=$srcdir/test.data
+TEST_DATA=$srcdir/wc/test.data
 
 WC_L=$(wc -l < $TEST_DATA)
 WC_C=$(wc -c < $TEST_DATA)
@@ -9,72 +9,72 @@ WC_M=$(wc -m < $TEST_DATA)
 
 WC_NOOP="$WC_L $WC_W $WC_C"
 
-A=$(./wc -l < $TEST_DATA)
+A=$(./wc/wc -l < $TEST_DATA)
 if [ "$A" != "$WC_L" ]
 then
-	echo "basic-wc failed: stdin with -l option"
+	echo "basic-wc/wc failed: stdin with -l option"
 	exit 1
 fi
 
-A=$(./wc -c < $TEST_DATA)
+A=$(./wc/wc -c < $TEST_DATA)
 if [ "$A" != "$WC_C" ]
 then
-	echo "basic-wc failed: stdin -c option"
+	echo "basic-wc/wc failed: stdin -c option"
 	exit 1
 fi
 
-A=$(./wc -w < $TEST_DATA)
+A=$(./wc/wc -w < $TEST_DATA)
 if [ "$A" != "$WC_W" ]
 then
-	echo "basic-wc failed: stdin -w option"
+	echo "basic-wc/wc failed: stdin -w option"
 	exit 1
 fi
 
-A=$(./wc -m < $TEST_DATA)
+A=$(./wc/wc -m < $TEST_DATA)
 if [ "$A" != "$WC_M" ]
 then
-	echo "basic-wc failed: stdin -m option"
+	echo "basic-wc/wc failed: stdin -m option"
 	exit 1
 fi
 
-A=$(./wc < $TEST_DATA)
+A=$(./wc/wc < $TEST_DATA)
 if [ "$A" != "$WC_NOOP" ]
 then
-	echo "basic-wc failed: stdin with no options"
+	echo "basic-wc/wc failed: stdin with no options"
 	exit 1
 fi
 
-A=$(./wc -l $TEST_DATA)
+A=$(./wc/wc -l $TEST_DATA)
 if [ "$A" != "$WC_L $TEST_DATA" ]
 then
-	echo "basic-wc failed: -l option"
+	echo "basic-wc/wc failed: -l option"
 	exit 1
 fi
 
-A=$(./wc -c $TEST_DATA)
+A=$(./wc/wc -c $TEST_DATA)
 if [ "$A" != "$WC_C $TEST_DATA" ]
 then
-	echo "basic-wc failed: -c option"
+	echo "basic-wc/wc failed: -c option"
 	exit 1
 fi
 
-A=$(./wc -w $TEST_DATA)
+A=$(./wc/wc -w $TEST_DATA)
 if [ "$A" != "$WC_W $TEST_DATA" ]
 then
-	echo "basic-wc failed: -w option"
+	echo "basic-wc/wc failed: -w option"
 	exit 1
 fi
 
-A=$(./wc -m $TEST_DATA)
+A=$(./wc/wc -m $TEST_DATA)
 if [ "$A" != "$WC_M $TEST_DATA" ]
 then
-	echo "basic-wc failed: -m option"
+	echo "basic-wc/wc failed: -m option"
 	exit 1
 fi
 
-A=$(./wc $TEST_DATA)
+A=$(./wc/wc $TEST_DATA)
 if [ "$A" != "$WC_NOOP $TEST_DATA" ]
 then
-	echo "basic-wc failed: no options"
+	echo "basic-wc/wc failed: no options"
 	exit 1
 fi

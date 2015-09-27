@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./pathchk .
+pathchk/pathchk .
 if [ $? -ne 0 ]
 then
 	echo T1 failed

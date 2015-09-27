@@ -1,0 +1,13 @@
+
+bin_PROGRAMS += env/env
+
+dist_man_MANS += env/env.1
+
+env_env_SOURCES = env/env.cc
+env_env_LDADD = $(LIBPU) $(ARGP_LIB)
+env_env_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += env/env-test
+
+EXTRA_DIST += env/env-test
+
