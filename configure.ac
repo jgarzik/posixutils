@@ -7,7 +7,6 @@ AM_INIT_AUTOMAKE([gnu subdir-objects])
 AC_CONFIG_HEADERS([posixutils-config.h])
 
 AM_MAINTAINER_MODE
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 dnl Checks for programs.
 AC_PROG_CC
