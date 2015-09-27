@@ -29,24 +29,30 @@
 
 #include <sys/types.h>
 #include <sys/utsname.h>
+#include <vector>
+#include <string>
 #include <stdlib.h>
 #include <string.h>
 #include <regex.h>
 #include <libpu.h>
 
-struct order {
+using namespace std;
+
+class Order {
+public:
 	char		*pred;
 	char		*succ;
+
+	Order(char *pred_, char *succ_) : pred(pred_), succ(succ_) {}
 };
 
 static char linebuf[LINE_MAX + 1];
 static char *extra_token;
 
-static char **dict, **out_vals;
-static unsigned int dict_size, dict_alloc;
+static vector<char *> dict;
+static char **out_vals;
 
-struct order *order;
-static unsigned int order_size, order_alloc;
+static vector<Order> order;
 
 static const char doc[] =
 N_("tsort - topological sort");
@@ -80,7 +86,7 @@ static char *add_token(const char *buf, size_t buflen, bool ok_add)
 
 	/* linear search for token in dictionary */
 	/* TODO: use a hash table or tree */
-	for (i = 0; i < dict_size; i++) {
+	for (i = 0; i < dict.size(); i++) {
 		size_t slen;
 
 		slen = strlen(dict[i]);
@@ -93,32 +99,20 @@ static char *add_token(const char *buf, size_t buflen, bool ok_add)
 
 	/* not found, add token to dictionary, create new id */
 
-	if (dict_size == dict_alloc) {
-		dict_alloc *= 2;
-		dict = (char **) realloc(dict, sizeof(char *) * dict_alloc);
-		if (!dict)
-			return NULL;
-	}
-
-	dict[dict_size] = strndup(buf, buflen);
-	if (!dict[dict_size])
+	char *new_str = strndup(buf, buflen);
+	if (!new_str)
 		return NULL;
 
-	return dict[dict_size++];
+	dict.push_back(new_str);
+
+	return new_str;
 }
 
-static int push_pair(char *a, char *b)
+static void push_pair(char *a, char *b)
 {
-	if (order_size == order_alloc) {
-		order_alloc *= 2;
-		order = (struct order *) xrealloc(order, sizeof(struct order) * order_alloc);
-	}
+	Order o(a, b);
 
-	order[order_size].pred = a;
-	order[order_size].succ = b;
-	order_size++;
-
-	return 0;
+	order.push_back(o);
 }
 
 static int push_token(const char *_s, size_t slen)
@@ -130,8 +124,7 @@ static int push_token(const char *_s, size_t slen)
 	if (!extra_token)
 		extra_token = id;
 	else {
-		if (push_pair(extra_token, id))
-			return 1;
+		push_pair(extra_token, id);
 		extra_token = NULL;
 	}
 
@@ -175,15 +168,13 @@ static bool item_precedes(const char *a, const char *b)
 		exit(1);
 	}
 
-	for (i = 0; i < order_size; i++) {
-		struct order *o;
-
-		o = &order[i];
-		if (o->pred != a)
+	for (i = 0; i < order.size(); i++) {
+		Order& o = order[i];
+		if (o.pred != a)
 			continue;
-		if (o->succ == b)
+		if (o.succ == b)
 			return true;
-		if ((o->succ != a) && item_precedes(o->succ, b))
+		if ((o.succ != a) && item_precedes(o.succ, b))
 			return true;
 	}
 
@@ -207,24 +198,14 @@ static int compare_items(const void *_a, const void *_b)
 
 static int do_sort(void)
 {
-	out_vals = (char **) calloc(dict_size, sizeof(char *));
+	out_vals = (char **) calloc(dict.size(), sizeof(char *));
 	if (!out_vals)
 		return 1;
 
-	memcpy(out_vals, dict, sizeof(char *) * dict_size);
+	for (unsigned int i = 0; i < dict.size(); i++)
+		out_vals[i] = dict[i];
 
-	qsort(out_vals, dict_size, sizeof(char *), compare_items);
-
-	return 0;
-}
-
-static int init_arrays(void)
-{
-	dict = (char **) xcalloc(512, sizeof(char *));
-	dict_alloc = 512;
-
-	order = (struct order *) xcalloc(512, sizeof(struct order));
-	order_alloc = 512;
+	qsort(out_vals, dict.size(), sizeof(char *), compare_items);
 
 	return 0;
 }
@@ -233,7 +214,7 @@ static void write_vals(void)
 {
 	unsigned int i;
 
-	for (i = 0; i < dict_size; i++)
+	for (i = 0; i < dict.size(); i++)
 		printf("%s\n", out_vals[i]);
 }
 
@@ -242,9 +223,6 @@ int main (int argc, char *argv[])
 	FILE *f = NULL;
 
 	pu_init();
-
-	if (init_arrays())
-		return 1;
 
 	error_t argp_rc = argp_parse(&argp, argc, argv, 0, NULL, NULL);
 	if (argp_rc) {

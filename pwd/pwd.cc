@@ -29,12 +29,14 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <libpu.h>
 
+using namespace std;
 
 static const char doc[] =
 N_("pwd - print name of current/working directory");
@@ -97,22 +99,26 @@ out:
 	return rc;
 }
 
-static char *xgetcwd(void)
+static string xgetcwd(void)
 {
-	int len = 128;
-	char *cwd = NULL;
-	char *cwd_ret = NULL;
+	size_t len = 256;
+	char *cwd_ret;
+	string cwd(len, 0);
 
-	while (cwd_ret == NULL) {
-		len <<= 1;
-		cwd = (char *) xrealloc(cwd, len);
+	do {
+		cwd_ret = getcwd(&cwd[0], len);
+		if (cwd_ret)
+			return cwd_ret;
 
-		cwd_ret = getcwd(cwd, len);
-		if ((cwd_ret == NULL) && (errno != ERANGE)) {
+		if (errno != ERANGE) {
 			perror(_("getcwd(3) failed"));
 			exit(1);
 		}
-	}
+
+		len <<= 1;
+		cwd.resize(len);
+
+	} while (cwd_ret == NULL);
 
 	return cwd;
 }
@@ -134,7 +140,7 @@ int main (int argc, char *argv[])
 	    (pwd_valid(pwd))) {
 		/* do nothing */
 	} else
-		pwd = xgetcwd();
+		pwd = xgetcwd().c_str();
 
 	printf("%s\n", pwd);
 	return 0;

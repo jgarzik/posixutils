@@ -236,8 +236,6 @@ extern int ask_question(const char *prefix, const char *msg, const char *fn);
 extern const char file_args_doc[];
 extern struct argp_option no_options[];
 extern void *xmalloc(size_t size);
-extern void *xrealloc(void *ptr, size_t size);
-extern void *xcalloc(size_t nmemb, size_t size);
 extern bool path_split(const std::string& pathname, pathelem& pe);
 extern int have_dots(const char *fn);
 extern void strsplit(const std::string& s,
