@@ -1,4 +1,21 @@
 #!/bin/sh
 
-# TODO
-exit 77
+TESTDIR="mkdir-test.$$"
+
+mkdir/mkdir $TESTDIR
+if [ $? -ne 0 ]
+then
+	echo T1.1 failed
+	rm -rf $TESTDIR
+	exit 1
+fi
+if [ ! -d $TESTDIR ]
+then
+	echo T1.2 failed
+	rm -rf $TESTDIR
+	exit 1
+fi
+
+rm -rf $TESTDIR
+
+exit 0

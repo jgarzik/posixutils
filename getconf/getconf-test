@@ -1,4 +1,16 @@
 #!/bin/sh
 
-# TODO
-exit 77
+VAL=`getconf/getconf PAGE_SIZE`
+if [ $? -ne 0 ]
+then
+	echo T1 failed
+	exit 1
+fi
+if [ $VAL -lt 4096 ]
+then
+	echo T2 failed
+	exit 1
+fi
+
+exit 0
+

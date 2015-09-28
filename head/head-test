@@ -1,4 +1,22 @@
 #!/bin/sh
 
-# TODO
-exit 77
+TMPFILE="head-test.$$"
+
+head/head -n4 $srcdir/head/test1.in > $TMPFILE
+if [ $? -ne 0 ]
+then
+	echo T1.1 failed
+	rm -f $TMPFILE
+	exit 1
+fi
+
+cmp -s $TMPFILE $srcdir/head/test1.out
+retval=$?
+rm -f $TMPFILE
+if [ $retval -ne 0 ]
+then
+	echo T1.2 failed
+	exit 1
+fi
+
+exit 0

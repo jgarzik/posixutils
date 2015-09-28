@@ -1,4 +1,21 @@
 #!/bin/sh
 
-# TODO
-exit 77
+TESTFILE="touch-test.$$"
+
+touch/touch $TESTFILE
+if [ $? -ne 0 ]
+then
+	echo T1.1 failed
+	rm -rf $TESTFILE
+	exit 1
+fi
+if [ ! -f $TESTFILE ]
+then
+	echo T1.2 failed
+	rm -rf $TESTFILE
+	exit 1
+fi
+
+rm -rf $TESTFILE
+
+exit 0

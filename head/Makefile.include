@@ -9,5 +9,5 @@ head_head_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/head
 
 TESTS += head/head-test
 
-EXTRA_DIST += head/head-test
+EXTRA_DIST += head/head-test head/test1.in head/test1.out
 

@@ -1,4 +1,33 @@
 #!/bin/sh
 
-# TODO
-exit 77
+TESTDIR="rmdir-test.$$"
+
+mkdir $TESTDIR
+if [ $? -ne 0 ]
+then
+	echo system T1.1 failed
+	rm -rf $TESTDIR
+	exit 1
+fi
+if [ ! -d $TESTDIR ]
+then
+	echo system T1.2 failed
+	rm -rf $TESTDIR
+	exit 1
+fi
+
+rmdir/rmdir $TESTDIR
+if [ $? -ne 0 ]
+then
+	echo T2.1 failed
+	rm -rf $TESTDIR
+	exit 1
+fi
+if [ -d $TESTDIR ]
+then
+	echo T2.2 failed
+	rm -rf $TESTDIR
+	exit 1
+fi
+
+exit 0
