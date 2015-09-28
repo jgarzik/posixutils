@@ -63,6 +63,24 @@ static void test_strsplit()
 	assert(sv[0] == "a");
 	assert(sv[1] == "b");
 	assert(sv[2] == "c");
+
+	string s1, s2;
+
+	strbisect("a::", ':', s1, s2);
+	assert(s1 == "a");
+	assert(s2 == ":");
+
+	strbisect("a", ':', s1, s2);
+	assert(s1 == "a");
+	assert(s2 == "");
+
+	strbisect(":a", ':', s1, s2);
+	assert(s1 == "");
+	assert(s2 == "a");
+
+	strbisect("a:", ':', s1, s2);
+	assert(s1 == "a");
+	assert(s2 == "");
 }
 
 static void test_Regex()

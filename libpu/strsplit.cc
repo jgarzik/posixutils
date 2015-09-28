@@ -105,3 +105,17 @@ void strsplit(const std::string& s, const std::string& regex,
 		tmp = tmp.substr(matches[0].rm_eo);
 	}
 }
+
+void strbisect(const std::string& s, int delim,
+	       std::string& s1, std::string& s2)
+{
+	size_t pos = s.find((char)delim);
+	if (pos == std::string::npos) {
+		s1.assign(s);
+		s2.clear();
+	} else {
+		s1 = s.substr(0, pos);
+		s2 = s.substr(pos + 1);
+	}
+}
+

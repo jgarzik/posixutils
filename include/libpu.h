@@ -240,6 +240,8 @@ extern void strsplit(const std::string& s, int delim,
 			   std::vector<std::string>& sv);
 extern void strsplit(const std::string& s, const std::string& regex,
 			   std::vector<std::string>& sv);
+extern void strbisect(const std::string& s, int delim,
+		      std::string& s1, std::string& s2);
 
 static inline std::string strpathcat(const std::string& dn, const std::string& bn)
 {
