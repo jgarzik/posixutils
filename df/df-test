@@ -1,5 +1,12 @@
 #!/bin/sh
 
+df
+if [ $? -ne 0 ]
+then
+	echo system df failed - skipping test
+	exit 77
+fi
+
 df/df
 if [ $? -ne 0 ]
 then
