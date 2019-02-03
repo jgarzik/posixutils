@@ -1,7 +1,10 @@
 
+# POSIXUTILS
+
 The posixutils package is a collection of the utilities specified in the
 Single Unix Specification v3 (SuSv3).
 
+## Resources
 
 posixutils home page (untouched for years):
 	http://sourceforge.net/projects/nix-utils/
@@ -9,7 +12,7 @@ posixutils home page (untouched for years):
 posixutils source code repository, git protocol:
 	https://github.com/jgarzik/posixutils.git
 
-
+## Specifications
 
 The SuSv3 specification is available online at
 http://www.opengroup.org/onlinepubs/009695399/toc.htm
@@ -17,9 +20,7 @@ http://www.opengroup.org/onlinepubs/009695399/toc.htm
 and the full list of all utilities we plan to implement is at
 http://www.opengroup.org/onlinepubs/009695399/idx/utilities.html
 
-
-
-Project goals/manifesto:
+## Project goals/manifesto
 
 * race-free userland (as near as possible given the POSIX file interface
   and the kernel, anyway)
