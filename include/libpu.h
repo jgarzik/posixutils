@@ -47,23 +47,6 @@
 #define ALIGN(x,a) (((x)+(a)-1)&~((a)-1))
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
-/*
- * min()/max() macros that also do
- * strict type-checking.. See the
- * "unnecessary" pointer comparison.
- */
-#define min(x,y) ({ \
-        typeof(x) _x = (x);     \
-        typeof(y) _y = (y);     \
-        (void) (&_x == &_y);    \
-        _x < _y ? _x : _y; })
-
-#define max(x,y) ({ \
-        typeof(x) _x = (x);     \
-        typeof(y) _y = (y);     \
-        (void) (&_x == &_y);    \
-        _x > _y ? _x : _y; })
-
 #define STDIN_NAME "(stdin)"
 #define STDOUT_NAME "(stdout)"
 #define STDERR_NAME "(stderr)"

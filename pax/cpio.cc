@@ -156,7 +156,7 @@ static int cpio_input(const char *buf_in, size_t *buflen_io)
 		switch (state->input_state) {
 		case CS_HDR: {
 			char *buf = (char *) &state->input_hdr;
-			unsigned int i = min(buflen,
+			unsigned int i = std::min(buflen,
 				sizeof(struct hdr_cpio) - state->input_hdr_pos);
 			memcpy(buf + state->input_hdr_pos, buf_in, i);
 
