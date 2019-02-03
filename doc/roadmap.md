@@ -1,4 +1,20 @@
 
+# ROADMAP
+
+Status of all utilities.
+
+## Key
+
+1. General format:  Category, followed by list of utilities in that category.
+
+2. Incomplete utilities marked with '?'
+
+3. Utilities thought to be feature complete marked with '*'
+
+4. Utilities audited and tested marked with '^'
+
+## List
+
 apps: bc mailx man more od sh
 
 batch env: qalter qdel qhold qmove qmsg qrerun qrls qselect qsig qstat qsub
