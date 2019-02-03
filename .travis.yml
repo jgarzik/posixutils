@@ -9,6 +9,8 @@ os:
   - linux
 #  - osx
 
+dist: xenial
+
 sudo: false
 
 env:
@@ -16,6 +18,15 @@ env:
     - MAKEJOBS=-j3
     - RUN_TESTS=true
     - BASE_OUTDIR=$TRAVIS_BUILD_DIR/out
+
+cache:
+  apt: true
+
+addons:
+  apt:
+    packages:
+      - pkg-config
+      - autopoint
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
