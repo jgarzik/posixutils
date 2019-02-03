@@ -8,7 +8,7 @@ AC_CONFIG_MACRO_DIR([build-aux/m4])
 
 AC_CANONICAL_TARGET
 
-AM_INIT_AUTOMAKE([gnu subdir-objects])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
 
 AM_MAINTAINER_MODE([enable])
 
