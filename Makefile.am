@@ -11,7 +11,7 @@ noinst_HEADERS = include/libpu.h
 noinst_HEADERS += signal-copy.h platform/signal/i686-linux-gnu.h platform/signal/x86_64-linux-gnu.h platform/signal/x86_64-darwin13.4.0.h
 TESTS =
 CLEANFILES =
-EXTRA_DIST = doc/new-util.txt doc/opengroup-docs.txt doc/roadmap.txt
+EXTRA_DIST = doc/new-util.txt doc/opengroup-docs.txt doc/roadmap.md
 EXTRA_DIST += config.rpath mkinstalldirs TODO gen-strmap.pl testrunner.py
 
 include asa/Makefile.include
