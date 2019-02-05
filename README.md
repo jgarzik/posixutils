@@ -30,6 +30,9 @@ http://www.opengroup.org/onlinepubs/009695399/idx/utilities.html
 
 ## Project goals/manifesto
 
+* Using the full power of C++11 compiler and standard library,
+  including templates, threads, atomics and more.
+
 * race-free userland (as near as possible given the POSIX file interface
   and the kernel, anyway)
 
