@@ -4,6 +4,14 @@
 The posixutils package is a collection of the utilities specified in the
 Single Unix Specification v3 (SuSv3).
 
+## Mission
+
+This project asks the question:
+
+**What happens when the familiar shell utilities -- cp, rm, mv, etc. --
+are written in modern C++, with full access to the C++11 compiler and
+library?**
+
 ## Resources
 
 posixutils home page (untouched for years):
