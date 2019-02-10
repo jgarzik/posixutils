@@ -28,6 +28,7 @@ include diff/Makefile.include
 include dirname/Makefile.include
 include echo/Makefile.include
 include env/Makefile.include
+include expand/Makefile.include
 include expr/Makefile.include
 include false/Makefile.include
 include getconf/Makefile.include

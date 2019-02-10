@@ -1,0 +1,60 @@
+#!/bin/sh
+
+INFN="$srcdir/expand/test.in"
+OUTFN="expand/expand-test.out.$$"
+
+expand/expand $INFN > $OUTFN
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN
+	echo T1 failed
+	exit 1
+fi
+
+CMPFN="$srcdir/expand/test1.out"
+cmp -s $CMPFN $OUTFN
+retval=$?
+rm -f $OUTFN
+if [ $retval -ne 0 ]
+then
+        echo T1-cmp failed
+        exit 1
+fi
+
+expand/expand -t 5 $INFN > $OUTFN
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN
+	echo T2 failed
+	exit 1
+fi
+
+CMPFN="$srcdir/expand/test2.out"
+cmp -s $CMPFN $OUTFN
+retval=$?
+rm -f $OUTFN
+if [ $retval -ne 0 ]
+then
+        echo T2-cmp failed
+        exit 1
+fi
+
+expand/expand -t 4,6 $INFN > $OUTFN
+if [ $? -ne 0 ]
+then
+	rm -f $OUTFN
+	echo T3 failed
+	exit 1
+fi
+
+CMPFN="$srcdir/expand/test3.out"
+cmp -s $CMPFN $OUTFN
+retval=$?
+rm -f $OUTFN
+if [ $retval -ne 0 ]
+then
+        echo T3-cmp failed
+        exit 1
+fi
+
+exit 0
