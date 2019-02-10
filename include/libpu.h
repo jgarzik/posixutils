@@ -70,6 +70,10 @@
 #define PU_OPT_SET(char,var) \
 	case (char): opt_##var = true; break;
 
+#define DECL_ARGP(argsdoc) \
+static error_t parse_opt (int key, char *arg, struct argp_state *state); \
+static const struct argp argp = { options, parse_opt, argsdoc, doc };
+
 #define DECLARE_PU_PARSE_ARGS \
 static error_t args_parse_opt (int key, char *arg, struct argp_state *state) \
 {				\

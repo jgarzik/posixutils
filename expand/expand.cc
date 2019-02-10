@@ -39,9 +39,7 @@ static struct argp_option options[] = {
 	  N_("Specify the tab stops. A single positive integer, or comma/blank-separated positive integers.") },
 	{ }
 };
-
-static error_t parse_opt (int key, char *arg, struct argp_state *state);
-static const struct argp argp = { options, parse_opt, file_args_doc, doc };
+DECL_ARGP(file_args_doc)
 
 class ExpandApp : public CmdlineApp {
 private:
