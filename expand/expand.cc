@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Bloq Inc.
  *
@@ -17,12 +16,7 @@
  *
  */
 
-
-#ifndef HAVE_CONFIG_H
-#error missing autoconf-generated config.h.
-#endif
 #include "posixutils-config.h"
-
 #include <vector>
 #include <string>
 #include <regex>
