@@ -11,5 +11,7 @@ TESTS += expand/expand-test
 
 EXTRA_DIST += expand/expand-test \
 	expand/test.in \
-	expand/test1.out
+	expand/test1.out \
+	expand/test2.out \
+	expand/test3.out
 

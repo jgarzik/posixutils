@@ -314,6 +314,7 @@ bool ExpandApp::set_tablist(const std::string& liststr)
 		last = cur;
 	}
 
+	repeated_tab = 0;
 	return true;
 }
 
@@ -338,10 +339,11 @@ void ExpandApp::advance_tablist(unsigned int& column)
 	}
 
 	while (column < last_tab) {
+		outspace(column);
 		if (tab_map.test(column))
 			break;
-		outspace(column);
 	}
+	outspace(column);
 }
 
 int ExpandApp::arg_file(StdioFile& f)
