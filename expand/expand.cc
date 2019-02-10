@@ -41,25 +41,23 @@ static struct argp_option options[] = {
 };
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state);
-
 static const struct argp argp = { options, parse_opt, file_args_doc, doc };
 
 class ExpandApp : public CmdlineApp {
 private:
 	unsigned int		repeated_tab;
 	unsigned int		last_tab;
-	std::vector<unsigned int> tabs;
 	Bitmap			tab_map;
 
 public:
 	ExpandApp() : CmdlineApp(true), repeated_tab(8) { }
 
 	int run() { return run_arg_files(); }
-
 	int arg_file(StdioFile& f);
 
 	bool set_tablist(const std::string& liststr);
 
+private:
 	void outspace(unsigned int& column);
 	void advance_rtab(unsigned int& column);
 	void advance_tablist(unsigned int& column);
@@ -71,6 +69,7 @@ bool ExpandApp::set_tablist(const std::string& liststr)
 {
 	vector<string> sv;
 
+	// branch: tab "list" is single positive integer
 	if (regex_match(liststr, rxInteger)) {
 		int tmp = atoi(liststr.c_str());
 		if (tmp < 1)
@@ -79,28 +78,33 @@ bool ExpandApp::set_tablist(const std::string& liststr)
 		return true;
 	}
 	
+	// split based on comma, if present, blanks otherwise
 	if (liststr.find(',')) {
 		strsplit(liststr, ',', sv);
 	} else
 		strsplit(liststr, sv);
 
+	// require at least two tablist entries
 	if (sv.size() < 2)
 		return false;
 
+	// validate each tablist entry
 	int last = 0;
 	for (auto it = sv.begin(); it != sv.end(); it++) {
+		// must be positive, consecutive integer
 		int cur = atoi((*it).c_str());
 		if ((cur < 1) || (cur <= last))
 			return false;
 
-		tabs.push_back(cur);
 		tab_map.set(cur);
 		last_tab = cur;
 
 		last = cur;
 	}
 
+	// we have a tablist; disable repeated-tab feature
 	repeated_tab = 0;
+
 	return true;
 }
 
