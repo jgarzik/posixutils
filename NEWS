@@ -1,7 +1,14 @@
 
-Version 5 - unreleased
+Version 2019.02.10
 
-	- New utilities: cmp, tput, tabs, stty, uname, uniq
+	- Building with C++11 as minimum compiler and target.
+	- Refresh almost all utilities, building them as C++
+	- New all-in-one-makefile autotools build system.
+	- Vastly improved testing framework.
+	- Import man pages from Open Group (permitted per agreement).
+
+	- New utilities: cmp, diff, expand, expr, ipcs, link, sleep,
+	  sort, tput, tabs, tsort, stty, uname, uniq, unlink
 
 	- Bug fixes.
 

@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.69])
-AC_INIT([posixutils],[5git],[http://sourceforge.net/projects/nix-utils  ..])
+AC_INIT([posixutils],[2019.02.10],[http://sourceforge.net/projects/nix-utils  ..])
 AC_CONFIG_SRCDIR([true/true.c])
 AC_CONFIG_HEADERS([posixutils-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
