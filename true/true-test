@@ -1,4 +1,4 @@
 #!/bin/sh
 
-$srcdir/testrunner.py $srcdir/true/true-tests.json
+$srcdir/testrunner.py $srcdir/true true-tests.json
 

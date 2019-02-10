@@ -24,4 +24,5 @@ then
 	exit 1
 fi
 
-exit 0
+echo TEST SKIPPED -- BROKEN -- RELIES ON ENV VARS UID, EUID
+exit 77

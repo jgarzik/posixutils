@@ -1,4 +1,4 @@
 #!/bin/sh
 
-$srcdir/testrunner.py $srcdir/expr/expr-tests.json
+$srcdir/testrunner.py $srcdir/expr expr-tests.json
 

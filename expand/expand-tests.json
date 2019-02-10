@@ -1,0 +1,8 @@
+{
+  "prog": "expand/expand",
+  "tests": [
+    [ "T1", [], "test.in", "test1.out", "", 0, {"in":"y","out":"y"} ],
+    [ "T2", ["-t", "5"], "test.in", "test2.out", "", 0, {"in":"y","out":"y"} ],
+    [ "T3", ["-t", "4,6"], "test.in", "test3.out", "", 0, {"in":"y","out":"y"} ]
+  ]
+}

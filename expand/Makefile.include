@@ -10,6 +10,7 @@ expand_expand_CPPFLAGS = -I$(srcdir)/include
 TESTS += expand/expand-test
 
 EXTRA_DIST += expand/expand-test \
+	expand/expand-tests.json \
 	expand/test.in \
 	expand/test1.out \
 	expand/test2.out \

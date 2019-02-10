@@ -5,6 +5,7 @@ import subprocess
 import json
 
 failures=0
+srcdir=''
 
 # JSON format:
 # {
@@ -15,7 +16,8 @@ failures=0
 #       "input data",		  <-- default: empty
 #       "expected stdout output", <-- default: empty
 #       "expected stderr output", <-- default: empty
-#       0			  <-- expected return code (default: zero)
+#       0,			  <-- expected return code (default: zero)
+#	{ "infile": true, "outfile": true } <-- flags and further options
 #     ]
 #   ]
 # }
@@ -41,18 +43,37 @@ def runtest(prog, testparams):
 	if len(testparams) > 5:
 		wanted_returncode = testparams[5]
 
+	test_opts = {}
+	if len(testparams) > 6:
+		test_opts = testparams[6]
+
+	if 'in' in test_opts:
+		with open(srcdir + '/' + in_data, 'r') as content_file:
+			in_data = content_file.read()
+	if 'out' in test_opts:
+		with open(srcdir + '/' + wanted_out, 'r') as content_file:
+			wanted_out = content_file.read()
+
 	p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	(out_data, err_data) = p.communicate(in_data)
+
+	ok=True
 
 	if out_data != wanted_out:
 		print >>sys.stderr, "FAIL " + test_name + " stdout-invalid"
 		failures = failures + 1
+		ok=False
 	if err_data != wanted_err:
 		print >>sys.stderr, "FAIL " + test_name + " stderr-invalid"
 		failures = failures + 1
+		ok=False
 	if p.returncode != wanted_returncode:
 		print >>sys.stderr, "FAIL " + test_name + " retcode-invalid"
 		failures = failures + 1
+		ok=False
+
+	if ok:
+		print >>sys.stderr, "OK " + test_name
 
 def runtests(d):
 	prog = d['prog']
@@ -60,11 +81,15 @@ def runtests(d):
 		runtest(prog, testparams)
 
 if __name__ == '__main__':
-	if len(sys.argv) != 2:
+	if len(sys.argv) != 3:
 		print "Usage: testrunner.py JSON-CONFIG-FILE"
 		sys.exit(1)
 
-	with open(sys.argv[1]) as json_data:
+	srcdir=sys.argv[1]
+	cfgfn=sys.argv[2]
+	fn = srcdir + '/' + cfgfn
+
+	with open(fn) as json_data:
 	    d = json.load(json_data, strict=False)
 
 	    runtests(d)
