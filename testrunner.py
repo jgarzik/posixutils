@@ -17,7 +17,7 @@ srcdir=''
 #       "expected stdout output", <-- default: empty
 #       "expected stderr output", <-- default: empty
 #       0,			  <-- expected return code (default: zero)
-#	{ "infile": true, "outfile": true } <-- flags and further options
+#	{ "in": "y", "out": "y" } <-- flags and further options
 #     ]
 #   ]
 # }
@@ -82,7 +82,7 @@ def runtests(d):
 
 if __name__ == '__main__':
 	if len(sys.argv) != 3:
-		print "Usage: testrunner.py JSON-CONFIG-FILE"
+		print "Usage: testrunner.py TEST-DATA-DIR JSON-CONFIG-FILE"
 		sys.exit(1)
 
 	srcdir=sys.argv[1]
