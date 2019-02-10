@@ -168,9 +168,6 @@ int ExpandApp::arg_file(StdioFile& f)
 
 static ExpandApp app;
 
-#define PU_OPT_PUSH_ARG \
-	case ARGP_KEY_ARG: app.push_arg(arg); break;
-
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
 {
 	PU_OPT_BEGIN

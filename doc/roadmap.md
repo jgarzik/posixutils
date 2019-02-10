@@ -25,7 +25,7 @@ data archiving: pax?
 
 data encoding: compress* uncompress* uuencode* uudecode zcat*
 
-data swizzle: comm? csplit cut expand fold join nl paste pr sort? split? strings* tr tsort? unexpand uniq?
+data swizzle: comm? csplit cut expand* fold join nl paste pr sort? split? strings* tr tsort? unexpand uniq?
 
 development: ar asa* c99 cflow ctags cxref fort77 lex make nm strip yacc
 
