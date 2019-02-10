@@ -171,13 +171,8 @@ static ExpandApp app;
 static error_t parse_opt (int key, char *arg, struct argp_state *state)
 {
 	PU_OPT_BEGIN
-
-	case 't':
-		if (!app.set_tablist(arg))
-			return ARGP_ERR_UNKNOWN;
-		break;
-		
-	PU_OPT_PUSH_ARG
+	PU_APP_CALL_ARG('t', set_tablist)
+	PU_APP_PUSH_ARG
 	PU_OPT_DEFAULT
 	PU_OPT_END
 }

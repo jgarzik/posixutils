@@ -61,7 +61,9 @@
 	case (char):	/* do nothing */ break;
 #define PU_OPT_ARG \
 	case ARGP_KEY_ARG:	walker.arglist.push_back(arg); break;
-#define PU_OPT_PUSH_ARG \
+#define PU_APP_CALL_ARG(chr,method) \
+	case (chr): if (!app.method(arg)) return ARGP_ERR_UNKNOWN; break;
+#define PU_APP_PUSH_ARG \
 	case ARGP_KEY_ARG: app.push_arg(arg); break;
 #define PU_OPT_DEFAULT \
 	default:	return ARGP_ERR_UNKNOWN;
