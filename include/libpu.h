@@ -1,6 +1,7 @@
 
 /*
  * Copyright 2004-2006 Jeff Garzik <jgarzik@pobox.com>
+ * Copyright 2019 Bloq Inc.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +31,7 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
-#include <stdio.h>
+#include <cstdio>
 #include <argp.h>
 #include <dirent.h>
 #include <regex.h>
@@ -202,6 +203,169 @@ struct walker {
 };
 
 typedef int (*idir_actor_t)(int fd, const char *dirn, const char *basen);
+
+class Bitmap {
+private:
+	std::vector<uint32_t>	uv;
+
+public:
+	Bitmap(size_t initsz = 64) : uv((initsz / 32) + 1) {}
+
+	bool test(size_t idx) {
+		size_t bucket = idx / 32;
+		size_t bit = idx % 32;
+
+		if (bucket >= uv.size())
+			return false;
+
+		return (uv[bucket] & (1U << bit));
+	}
+
+	void set(size_t idx) {
+		size_t bucket = idx / 32;
+		size_t bit = idx % 32;
+
+		size_t req_size = bucket + 1;
+		if (uv.size() < req_size)
+			uv.resize(req_size);
+
+		uv[bucket] = uv[bucket] | (1U << bit);
+	}
+
+	void clear(size_t idx) {
+		size_t bucket = idx / 32;
+		size_t bit = idx % 32;
+
+		if (bucket >= uv.size())
+			return;
+
+		uv[bucket] = uv[bucket] & ~(1U << bit);
+	}
+};
+
+class StdioFile {
+private:
+	std::string	pr_filename;
+	FILE		*fp;
+	bool		have_error;
+	bool		at_eof;
+
+public:
+	bool eof() const { return at_eof; }
+	bool err() const { return have_error; }
+	bool is_open() const { return (fp != nullptr); }
+	const std::string& pr_fn() const { return pr_filename; }
+	FILE *get_fp() { return fp; }
+
+	StdioFile() : fp(nullptr), have_error(false), at_eof(false) {}
+	~StdioFile() { close(); }
+
+	void openStdin()
+	{
+		pr_filename = _("(standard input)");
+		fp = stdin;
+		at_eof = false;
+		have_error = false;
+	}
+	void openStdout()
+	{
+		pr_filename = _("(standard output)");
+		fp = stdout;
+		at_eof = false;
+		have_error = false;
+	}
+
+	void setflags()
+	{
+		if (ferror(fp))
+			have_error = true;
+		else if (feof(fp))
+			at_eof = true;
+	}
+
+	bool open(const std::string& filename, const std::string& mode = "r") {
+		pr_filename = filename;
+
+		fp = ::fopen(filename.c_str(), mode.c_str());
+		if (!fp) {
+			have_error = true;
+			return false;
+		}
+
+		at_eof = false;
+		have_error = false;
+		return true;
+	}
+	void close() {
+		if (!fp)
+			return;
+
+		::fclose(fp);
+		fp = nullptr;
+	}
+
+	int getc() {
+		int rc = ::fgetc(fp);
+		if (rc == EOF)
+			setflags();
+		return rc;
+	}
+	bool gets(std::string& retStr, size_t maxsz = 1024) {
+		if (!fp)
+			return false;
+
+		char linebuf[maxsz + 1];
+		char *rp = ::fgets(linebuf, sizeof(linebuf), fp);
+		if (!rp) {
+			setflags();
+			return false;
+		}
+		retStr.assign(linebuf);
+		return true;
+	}
+
+	size_t read(void *ptr, size_t sz) {
+		if (!fp || !ptr)
+			return 0;
+
+		size_t rc = ::fread(ptr, 1, sz, fp);
+		if (rc < sz)
+			setflags();
+		return rc;
+	}
+
+	bool write(const void *ptr, size_t sz) {
+		if (!fp || !ptr)
+			return false;
+
+		size_t rc = ::fwrite(ptr, 1, sz, fp);
+		if (rc != sz) {
+			have_error = true;
+			return false;
+		}
+
+		return true;
+	}
+};
+
+class CmdlineApp {
+private:
+	std::vector<std::string> arglist;
+	bool stdin_or_files;
+
+public:
+	CmdlineApp(bool sof_ = false) : stdin_or_files(sof_) {}
+	virtual ~CmdlineApp() {}
+
+	void push_arg(const std::string& arg) { arglist.push_back(arg); }
+
+	virtual int arg_file(StdioFile& f) { return 1; }
+
+	int init_and_run(const struct argp *argp, int argc, char **argv);
+	virtual int init(const struct argp *argp, int argc, char **argv);
+	virtual int run() { return 0; }
+	int run_arg_files();
+};
 
 extern ssize_t copy_fd(const std::string& dest_fn, int dest_fd,
 		const std::string& src_fn, int src_fd);

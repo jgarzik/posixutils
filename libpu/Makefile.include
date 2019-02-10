@@ -4,8 +4,8 @@ noinst_LIBRARIES += $(LIBPU)
 noinst_PROGRAMS += libpu/libpu-tests
 
 libpu_libpu_a_SOURCES = \
-        libpu/cmdline.cc libpu/lib.cc libpu/path.cc libpu/regex.cc \
-        libpu/strsplit.cc libpu/term.cc libpu/walk.cc
+        libpu/app.cc libpu/cmdline.cc libpu/lib.cc libpu/path.cc \
+	libpu/regex.cc libpu/strsplit.cc libpu/term.cc libpu/walk.cc
 libpu_libpu_a_CPPFLAGS = -I$(srcdir)/include -DLOCALEDIR=\"@datadir@/locale\"
 
 libpu_libpu_tests_SOURCES = libpu/libpu-tests.cc
