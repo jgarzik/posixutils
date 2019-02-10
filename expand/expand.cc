@@ -128,33 +128,32 @@ void ExpandApp::advance_tablist(unsigned int& column)
 	outspace(column);
 }
 
+// Core data processing algorithm and pipeline
 int ExpandApp::arg_file(StdioFile& f)
 {
 	unsigned int column = 1;
 	while (!f.eof()) {
 		int ch = f.getc();
-		if (ch == EOF)
+		if (ch == EOF)			// end of file, or error
 			break;
 
-		if (ch == '\b') {
+		if (ch == '\b') {		// backspace
 			putchar(ch);
 			if (column > 1)
 				column--;
-		} else if (ch == '\r') {
+		} else if (ch == '\r' || ch == '\n') { // newline
 			putchar(ch);
 			column = 1;
-		} else if (ch == '\n') {
-			putchar(ch);
-			column = 1;
-		} else if (ch != '\t') {
+		} else if (ch != '\t') {	// all other non-tab chars
 			putchar(ch);
 			column++;
-		} else if (repeated_tab)
+		} else if (repeated_tab)	// expand by repeated tab
 			advance_rtab(column);
-		else
+		else				// expand by tablist
 			advance_tablist(column);
 	}
 
+	// return error at toplevel, upon any I/O error here
 	return (f.err() ? 1 : 0);
 }
 
