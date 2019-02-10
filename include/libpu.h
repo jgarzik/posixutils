@@ -263,7 +263,6 @@ public:
 	bool err() const { return have_error; }
 	bool is_open() const { return (fp != nullptr); }
 	const std::string& pr_fn() const { return pr_filename; }
-	FILE *get_fp() { return fp; }
 
 	StdioFile() : fp(nullptr), have_error(false), at_eof(false) {}
 	~StdioFile() { close(); }
