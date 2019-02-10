@@ -1,0 +1,15 @@
+
+bin_PROGRAMS += expand/expand
+
+dist_man_MANS += expand/expand.1
+
+expand_expand_SOURCES = expand/expand.cc
+expand_expand_LDADD = $(LIBPU) $(ARGP_LIB)
+expand_expand_CPPFLAGS = -I$(srcdir)/include
+
+TESTS += expand/expand-test
+
+EXTRA_DIST += expand/expand-test \
+	expand/test.in \
+	expand/test1.out
+
