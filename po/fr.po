@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: posixutils 3\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-27 14:13-0400\n"
+"POT-Creation-Date: 2019-02-11 08:51-0500\n"
 "PO-Revision-Date: 2005-02-07 22:24-0500\n"
 "Last-Translator:  <jgarzik@pobox.com>\n"
 "Language-Team: French\n"
@@ -26,10 +26,10 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:47 dirname/dirname.cc:36
+#: basename/basename.cc:46
 #, c-format
-msgid "invalid number of arguments\n"
-msgstr "nombre inadmissible des arguments\n"
+msgid "Usage: %s PATH [SUFFIX]\n"
+msgstr ""
 
 #: cat/cat.cc:37
 msgid "cat - concatenate files and print on the standard output"
@@ -195,6 +195,11 @@ msgstr ""
 #: df/df.cc:210
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
+msgstr ""
+
+#: dirname/dirname.cc:36
+#, c-format
+msgid "Usage: %s PATH\n"
 msgstr ""
 
 #: diff/diff.cc:44
@@ -1108,6 +1113,9 @@ msgstr ""
 #: libpu/lib.cc:47
 msgid "file..."
 msgstr ""
+
+#~ msgid "invalid number of arguments\n"
+#~ msgstr "nombre inadmissible des arguments\n"
 
 #~ msgid "out of memory"
 #~ msgstr "hors de la memoire"

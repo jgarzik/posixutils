@@ -27,7 +27,6 @@
 #include <string>
 #include <libpu.h>
 
-
 int main (int argc, char *argv[])
 {
 	std::string suffix;
@@ -44,11 +43,13 @@ int main (int argc, char *argv[])
 
 	// too few or too many args
 	else {
-		fprintf(stderr, _("invalid number of arguments\n"));
+		fprintf(stderr, _("Usage: %s PATH [SUFFIX]\n"), argv[0]);
 		return 1;
 	}
 
 	// take input path, strip directories using basename(3)
+	// basename(3) may modify the string passed to it, so
+	// we pass a copy (pathbuf).
 	std::string pathbuf(argv[1]);
 	std::string bn(basename(&pathbuf[0]));
 
