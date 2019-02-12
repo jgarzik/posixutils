@@ -116,62 +116,6 @@ struct strmap {
 	int		val;
 };
 
-class Regex {
-private:
-	regex_t reg;
-	std::string regex;
-	int cflags;
-	bool initd;
-
-public:
-	Regex() : initd(false) {}
-	Regex(const std::string& regex_, int cflags_ = 0) : initd(false) {
-		compile(regex_, cflags_);
-	}
-	Regex(const Regex& obj_copy) : initd(false) {
-		compile(obj_copy.regex, obj_copy.cflags);
-	}
-	~Regex() {
-		clear();
-	}
-
-	bool ok() { return initd; }
-	void clear() {
-		if (initd) {
-			regfree(&reg);
-			initd = false;
-		}
-	}
-
-	bool compile(const std::string& regex_, int cflags_ = 0) {
-		clear();
-
-		int rc = regcomp(&reg, regex_.c_str(), cflags_);
-		if (rc)
-			return false;
-
-		regex = regex_;
-		cflags = cflags_;
-		initd = true;
-		return true;
-	}
-	bool match(const std::string& haystack, int eflags = 0) {
-		if (!initd)
-			return false;
-		return (regexec(&reg, haystack.c_str(), 0, NULL, eflags) == 0);
-	}
-	bool match(const std::string& haystack, size_t nmatch, regmatch_t *matches, int eflags = 0) {
-		if (!initd)
-			return false;
-		return (regexec(&reg, haystack.c_str(), nmatch, matches, eflags) == 0);
-	}
-	bool match(const std::string& haystack, std::string& out1, int eflags = 0);
-	bool match(const std::string& haystack, std::string& out1, std::string& out2,
-		   int eflags = 0);
-	bool match(const std::string& haystack,
-		   std::string& out1, std::string& out2, std::string& out3, int eflags = 0);
-};
-
 enum walker_flags {
 	WF_NO_FILES_STDIN	= (1 << 0),
 	WF_STAT			= (1 << 1),

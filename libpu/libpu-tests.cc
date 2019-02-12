@@ -83,54 +83,8 @@ static void test_strsplit()
 	assert(s2 == "");
 }
 
-static void test_Regex()
-{
-	Regex t1;
-	assert(t1.ok() == false);
-
-	Regex t2("robin");
-	assert(t2.ok() == true);
-	assert(t2.match("red robin") == true);
-
-	Regex t3("[[:space:]]+", REG_NOSUB | REG_EXTENDED);
-	assert(t3.ok() == true);
-	assert(t3.match("red robin") == true);
-
-	string s1, s2, s3;
-
-	Regex t4("^([^=]+)=.*$", REG_EXTENDED);
-	assert(t4.ok() == true);
-	assert(t4.match("name=bob", s2) == true);
-	assert(s2 == "name");
-
-	Regex t5("^([^=]+)=.*$", REG_EXTENDED);
-	assert(t5.ok() == true);
-	assert(t5.match("=bob", s2) == false);
-
-	Regex t6("^([^=]+)=(.*)$", REG_EXTENDED);
-	assert(t6.ok() == true);
-	assert(t6.match("name=bob", s1, s2) == true);
-	assert(s1 == "name");
-	assert(s2 == "bob");
-
-	Regex t7("^([^=]+)=([^;]+);(.*)$", REG_EXTENDED);
-	assert(t7.ok() == true);
-	assert(t7.match("age=32;64", s1, s2, s3) == true);
-	assert(s1 == "age");
-	assert(s2 == "32");
-	assert(s3 == "64");
-
-	size_t nmatch = 32;
-	regmatch_t matches[nmatch];
-
-	Regex t8("^([^=]+)=([^;]+);(.*)$", REG_EXTENDED);
-	assert(t8.ok() == true);
-	assert(t8.match("age=32;64", nmatch, matches) == true);
-}
-
 int main (int argc, char *argv[])
 {
 	test_strsplit();
-	test_Regex();
 	return 0;
 }

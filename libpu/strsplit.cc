@@ -23,8 +23,11 @@
 #include "posixutils-config.h"
 
 #include <string>
+#include <regex>
 #include <regex.h>
 #include <libpu.h>
+
+using namespace std;
 
 void strsplit(const std::string& s, std::vector<std::string>& sv)
 {
@@ -78,31 +81,41 @@ void strsplit(const std::string& s, int delim, std::vector<std::string>& sv)
 		sv.push_back(tmp);
 }
 
-void strsplit(const std::string& s, const std::string& regex,
+void strsplit(const std::string& s, const std::regex& rx,
 	      std::vector<std::string>& sv)
 {
-	Regex rx(regex, REG_EXTENDED);
-	if (!rx.ok())
-		return;
-
-	sv.clear();
-
-	size_t nmatch = 4;
-	regmatch_t matches[nmatch];
+	smatch m;
 	std::string tmp(s);
 
 	while (tmp.size() > 0) {
-		bool rcm = rx.match(tmp, nmatch, matches);
+		bool rcm = regex_search(tmp, m, rx);
 		if (!rcm) {
 			sv.push_back(tmp);
 			break;
 		}
 
+		size_t matchPos = m.position(0);
+		size_t matchLen = m.length(0);
+
 		// push string prior to delimiter
-		sv.push_back(tmp.substr(0, matches[0].rm_so));
+		sv.push_back(tmp.substr(0, matchPos));
 
 		// grab string following delimiter
-		tmp = tmp.substr(matches[0].rm_eo);
+		tmp = tmp.substr(matchPos + matchLen);
+	}
+}
+
+void strsplit(const std::string& s, const std::string& regexStr,
+	      std::vector<std::string>& sv)
+{
+	sv.clear();
+
+	try {
+		regex rx(regexStr, regex::extended);
+		strsplit(s, rx, sv);
+	}
+	catch (std::regex_error& e) {
+		return;
 	}
 }
 
