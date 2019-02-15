@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/projects/nix-utils\n"
-"POT-Creation-Date: 2015-09-27 14:13-0400\n"
+"POT-Creation-Date: 2019-02-11 08:51-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,9 @@ msgstr ""
 msgid "malformed line\n"
 msgstr ""
 
-#: basename/basename.cc:47 dirname/dirname.cc:36
+#: basename/basename.cc:46
 #, c-format
-msgid "invalid number of arguments\n"
+msgid "Usage: %s PATH [SUFFIX]\n"
 msgstr ""
 
 #: cat/cat.cc:37
@@ -191,6 +191,11 @@ msgstr ""
 #: df/df.cc:210
 #, c-format
 msgid "Filesystem         %4ju-blocks      Used Available Use%% Mounted on\n"
+msgstr ""
+
+#: dirname/dirname.cc:36
+#, c-format
+msgid "Usage: %s PATH\n"
 msgstr ""
 
 #: diff/diff.cc:44

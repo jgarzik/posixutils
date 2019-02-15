@@ -27,16 +27,18 @@
 #include <string>
 #include <libpu.h>
 
-
 int main (int argc, char *argv[])
 {
 	pu_init();
 
+	// too few or too many args
 	if (argc != 2) {
-		fprintf(stderr, _("invalid number of arguments\n"));
+		fprintf(stderr, _("Usage: %s PATH\n"), argv[0]);
 		return 1;
 	}
 
+	// dirname(3) may modify the string passed to it, so
+	// we pass a copy (pathbuf).
 	std::string pathbuf(argv[1]);
 	std::string dn(dirname(&pathbuf[0]));
 
