@@ -55,7 +55,9 @@ enum token_type {
 };
 
 extern "C" {
+#if 0
 long long yylval = 0;
+#endif
 #define YYSTYPE long long
 #include "expr-parse.h"
 
