@@ -4,7 +4,7 @@ bin_PROGRAMS += rmdir/rmdir
 dist_man_MANS += rmdir/rmdir.1
 
 rmdir_rmdir_SOURCES = rmdir/rmdir.cc
-rmdir_rmdir_LDADD = $(LIBPU) $(ARGP_LIB)
+rmdir_rmdir_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 rmdir_rmdir_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += rmdir/rmdir-test

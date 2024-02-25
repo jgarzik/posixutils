@@ -6,7 +6,7 @@ bin_PROGRAMS += getconf/getconf
 dist_man_MANS += getconf/getconf.1
 
 getconf_getconf_SOURCES = getconf/getconf.cc
-getconf_getconf_LDADD = $(LIBPU) $(ARGP_LIB)
+getconf_getconf_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 getconf_getconf_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/getconf
 getconf_getconf_INCLUDES = $(getconf_generated_headers)
 

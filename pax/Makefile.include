@@ -2,7 +2,7 @@
 noinst_PROGRAMS += pax/pax
 
 pax_pax_SOURCES = pax/main.cc pax/pax.h pax/pax.cc pax/ustar.cc pax/cpio.cc pax/zip.cc
-pax_pax_LDADD = $(LIBPU) $(ARGP_LIB) $(ZLIB_LIB)
+pax_pax_LDADD = $(LIBPU) $(ARGP_LIB) $(ZLIB_LIB) $(LIBINTL)
 pax_pax_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/pax
 
 pax/pax-options.h: pax/pax-options.data

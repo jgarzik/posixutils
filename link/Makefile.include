@@ -4,7 +4,7 @@ bin_PROGRAMS += link/link
 dist_man_MANS += link/link.1
 
 link_link_SOURCES = link/link.cc
-link_link_LDADD = $(LIBPU) $(ARGP_LIB)
+link_link_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 link_link_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += link/link-test

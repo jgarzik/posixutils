@@ -4,7 +4,7 @@ bin_PROGRAMS += kill/kill
 dist_man_MANS += kill/kill.1
 
 kill_kill_SOURCES = kill/kill.cc
-kill_kill_LDADD = $(LIBPU) $(ARGP_LIB)
+kill_kill_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 kill_kill_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/kill
 
 CLEANFILES += kill/kill-siglist.h

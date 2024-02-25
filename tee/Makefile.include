@@ -4,7 +4,7 @@ bin_PROGRAMS += tee/tee
 dist_man_MANS += tee/tee.1
 
 tee_tee_SOURCES = tee/tee.cc
-tee_tee_LDADD = $(LIBPU) $(ARGP_LIB)
+tee_tee_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 tee_tee_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += tee/tee-test

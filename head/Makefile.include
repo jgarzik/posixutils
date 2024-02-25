@@ -4,7 +4,7 @@ bin_PROGRAMS += head/head
 dist_man_MANS += head/head.1
 
 head_head_SOURCES = head/head.cc
-head_head_LDADD = $(LIBPU) $(ARGP_LIB)
+head_head_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 head_head_CPPFLAGS = -I$(srcdir)/include -I$(builddir)/head
 
 TESTS += head/head-test

@@ -4,7 +4,7 @@ bin_PROGRAMS += id/id
 dist_man_MANS += id/id.1
 
 id_id_SOURCES = id/id.cc
-id_id_LDADD = $(LIBPU) $(ARGP_LIB)
+id_id_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 id_id_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += id/id-test

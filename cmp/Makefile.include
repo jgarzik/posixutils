@@ -4,7 +4,7 @@ bin_PROGRAMS += cmp/cmp
 dist_man_MANS += cmp/cmp.1
 
 cmp_cmp_SOURCES = cmp/cmp.cc
-cmp_cmp_LDADD = $(LIBPU) $(ARGP_LIB)
+cmp_cmp_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 cmp_cmp_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += cmp/cmp-test

@@ -4,7 +4,7 @@ bin_PROGRAMS += tty/tty
 dist_man_MANS += tty/tty.1
 
 tty_tty_SOURCES = tty/tty.cc
-tty_tty_LDADD = $(LIBPU) $(ARGP_LIB)
+tty_tty_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 tty_tty_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += tty/tty-test

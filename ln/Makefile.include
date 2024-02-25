@@ -4,7 +4,7 @@ bin_PROGRAMS += ln/ln
 dist_man_MANS += ln/ln.1
 
 ln_ln_SOURCES = ln/ln.cc
-ln_ln_LDADD = $(LIBPU) $(ARGP_LIB)
+ln_ln_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 ln_ln_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += ln/ln-test

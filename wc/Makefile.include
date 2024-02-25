@@ -4,7 +4,7 @@ bin_PROGRAMS += wc/wc
 dist_man_MANS += wc/wc.1
 
 wc_wc_SOURCES = wc/wc.cc
-wc_wc_LDADD = $(LIBPU) $(ARGP_LIB)
+wc_wc_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 wc_wc_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += wc/wc-test

@@ -4,7 +4,7 @@ bin_PROGRAMS += strings/strings
 dist_man_MANS += strings/strings.1
 
 strings_strings_SOURCES = strings/strings.cc
-strings_strings_LDADD = $(LIBPU) $(ARGP_LIB)
+strings_strings_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 strings_strings_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += strings/strings-test
