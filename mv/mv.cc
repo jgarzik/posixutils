@@ -170,8 +170,10 @@ static int copy_reg_file(const char *src, struct stat *st, const char *target)
 		return 1;
 	}
 
+#ifdef HAVE_POSIX_FADVISE
 	/* Do we care about the return value of posix_fadvise(2) ? */
 	posix_fadvise(in_fd, 0, 0, POSIX_FADV_SEQUENTIAL);
+#endif
 
 	/* st variable may be stale by now */
 	if (fstat(in_fd, st) < 0) {
