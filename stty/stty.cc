@@ -30,6 +30,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <termios.h>
+#ifdef __APPLE__
+#include <sys/termios.h>
+#endif
 #include <libpu.h>
 
 #define COMPACT_PFX "PUSTTY1:"
@@ -288,37 +291,40 @@ static int param_cchar(const struct stty_param *param, const char *setting)
 static unsigned int speed_to_bits(unsigned int speed)
 {
 	switch (speed) {
-	X(0)
-	X(50)
-	X(75)
-	X(110)
-	X(134)
-	X(150)
-	X(200)
-	X(300)
-	X(600)
-	X(1200)
-	X(1800)
-	X(2400)
-	X(4800)
-	X(9600)
-	X(19200)
-	X(38400)
-	X(57600)
-	X(115200)
-	X(230400)
-	X(460800)
-	X(500000)
-	X(576000)
-	X(921600)
-	X(1000000)
-	X(1152000)
-	X(1500000)
-	X(2000000)
-	X(2500000)
-	X(3000000)
-	X(3500000)
-	X(4000000)
+	case 0: return B0;
+	case 50: return B50;
+	case 75: return B75;
+	case 110: return B110;
+	case 134: return B134;
+	case 150: return B150;
+	case 200: return B200;
+	case 300: return B300;
+	case 600: return B600;
+	case 1200: return B1200;
+	case 1800: return B1800;
+	case 2400: return B2400;
+	case 4800: return B4800;
+	case 9600: return B9600;
+	case 19200: return B19200;
+	case 38400: return B38400;
+	case 57600: return B57600;
+	case 115200: return B115200;
+	case 230400: return B230400;
+
+#ifdef __linux__
+	case 460800: return B460800;
+	case 500000: return B500000;
+	case 576000: return B576000;
+	case 921600: return B921600;
+	case 1000000: return B1000000;
+	case 1152000: return B1152000;
+	case 1500000: return B1500000;
+	case 2000000: return B2000000;
+	case 2500000: return B2500000;
+	case 3000000: return B3000000;
+	case 3500000: return B3500000;
+	case 4000000: return B4000000;
+#endif
 
 	default:
 		break;

@@ -40,7 +40,11 @@ char *get_terminal(void)
 
 char *xtigetstr(const char *capname)
 {
+#if __APPLE__
+	char *s = tigetstr((char *)capname);
+#else
 	char *s = tigetstr(capname);
+#endif
 	if (s == (char *)-1)
 		s = NULL;
 
