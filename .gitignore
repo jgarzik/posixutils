@@ -11,6 +11,8 @@ stamp-h1
 aclocal.m4
 compile
 configure
+configure~
+configure.ac~
 config.guess
 config.sub
 config.log
