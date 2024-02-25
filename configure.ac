@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_PREREQ([2.69])
+AC_PREREQ([2.71])
 AC_INIT([posixutils],[2019.02.10],[http://sourceforge.net/projects/nix-utils  ..])
 AC_CONFIG_SRCDIR([true/true.c])
 AC_CONFIG_HEADERS([posixutils-config.h])
@@ -33,7 +33,6 @@ AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.13])
 
 dnl Checks for header files.
-AC_HEADER_STDC
 AC_C_BIGENDIAN
 
 dnl Checks for typedefs, structures, and compiler characteristics.
