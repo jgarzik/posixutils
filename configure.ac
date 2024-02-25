@@ -53,7 +53,6 @@ AC_CHECK_LIB(argp, argp_parse, ARGP_LIB=-largp)
 
 AC_DEFINE(_ISOC99_SOURCE, 1, [ISOC99 source])
 AC_DEFINE(_POSIX_SOURCE, 1, [POSIX source])
-AC_DEFINE(_DARWIN_C_SOURCE, 1, [Apple Darwin C source])
 AC_DEFINE(_POSIX_C_SOURCE, 200809L, [POSIX C source])
 AC_DEFINE(_XOPEN_SOURCE, 700, [X/Open source])
 AC_DEFINE(_XOPEN_SOURCE_EXTENDED, 1, [X/open extended source])

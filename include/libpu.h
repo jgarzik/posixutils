@@ -45,6 +45,7 @@
 #define N_(String) String
 
 
+#undef ALIGN
 #define ALIGN(x,a) (((x)+(a)-1)&~((a)-1))
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 

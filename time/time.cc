@@ -24,6 +24,9 @@
 #include "posixutils-config.h"
 
 #define _BSD_SOURCE	/* for wait4(2) */
+#ifdef __APPLE__
+#define _DARWIN_C_SOURCE 1
+#endif
 
 #include <sys/types.h>
 #include <sys/time.h>

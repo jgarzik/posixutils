@@ -28,6 +28,9 @@
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE		/* for strcasestr(3), fgets_unlocked(3) */
 #endif
+#ifdef __APPLE__
+#define _DARWIN_C_SOURCE 1
+#endif
 
 #define __STDC_FORMAT_MACROS 1
 
