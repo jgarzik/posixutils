@@ -21,6 +21,9 @@
 #error missing autoconf-generated config.h.
 #endif
 #include "posixutils-config.h"
+#ifdef __APPLE__
+#define _DARWIN_C_SOURCE 1
+#endif
 
 #include <sys/types.h>
 #include <sys/time.h>

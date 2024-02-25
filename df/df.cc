@@ -22,6 +22,9 @@
 #endif
 #include "posixutils-config.h"
 
+#ifdef __APPLE__
+#define _DARWIN_C_SOURCE 1
+#endif
 #define __STDC_FORMAT_MACROS 1
 
 #include <sys/stat.h>

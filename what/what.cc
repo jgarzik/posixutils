@@ -25,6 +25,9 @@
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE		/* for setlinebuf(3), fgets_unlocked(3) */
 #endif
+#ifdef __APPLE__
+#define _DARWIN_C_SOURCE 1
+#endif
 
 #include <string.h>
 #include <limits.h>

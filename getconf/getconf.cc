@@ -23,6 +23,10 @@
 #endif
 #include "posixutils-config.h"
 
+#ifdef __APPLE__
+#define _DARWIN_C_SOURCE 1
+#endif
+
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
