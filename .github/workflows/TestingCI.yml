@@ -1,0 +1,21 @@
+name: CI
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  linux-ubuntu:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install deps
+      run: sudo apt-get -y install flex bison autopoint gettext
+    - name: Prepare
+      run: ./autogen.sh && ./configure
+    - name: Build
+      run: make -s
+
