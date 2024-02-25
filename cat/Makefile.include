@@ -4,7 +4,7 @@ bin_PROGRAMS += cat/cat
 dist_man_MANS += cat/cat.1
 
 cat_cat_SOURCES = cat/cat.cc
-cat_cat_LDADD = $(LIBPU) $(ARGP_LIB)
+cat_cat_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 cat_cat_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += cat/cat-test

@@ -4,7 +4,7 @@ bin_PROGRAMS += cksum/cksum
 dist_man_MANS += cksum/cksum.1
 
 cksum_cksum_SOURCES = cksum/cksum.cc cksum/cksum_crctab.h
-cksum_cksum_LDADD = $(LIBPU) $(ARGP_LIB)
+cksum_cksum_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 cksum_cksum_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += cksum/cksum-test

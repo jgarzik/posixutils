@@ -3,7 +3,7 @@ bin_PROGRAMS += basename/basename
 dist_man_MANS += basename/basename.1
 
 basename_basename_SOURCES = basename/basename.cc
-basename_basename_LDADD = $(LIBPU) $(ARGP_LIB)
+basename_basename_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 basename_basename_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += basename/basename-test

@@ -4,7 +4,7 @@ bin_PROGRAMS += tsort/tsort
 dist_man_MANS += tsort/tsort.1
 
 tsort_tsort_SOURCES = tsort/tsort.cc
-tsort_tsort_LDADD = $(LIBPU) $(ARGP_LIB)
+tsort_tsort_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 tsort_tsort_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += tsort/tsort-test

@@ -4,7 +4,7 @@ bin_PROGRAMS += sleep/sleep
 dist_man_MANS += sleep/sleep.1
 
 sleep_sleep_SOURCES = sleep/sleep.cc
-sleep_sleep_LDADD = $(LIBPU) $(ARGP_LIB)
+sleep_sleep_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 sleep_sleep_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += sleep/sleep-test

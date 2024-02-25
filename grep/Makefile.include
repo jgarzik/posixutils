@@ -4,7 +4,7 @@ bin_PROGRAMS += grep/grep
 dist_man_MANS += grep/grep.1
 
 grep_grep_SOURCES = grep/grep.cc
-grep_grep_LDADD = $(LIBPU) $(ARGP_LIB)
+grep_grep_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 grep_grep_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += grep/grep-test

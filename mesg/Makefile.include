@@ -4,7 +4,7 @@ bin_PROGRAMS += mesg/mesg
 dist_man_MANS += mesg/mesg.1
 
 mesg_mesg_SOURCES = mesg/mesg.cc
-mesg_mesg_LDADD = $(LIBPU) $(ARGP_LIB)
+mesg_mesg_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 mesg_mesg_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += mesg/mesg-test

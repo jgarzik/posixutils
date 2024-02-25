@@ -4,7 +4,7 @@ bin_PROGRAMS += dirname/dirname
 dist_man_MANS += dirname/dirname.1
 
 dirname_dirname_SOURCES = dirname/dirname.cc
-dirname_dirname_LDADD = $(LIBPU) $(ARGP_LIB)
+dirname_dirname_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 dirname_dirname_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += dirname/dirname-test

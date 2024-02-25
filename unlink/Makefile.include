@@ -4,7 +4,7 @@ bin_PROGRAMS += unlink/unlink
 dist_man_MANS += unlink/unlink.1
 
 unlink_unlink_SOURCES = unlink/unlink.cc
-unlink_unlink_LDADD = $(LIBPU) $(ARGP_LIB)
+unlink_unlink_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 unlink_unlink_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += unlink/unlink-test

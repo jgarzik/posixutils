@@ -4,7 +4,7 @@ bin_PROGRAMS += uuencode/uuencode
 dist_man_MANS += uuencode/uuencode.1
 
 uuencode_uuencode_SOURCES = uuencode/uuencode.cc
-uuencode_uuencode_LDADD = $(LIBPU) $(ARGP_LIB)
+uuencode_uuencode_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 uuencode_uuencode_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += uuencode/uuencode-test

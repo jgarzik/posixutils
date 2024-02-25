@@ -4,7 +4,7 @@ bin_PROGRAMS += rm/rm
 dist_man_MANS += rm/rm.1
 
 rm_rm_SOURCES = rm/rm.cc
-rm_rm_LDADD = $(LIBPU) $(ARGP_LIB)
+rm_rm_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 rm_rm_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += rm/rm-test

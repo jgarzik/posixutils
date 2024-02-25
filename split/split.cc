@@ -190,8 +190,10 @@ static int open_output(void)
 			return 1;
 		}
 
+#ifdef HAVE_POSIX_FADVISE
 		/* Do we care about the return value of posix_fadvise(2) ? */
 		posix_fadvise(output_fd, 0, 0, POSIX_FADV_SEQUENTIAL);
+#endif
 	}
 
 	return 0;

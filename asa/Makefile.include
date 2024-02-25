@@ -4,7 +4,7 @@ dist_man_MANS += asa/asa.1
 
 asa_asa_SOURCES = asa/asa.cc
 asa_asa_CPPFLAGS = -I$(srcdir)/include
-asa_asa_LDADD = $(LIBPU) $(ARGP_LIB)
+asa_asa_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 
 TESTS += asa/asa-test
 

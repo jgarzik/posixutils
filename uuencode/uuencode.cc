@@ -333,8 +333,10 @@ int main (int argc, char *argv[])
 			return 1;
 		}
 
+#ifdef HAVE_POSIX_FADVISE
 		/* Do we care about the return value of posix_fadvise(2) ? */
 		posix_fadvise(fd, 0, 0, POSIX_FADV_SEQUENTIAL);
+#endif
 	} else {
 		fd = STDIN_FILENO;
 	}

@@ -4,7 +4,7 @@ bin_PROGRAMS += ipcrm/ipcrm
 dist_man_MANS += ipcrm/ipcrm.1
 
 ipcrm_ipcrm_SOURCES = ipcrm/ipcrm.cc
-ipcrm_ipcrm_LDADD = $(LIBPU) $(ARGP_LIB)
+ipcrm_ipcrm_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 ipcrm_ipcrm_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += ipcrm/ipcrm-test

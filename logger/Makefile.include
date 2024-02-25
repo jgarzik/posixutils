@@ -4,7 +4,7 @@ bin_PROGRAMS += logger/logger
 dist_man_MANS += logger/logger.1
 
 logger_logger_SOURCES = logger/logger.cc
-logger_logger_LDADD = $(LIBPU) $(ARGP_LIB)
+logger_logger_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 logger_logger_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += logger/logger-test

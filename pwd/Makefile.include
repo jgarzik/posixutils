@@ -4,7 +4,7 @@ bin_PROGRAMS += pwd/pwd
 dist_man_MANS += pwd/pwd.1
 
 pwd_pwd_SOURCES = pwd/pwd.cc
-pwd_pwd_LDADD = $(LIBPU) $(ARGP_LIB)
+pwd_pwd_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 pwd_pwd_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += pwd/pwd-test

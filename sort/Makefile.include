@@ -4,7 +4,7 @@ noinst_PROGRAMS += sort/sort
 dist_man_MANS += sort/sort.1
 
 sort_sort_SOURCES = sort/sort.cc
-sort_sort_LDADD = $(LIBPU) $(ARGP_LIB)
+sort_sort_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 sort_sort_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += sort/sort-test

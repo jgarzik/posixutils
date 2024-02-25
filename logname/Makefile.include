@@ -4,7 +4,7 @@ bin_PROGRAMS += logname/logname
 dist_man_MANS += logname/logname.1
 
 logname_logname_SOURCES = logname/logname.cc
-logname_logname_LDADD = $(LIBPU) $(ARGP_LIB)
+logname_logname_LDADD = $(LIBPU) $(ARGP_LIB) $(LIBINTL)
 logname_logname_CPPFLAGS = -I$(srcdir)/include
 
 TESTS += logname/logname-test
