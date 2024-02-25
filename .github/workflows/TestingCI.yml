@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install deps
-      run: sudo apt-get -y install flex bison
+      run: sudo apt-get -y install flex bison autopoint
     - name: Prepare
       run: ./autogen.sh && ./configure
     - name: Build
