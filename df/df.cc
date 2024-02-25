@@ -33,8 +33,14 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
+#ifdef __linux__
 #include <mntent.h>
 #include <sys/vfs.h>
+#elif __APPLE__
+#include <sys/param.h>
+#include <sys/ucred.h>
+#include <sys/mount.h>
+#endif
 #include <paths.h>
 #include <libpu.h>
 
@@ -95,6 +101,7 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
 	PU_OPT_END
 }
 
+#ifdef __linux__
 static void push_mntent(struct mntent *me)
 {
 	struct stat st;
@@ -112,9 +119,31 @@ static void push_mntent(struct mntent *me)
 
 	fslist.push_back(fl);
 }
+#endif
+
+#ifdef __APPLE__
+static void push_mntent(const struct statfs *sfs)
+{
+	struct stat st;
+
+	FSListEnt fl;
+	fl.devname.assign(sfs->f_mntfromname);
+	fl.dir.assign(sfs->f_mntonname);
+
+	if (stat(fl.devname.c_str(), &st) == 0)
+		fl.dev = st.st_rdev;
+	else if (stat(fl.dir.c_str(), &st) == 0)
+		fl.dev = st.st_dev;
+	else
+		fl.dev = (dev_t) -1;
+
+	fslist.push_back(fl);
+}
+#endif
 
 static int read_mntlist(void)
 {
+#ifdef __linux__
 	struct mntent *me;
 
 	FILE *f = setmntent(_PATH_MOUNTED, "r");
@@ -127,6 +156,18 @@ static int read_mntlist(void)
 		push_mntent(me);
 
 	endmntent(f);
+#elif __APPLE__
+	struct statfs* mounts = NULL;
+	int n_mnt = getmntinfo(&mounts, MNT_WAIT);
+	if (n_mnt < 0) {
+		perror("getmntinfo");
+		return 1;
+	}
+
+	for (int i = 0; i < n_mnt; i++) {
+		push_mntent(&mounts[i]);
+	}
+#endif
 
 	return 0;
 }
