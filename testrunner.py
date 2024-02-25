@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 import subprocess
@@ -55,25 +55,25 @@ def runtest(prog, testparams):
 			wanted_out = content_file.read()
 
 	p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	(out_data, err_data) = p.communicate(in_data)
+	(out_data, err_data) = p.communicate(in_data.encode('utf-8'))
 
 	ok=True
 
-	if out_data != wanted_out:
-		print >>sys.stderr, "FAIL " + test_name + " stdout-invalid"
+	if out_data.decode('utf-8') != wanted_out:
+		print("FAIL " + test_name + " stdout-invalid", file=sys.stderr)
 		failures = failures + 1
 		ok=False
-	if err_data != wanted_err:
-		print >>sys.stderr, "FAIL " + test_name + " stderr-invalid"
+	if err_data.decode('utf-8') != wanted_err:
+		print("FAIL " + test_name + " stderr-invalid", file=sys.stderr)
 		failures = failures + 1
 		ok=False
 	if p.returncode != wanted_returncode:
-		print >>sys.stderr, "FAIL " + test_name + " retcode-invalid"
+		print("FAIL " + test_name + " retcode-invalid", file=sys.stderr)
 		failures = failures + 1
 		ok=False
 
 	if ok:
-		print >>sys.stderr, "OK " + test_name
+		print("OK " + test_name, file=sys.stderr)
 
 def runtests(d):
 	prog = d['prog']
@@ -82,7 +82,7 @@ def runtests(d):
 
 if __name__ == '__main__':
 	if len(sys.argv) != 3:
-		print "Usage: testrunner.py TEST-DATA-DIR JSON-CONFIG-FILE"
+		print("Usage: testrunner.py TEST-DATA-DIR JSON-CONFIG-FILE")
 		sys.exit(1)
 
 	srcdir=sys.argv[1]

@@ -18,4 +18,6 @@ jobs:
       run: ./autogen.sh && ./configure
     - name: Build
       run: make -s
+    - name: Run tests
+      run: make -s check
 
