@@ -12,6 +12,10 @@ This project asks the question:
 are written in modern C++, with full access to the C++11 compiler and
 library?**
 
+## STATUS: Archived and frozen
+
+This project has been superceded by https://github.com/rustcoreutils/posixutils-rs
+
 ## Resources
 
 posixutils home page (untouched for years):
